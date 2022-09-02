@@ -26,11 +26,11 @@ export default function CafeListUI() {
           <ListSlider />
         </CafeList.SliderWrapper>
         <CafeList.CafeList>
-          <div>주소</div>
-          <div>제목</div>
-          <div># 동반 가능 # 대형견 유무</div>
-          <div>별점</div>
-          <div>주소</div>
+          <CafeList.NameTag>멍돌핀 애견카페</CafeList.NameTag>
+          <CafeList.AddressTag>서울 강남구 논현동</CafeList.AddressTag>
+
+          <CafeList.SelectTag># 동반 가능 # 대형견</CafeList.SelectTag>
+          <CafeList.RatingTag>평점 4.67</CafeList.RatingTag>
         </CafeList.CafeList>
       </CafeList.CafeListWrapper>
       <CafeList.CafeListWrapper>
@@ -38,11 +38,11 @@ export default function CafeListUI() {
           <ListSlider />
         </CafeList.SliderWrapper>
         <CafeList.CafeList>
-          <div>주소</div>
-          <div>제목</div>
-          <div># 동반 가능 # 대형견 유무</div>
-          <div>별점</div>
-          <div>주소</div>
+          <CafeList.NameTag>겨울이 머무는집</CafeList.NameTag>
+          <CafeList.AddressTag>서울 마포구 와우산로</CafeList.AddressTag>
+
+          <CafeList.SelectTag># 야외 마당 # 대형견</CafeList.SelectTag>
+          <CafeList.RatingTag>평점 4.8</CafeList.RatingTag>
         </CafeList.CafeList>
       </CafeList.CafeListWrapper>
       <CafeList.CafeListWrapper>
@@ -50,11 +50,11 @@ export default function CafeListUI() {
           <ListSlider />
         </CafeList.SliderWrapper>
         <CafeList.CafeList>
-          <div>주소</div>
-          <div>제목</div>
-          <div># 동반 가능 # 대형견 유무</div>
-          <div>별점</div>
-          <div>주소</div>
+          <CafeList.NameTag>전설의 강아지</CafeList.NameTag>
+          <CafeList.AddressTag>서울 대학로</CafeList.AddressTag>
+
+          <CafeList.SelectTag># 동반 가능</CafeList.SelectTag>
+          <CafeList.RatingTag>평점 4.3</CafeList.RatingTag>
         </CafeList.CafeList>
       </CafeList.CafeListWrapper>
     </CafeList.Container>

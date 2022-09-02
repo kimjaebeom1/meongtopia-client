@@ -5,15 +5,14 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding-top: 2em;
 `;
 
 export const ListSelectWrapper = styled.div`
-  width: 75rem;
   font-size: 20px;
   font-weight: 700;
+  width: auto;
 
   @media ${breakPoints.mobile} {
     justify-content: center;
@@ -27,6 +26,8 @@ export const LocationSelect = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
+
   & > div {
     display: flex;
     justify-content: center;
@@ -97,6 +98,8 @@ export const SearchBar = styled.input`
   border-radius: 28px;
 `;
 
+// 카페 리스트
+
 export const CafeListWrapper = styled.div`
   margin-top: 40px;
   display: flex;
@@ -120,8 +123,9 @@ export const SliderWrapper = styled.div`
 
 export const CafeList = styled.div`
   flex-direction: column;
-  padding-top: 4.5em;
+  padding-top: 2.5em;
   width: 60%;
+  padding-left: 2.5em;
 
   @media ${breakPoints.mobile} {
     display: flex;
@@ -130,4 +134,23 @@ export const CafeList = styled.div`
     margin: 0;
     padding-top: 0em;
   }
+`;
+
+export const NameTag = styled.div`
+  font-size: 30px;
+  font-weight: 700;
+`;
+
+export const AddressTag = styled.div`
+  margin-top: 1em;
+`;
+
+export const SelectTag = styled.div`
+  margin-top: 1em;
+  font-weight: 700;
+  color: brown;
+`;
+
+export const RatingTag = styled.div`
+  margin-top: 1em;
 `;
