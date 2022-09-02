@@ -29,7 +29,6 @@ export const Wrapper = styled.div`
 export const Logo = styled.div`
   width: 4rem;
   height: 3rem;
-  border: 1px solid;
 `;
 
 export const MenuContainer = styled.div`
@@ -39,8 +38,12 @@ export const MenuContainer = styled.div`
 export const Signin = styled.div`
   font-size: 1.5rem;
   margin-right: 1rem;
+  color: #f5cf1f;
+  font-weight: 700;
 `;
 
 export const Signup = styled.div`
   font-size: 1.5rem;
+  color: #f5cf1f;
+  font-weight: 700;
 `;
