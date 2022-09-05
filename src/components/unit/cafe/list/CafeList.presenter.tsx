@@ -6,16 +6,26 @@ export default function CafeListUI() {
     <CafeList.Container>
       <CafeList.ListSelectWrapper>
         <CafeList.LocationSelect>
-          <h3>위치별</h3> <div>홍대</div>
-          <div>강남</div>
-          <div>대학로</div>
-          <div>건대</div>
-          <div>잠실</div>
+          <div>
+            <h3>위치별</h3>
+          </div>{" "}
+          <CafeList.CafeLocationWrapper>
+            <CafeList.LocationTag>홍대</CafeList.LocationTag>
+            <CafeList.LocationTag>강남</CafeList.LocationTag>
+            <CafeList.LocationTag>대학로</CafeList.LocationTag>
+            <CafeList.LocationTag>건대</CafeList.LocationTag>
+            <CafeList.LocationTag>잠실</CafeList.LocationTag>
+          </CafeList.CafeLocationWrapper>
         </CafeList.LocationSelect>
         <CafeList.ConditionSelect>
-          <h3>조건별</h3> <div>동반 가능 유무</div>
-          <div>야외 마당 유무</div>
-          <div>대형견 유무</div>
+          <div>
+            <h3>조건별</h3>
+          </div>
+          <CafeList.CafeCondtionWrapper>
+            <CafeList.ConditionTag>동반 가능 유무</CafeList.ConditionTag>
+            <CafeList.ConditionTag>야외 마당 유무</CafeList.ConditionTag>
+            <CafeList.ConditionTag>대형견 유무</CafeList.ConditionTag>
+          </CafeList.CafeCondtionWrapper>
         </CafeList.ConditionSelect>
         <CafeList.SearchList>
           <h3>검색</h3> <CafeList.SearchBar />

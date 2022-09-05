@@ -28,27 +28,36 @@ export const LocationSelect = styled.div`
   align-items: center;
   width: 100%;
 
-  & > div {
+  @media ${breakPoints.mobile} {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 9em;
-    height: 3.5em;
-    background-color: white;
-    margin-left: 3rem;
-    border-radius: 28px;
-    border: 1.5px solid rgb(223, 227, 234);
-    box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px;
-    font-size: 15px;
-    font-weight: 600;
-    color: rgb(187, 193, 204);
-    cursor: pointer;
+    flex-direction: column;
+  }
+`;
 
-    @media ${breakPoints.mobile} {
-      align-items: center;
-      margin: 0;
-      width: 100%;
-    }
+export const CafeLocationWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const LocationTag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9em;
+  height: 3.5em;
+  background-color: white;
+  margin-left: 3rem;
+  border-radius: 28px;
+  border: 1.5px solid rgb(223, 227, 234);
+  box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(187, 193, 204);
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 5.2em;
+    margin-left: 1em;
   }
 `;
 
@@ -57,21 +66,37 @@ export const ConditionSelect = styled.div`
   flex-direction: row;
   align-items: center;
   padding-top: 2em;
-  & > div {
+
+  @media ${breakPoints.mobile} {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 9em;
-    height: 3.5em;
-    background-color: white;
-    margin-left: 3rem;
-    border-radius: 28px;
-    border: 1.5px solid rgb(223, 227, 234);
-    box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px;
-    font-size: 15px;
-    font-weight: 600;
-    color: rgb(187, 193, 204);
-    cursor: pointer;
+    flex-direction: column;
+  }
+`;
+
+export const CafeCondtionWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const ConditionTag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9em;
+  height: 3.5em;
+  background-color: white;
+  margin-left: 3rem;
+  border-radius: 28px;
+  border: 1.5px solid rgb(223, 227, 234);
+  box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgb(187, 193, 204);
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 7em;
+    margin-left: 1em;
   }
 `;
 
@@ -114,11 +139,16 @@ export const CafeListWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 0;
+    width: 100%;
   }
 `;
 
 export const SliderWrapper = styled.div`
   width: 40%;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const CafeList = styled.div`
