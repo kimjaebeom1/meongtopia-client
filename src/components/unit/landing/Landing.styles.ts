@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { setLazyProp } from "next/dist/server/api-utils";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
