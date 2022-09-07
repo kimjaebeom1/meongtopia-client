@@ -13,16 +13,12 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 1440px;
-  padding: 2rem;
+  max-width: 1200px;
+  padding: 2rem 0;
   display: flex;
-  justify-content: center;
-
+  justify-content: space-between;
   @media ${breakPoints.mobile} {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
   }
 `;
 
@@ -67,7 +63,6 @@ export const Copyright = styled.div`
 `;
 
 export const CSWrapper = styled.div`
-  border-left: 1px solid #a9a9a9;
   padding: 2rem;
   display: flex;
 
