@@ -216,10 +216,11 @@ export const LastPart = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 220px;
+  width: 225px;
   height: 100px;
   margin-bottom: 10px;
 `;
+
 // import styled from "@emotion/styled";
 // import { width } from "@mui/system";
 // import { breakPoints } from "../../../commons/styles/media";
