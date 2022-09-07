@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { breakPoints } from "../styles/media";
+import { breakPoints } from "../../../commons/styles/media";
 import Slider from "react-slick";
 
 export const Wrapper = styled.div`
