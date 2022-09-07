@@ -15,19 +15,18 @@ export default function CafeImgUpload(props: any) {
 
   const onChangeFile = async (event) => {
     const file = CafeImgcheckValidationImage(event.target.files?.[0]);
-
     console.log(file);
-    if (!file) return;
+    // if (!file) return;
 
-    try {
-      const result = await uploadFile({
-        variables: { file },
-      });
-      console.log(result);
-      props.onChangeFileUrls(String(result.data?.uploadFile), props.index);
-    } catch (error) {
-      Modal.error({ content: error.message });
-    }
+    // try {
+    const result = await uploadFile({
+      variables: { files: file },
+    });
+    console.log(result);
+    // props.onChangeFileUrls(result.data?.uploadFile, props.index);
+    // } catch (error) {
+    //   // Modal.error({ content: error.message });
+    // }
   };
 
   return (

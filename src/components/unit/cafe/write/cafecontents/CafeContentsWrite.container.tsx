@@ -16,6 +16,7 @@ export default function CafeContentsWrite() {
   });
 
   const onChangeFileUrls = (fileUrl: string, index: number) => {
+    console.log("111");
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
