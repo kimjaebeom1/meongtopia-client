@@ -47,7 +47,7 @@ export default function ApolloSetting(props: IApolloSettingProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://https://meongtopiaserver.shop/graphql",
+    uri: "https://meongtopiaserver.shop/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
