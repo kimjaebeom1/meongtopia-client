@@ -52,6 +52,7 @@ export const Ment1 = styled.div`
   font-weight: 600;
   font-size: 15px;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 export const Ment2 = styled.div`
@@ -105,6 +106,7 @@ export const Input = styled.input`
   height: 2.5rem;
   padding: 0px 10px;
   outline: none;
+  margin-top: 3px;
 `;
 
 export const NickNameInput = styled.input`
@@ -119,6 +121,7 @@ export const Error = styled.div`
   color: red;
   font-size: 0.6rem;
   margin-bottom: 5px;
+  margin-left: 5px;
 `;
 
 export const CheckBtn = styled.div`
@@ -131,6 +134,7 @@ export const CheckBtn = styled.div`
   text-align: center;
   background-color: #c8c8c8;
   margin-right: 10px;
+  cursor: pointer;
 `;
 
 export const AgreeWrap = styled.div`
@@ -176,26 +180,34 @@ export const AgreeContents3 = styled.div`
 
 export const PhoneWrap = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  margin: 20px 0px;
+  margin-bottom: 20px;
+`;
+
+export const PhoneNumWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  width: 100%;
 `;
 
 export const PhoneNum = styled.input`
   width: 100%;
   height: 3rem;
   margin-right: 10px;
+  margin-bottom: 10px;
   padding: 0px 10px;
 `;
 export const NumBtn = styled.div`
   width: 80px;
-  height: 30px;
-  line-height: 30px;
+  height: 50px;
+  line-height: 50px;
   text-align: center;
   border-radius: 20px;
-  background-color: green;
+  background-color: #f5cf1f;
   color: white;
+  cursor: pointer;
 `;
 
 export const NumberWrap = styled.div`
@@ -214,12 +226,19 @@ export const Number = styled.input`
 `;
 
 export const SignUpBtn = styled.div`
-  width: 7rem;
-  height: 2rem;
-  line-height: 2rem;
+  width: 15rem;
+  height: 3rem;
+  line-height: 3rem;
   border-radius: 50px;
-  background-color: green;
+  background-color: #f5cf1f;
   color: white;
   text-align: center;
   margin-top: 10px;
+  cursor: pointer;
+`;
+
+export const Line = styled.div`
+  width: 100%;
+  height: 2px;
+  border-bottom: 1px solid lightgray;
 `;

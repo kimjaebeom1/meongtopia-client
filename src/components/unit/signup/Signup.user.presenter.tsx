@@ -42,17 +42,21 @@ export default function SignupPresenterPage() {
           </SignUp.InputWrap>
 
           <SignUp.PhoneWrap>
-            <SignUp.PhoneNum placeholder="휴대전화 번호를 입력해주세요" />
-            <SignUp.NumBtn>인증</SignUp.NumBtn>
-          </SignUp.PhoneWrap>
+            <SignUp.Title>휴대전화 인증</SignUp.Title>
+            <SignUp.PhoneNumWrap>
+              <SignUp.PhoneNum placeholder="휴대전화 번호를 입력해주세요" />
+              <SignUp.NumBtn>인증</SignUp.NumBtn>
+            </SignUp.PhoneNumWrap>
 
-          <SignUp.NumberWrap>
-            <SignUp.Number placeholder="인증번호를 입력해주세요" />
-            <SignUp.NumBtn>확인</SignUp.NumBtn>
-          </SignUp.NumberWrap>
+            <SignUp.NumberWrap>
+              <SignUp.Number placeholder="인증번호를 입력해주세요" />
+              <SignUp.NumBtn>확인</SignUp.NumBtn>
+            </SignUp.NumberWrap>
+          </SignUp.PhoneWrap>
 
           <SignUp.AgreeWrap>
             <SignUp.Title>약관동의</SignUp.Title>
+
             <SignUp.AgreeWrap2>
               <SignUp.AgreeChkWrap>
                 <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
@@ -62,6 +66,7 @@ export default function SignupPresenterPage() {
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
                 <CheckCircleIcon color="disabled" />
               </SignUp.AgreeChkWrap>
+              <SignUp.Line />
               <SignUp.AgreeChkWrap>
                 <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
                 <SignUp.AgreeContents2>
@@ -70,6 +75,7 @@ export default function SignupPresenterPage() {
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
                 <CheckCircleIcon color="disabled" />
               </SignUp.AgreeChkWrap>{" "}
+              <SignUp.Line />
               <SignUp.AgreeChkWrap>
                 <SignUp.AgreeContents1 style={{ color: "gray" }}>
                   (선택)
