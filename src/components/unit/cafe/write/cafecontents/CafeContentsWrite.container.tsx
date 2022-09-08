@@ -1,10 +1,16 @@
-import { useState, createRef } from "react";
+import { useState, createRef, useEffect } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
 import { Description } from "@material-ui/icons";
 import Editor from "@toast-ui/editor";
+import {
+  largeDogState,
+  withDogState,
+  yardState,
+} from "../../../../../commons/store";
+import { useRecoilState } from "recoil";
 
 export default function CafeContentsWrite() {
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
@@ -12,7 +18,9 @@ export default function CafeContentsWrite() {
   const [createStore] = useMutation(CREATE_STORE);
   const [location, setLocation] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
+  const [largeDog, setLargeDog] = useRecoilState(largeDogState);
+  const [withDog, setWithDog] = useRecoilState(withDogState);
+  const [yard, setYard] = useRecoilState(yardState);
   const editorRef = createRef<Editor>();
 
   // 주소 관련
@@ -69,26 +77,29 @@ export default function CafeContentsWrite() {
   const onClickCreateStore = async (data) => {
     const result = await createStore({
       variables: {
-        name: data.name,
-        phone: data.phone,
-        storeImage: [...fileUrls],
-        open: data.open,
-        close: data.close,
-        entranceFee: data.entranceFee,
-        description: data.description,
-        address: data.address,
-        addressDetail: data.addressDetail,
-        storeTag: [data.location],
-        pet: {
+        createStoreInput: {
           name: data.name,
-          age: data.age,
-          breed: data.breed,
+          phone: data.phone,
+          storeImage: fileUrls.join(),
+          open: data.open,
+          close: data.close,
+          entranceFee: Number(data.entranceFee),
           description: data.description,
+          address: data.address,
+          addressDetail: data.addressDetail,
+          locationTag: data.location,
+          storeTag: [withDog, yard, largeDog],
+          pet: {
+            name: data.name,
+            age: data.age,
+            breed: data.breed,
+            description: data.description,
+          },
         },
       },
     });
+    console.log(result);
   };
-
   return (
     <CafeContentsWriteUI
       fileUrls={fileUrls}
