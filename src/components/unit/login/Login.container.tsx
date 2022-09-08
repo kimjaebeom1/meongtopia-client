@@ -45,6 +45,9 @@ export default function LoginContainerPage() {
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
   };
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
   return (
     <LoginPresenterPage
