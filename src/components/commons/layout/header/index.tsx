@@ -1,4 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import LoginButton from "../../buttons/login";
 import MenuButton from "../../buttons/menu";
@@ -9,17 +8,7 @@ const MENUS = [
   { page: "/review", title: "리뷰 확인" },
 ];
 
-const FETCH_USER = gql`
-  query fetchUser {
-    userID
-    name
-    nickname
-  }
-`;
 export default function LayoutHeader() {
-  const { data } = useQuery(FETCH_USER);
-
-  console.log(data);
   return (
     <Header.Container>
       <Header.Wrapper>
