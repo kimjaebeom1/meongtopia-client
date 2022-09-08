@@ -1,16 +1,40 @@
-import { useState } from "react";
+import { useState, createRef } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
+import { Description } from "@material-ui/icons";
+import Editor from "@toast-ui/editor";
 
 export default function CafeContentsWrite() {
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
   const [next, setNext] = useState(false);
   const [createStore] = useMutation(CREATE_STORE);
-  const [withDog, setWithDog] = useState("");
-  const [yard, setYard] = useState("");
-  const [largeDog, setLargeDog] = useState("");
+  const [location, setLocation] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const editorRef = createRef<Editor>();
+
+  // 주소 관련
+  const onCompleteAddressSearch = (data: any) => {
+    setValue("address", data.address);
+    trigger("address");
+
+    setIsOpen(false);
+  };
+
+  const onClickAddressModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsOpen(false);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const { register, handleSubmit, setValue, trigger, getValues } = useForm({
     mode: "onChange",
   });
@@ -31,37 +55,36 @@ export default function CafeContentsWrite() {
     setNext(true);
   };
 
-  const onClickWithDog = (event) => {
-    if (withDog) {
-      setWithDog("");
-    } else {
-      setWithDog(event.target.value);
-    }
-    console.log(withDog);
+  const onChangeLocation = (event) => {
+    setLocation(event.target.value);
   };
 
-  const onClickYard = (event) => {
-    if (yard) {
-      setYard("");
-    } else {
-      setYard(event.target.value);
-    }
-    console.log(yard);
-  };
-
-  const onClickLargeDog = (event) => {
-    if (largeDog) {
-      setLargeDog("");
-    } else {
-      setLargeDog(event.target.value);
-    }
-    console.log(largeDog);
+  const onChangeDescription = () => {
+    const inputs = editorRef.current?.getInstance().getHTML();
+    setValue("description", inputs);
+    trigger("description");
+    console.log(Description);
   };
 
   const onClickCreateStore = async (data) => {
     const result = await createStore({
       variables: {
         name: data.name,
+        phone: data.phone,
+        storeImage: [...fileUrls],
+        open: data.open,
+        close: data.close,
+        entranceFee: data.entranceFee,
+        description: data.description,
+        address: data.address,
+        addressDetail: data.addressDetail,
+        storeTag: [data.location],
+        pet: {
+          name: data.name,
+          age: data.age,
+          breed: data.breed,
+          description: data.description,
+        },
       },
     });
   };
@@ -70,18 +93,22 @@ export default function CafeContentsWrite() {
     <CafeContentsWriteUI
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
+      onChangeLocation={onChangeLocation}
       register={register}
       handleSubmit={handleSubmit}
       onClickNext={onClickNext}
       onClickPrev={onClickPrev}
-      onClickWithDog={onClickWithDog}
-      onClickYard={onClickYard}
-      onClickLargeDog={onClickLargeDog}
       onClickCreateStore={onClickCreateStore}
-      withDog={withDog}
-      yard={yard}
-      largeDog={largeDog}
+      onChangeDescription={onChangeDescription}
+      location={location}
       next={next}
+      isOpen={isOpen}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      onClickAddressModal={onClickAddressModal}
+      handleOk={handleOk}
+      closeModal={closeModal}
+      address={getValues("address")}
+      editorRef={editorRef}
     />
   );
 }

@@ -23,7 +23,7 @@ export default function CafeImgUpload(props: any) {
       variables: { files: file },
     });
     console.log(result);
-    // props.onChangeFileUrls(result.data?.uploadFile, props.index);
+    props.onChangeFileUrls(result.data?.uploadFile, props.index);
     // } catch (error) {
     //   // Modal.error({ content: error.message });
     // }
