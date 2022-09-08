@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 
-export const Container = styled.div`
+export const Container = styled.header`
   width: 100%;
   padding: 1rem;
   border-bottom: 1px solid #cacaca;
@@ -37,7 +37,13 @@ export const MenuContainer = styled.ul`
   margin: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+`;
+
+export const DogIcon = styled.img`
+  width: 4.5rem;
+  height: 3rem;
+  object-fit: cover;
 `;
 
 export const LoginContainer = styled.div`

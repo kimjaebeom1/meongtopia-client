@@ -1,3 +1,4 @@
+import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import LoginButton from "../../buttons/login";
 import MenuButton from "../../buttons/menu";
@@ -5,10 +6,22 @@ import * as Header from "./Header.styles";
 
 const MENUS = [
   { page: "/cafe", title: "애견카페 찾기" },
-  { page: "/review", title: "리뷰 확인" },
+  // { page: "/review", title: "리뷰 확인" },
 ];
 
+const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      userID
+      name
+      nickname
+    }
+  }
+`;
+
 export default function LayoutHeader() {
+  const { data } = useQuery(FETCH_USER);
+  console.log(data);
   return (
     <Header.Container>
       <Header.Wrapper>
@@ -16,6 +29,7 @@ export default function LayoutHeader() {
           <Header.Logo src="/images/logo.svg" />
         </Link>
         <Header.MenuContainer>
+          <Header.DogIcon src="/images/dog.gif" />
           {MENUS.map((el) => (
             <MenuButton key={el.page} page={el.page} title={el.title} />
           ))}
