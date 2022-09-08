@@ -4,7 +4,7 @@ import { FaFacebookSquare, FaYoutube } from "react-icons/fa";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { breakPoints } from "../../../../commons/styles/media";
 
-export const Container = styled.div`
+export const Container = styled.footer`
   width: 100%;
   background-color: #f7f7f7;
   display: flex;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
-  padding: 2rem 0;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   @media ${breakPoints.mobile} {
@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
 
 export const InfoWrapper = styled.div`
   padding: 2rem;
+  padding-left: 0;
   margin-right: 8rem;
 
   @media ${breakPoints.mobile} {
@@ -63,8 +64,8 @@ export const Copyright = styled.div`
 `;
 
 export const CSWrapper = styled.div`
-  padding: 2rem;
   display: flex;
+  margin-top: 2rem;
 
   @media ${breakPoints.mobile} {
     display: flex;

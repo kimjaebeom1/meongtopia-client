@@ -7,12 +7,12 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
-const LayoutWrapper = styled.div`
+const LayoutWrapper = styled.main`
   width: 100%;
   margin: auto;
 `;
 
-const LayoutBody = styled.div`
+const LayoutBody = styled.section`
   width: 100%;
 `;
 
