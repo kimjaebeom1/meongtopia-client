@@ -1,8 +1,8 @@
-import * as SignUp from "./Signup.user.styles";
+import * as SignUp from "./Signup.owner.styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Checkbox from "@mui/material/Checkbox";
 
-export default function SignUpPresenterPage(props) {
+export default function SignUpOwnerPresenterPage(props) {
   return (
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
@@ -22,6 +22,11 @@ export default function SignUpPresenterPage(props) {
           </SignUp.OwnerUserWrap>
         </SignUp.BtnWrap>
 
+        <SignUp.OwnerNumWrap>
+          <SignUp.Title>사업자 등록번호</SignUp.Title>
+          <SignUp.OwnerImg type="file" />
+        </SignUp.OwnerNumWrap>
+
         <SignUp.ElWrap>
           <SignUp.IdPwWrap>
             <SignUp.Title>ID/PW</SignUp.Title>
@@ -39,15 +44,14 @@ export default function SignUpPresenterPage(props) {
           </SignUp.IdPwWrap>
 
           <SignUp.InputWrap>
-            <SignUp.Title>닉네임</SignUp.Title>
+            <SignUp.Title>상호명</SignUp.Title>
             <SignUp.NickNameWrap>
               <SignUp.NickNameInput
                 onChange={props.onChangeNickname}
-                placeholder="닉네임을 입력해주세요"
+                placeholder="상호명을 입력해주세요"
               />
-              <SignUp.CheckBtn>중복확인</SignUp.CheckBtn>
             </SignUp.NickNameWrap>
-            <SignUp.Error>닉네임을 입력해주세요</SignUp.Error>
+            <SignUp.Error>상호명을 입력해주세요</SignUp.Error>
           </SignUp.InputWrap>
 
           <SignUp.PhoneWrap>
@@ -57,15 +61,20 @@ export default function SignUpPresenterPage(props) {
                 onChange={props.onChangePhone}
                 placeholder="휴대전화 번호를 입력해주세요"
               />
-              <SignUp.NumBtn>인증</SignUp.NumBtn>
+              <SignUp.NumBtn onClick={props.onClickGetToken}>
+                인증
+              </SignUp.NumBtn>
             </SignUp.PhoneNumWrap>
 
             <SignUp.NumberWrap>
               <SignUp.Number
-                onChange={props.onChangeName}
+                onChange={props.onChangeCheckNum}
                 placeholder="인증번호를 입력해주세요"
               />
-              <SignUp.NumBtn>확인</SignUp.NumBtn>
+
+              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
+                확인
+              </SignUp.NumBtn>
             </SignUp.NumberWrap>
           </SignUp.PhoneWrap>
 
