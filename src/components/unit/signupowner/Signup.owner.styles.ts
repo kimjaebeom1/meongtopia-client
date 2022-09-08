@@ -3,7 +3,7 @@ import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   /* width: 90%; */
-  height: 968px;
+  /* height: 968px; */
   display: flex;
   flex-direction: row;
   margin: 0px auto;
@@ -64,15 +64,21 @@ export const Title = styled.div`
   margin-bottom: 10px;
 `;
 
+export const OwnerNumWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin-bottom: 30px;
+`;
+
+export const OwnerImg = styled.input``;
+
 export const ElWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* width: 300px; */
   width: 65%;
-  /* border: 4px solid red; */
-  /* height: 55%; */
 `;
 
 export const IdPwWrap = styled.div`
@@ -140,7 +146,8 @@ export const AgreeWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  /* border: 1px solid black; */
 `;
 
 export const AgreeWrap2 = styled.div`
@@ -148,7 +155,6 @@ export const AgreeWrap2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
   border: 1px solid #c8c8c8;
 `;
 
@@ -232,6 +238,7 @@ export const SignUpBtn = styled.div`
   background-color: #f5cf1f;
   color: white;
   text-align: center;
+  margin: 40px 0px;
   cursor: pointer;
 `;
 

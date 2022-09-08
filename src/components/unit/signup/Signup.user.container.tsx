@@ -1,10 +1,12 @@
-import SignupPresenterPage from "./Signup.user.presenter";
-// import { CREATE_USER } from "./Signup.user.queries";
+import SignUpPresenterPage from "./Signup.user.presenter";
+import { CREATE_USER } from "./Signup.user.queries";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-export default function SignupContainerPage() {
-  // const [createUser] = useMutation(CREATE_USER);
+export default function SignUpContainerPage() {
+  const [createUser] = useMutation(CREATE_USER);
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
@@ -32,21 +34,41 @@ export default function SignupContainerPage() {
     setPhone(event.target.value);
   };
 
-  // const onClickCreateUser = async () => {
-  //   const result = await createUser({
-  //     variables: {
-  //       createUserInput: {
-  //         name,
-  //         nickname,
-  //         email,
-  //         password,
-  //         phone,
-  //       },
-  //     },
-  //   });
-  // };
+  const onClickCreateUser = async () => {
+    const result = await createUser({
+      variables: {
+        createUserInput: {
+          name,
+          nickname,
+          email,
+          password,
+          phone,
+        },
+      },
+    });
+    console.log(result.data?.createUser.usedID);
+    alert("회원가입 완성");
+    router.push("/login");
+  };
 
-  return;
+  const onClickMoveToOwner = () => {
+    router.push("/signup/owner");
+  };
 
-  <SignupPresenterPage />;
+  const onClickMoveToUser = () => {
+    router.push("/signup");
+  };
+
+  return (
+    <SignUpPresenterPage
+      onChangeName={onChangeName}
+      onChangeEmail={onChangeEmail}
+      onChangeNickname={onChangeNickname}
+      onChangePassword={onChangePassword}
+      onChangePhone={onChangePhone}
+      onClickCreateUser={onClickCreateUser}
+      onClickMoveToOwner={onClickMoveToOwner}
+      onClickMoveToUser={onClickMoveToUser}
+    />
+  );
 }

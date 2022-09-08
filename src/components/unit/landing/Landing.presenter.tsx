@@ -7,7 +7,7 @@ export default function LandingPresenterPage() {
     <Landing.Wrapper>
       <Landing.ReCafeList>
         <Landing.ReTitle>
-          실시간 인기
+          추천
           <Landing.Meong src="/images/meong.png" />
           카페
         </Landing.ReTitle>
