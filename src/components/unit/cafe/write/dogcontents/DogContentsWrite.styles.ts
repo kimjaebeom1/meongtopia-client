@@ -1,58 +1,114 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
-  width: 70%;
-  padding: 2rem;
-  .slick-list {
-    width: 100%;
-    border-radius: 1rem;
-  }
-  .slick-dots {
-    bottom: 20px;
-
-    & > li {
-      color: white;
-    }
-
-    & li > div > img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-    }
-  }
+export const DogProfileWrapper = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
 `;
 
-export const Contents = styled.div`
+export const Tag = styled.div`
+  margin-top: 2em;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const DogName = styled.textarea`
+  padding-left: 15px;
+  background: #ebebeb;
+  border: none;
+  border-radius: 1rem;
+  max-height: 20%;
+  resize: none;
+`;
+
+export const DogAge = styled.textarea`
+  height: 20%;
+  margin-top: 5px;
+  padding-left: 15px;
+  background: #ebebeb;
+  border: none;
+  border-radius: 1rem;
+  resize: none;
+`;
+
+export const DogBreed = styled.textarea`
+  margin-top: 5px;
+  height: 20%;
+  padding-left: 15px;
+  background: #ebebeb;
+  border: none;
+  border-radius: 1rem;
+  resize: none;
+`;
+
+export const DogDesc = styled.textarea`
+  margin-top: 5px;
+  padding-left: 15px;
+  height: 40%;
+  background: #ebebeb;
+  border: none;
+  border-radius: 1rem;
+  resize: none;
+`;
+
+export const OptionWrapper = styled.div`
+  display: flex;
   width: 100%;
-  height: 400px;
-  border: 1px solid #cacaca;
-  border-radius: 1rem;
-  padding: 2rem;
+  flex-direction: row;
+  margin-top: 1.7em;
 `;
 
-export const SliderItem = styled.div`
-  & > img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 2rem;
-    padding: 0.5rem;
+export const WithDogBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.withDog ? "white" : "#F5CF1F")};
+`;
+
+export const YardBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.yard ? "white" : "#F5CF1F")};
+`;
+
+export const LargeDogBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.largeDog ? "white" : "#F5CF1F")};
+`;
+
+export const AddDogBtn = styled.button`
+  margin-top: 1.5em;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 2em;
+  border: none;
+  border-radius: 1em;
+  cursor: pointer;
+
+  :hover {
+    background: #f5cf1f;
+    color: #ffffff;
+    img {
+      filter: brightness(0) invert(1);
+    }
   }
-`;
-
-export const NextArrow = styled.div`
-  display: block;
-  margin-right: 50px;
-`;
-
-export const PrevArrow = styled.div`
-  display: block;
-  z-index: 2;
-  margin-left: 50px;
-`;
-
-export const Img = styled.img`
-  width: 770px;
-  object-fit: cover;
-  border-radius: 1rem;
 `;

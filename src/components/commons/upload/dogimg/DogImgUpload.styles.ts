@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const RepImage2 = styled.div`
+export const DogImage = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,3 +31,5 @@ export const RepImage2 = styled.div`
     }
   }
 `;
+
+export const DogUploadImage = styled.img``;

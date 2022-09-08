@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
-import Button from "antd/lib/radio/radioButton";
+import { Modal, Radio } from "antd";
+import dynamic from "next/dynamic";
+import DaumPostcodeEmbed from "react-daum-postcode";
 
 export const Wrapper = styled.div`
   width: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: #fafafa;
+  background-color: #ffffff;
 `;
 
 export const CafeNameInput = styled.input`
@@ -15,6 +17,7 @@ export const CafeNameInput = styled.input`
   height: 3.4em;
   border-radius: 5px;
   border: 1px solid #808080;
+  padding-left: 1em;
 `;
 
 export const Tag = styled.div`
@@ -31,20 +34,13 @@ export const ImageUploadWrapper = styled.div`
   margin-top: 1.7em;
 `;
 
-export const CafeMenuInput = styled.input`
-  width: 100%;
-  height: 9.6em;
-  border-radius: 5px;
-  margin-top: 1.7em;
-  border: 1px solid #808080;
-`;
-
 export const CafeNumberInput = styled.input`
   width: 100%;
   height: 3.4em;
   border-radius: 5px;
   margin-top: 1.7em;
   border: 1px solid #808080;
+  padding-left: 1em;
 `;
 
 export const TimeAndFeeWrapper = styled.div`
@@ -81,6 +77,7 @@ export const StartTimeInput = styled.input`
   height: 3.4em;
   border-radius: 5px;
   border: 1px solid #808080;
+  padding-left: 1em;
 `;
 
 export const CloseTimeInput = styled.input`
@@ -88,6 +85,7 @@ export const CloseTimeInput = styled.input`
   height: 3.4em;
   border-radius: 5px;
   border: 1px solid #808080;
+  padding-left: 1em;
 `;
 
 export const CafeFeeInput = styled.input`
@@ -96,6 +94,7 @@ export const CafeFeeInput = styled.input`
   border-radius: 5px;
   border: 1px solid #808080;
   margin-top: 1.7em;
+  padding-left: 1em;
 `;
 
 export const FeeWrapper = styled.div`
@@ -104,12 +103,23 @@ export const FeeWrapper = styled.div`
 `;
 
 export const AddressInput = styled.input`
-  width: 100%;
+  width: 80%;
   height: 3.4em;
   border-radius: 5px;
   margin-top: 1.7em;
   padding-left: 1em;
   border: 1px solid #808080;
+`;
+
+export const AddressBtn = styled.button`
+  width: 20%;
+  height: 3.4em;
+  border-radius: 5px;
+  margin-top: 1.7em;
+  border: 1px solid #808080;
+  margin-left: 4em;
+  cursor: pointer;
+  text-align: center;
 `;
 
 export const AddressDetailInput = styled.input`
@@ -166,76 +176,74 @@ export const SubmitButton = styled.button`
   cursor: pointer;
 `;
 
-// dog profile
+export const AddressSearchInput = styled(DaumPostcodeEmbed)``;
 
-export const DogProfileWrapper = styled.div`
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
+export const AddressModal = styled(Modal)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-export const DogName = styled.textarea`
-  padding-left: 15px;
-  background: #ebebeb;
-  border: none;
-  border-radius: 1rem;
-  max-height: 20%;
-  resize: none;
+export const LocationTagWrapper = styled(Radio.Group)`
+  width: 100%;
+
+  label {
+    margin-right: 20px;
+    width: 10%;
+
+    :hover {
+      color: black;
+    }
+    &.ant-radio-button-wrapper {
+      text-align: center;
+
+      &.ant-radio-button-wrapper-checked {
+        background-color: #f5cf1f;
+        border-color: #f5cf1f;
+        background: #f5cf1f;
+
+        :first-child {
+          border-right: #f5cf1f;
+        }
+        :hover {
+          background: #f5cf1f;
+          border-color: #f5cf1f;
+        }
+        ::before {
+          background: #f5cf1f;
+        }
+      }
+    }
+    span {
+      &.ant-radio-button-checked {
+        background-color: #f5cf1f;
+      }
+      ::selection {
+        background: #f5cf1f;
+      }
+    }
+  }
 `;
 
-export const DogAge = styled.textarea`
-  height: 20%;
-  margin-top: 5px;
-  padding-left: 15px;
-  background: #ebebeb;
-  border: none;
-  border-radius: 1rem;
-  resize: none;
+export const LocationButton1 = styled(Radio.Button)`
+  background-color: ${(props) =>
+    props.location === "홍대" ? "#F5CF1F" : "none"}; ;
 `;
 
-export const DogBreed = styled.textarea`
-  margin-top: 5px;
-  height: 20%;
-  padding-left: 15px;
-  background: #ebebeb;
-  border: none;
-  border-radius: 1rem;
-  resize: none;
+export const LocationButton2 = styled(Radio.Button)`
+  background-color: ${(props) =>
+    props.location === "강남" ? "#F5CF1F" : "none"}; ;
 `;
-
-export const DogDesc = styled.textarea`
-  margin-top: 5px;
-  padding-left: 15px;
-  height: 40%;
-  background: #ebebeb;
-  border: none;
-  border-radius: 1rem;
-  resize: none;
+export const LocationButton3 = styled(Radio.Button)`
+  background-color: ${(props) =>
+    props.location === "대학로" ? "#F5CF1F" : "none"}; ;
 `;
-
-export const OptionWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 1.7em;
+export const LocationButton4 = styled(Radio.Button)`
+  background-color: ${(props) =>
+    props.location === "건대" ? "#F5CF1F" : "none"}; ;
 `;
-
-export const WithDogBtn = styled.button`
-  margin-right: 20px;
-
-  background-color: ${(props) => (props.withDog ? "none" : "gold")};
-  border: none;
+export const LocationButton5 = styled(Radio.Button)`
+  background-color: ${(props) =>
+    props.location === "잠실" ? "#F5CF1F" : "none"}; ;
 `;
-
-export const YardBtn = styled.button`
-  margin-right: 20px;
-  background-color: ${(props) => (props.yard ? "none" : "gold")};
-  border: none;
-`;
-
-export const LargeDogBtn = styled.button`
-  background-color: ${(props) => (props.largeDog ? "none" : "gold")};
-  border: none;
-`;
-
-// export const KeywordButton = styled(Button)``;
