@@ -68,7 +68,7 @@ export const WithDogBtn = styled.button`
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
-  background-color: ${(props) => (props.withDog ? "white" : "#F5CF1F")};
+  background-color: ${(props) => (props.withDog ? "#F5CF1F" : "white")};
 `;
 
 export const YardBtn = styled.button`
@@ -79,7 +79,7 @@ export const YardBtn = styled.button`
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
-  background-color: ${(props) => (props.yard ? "white" : "#F5CF1F")};
+  background-color: ${(props) => (props.yard ? "#F5CF1F" : "white")};
 `;
 
 export const LargeDogBtn = styled.button`
@@ -91,7 +91,7 @@ export const LargeDogBtn = styled.button`
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
-  background-color: ${(props) => (props.largeDog ? "white" : "#F5CF1F")};
+  background-color: ${(props) => (props.largeDog ? "#F5CF1F" : "white")};
 `;
 
 export const AddDogBtn = styled.button`

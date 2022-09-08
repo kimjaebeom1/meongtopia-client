@@ -4,10 +4,10 @@ export default function DogImgUploadUI(props) {
   return (
     <>
       {props.fileUrl ? (
-        <DogImgUpload.DogUploadImage onClick={props.onClickUpload}>
-          <img src="/images/uploadfile.svg" />
-          <span>강아지 사진을 넣어주세요</span>
-        </DogImgUpload.DogUploadImage>
+        <DogImgUpload.DogUploadImage
+          onClick={props.onClickUpload}
+          src={`https://storage.googleapis.com/${props.descImage}`}
+        />
       ) : (
         <DogImgUpload.DogImage onClick={props.onClickUpload}>
           <img src="/images/uploadfile.svg" />

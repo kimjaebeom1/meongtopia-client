@@ -9,7 +9,10 @@ export default function DogContentsWriteUI(props) {
           flexDirection: "row",
         }}
       >
-        <DogImgUpload />
+        <DogImgUpload
+          descImage={props.descImage}
+          onChangeDescImage={props.onChangeDescImage}
+        />
         <DogContentsWrite.DogProfileWrapper>
           <DogContentsWrite.DogName
             {...props.register("pet.name")}
@@ -35,7 +38,7 @@ export default function DogContentsWriteUI(props) {
           justifyContent: "center",
         }}
       >
-        <DogContentsWrite.AddDogBtn type="button">
+        <DogContentsWrite.AddDogBtn onClick={props.onClickAddDog} type="button">
           강아지 추가하기
         </DogContentsWrite.AddDogBtn>
       </div>
