@@ -1,15 +1,11 @@
-import { useApolloClient, useQuery } from "@apollo/client";
-import { gql } from "@apollo/client";
 import Link from "next/link";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../commons/store";
 import LoginButton from "../../buttons/login";
 import MenuButton from "../../buttons/menu";
 import * as Header from "./Header.styles";
 
 const MENUS = [
   { page: "/cafe", title: "애견카페 찾기" },
-  { page: "/review", title: "리뷰 확인" },
+  // { page: "/review", title: "리뷰 확인" },
 ];
 
 export default function LayoutHeader() {
