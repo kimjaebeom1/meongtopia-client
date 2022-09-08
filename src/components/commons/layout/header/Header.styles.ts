@@ -33,31 +33,13 @@ export const Logo = styled.img`
   }
 `;
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.ul`
+  margin: 0;
   display: flex;
   justify-content: center;
-`;
-
-export const Menu = styled.a`
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 20px;
-  cursor: pointer;
-  :hover {
-    color: #f6d849;
-  }
+  align-items: center;
 `;
 
 export const LoginContainer = styled.div`
   display: flex;
-`;
-
-export const Login = styled.a`
-  font-size: 18px;
-  margin-left: 1rem;
-  color: #c4c4c4;
-  cursor: pointer;
-  :hover {
-    color: #f6d849;
-  }
 `;
