@@ -29,17 +29,22 @@ export default function SignUpPresenterPage(props) {
               placeholder="이메일을 입력해주세요"
               onChange={props.onChangeEmail}
             />
-            <SignUp.Error>이메일을 입력해주세요</SignUp.Error>
+            <SignUp.Error>{props.emailError}</SignUp.Error>
             <SignUp.Input
               placeholder="비밀번호를 입력해주세요"
               type="password"
               onChange={props.onChangePassword}
             />
-            <SignUp.Error>비밀번호를 입력해주세요</SignUp.Error>
+            <SignUp.Error>{props.passwordError}</SignUp.Error>
           </SignUp.IdPwWrap>
 
           <SignUp.InputWrap>
-            <SignUp.Title>닉네임</SignUp.Title>
+            <SignUp.Title>이름 & 닉네임</SignUp.Title>
+            <SignUp.Input
+              placeholder="이름을 입력해주세요"
+              onChange={props.onChangeName}
+            />
+            <SignUp.Error>{props.nameError}</SignUp.Error>
             <SignUp.NickNameWrap>
               <SignUp.NickNameInput
                 onChange={props.onChangeNickname}
@@ -47,7 +52,7 @@ export default function SignUpPresenterPage(props) {
               />
               <SignUp.CheckBtn>중복확인</SignUp.CheckBtn>
             </SignUp.NickNameWrap>
-            <SignUp.Error>닉네임을 입력해주세요</SignUp.Error>
+            <SignUp.Error>{props.nicknameError}</SignUp.Error>
           </SignUp.InputWrap>
 
           <SignUp.PhoneWrap>
@@ -57,15 +62,19 @@ export default function SignUpPresenterPage(props) {
                 onChange={props.onChangePhone}
                 placeholder="휴대전화 번호를 입력해주세요"
               />
-              <SignUp.NumBtn>인증</SignUp.NumBtn>
+              <SignUp.NumBtn onClick={props.onClickGetToken}>
+                인증
+              </SignUp.NumBtn>
             </SignUp.PhoneNumWrap>
 
             <SignUp.NumberWrap>
               <SignUp.Number
-                onChange={props.onChangeName}
                 placeholder="인증번호를 입력해주세요"
+                onChange={props.onChangeCheckNum}
               />
-              <SignUp.NumBtn>확인</SignUp.NumBtn>
+              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
+                확인
+              </SignUp.NumBtn>
             </SignUp.NumberWrap>
           </SignUp.PhoneWrap>
 

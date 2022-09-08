@@ -9,8 +9,8 @@ import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
 import { ReactNode, useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { getAccessToken } from "../../commons/libraries/getAccessToken";
-import { accessTokenState } from "../../commons/store";
+import { getAccessToken } from "../../../commons/libraries/getAccessToken";
+import { accessTokenState } from "../../../commons/store";
 
 const APOLLO_CACHE = new InMemoryCache();
 
