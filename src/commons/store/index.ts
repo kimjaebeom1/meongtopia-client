@@ -19,3 +19,16 @@ export const yardState = atom({
   key: "yard",
   default: "",
 });
+
+export const petArrState = atom({
+  key: "petArr",
+  default: [
+    {
+      petImgUrl: "",
+      name: "",
+      age: 0,
+      breed: "",
+      description: "",
+    },
+  ],
+});

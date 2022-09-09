@@ -7,6 +7,7 @@ import { Description } from "@material-ui/icons";
 import Editor from "@toast-ui/editor";
 import {
   largeDogState,
+  petArrState,
   withDogState,
   yardState,
 } from "../../../../../commons/store";
@@ -22,7 +23,7 @@ export default function CafeContentsWrite() {
   const [withDog, setWithDog] = useRecoilState(withDogState);
   const [yard, setYard] = useRecoilState(yardState);
   const editorRef = createRef<Editor>();
-
+  const [petArr, setPetArr] = useRecoilState(petArrState);
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
     setValue("address", data.address);
@@ -87,14 +88,9 @@ export default function CafeContentsWrite() {
           description: data.description,
           address: data.address,
           addressDetail: data.addressDetail,
-          locationTag: data.location,
+          locationTag: location,
           storeTag: [withDog, yard, largeDog],
-          pet: {
-            name: data.name,
-            age: data.age,
-            breed: data.breed,
-            description: data.description,
-          },
+          pet: [...petArr],
         },
       },
     });

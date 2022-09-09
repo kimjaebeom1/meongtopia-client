@@ -16,14 +16,14 @@ export default function DogImgUpload(props) {
     const file = DogImgcheckValidationImage(event.target.files?.[0]);
     if (!file) return;
 
-    const result = await uploadFile({ variables: [{ file }] });
-    props.onChangeDescImage(String(result.data.uploadRecipeImages));
+    const result = await uploadFile({ variables: { files: file } });
+    props.onChangeDogImage(String(result.data.uploadFile));
   };
 
   return (
     <DogImgUploadUI
       fileRef={fileRef}
-      descImage={props.descImage}
+      dogImage={props.dogImage}
       onClickUpload={onClickUpload}
       onChangeFile={onChangeFile}
     />
