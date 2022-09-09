@@ -1,7 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
-import { getErrorMessage } from "../../../../../commons/libraries/utils";
+import {
+  checkPassword,
+  getErrorMessage,
+} from "../../../../../commons/libraries/utils";
 import {
   IMutation,
   IMutationDeleteUserArgs,
@@ -112,8 +115,10 @@ export default function MyPageUserMyInfo() {
   };
 
   const onChangePwd = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length < 8) {
-      setErrorMessage("비밀번호는 8자리 이상 입력해주세요.");
+    if (checkPassword(e.target.value)) {
+      setErrorMessage(
+        "비밀번호는 영문과 숫자를 포함한 8자리 이상 입력해주세요."
+      );
       return;
     } else {
       setErrorMessage("");

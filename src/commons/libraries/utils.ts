@@ -1,11 +1,11 @@
-// 이메일
+// 이메일 유효 검사
 export const checkEmail = (email: string) => {
   const regEmail =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   return regEmail.test(email);
 };
 
-// 8자리 이상 비밀번호
+// 영어 + 숫자 8자리 이상 비밀번호 유효 검사
 export const checkPassword = (password: string) => {
   const regPassword = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
   return regPassword.test(password);
@@ -37,6 +37,7 @@ export const phoneBlind = (phone: string) => {
   return phone;
 };
 
+// 에러메세지 경고창
 export const getErrorMessage = (error: unknown) => {
   let message: string;
   if (error instanceof Error) message = error.message;
