@@ -1,5 +1,4 @@
 import { useMutation } from "@apollo/client";
-import { Modal } from "antd";
 import { useRef } from "react";
 import CafeImgUploadUI from "./CafeImgUpload.presenter";
 import { UPLOAD_FILE } from "./CafeImgUpload.queries";

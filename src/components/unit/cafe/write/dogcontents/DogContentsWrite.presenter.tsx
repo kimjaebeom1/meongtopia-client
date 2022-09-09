@@ -10,24 +10,24 @@ export default function DogContentsWriteUI(props) {
         }}
       >
         <DogImgUpload
-          descImage={props.descImage}
-          onChangeDescImage={props.onChangeDescImage}
+          dogImage={props.dogImage}
+          onChangeDogImage={props.onChangeDogImage}
         />
         <DogContentsWrite.DogProfileWrapper>
           <DogContentsWrite.DogName
-            {...props.register("pet.name")}
+            onChange={props.onChangeDogName}
             placeholder="강아지 이름을 적어주세요"
           ></DogContentsWrite.DogName>
           <DogContentsWrite.DogAge
-            {...props.register("pet.age")}
+            onChange={props.onChangeDogAge}
             placeholder="강아지 나이를 적어주세요"
           ></DogContentsWrite.DogAge>
           <DogContentsWrite.DogBreed
-            {...props.register("pet.breed")}
+            onChange={props.onChangeDogBreed}
             placeholder="견종을 적어주세요"
           ></DogContentsWrite.DogBreed>
           <DogContentsWrite.DogDesc
-            {...props.register("pet.description")}
+            onChange={props.onChangeDogDescription}
             placeholder="강아지 성격을 적어주세요"
           ></DogContentsWrite.DogDesc>
         </DogContentsWrite.DogProfileWrapper>

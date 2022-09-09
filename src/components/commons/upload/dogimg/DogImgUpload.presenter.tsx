@@ -3,10 +3,10 @@ import * as DogImgUpload from "./DogImgUpload.styles";
 export default function DogImgUploadUI(props) {
   return (
     <>
-      {props.fileUrl ? (
+      {props.dogImage ? (
         <DogImgUpload.DogUploadImage
           onClick={props.onClickUpload}
-          src={`https://storage.googleapis.com/${props.descImage}`}
+          src={`https://storage.googleapis.com/${props.dogImage}`}
         />
       ) : (
         <DogImgUpload.DogImage onClick={props.onClickUpload}>

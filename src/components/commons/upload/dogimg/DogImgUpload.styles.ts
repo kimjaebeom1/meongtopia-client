@@ -32,4 +32,15 @@ export const DogImage = styled.div`
   }
 `;
 
-export const DogUploadImage = styled.img``;
+export const DogUploadImage = styled.img`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 259px;
+  background: #ebebeb;
+  border-radius: 2rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+`;

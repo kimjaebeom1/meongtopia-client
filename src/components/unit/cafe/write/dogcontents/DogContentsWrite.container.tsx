@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import {
   largeDogState,
+  petArrState,
   withDogState,
   yardState,
 } from "../../../../../commons/store";
@@ -15,29 +16,42 @@ export default function DogContentsWrite() {
   const { register } = useForm({
     mode: "onChange",
   });
-  const [descImage, setDescImage] = useState("");
-  const [petArr, setPetArr] = useState([]);
-  const [pet, setPet] = useState({
-    petImgUrl: "",
-    name: "",
-    age: 0,
-    breed: "",
-    description: "",
-  });
+  const [dogName, setDogName] = useState("");
+  const [dogAge, setDogAge] = useState(0);
+  const [dogBreed, setDogBreed] = useState("");
+  const [dogDescription, setDogDescription] = useState("");
+  const [dogImage, setDogImage] = useState("");
+  const [petArr, setPetArr] = useRecoilState(petArrState);
 
-  const onClickAddDog = (data) => {
-    setPet((prev) => {
-      [
-        ...petArr,
-        {
-          petImgUrl: data,
-          name: data.pet.name,
-          age: data.pet.age,
-          breed: data.pet.breed,
-          description: data.pet.description,
-        },
-      ];
-    });
+  const onChangeDogName = (event) => {
+    setDogName(event.target.value);
+  };
+
+  const onChangeDogAge = (event) => {
+    setDogAge(event.target.value);
+  };
+
+  const onChangeDogBreed = (event) => {
+    setDogBreed(event.target.value);
+  };
+
+  const onChangeDogDescription = (event) => {
+    setDogDescription(event.target.value);
+  };
+
+  const onClickAddDog = () => {
+    if (!petArr) return;
+    setPetArr((prev) => [
+      ...petArr,
+      {
+        petImgUrl: dogImage,
+        name: dogName,
+        age: Number(dogAge),
+        breed: dogBreed,
+        description: dogDescription,
+      },
+    ]);
+    setDogImage("");
   };
 
   const onClickWithDog = (event) => {
@@ -66,8 +80,8 @@ export default function DogContentsWrite() {
     console.log(largeDog);
   };
 
-  const onChangeDescImage = (fileUrl: string) => {
-    setDescImage(fileUrl);
+  const onChangeDogImage = (fileUrl: string) => {
+    setDogImage(fileUrl);
   };
 
   return (
@@ -80,8 +94,12 @@ export default function DogContentsWrite() {
       yard={yard}
       largeDog={largeDog}
       register={register}
-      descImage={descImage}
-      onChangeDescImage={onChangeDescImage}
+      dogImage={dogImage}
+      onChangeDogImage={onChangeDogImage}
+      onChangeDogName={onChangeDogName}
+      onChangeDogAge={onChangeDogAge}
+      onChangeDogBreed={onChangeDogBreed}
+      onChangeDogDescription={onChangeDogDescription}
     />
   );
 }
