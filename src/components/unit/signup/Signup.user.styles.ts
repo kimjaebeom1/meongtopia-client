@@ -3,7 +3,7 @@ import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   /* width: 90%; */
-  height: 968px;
+  /* height: 968px; */
   display: flex;
   flex-direction: row;
   margin: 0px auto;
@@ -61,6 +61,7 @@ export const Ment2 = styled.div`
 export const Title = styled.div`
   font-size: 20px;
   font-weight: 650;
+  margin-top: 20px;
   margin-bottom: 10px;
 `;
 
@@ -79,7 +80,8 @@ export const IdPwWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
+  /* border: 1px solid black; */
 `;
 
 export const NickNameWrap = styled.div`
@@ -180,7 +182,9 @@ export const PhoneWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: -20px;
   margin-bottom: 20px;
+  /* background-color: blue; */
 `;
 
 export const PhoneNumWrap = styled.div`
@@ -198,7 +202,7 @@ export const PhoneNum = styled.input`
   padding: 0px 10px;
 `;
 export const NumBtn = styled.div`
-  width: 80px;
+  width: 5rem;
   height: 50px;
   line-height: 50px;
   text-align: center;

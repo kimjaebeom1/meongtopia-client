@@ -24,18 +24,25 @@ export default function SignUpPresenterPage(props) {
 
         <SignUp.ElWrap>
           <SignUp.IdPwWrap>
-            <SignUp.Title>ID/PW</SignUp.Title>
+            <SignUp.Title>ID</SignUp.Title>
             <SignUp.Input
               placeholder="이메일을 입력해주세요"
               onChange={props.onChangeEmail}
             />
             <SignUp.Error>{props.emailError}</SignUp.Error>
+            <SignUp.Title>Password</SignUp.Title>
             <SignUp.Input
               placeholder="비밀번호를 입력해주세요"
               type="password"
               onChange={props.onChangePassword}
             />
             <SignUp.Error>{props.passwordError}</SignUp.Error>
+            <SignUp.Input
+              placeholder="비밀번호를 다시 입력해주세요"
+              type="password"
+              onChange={props.onChangePasswordChk}
+            />
+            <SignUp.Error>{props.passwordChkError}</SignUp.Error>
           </SignUp.IdPwWrap>
 
           <SignUp.InputWrap>

@@ -1,8 +1,54 @@
 import * as SignUp from "./Signup.owner.styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Checkbox from "@mui/material/Checkbox";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useEffect, useState } from "react";
+interface ICheckAgreeBtn {
+  onClick?: () => void;
+  onChange?: (e: any) => void;
+  id?: string | undefined;
+  checked?: boolean | undefined;
+}
 
 export default function SignUpOwnerPresenterPage(props) {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#F5CF1F",
+      },
+      secondary: {
+        main: "#C4C4C4",
+      },
+    },
+  });
+
+  const [checked, setChecked] = useState([true, true, true]);
+  const isActive = !checked.includes(false);
+
+  const handleCheck = (i) => (event) => {
+    const newChecked = [...checked];
+    newChecked[i] = event.target.checked;
+    setChecked(newChecked);
+    console.log(checked[i]);
+  };
+
+  useEffect(() => {
+    setChecked([false, false]);
+  }, []);
+
+  // const [checkedItems, setCheckedItems] = useState(new Set())
+
+  // const checkedItemHandler = (id , isChecked) => {
+  //   if(isChecked) {
+  //     checkedItems.add(id)
+  //     setCheckedItems(checkedItems)
+  //   } else if (!isChecked && checkedItems.has(id)) {
+  //     checkedItems.delete(id)
+  //     setCheckedItems(checkedItems)
+  //   }
+  // }
+
   return (
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
@@ -88,7 +134,17 @@ export default function SignUpOwnerPresenterPage(props) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                {/* <CheckCircleIcon /> */}
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    checked={checked[0]}
+                    onChange={handleCheck(0)}
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>
               <SignUp.Line />
               <SignUp.AgreeChkWrap>
@@ -97,7 +153,16 @@ export default function SignUpOwnerPresenterPage(props) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    checked={checked[1]}
+                    onChange={handleCheck(1)}
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>{" "}
               <SignUp.Line />
               <SignUp.AgreeChkWrap>
@@ -108,12 +173,21 @@ export default function SignUpOwnerPresenterPage(props) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                    checked={checked[2]}
+                    onChange={handleCheck(2)}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>
             </SignUp.AgreeWrap2>
           </SignUp.AgreeWrap>
 
-          <SignUp.SignUpBtn onClick={props.onClickCreateUser}>
+          <SignUp.SignUpBtn onClick={props.onClickCreateOwner}>
             회원가입
           </SignUp.SignUpBtn>
         </SignUp.ElWrap>

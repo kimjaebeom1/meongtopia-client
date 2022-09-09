@@ -9,6 +9,14 @@ export const CREATE_USER = gql`
   }
 `;
 
+export const FETCH_USERS = gql`
+  query fetchUser {
+    fetchUser {
+      nickname
+    }
+  }
+`;
+
 export const GET_TOKEN = gql`
   mutation getToken($phone: String!) {
     getToken(phone: $phone)
