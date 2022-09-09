@@ -4,7 +4,12 @@ export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
       userID
+      name
       nickname
+      email
+      password
+      phone
+      point
       role
     }
   }

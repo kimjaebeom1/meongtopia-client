@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { BsPersonCircle } from "react-icons/bs";
 
 export const Wrapper = styled.div`
-  width: 500px;
+  width: 100%;
   margin: 60px auto;
 `;
 

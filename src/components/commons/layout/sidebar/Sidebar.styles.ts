@@ -4,10 +4,10 @@ import { RiUserSettingsLine } from "react-icons/ri";
 import { BiLogOut, BiWon } from "react-icons/bi";
 
 export const Wrapper = styled.aside`
-  width: 20%;
-  border-right: 1px solid #f5cf1f;
-  margin: 2rem 5rem 2rem 0;
-  padding-top: 6rem;
+  width: 25rem;
+  box-shadow: 10px 0px 10px -15px black;
+  margin-right: 5rem;
+  padding: 6rem 0;
 `;
 
 export const InfoContainer = styled.ul`
@@ -39,7 +39,7 @@ export const MenuContainer = styled.ul`
 `;
 
 export const Charge = styled.button`
-  padding: 0 0.3rem;
+  padding: 0.2rem;
   font-size: 0.8rem;
   color: #fff;
   background-color: #f5cf1f;

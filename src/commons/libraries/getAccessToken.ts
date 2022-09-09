@@ -1,4 +1,3 @@
-// import { gql } from "@apollo/client";
 import { GraphQLClient, gql } from "graphql-request";
 
 const RESTORE_ACCESS_TOKEN = gql`
