@@ -779,9 +779,9 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@graphql-codegen/cli@^2.8.1":
+"@graphql-codegen/cli@^2.12.0":
   version "2.12.0"
-  resolved "https://registry.npmjs.org/@graphql-codegen/cli/-/cli-2.12.0.tgz"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-2.12.0.tgz#ae57ca66fac7b0b5b8cba5b26ca9ccb5885ae2d4"
   integrity sha512-esaMiiuypAtJNiZUhGdFmG0gTMEF5dYkqP/7I04egxSragwbIETU8gOl6/gHdLSAV5su7dgfIEZNdWmGCOWAbg==
   dependencies:
     "@graphql-codegen/core" "2.6.2"
@@ -848,9 +848,9 @@
     "@graphql-tools/utils" "^8.8.0"
     tslib "~2.4.0"
 
-"@graphql-codegen/typescript@^2.7.1":
+"@graphql-codegen/typescript@^2.7.3":
   version "2.7.3"
-  resolved "https://registry.npmjs.org/@graphql-codegen/typescript/-/typescript-2.7.3.tgz"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-2.7.3.tgz#ad786a1c74e16eca8e01e7a8f28078e1c24eeb61"
   integrity sha512-EzX/acijXtbG/AwPzho2ZZWaNo00+xAbsRDP+vnT2PwQV3AYq3/5bFvjq1XfAGWbTntdmlYlIwC9hf5bI85WVA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^2.6.2"

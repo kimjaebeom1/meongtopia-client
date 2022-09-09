@@ -5,7 +5,7 @@ export const FETCH_USER = gql`
     fetchUser {
       userID
       nickname
-      point
+      role
     }
   }
 `;

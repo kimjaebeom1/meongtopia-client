@@ -28,6 +28,20 @@ export const Wrapper = styled.div`
 export const Logo = styled.img`
   width: 120px;
   cursor: pointer;
+
+  :hover {
+    animation: up-scale 0.5s 2;
+  }
+
+  @keyframes up-scale {
+    from {
+      transform: scale(1.2);
+    }
+    to {
+      transform: scale(0.8);
+    }
+  }
+
   @media ${breakPoints.mobile} {
     width: 80px;
   }
@@ -46,6 +60,18 @@ export const DogIcon = styled.img`
   object-fit: cover;
 `;
 
-export const LoginContainer = styled.div`
+export const LoginContainer = styled.ul`
+  margin: 0;
   display: flex;
+  align-items: center;
+`;
+
+export const Logout = styled.li`
+  font-size: 18px;
+  margin-left: 1rem;
+  color: #cacaca;
+  cursor: pointer;
+  :hover {
+    color: #ffe812;
+  }
 `;
