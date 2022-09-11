@@ -2,6 +2,7 @@ import * as DogContents from "./DogContents.styles";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Box, Grid } from "@material-ui/core";
 
 export default function DetailDogContentsUI(props) {
   const settings = {
@@ -18,6 +19,38 @@ export default function DetailDogContentsUI(props) {
       <DogContents.StoreNameTag>
         {props.data?.fetchStore.name}
       </DogContents.StoreNameTag>
+      <Grid container spacing={1}>
+        <Grid
+          style={{
+            backgroundColor: "green",
+          }}
+          item
+          xs={6}
+          sm={3}
+        >
+          21
+        </Grid>
+        <Grid item>
+          <Box bgcolor="yellow">2</Box>
+          <Box bgcolor="blue">3</Box>
+        </Grid>
+        <Grid item>
+          <Grid
+            style={{
+              backgroundColor: "orange",
+            }}
+          >
+            4
+          </Grid>
+          <Grid
+            style={{
+              backgroundColor: "red",
+            }}
+          >
+            5
+          </Grid>
+        </Grid>
+      </Grid>
       <DogContents.Line />
       강아지 정보
       <DogContents.DogListWrapper>
