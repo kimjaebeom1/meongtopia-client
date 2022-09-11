@@ -1,8 +1,24 @@
 import DogImgUpload from "../../../../commons/upload/dogimg/DogImgUpload.container";
+import { v4 as uuidv4 } from "uuid";
+
 import * as DogContentsWrite from "./DogContentsWrite.styles";
 export default function DogContentsWriteUI(props) {
   return (
-    <>
+    <DogContentsWrite.Wrapper>
+      <DogContentsWrite.Tag>우라카페 강아지 몇마리?</DogContentsWrite.Tag>
+      <DogContentsWrite.DogCountWrapper>
+        대형견:
+        <DogContentsWrite.BigDogCount
+          onChange={props.onChangeBigDog}
+          type="number"
+        ></DogContentsWrite.BigDogCount>
+        소형견:
+        <DogContentsWrite.SmallDogCount
+          onChange={props.onChangeSmallDog}
+          type="number"
+        ></DogContentsWrite.SmallDogCount>
+      </DogContentsWrite.DogCountWrapper>
+      <DogContentsWrite.Tag>강아지 정보를 입력해주세요</DogContentsWrite.Tag>
       <div
         style={{
           display: "flex",
@@ -42,34 +58,23 @@ export default function DogContentsWriteUI(props) {
           강아지 추가하기
         </DogContentsWrite.AddDogBtn>
       </div>
-
-      <DogContentsWrite.Tag>옵션 검색 키워드</DogContentsWrite.Tag>
-      <DogContentsWrite.OptionWrapper>
-        <DogContentsWrite.WithDogBtn
-          type="button"
-          withDog={props.withDog}
-          value="애견동반 가능"
-          onClick={props.onClickWithDog}
-        >
-          애견동반 가능
-        </DogContentsWrite.WithDogBtn>
-        <DogContentsWrite.YardBtn
-          yard={props.yard}
-          type="button"
-          value="야외마당 있음"
-          onClick={props.onClickYard}
-        >
-          야외마당 있음
-        </DogContentsWrite.YardBtn>
-        <DogContentsWrite.LargeDogBtn
-          type="button"
-          largeDog={props.largeDog}
-          value="대형견 있음"
-          onClick={props.onClickLargeDog}
-        >
-          대형견 있음
-        </DogContentsWrite.LargeDogBtn>
-      </DogContentsWrite.OptionWrapper>
-    </>
+      {props.petArr.map((el) => (
+        <DogContentsWrite.DogListWrapper key={uuidv4()}>
+          {el.petImgUrl ? (
+            <DogContentsWrite.DogListImg
+              src={`https://storage.googleapis.com/${el.petImgUrl}`}
+            />
+          ) : (
+            <DogContentsWrite.DogListImg src="/images/dogcharacter.jpg" />
+          )}
+          <DogContentsWrite.DogListColumn>
+            <div>이름: {el.name}</div>
+            <div>나이: {el.age}</div>
+            <div>견종: {el.breed}</div>
+            <div>성격: {el.description}</div>
+          </DogContentsWrite.DogListColumn>
+        </DogContentsWrite.DogListWrapper>
+      ))}
+    </DogContentsWrite.Wrapper>
   );
 }

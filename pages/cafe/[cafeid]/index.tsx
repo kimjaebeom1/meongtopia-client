@@ -11,6 +11,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 1200px;
   display: flex;
+  flex-direction: column;
 `;
 
 export default function CafeDetailPage() {
@@ -18,7 +19,6 @@ export default function CafeDetailPage() {
     <Container>
       <Wrapper>
         <DetailDogContents />
-        <DetailCafeContents />
       </Wrapper>
     </Container>
   );

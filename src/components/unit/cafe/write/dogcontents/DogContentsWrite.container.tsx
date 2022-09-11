@@ -2,17 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import {
-  largeDogState,
+  bigDogState,
   petArrState,
-  withDogState,
-  yardState,
+  smallDogState,
 } from "../../../../../commons/store";
 import DogContentsWriteUI from "./DogContentsWrite.presenter";
 
 export default function DogContentsWrite() {
-  const [largeDog, setLargeDog] = useRecoilState(largeDogState);
-  const [withDog, setWithDog] = useRecoilState(withDogState);
-  const [yard, setYard] = useRecoilState(yardState);
   const { register } = useForm({
     mode: "onChange",
   });
@@ -22,6 +18,16 @@ export default function DogContentsWrite() {
   const [dogDescription, setDogDescription] = useState("");
   const [dogImage, setDogImage] = useState("");
   const [petArr, setPetArr] = useRecoilState(petArrState);
+  const [bigDog, setBigDog] = useRecoilState(bigDogState);
+  const [smallDog, setSmallDog] = useRecoilState(smallDogState);
+
+  const onChangeBigDog = (event) => {
+    setBigDog(event.target.value);
+  };
+
+  const onChangeSmallDog = (event) => {
+    setSmallDog(event.target.value);
+  };
 
   const onChangeDogName = (event) => {
     setDogName(event.target.value);
@@ -51,48 +57,19 @@ export default function DogContentsWrite() {
         description: dogDescription,
       },
     ]);
+
+    console.log(petArr);
     setDogImage("");
-  };
-
-  const onClickWithDog = (event) => {
-    if (withDog === "") {
-      setWithDog(event.target.value);
-    } else {
-      setWithDog("");
-    }
-    console.log(withDog);
-  };
-
-  const onClickYard = (event) => {
-    if (yard) {
-      setYard("");
-    } else {
-      setYard(event.target.value);
-    }
-  };
-
-  const onClickLargeDog = (event) => {
-    if (largeDog) {
-      setLargeDog("");
-    } else {
-      setLargeDog(event.target.value);
-    }
-    console.log(largeDog);
   };
 
   const onChangeDogImage = (fileUrl: string) => {
     setDogImage(fileUrl);
   };
+  console.log(petArr);
 
   return (
     <DogContentsWriteUI
       onClickAddDog={onClickAddDog}
-      onClickWithDog={onClickWithDog}
-      onClickYard={onClickYard}
-      onClickLargeDog={onClickLargeDog}
-      withDog={withDog}
-      yard={yard}
-      largeDog={largeDog}
       register={register}
       dogImage={dogImage}
       onChangeDogImage={onChangeDogImage}
@@ -100,6 +77,9 @@ export default function DogContentsWrite() {
       onChangeDogAge={onChangeDogAge}
       onChangeDogBreed={onChangeDogBreed}
       onChangeDogDescription={onChangeDogDescription}
+      onChangeBigDog={onChangeBigDog}
+      onChangeSmallDog={onChangeSmallDog}
+      petArr={petArr}
     />
   );
 }

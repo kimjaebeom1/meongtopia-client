@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Modal, Radio } from "antd";
-import dynamic from "next/dynamic";
 import DaumPostcodeEmbed from "react-daum-postcode";
 
 export const Wrapper = styled.div`
@@ -9,6 +8,42 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+`;
+
+export const ProcedureWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+export const Procedure01 = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+`;
+export const Procedure02 = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const ProcedureUnderBar01 = styled.div`
+  border-bottom: 4px solid #c4c4c4;
+  width: 50%;
+  border-color: ${(props) => (!props.next ? "#F5CF1F" : "none")}; ;
+`;
+export const ProcedureUnderBar02 = styled.div`
+  width: 50%;
+  border-bottom: 4px solid #c4c4c4;
+  border-color: ${(props) => (props.next ? "#F5CF1F" : "none")}; ;
+`;
+
+export const ProcedureUnderBar = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 export const CafeNameInput = styled.input`
@@ -246,4 +281,46 @@ export const LocationButton4 = styled(Radio.Button)`
 export const LocationButton5 = styled(Radio.Button)`
   background-color: ${(props) =>
     props.location === "잠실" ? "#F5CF1F" : "none"}; ;
+`;
+
+export const OptionWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 1.7em;
+`;
+
+export const WithDogBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.withDog ? "#F5CF1F" : "white")};
+`;
+
+export const YardBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.yard ? "#F5CF1F" : "white")};
+`;
+
+export const LargeDogBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  background-color: ${(props) => (props.largeDog ? "#F5CF1F" : "white")};
 `;
