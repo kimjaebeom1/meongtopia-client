@@ -2,7 +2,6 @@ import * as DogContents from "./DogContents.styles";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Col, Row } from "antd";
 
 export default function DetailDogContentsUI(props) {
   const settings = {
@@ -19,15 +18,6 @@ export default function DetailDogContentsUI(props) {
       <DogContents.StoreNameTag>
         {props.data?.fetchStore.name}
       </DogContents.StoreNameTag>
-      <Row gutter={16}>
-        <Col span={12} />
-        <Col span={12} />
-      </Row>
-      <Row gutter={16}>
-        <Col span={8} />
-        <Col span={8} />
-        <Col span={8} />
-      </Row>
       <DogContents.Line />
       강아지 정보
       <DogContents.DogListWrapper>
