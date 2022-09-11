@@ -1,4 +1,4 @@
-import moment from "moment";
+import { Box, Grid } from "@material-ui/core";
 import { useEffect } from "react";
 import * as CafeContents from "./CafeContents.styles";
 
@@ -79,6 +79,26 @@ export default function DetailCafeContentsUI() {
             style={{ width: "100%", height: "100%", borderRadius: "10px" }}
           />
         </CafeContents.Map>
+
+        <Grid container spacing={1}>
+          <Grid item xs={6} sm={3}>
+            <Box bgcolor="info.main" color="info.contrastText">
+              1
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box bgcolor="info.main" color="info.contrastText">
+              2
+            </Box>
+            <Box bgcolor="info.main" color="info.contrastText">
+              3
+            </Box>
+          </Grid>
+          <Grid item>
+            <Grid>4</Grid>
+            <Grid>5</Grid>
+          </Grid>
+        </Grid>
       </CafeContents.Wrapper>
     </>
   );

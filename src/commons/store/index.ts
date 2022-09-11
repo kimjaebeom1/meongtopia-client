@@ -5,30 +5,17 @@ export const accessTokenState = atom({
   default: "",
 });
 
-export const withDogState = atom({
-  key: "withDog",
-  default: "",
-});
-
-export const largeDogState = atom({
-  key: "largeDog",
-  default: "",
-});
-
-export const yardState = atom({
-  key: "yard",
-  default: "",
-});
-
 export const petArrState = atom({
   key: "petArr",
-  default: [
-    {
-      petImgUrl: "",
-      name: "",
-      age: 0,
-      breed: "",
-      description: "",
-    },
-  ],
+  default: [],
+});
+
+export const bigDogState = atom({
+  key: "bigDog",
+  default: 0,
+});
+
+export const smallDogState = atom({
+  key: "smallDog",
+  default: 0,
 });

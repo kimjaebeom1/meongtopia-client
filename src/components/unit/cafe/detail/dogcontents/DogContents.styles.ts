@@ -1,8 +1,21 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 70%;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 51.73px;
+  width: 100%;
+`;
+
+export const Line = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+`;
+
+export const DogListWrapper = styled.div`
   padding: 2rem;
+
   .slick-list {
     width: 100%;
     border-radius: 1rem;
@@ -22,6 +35,8 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const StoreNameTag = styled.div``;
+
 export const Contents = styled.div`
   width: 100%;
   height: 400px;
@@ -38,6 +53,17 @@ export const SliderItem = styled.div`
     border-radius: 2rem;
     padding: 0.5rem;
   }
+`;
+export const CafeInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  font-size: 36px;
+`;
+
+export const DogCount = styled.div`
+  flex-direction: row;
+  font-size: 20px;
 `;
 
 export const NextArrow = styled.div`

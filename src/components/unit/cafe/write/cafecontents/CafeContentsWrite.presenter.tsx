@@ -1,6 +1,5 @@
 import * as CafeContentsWrite from "./CafeContentsWrite.styles";
 import CafeImgUpload from "../../../../commons/upload/cafeimg/CafeImgUpload.container";
-import { v4 as uuidv4 } from "uuid";
 import KakaoMap from "../../../../commons/map";
 import "antd/dist/antd.css";
 import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
@@ -14,10 +13,23 @@ const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
 export default function CafeContentsWriteUI(props) {
   return (
     <>
-      <form onSubmit={props.handleSubmit(props.onClickCreateStore)}>
-        <CafeContentsWrite.Wrapper>
-          {props.next && <DogContentsWrite />}
+      <CafeContentsWrite.Wrapper>
+        <CafeContentsWrite.ProcedureWrapper>
+          <CafeContentsWrite.Procedure01>
+            01 카페정보 입력
+          </CafeContentsWrite.Procedure01>
+          <CafeContentsWrite.Procedure02>
+            02 강아지정보 입력
+          </CafeContentsWrite.Procedure02>
+        </CafeContentsWrite.ProcedureWrapper>
+        <CafeContentsWrite.ProcedureUnderBar>
+          <CafeContentsWrite.ProcedureUnderBar01 next={props.next} />
 
+          <CafeContentsWrite.ProcedureUnderBar02 next={props.next} />
+        </CafeContentsWrite.ProcedureUnderBar>
+
+        {props.next && <DogContentsWrite />}
+        <form onSubmit={props.handleSubmit(props.onClickCreateStore)}>
           {!props.next && (
             <>
               <CafeContentsWrite.Tag>
@@ -154,6 +166,34 @@ export default function CafeContentsWriteUI(props) {
                   </CafeContentsWrite.LocationButton5>
                 </CafeContentsWrite.LocationTagWrapper>
               </div>
+
+              <CafeContentsWrite.Tag>옵션 검색 키워드</CafeContentsWrite.Tag>
+              <CafeContentsWrite.OptionWrapper>
+                <CafeContentsWrite.WithDogBtn
+                  type="button"
+                  withDog={props.withDog}
+                  value="애견동반 가능"
+                  onClick={props.onClickWithDog}
+                >
+                  애견동반 가능
+                </CafeContentsWrite.WithDogBtn>
+                <CafeContentsWrite.YardBtn
+                  yard={props.yard}
+                  type="button"
+                  value="야외마당 있음"
+                  onClick={props.onClickYard}
+                >
+                  야외마당 있음
+                </CafeContentsWrite.YardBtn>
+                <CafeContentsWrite.LargeDogBtn
+                  type="button"
+                  largeDog={props.largeDog}
+                  value="대형견 있음"
+                  onClick={props.onClickLargeDog}
+                >
+                  대형견 있음
+                </CafeContentsWrite.LargeDogBtn>
+              </CafeContentsWrite.OptionWrapper>
             </>
           )}
           <CafeContentsWrite.ButtonWrapper>
@@ -176,8 +216,8 @@ export default function CafeContentsWriteUI(props) {
               </CafeContentsWrite.SubmitButton>
             )}
           </CafeContentsWrite.ButtonWrapper>
-        </CafeContentsWrite.Wrapper>
-      </form>
+        </form>
+      </CafeContentsWrite.Wrapper>
 
       {props.isOpen && (
         <CafeContentsWrite.AddressModal
