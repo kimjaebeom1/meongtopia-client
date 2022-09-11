@@ -1,8 +1,8 @@
 import * as SignUp from "./Signup.user.styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import Checkbox from "@mui/material/Checkbox";
+// import { Statistic } from "antd";
 
-export default function SignUpPresenterPage(props) {
+export default function SignUpPresenterPage(props: any) {
   return (
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
@@ -57,7 +57,9 @@ export default function SignUpPresenterPage(props) {
                 onChange={props.onChangeNickname}
                 placeholder="닉네임을 입력해주세요"
               />
-              <SignUp.CheckBtn>중복확인</SignUp.CheckBtn>
+              <SignUp.CheckBtn onClick={props.onClickNicknameChk}>
+                중복확인
+              </SignUp.CheckBtn>
             </SignUp.NickNameWrap>
             <SignUp.Error>{props.nicknameError}</SignUp.Error>
           </SignUp.InputWrap>
@@ -74,15 +76,22 @@ export default function SignUpPresenterPage(props) {
               </SignUp.NumBtn>
             </SignUp.PhoneNumWrap>
 
-            <SignUp.NumberWrap>
-              <SignUp.Number
-                placeholder="인증번호를 입력해주세요"
-                onChange={props.onChangeCheckNum}
-              />
+            <SignUp.PhoneNumWrap>
+              <SignUp.NickNameWrap>
+                <SignUp.NickNameInput
+                  onChange={props.onChangeCheckNum}
+                  placeholder="인증번호를 입력해주세요"
+                />
+                <SignUp.Timer>
+                  {`${String(props.minutes).padStart(2, "0")} : ${String(
+                    props.seconds
+                  ).padStart(2, "0")}`}
+                </SignUp.Timer>
+              </SignUp.NickNameWrap>
               <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
                 확인
               </SignUp.NumBtn>
-            </SignUp.NumberWrap>
+            </SignUp.PhoneNumWrap>
           </SignUp.PhoneWrap>
 
           <SignUp.AgreeWrap>

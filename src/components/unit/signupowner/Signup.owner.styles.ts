@@ -230,7 +230,7 @@ export const Number = styled.input`
   color: black;
 `;
 
-export const SignUpBtn = styled.div`
+export const SignUpBtn = styled.button`
   width: 15rem;
   height: 3rem;
   line-height: 3rem;

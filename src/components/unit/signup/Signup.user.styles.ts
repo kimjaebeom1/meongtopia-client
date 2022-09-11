@@ -91,6 +91,7 @@ export const NickNameWrap = styled.div`
   border: 1px solid rgb(118, 118, 118);
   width: 100%;
   border-radius: 2px;
+  margin-right: 10px;
 `;
 
 export const InputWrap = styled.div`
@@ -99,6 +100,7 @@ export const InputWrap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 30px;
+  /* background-color: red; */
 `;
 
 export const Input = styled.input`
@@ -114,7 +116,7 @@ export const NickNameInput = styled.input`
   height: 2.5rem;
   padding: 0px 10px;
   border: none;
-  outline: none;
+  outline: none; ;
 `;
 
 export const Error = styled.div`
@@ -133,8 +135,15 @@ export const CheckBtn = styled.div`
   line-height: 1.5rem;
   text-align: center;
   background-color: #c8c8c8;
-  margin-right: 10px;
+  margin: 0px 10px;
   cursor: pointer;
+`;
+
+export const Timer = styled.div`
+  width: 60px;
+  height: 30px;
+  margin: 0px 10px;
+  /* visibility: hidden; */
 `;
 
 export const AgreeWrap = styled.div`
@@ -190,7 +199,6 @@ export const PhoneWrap = styled.div`
 export const PhoneNumWrap = styled.div`
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
   width: 100%;
 `;
 

@@ -4,6 +4,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useEffect, useState } from "react";
+import { recomposeColor } from "@material-ui/core";
 interface ICheckAgreeBtn {
   onClick?: () => void;
   onChange?: (e: any) => void;
@@ -26,7 +27,7 @@ export default function SignUpOwnerPresenterPage(props) {
   const [checked, setChecked] = useState([true, true, true]);
   const isActive = !checked.includes(false);
 
-  const handleCheck = (i) => (event) => {
+  const handleCheck = (i: any) => (event: any) => {
     const newChecked = [...checked];
     newChecked[i] = event.target.checked;
     setChecked(newChecked);
@@ -36,18 +37,6 @@ export default function SignUpOwnerPresenterPage(props) {
   useEffect(() => {
     setChecked([false, false]);
   }, []);
-
-  // const [checkedItems, setCheckedItems] = useState(new Set())
-
-  // const checkedItemHandler = (id , isChecked) => {
-  //   if(isChecked) {
-  //     checkedItems.add(id)
-  //     setCheckedItems(checkedItems)
-  //   } else if (!isChecked && checkedItems.has(id)) {
-  //     checkedItems.delete(id)
-  //     setCheckedItems(checkedItems)
-  //   }
-  // }
 
   return (
     <SignUp.Wrapper>
@@ -67,130 +56,136 @@ export default function SignUpOwnerPresenterPage(props) {
             {/* <SignUp.Ment2></SignUp.Ment2> */}
           </SignUp.OwnerUserWrap>
         </SignUp.BtnWrap>
-
-        <SignUp.OwnerNumWrap>
-          <SignUp.Title>사업자 등록번호</SignUp.Title>
-          <SignUp.OwnerImg type="file" />
-        </SignUp.OwnerNumWrap>
-
-        <SignUp.ElWrap>
-          <SignUp.IdPwWrap>
-            <SignUp.Title>ID/PW</SignUp.Title>
-            <SignUp.Input
-              placeholder="이메일을 입력해주세요"
-              onChange={props.onChangeEmail}
-            />
-            <SignUp.Error>이메일을 입력해주세요</SignUp.Error>
-            <SignUp.Input
-              placeholder="비밀번호를 입력해주세요"
-              type="password"
-              onChange={props.onChangePassword}
-            />
-            <SignUp.Error>비밀번호를 입력해주세요</SignUp.Error>
-          </SignUp.IdPwWrap>
-
-          <SignUp.InputWrap>
-            <SignUp.Title>상호명</SignUp.Title>
-            <SignUp.NickNameWrap>
-              <SignUp.NickNameInput
-                onChange={props.onChangeNickname}
-                placeholder="상호명을 입력해주세요"
+        <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+          <SignUp.OwnerNumWrap>
+            <SignUp.Title>사업자 등록번호</SignUp.Title>
+            <SignUp.OwnerImg type="file" onChange={props.onChangeFile} />
+          </SignUp.OwnerNumWrap>
+          <SignUp.ElWrap>
+            <SignUp.IdPwWrap>
+              <SignUp.Title>ID/PW</SignUp.Title>
+              <SignUp.Input
+                placeholder="이메일을 입력해주세요"
+                type="text"
+                register={props.register("email")}
               />
-            </SignUp.NickNameWrap>
-            <SignUp.Error>상호명을 입력해주세요</SignUp.Error>
-          </SignUp.InputWrap>
-
-          <SignUp.PhoneWrap>
-            <SignUp.Title>휴대전화 인증</SignUp.Title>
-            <SignUp.PhoneNumWrap>
-              <SignUp.PhoneNum
-                onChange={props.onChangePhone}
-                placeholder="휴대전화 번호를 입력해주세요"
+              <SignUp.Error>
+                {props.formState.errors.email?.message}
+              </SignUp.Error>
+              <SignUp.Input
+                placeholder="비밀번호를 입력해주세요"
+                type="password"
+                register={props.register("password")}
               />
-              <SignUp.NumBtn onClick={props.onClickGetToken}>
-                인증
-              </SignUp.NumBtn>
-            </SignUp.PhoneNumWrap>
+              <SignUp.Error>
+                {props.formState.errors.password?.message}
+              </SignUp.Error>
+            </SignUp.IdPwWrap>
 
-            <SignUp.NumberWrap>
-              <SignUp.Number
-                onChange={props.onChangeCheckNum}
-                placeholder="인증번호를 입력해주세요"
-              />
+            <SignUp.InputWrap>
+              <SignUp.Title>상호명</SignUp.Title>
+              <SignUp.NickNameWrap>
+                <SignUp.NickNameInput
+                  placeholder="상호명을 입력해주세요"
+                  type="text"
+                  register={props.register("storeName")}
+                />
+              </SignUp.NickNameWrap>
+              <SignUp.Error>
+                {props.formState.errors.storeName?.message}
+              </SignUp.Error>
+            </SignUp.InputWrap>
 
-              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
-                확인
-              </SignUp.NumBtn>
-            </SignUp.NumberWrap>
-          </SignUp.PhoneWrap>
+            <SignUp.PhoneWrap>
+              <SignUp.Title>휴대전화 인증</SignUp.Title>
+              <SignUp.PhoneNumWrap>
+                <SignUp.PhoneNum
+                  onChange={props.onChangePhone}
+                  placeholder="휴대전화 번호를 입력해주세요"
+                />
+                <SignUp.NumBtn onClick={props.onClickGetToken}>
+                  인증
+                </SignUp.NumBtn>
+              </SignUp.PhoneNumWrap>
 
-          <SignUp.AgreeWrap>
-            <SignUp.Title>약관동의</SignUp.Title>
+              <SignUp.NumberWrap>
+                <SignUp.Number
+                  onChange={props.onChangeCheckNum}
+                  placeholder="인증번호를 입력해주세요"
+                />
 
-            <SignUp.AgreeWrap2>
-              <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
-                <SignUp.AgreeContents2>
-                  개인회원 약관에 동의
-                </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                {/* <CheckCircleIcon /> */}
-                <ThemeProvider theme={theme}>
-                  <Checkbox
-                    checked={checked[0]}
-                    onChange={handleCheck(0)}
-                    icon={<CheckCircleOutlineIcon color="secondary" />}
-                    checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
-                  />
-                </ThemeProvider>
-              </SignUp.AgreeChkWrap>
-              <SignUp.Line />
-              <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
-                <SignUp.AgreeContents2>
-                  개인회원 약관에 동의
-                </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <ThemeProvider theme={theme}>
-                  <Checkbox
-                    checked={checked[1]}
-                    onChange={handleCheck(1)}
-                    icon={<CheckCircleOutlineIcon color="secondary" />}
-                    checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
-                  />
-                </ThemeProvider>
-              </SignUp.AgreeChkWrap>{" "}
-              <SignUp.Line />
-              <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1 style={{ color: "gray" }}>
-                  (선택)
-                </SignUp.AgreeContents1>
-                <SignUp.AgreeContents2>
-                  개인회원 약관에 동의
-                </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <ThemeProvider theme={theme}>
-                  <Checkbox
-                    icon={<CheckCircleOutlineIcon color="secondary" />}
-                    checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
-                    checked={checked[2]}
-                    onChange={handleCheck(2)}
-                  />
-                </ThemeProvider>
-              </SignUp.AgreeChkWrap>
-            </SignUp.AgreeWrap2>
-          </SignUp.AgreeWrap>
+                <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
+                  확인
+                </SignUp.NumBtn>
+              </SignUp.NumberWrap>
+            </SignUp.PhoneWrap>
 
-          <SignUp.SignUpBtn onClick={props.onClickCreateOwner}>
-            회원가입
-          </SignUp.SignUpBtn>
-        </SignUp.ElWrap>
+            <SignUp.AgreeWrap>
+              <SignUp.Title>약관동의</SignUp.Title>
+
+              <SignUp.AgreeWrap2>
+                <SignUp.AgreeChkWrap>
+                  <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
+                  <SignUp.AgreeContents2>
+                    개인회원 약관에 동의
+                  </SignUp.AgreeContents2>
+                  <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                  {/* <CheckCircleIcon /> */}
+                  <ThemeProvider theme={theme}>
+                    <Checkbox
+                      checked={checked[0]}
+                      onChange={handleCheck(0)}
+                      icon={<CheckCircleOutlineIcon color="secondary" />}
+                      checkedIcon={<CheckCircleIcon />}
+                      onClick={props.onClick}
+                      id={props.id}
+                    />
+                  </ThemeProvider>
+                </SignUp.AgreeChkWrap>
+                <SignUp.Line />
+                <SignUp.AgreeChkWrap>
+                  <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
+                  <SignUp.AgreeContents2>
+                    개인회원 약관에 동의
+                  </SignUp.AgreeContents2>
+                  <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                  <ThemeProvider theme={theme}>
+                    <Checkbox
+                      checked={checked[1]}
+                      onChange={handleCheck(1)}
+                      icon={<CheckCircleOutlineIcon color="secondary" />}
+                      checkedIcon={<CheckCircleIcon />}
+                      onClick={props.onClick}
+                      id={props.id}
+                    />
+                  </ThemeProvider>
+                </SignUp.AgreeChkWrap>{" "}
+                <SignUp.Line />
+                <SignUp.AgreeChkWrap>
+                  <SignUp.AgreeContents1 style={{ color: "gray" }}>
+                    (선택)
+                  </SignUp.AgreeContents1>
+                  <SignUp.AgreeContents2>
+                    개인회원 약관에 동의
+                  </SignUp.AgreeContents2>
+                  <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                  <ThemeProvider theme={theme}>
+                    <Checkbox
+                      icon={<CheckCircleOutlineIcon color="secondary" />}
+                      checkedIcon={<CheckCircleIcon />}
+                      onClick={props.onClick}
+                      id={props.id}
+                      checked={checked[2]}
+                      onChange={handleCheck(2)}
+                    />
+                  </ThemeProvider>
+                </SignUp.AgreeChkWrap>
+              </SignUp.AgreeWrap2>
+            </SignUp.AgreeWrap>
+
+            <SignUp.SignUpBtn>회원가입</SignUp.SignUpBtn>
+          </SignUp.ElWrap>
+        </form>
       </SignUp.SignUpWrap>
     </SignUp.Wrapper>
   );

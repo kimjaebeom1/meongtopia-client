@@ -1,23 +1,22 @@
 import SignUpPresenterPage from "./Signup.user.presenter";
 import {
   CREATE_USER,
-  FETCH_USERS,
   GET_TOKEN,
   CHECK_VALID_TOKEN,
+  CHECK_NICKNAME,
 } from "./Signup.user.queries";
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { message, Modal } from "antd";
+import { Modal, message } from "antd";
+import "antd/dist/antd.css";
 import { checkEmail, checkPassword } from "../../../commons/libraries/utils";
 
 export default function SignUpContainerPage() {
   const [createUser] = useMutation(CREATE_USER);
   const [getToken] = useMutation(GET_TOKEN);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
-
-  const { data } = useQuery(FETCH_USERS);
-  console.log(data?.fetchUsers);
+  const [checkNickname] = useMutation(CHECK_NICKNAME);
 
   const router = useRouter();
 
@@ -30,19 +29,41 @@ export default function SignUpContainerPage() {
   const [phone, setPhone] = useState("");
   const [nickname, setNickname] = useState("");
   const [checkNum, setCheckNum] = useState("");
+  const [nicknameChk, setNicknameChk] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordChkError, setPasswordChkError] = useState("");
   const [nicknameError, setNicknameError] = useState("");
   const [nameError, setNameError] = useState("");
-  const [PhoneError, setPhoneError] = useState("");
 
   const [phoneCheck, setPhoneCheck] = useState(false);
 
-  // const initialInputs = { email: "", password: "", nickname: "", phone: "" };
+  //====================================================================================//
+  const [minutes, setMinutes] = useState(3);
+  const [seconds, setSeconds] = useState(0);
+  const [isCountdown, setIsCountdown] = useState(false);
 
-  // const [inputs, setInputs] = useState(initialInputs);
-  // const [inputsError, setInputsError] = useState(initialInputs);
+  useEffect(() => {
+    if (isCountdown === false) return;
+
+    const timer = setInterval(() => {
+      if (Number(seconds) > 0) {
+        setSeconds(Number(seconds) - 1);
+      }
+
+      if (Number(seconds) === 0) {
+        if (Number(minutes) === 0) {
+          clearInterval(timer);
+        } else {
+          setMinutes(Number(minutes) - 1);
+          setSeconds(59);
+        }
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [minutes, seconds, isCountdown]);
+
+  //====================================================================================//
 
   const onChangeName = (event: any) => {
     setName(event.target.value);
@@ -79,7 +100,6 @@ export default function SignUpContainerPage() {
   const onChangePhone = (event: any) => {
     setPhone(event.target.value);
     if (event.target.vaule !== "") {
-      setPhoneError("");
     }
   };
 
@@ -95,20 +115,66 @@ export default function SignUpContainerPage() {
     router.push("/signup");
   };
 
+  const onClickNicknameChk = async () => {
+    if (nickname === "") {
+      Modal.error({
+        content: "닉네임을 입력해주세요",
+      });
+      return;
+    }
+    try {
+      const result = await checkNickname({
+        variables: {
+          nickname,
+        },
+      });
+      console.log(result.data?.checkNickname);
+      if (result.data?.checkNickname) {
+        Modal.error({
+          content: "중복된 닉네임이 있습니다. 다시 입력해주세요",
+        });
+        return;
+      } else if (!result.data?.checkNickname) {
+        Modal.success({
+          content: "닉네임 등록되었습니다",
+        });
+        setNicknameChk(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const onClickGetToken = async () => {
-    console.log("클릭");
-    const result = await getToken({
-      variables: {
-        phone: String(phone),
-      },
-    });
-    console.log(result);
-    Modal.success({
-      content: "인증번호가 발송되었습니다.",
-    });
+    setIsCountdown((prev) => !prev); // countdown 시작
+    if (phone.length < 11) {
+      message.error({
+        content: "번호를 제대로 입력해주세요",
+      });
+      return;
+    }
+    try {
+      console.log("시작");
+      const result = await getToken({
+        variables: {
+          phone: String(phone),
+        },
+      });
+      console.log(result);
+      Modal.success({
+        content: "인증번호가 발송되었습니다.",
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        Modal.error({
+          content: "이미 등록되어 있는 번호입니다",
+        });
+      }
+    }
   };
 
   const onClickCheckValidToken = async () => {
+    setIsCountdown(false);
     try {
       const result = await checkValidToken({
         variables: {
@@ -125,12 +191,13 @@ export default function SignUpContainerPage() {
       }
     }
   };
+
   // 원희님 조용히 해주세요
   // 다 지워버릴꺼야
 
   const onClickCreateUser = async () => {
     if (!checkEmail(email)) {
-      setEmailError("이메일 @까지 정확하게 입력해주세요");
+      setEmailError("이메일 @까지 입력해주세요");
     }
 
     if (!checkPassword(password)) {
@@ -150,8 +217,16 @@ export default function SignUpContainerPage() {
       setNicknameError("닉네임을 입력해주세요");
     }
 
+    if (nicknameChk === false) {
+      Modal.error({
+        content: "닉네임을 등록해주세요",
+      });
+    }
+
     if (phoneCheck === false) {
-      alert("핸드폰 인증을 해주세요");
+      Modal.error({
+        content: "핸드폰 인증해주세요",
+      });
       return;
     }
 
@@ -181,8 +256,6 @@ export default function SignUpContainerPage() {
     }
   };
 
-  console.log(password);
-  console.log(passwordChk);
   return (
     <SignUpPresenterPage
       onChangeName={onChangeName}
@@ -197,12 +270,15 @@ export default function SignUpContainerPage() {
       onClickMoveToUser={onClickMoveToUser}
       onClickGetToken={onClickGetToken}
       onClickCheckValidToken={onClickCheckValidToken}
+      onClickNicknameChk={onClickNicknameChk}
       emailError={emailError}
       passwordError={passwordError}
       nameError={nameError}
       nicknameError={nicknameError}
       passwordChkError={passwordChkError}
-
+      minutes={minutes}
+      seconds={seconds}
+      setIsCountdown={setIsCountdown}
       // phoneError={PhoneError}
     />
   );
