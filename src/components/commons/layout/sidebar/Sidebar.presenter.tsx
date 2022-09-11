@@ -1,6 +1,4 @@
-import { useQuery } from "@apollo/client";
 import MenuButton from "../../buttons/menu";
-import { FETCH_USER } from "./Sidebar.queries";
 import * as Sidebar from "./Sidebar.styles";
 import { IMyPageSidebarUIProps } from "./Sidebar.types";
 
@@ -11,9 +9,6 @@ const USER_MENUS = [
 ];
 
 export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
-  const { data } = useQuery(FETCH_USER);
-  const userInfo = data?.fetchUser;
-
   return (
     <Sidebar.Wrapper>
       <Sidebar.InfoContainer>
@@ -21,26 +16,28 @@ export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
           <Sidebar.profileImg />
         </Sidebar.List>
         <Sidebar.List>
-          <Sidebar.InfoText>{userInfo?.nickname}</Sidebar.InfoText>
+          <Sidebar.InfoText>{props.data?.fetchUser.nickname}</Sidebar.InfoText>
           <span>님 안녕하세요!</span>
         </Sidebar.List>
         <Sidebar.List>
           <Sidebar.PointIcon />
           <span>내 포인트:&nbsp;</span>
           <Sidebar.InfoText>
-            {userInfo?.point.toLocaleString()}
+            {props.data?.fetchUser.point.toLocaleString()}
           </Sidebar.InfoText>
-          <span>원</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;<span>원</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Sidebar.Charge>충전하기</Sidebar.Charge>
         </Sidebar.List>
         <Sidebar.List>
           <Sidebar.UpdateIcon />
-          <Sidebar.ClickSpan>회원정보 수정</Sidebar.ClickSpan>
+          <Sidebar.ClickSpan onClick={props.onClickUpdate}>
+            회원정보 수정
+          </Sidebar.ClickSpan>
         </Sidebar.List>
         <Sidebar.List>
           <Sidebar.LogoutIcon />
-          <Sidebar.ClickSpan onClick={props.onCLickLogout}>
+          <Sidebar.ClickSpan onClick={props.onClickLogout}>
             로그아웃
           </Sidebar.ClickSpan>
         </Sidebar.List>

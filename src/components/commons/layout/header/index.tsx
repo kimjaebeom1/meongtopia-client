@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { IQuery } from "../../../../commons/types/generated/types";
 import LoginButton from "../../buttons/login";
 import MenuButton from "../../buttons/menu";
 import { FETCH_USER, LOGOUT } from "./Header.queries";
@@ -14,7 +15,7 @@ const MENUS = [
 export default function LayoutHeader() {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_USER);
+  const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
   const userInfo = data?.fetchUser;
 
   const [logout] = useMutation(LOGOUT);

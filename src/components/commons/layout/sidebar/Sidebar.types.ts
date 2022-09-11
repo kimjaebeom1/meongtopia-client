@@ -1,3 +1,7 @@
+import { IQuery } from "../../../../commons/types/generated/types";
+
 export interface IMyPageSidebarUIProps {
-  onCLickLogout: () => void;
+  onClickUpdate: () => void;
+  onClickLogout: () => void;
+  data: Pick<IQuery, "fetchUser">;
 }

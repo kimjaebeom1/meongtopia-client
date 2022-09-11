@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { withAuth } from "../../../../src/components/commons/hocs/withAuth";
 import MyPageSidebar from "../../../../src/components/commons/layout/sidebar/Sidebar.container";
-import MyPageUserReview from "../../../../src/components/unit/mypage/user/review/UserReview.container";
+import MyPageUserMyInfo from "../../../../src/components/unit/mypage/user/myinfo/MyInfo.container";
 
 const Container = styled.div`
   width: 100%;
@@ -14,15 +13,13 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-function MyPageUserReviewPage() {
+export default function MyPageUserMyInfoPage() {
   return (
     <Container>
       <Wrapper>
         <MyPageSidebar />
-        <MyPageUserReview />
+        <MyPageUserMyInfo />
       </Wrapper>
     </Container>
   );
 }
-
-export default withAuth(MyPageUserReviewPage);

@@ -4,7 +4,7 @@ import { breakPoints } from "../../../../commons/styles/media";
 export const Container = styled.header`
   width: 100%;
   padding: 1rem;
-  border-bottom: 1px solid #cacaca;
+  box-shadow: 0px 10px 10px -15px black;
   display: flex;
   justify-content: center;
   /* @media ${breakPoints.mobile} {
