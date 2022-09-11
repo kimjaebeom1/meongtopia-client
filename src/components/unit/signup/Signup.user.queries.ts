@@ -9,11 +9,9 @@ export const CREATE_USER = gql`
   }
 `;
 
-export const FETCH_USERS = gql`
-  query fetchUser {
-    fetchUser {
-      nickname
-    }
+export const CHECK_NICKNAME = gql`
+  mutation checkNickname($nickname: String!) {
+    checkNickname(nickname: $nickname)
   }
 `;
 
