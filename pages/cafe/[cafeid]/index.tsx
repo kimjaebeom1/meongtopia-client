@@ -9,7 +9,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 1200px;
+  margin-top: 110px;
+  width: 63%;
   display: flex;
   flex-direction: column;
 `;

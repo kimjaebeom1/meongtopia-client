@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
 import { Description } from "@material-ui/icons";
 import Editor from "@toast-ui/editor";
+
 import {
   bigDogState,
   petArrState,
@@ -73,6 +74,7 @@ export default function CafeContentsWrite() {
 
   const onChangeDescription = () => {
     const inputs = editorRef.current?.getInstance().getHTML();
+
     setValue("description", inputs);
     trigger("description");
   };
@@ -83,11 +85,11 @@ export default function CafeContentsWrite() {
         createStoreInput: {
           name: data.name,
           phone: data.phone,
-          storeImage: fileUrls.join(),
+          storeImage: fileUrls.join().split(","),
           open: data.open,
           close: data.close,
-          bigDog: bigDog,
-          smallDog: smallDog,
+          bigDog: Number(bigDog),
+          smallDog: Number(smallDog),
           entranceFee: Number(data.entranceFee),
           description: data.description,
           address: data.address,
@@ -101,7 +103,9 @@ export default function CafeContentsWrite() {
     alert("게시글 생성이 완료되었습니다.");
     console.log(result);
     router.push(`/cafe/${result.data.createStore.storeID}`);
+    console.log(fileUrls);
   };
+  console.log(fileUrls);
 
   const onClickWithDog = (event) => {
     if (withDog === "") {

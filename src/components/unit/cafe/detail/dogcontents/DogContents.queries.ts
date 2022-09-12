@@ -11,17 +11,26 @@ export const FETCH_STORE = gql`
       close
       address
       addressDetail
+      bigDog
+      smallDog
+      avgRating
+      storeTag {
+        name
+      }
+      storeImg {
+        url
+      }
+      pet {
+        name
+        age
+        breed
+        description
+        petImgUrl
+      }
 
-      # bigDog
-      # locationTag {
-      #   name
-      #   locationTagID
-      # }
-
-      #   avgRating
-      #   locationTag {
-      #     name
-      #   }
+      locationTag {
+        name
+      }
     }
   }
 `;

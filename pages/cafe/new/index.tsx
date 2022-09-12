@@ -8,6 +8,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  margin-top: 1rem;
   width: 800px;
   display: flex;
   flex-direction: column;

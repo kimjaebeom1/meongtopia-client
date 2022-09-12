@@ -8,8 +8,10 @@ export default function DetailDogContents() {
   const { data } = useQuery(FETCH_STORE, {
     variables: { storeID: String(router.query.cafeid) },
   });
+  console.log(data?.fetchStore.storeImg);
+  console.log(data?.fetchStore.storeImg[0].url);
 
-  console.log(data);
+  // const StoreImage = data?.fetchStore?.storeImg.url.split(",");
 
   return <DetailDogContentsUI data={data} />;
 }
