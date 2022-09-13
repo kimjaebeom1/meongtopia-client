@@ -7,34 +7,8 @@ import { useEffect, useRef, useState } from "react";
 // const TOTAL_SLIDES = 4; // 배열0부터 시작하는 것 처럼 0~4 총 5개
 
 export default function CarouselContainerPage() {
-  // const [currentSlide, setCurrentSlide] = useState(0);
-  // const slideRef = useRef(null);
-
-  // const onClickNextBtn = () => {
-  //   console.log("다음");
-  //   if (currentSlide >= TOTAL_SLIDES) {
-  //     setCurrentSlide(0);
-  //   } else {
-  //     setCurrentSlide(currentSlide + 1);
-  //   }
-  // };
-
-  // const onClickPrevBtn = () => {
-  //   console.log("이전");
-  //   if (currentSlide === 0) {
-  //     setCurrentSlide(TOTAL_SLIDES);
-  //   } else {
-  //     setCurrentSlide(currentSlide - 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   slideRef.current.style.transition = "all 0.5s ease-in-out";
-  //   slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-  // }, [currentSlide]);
-
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     fade: true,
     speed: 500,
@@ -42,6 +16,9 @@ export default function CarouselContainerPage() {
     slidesToScroll: 1,
     nextArrow: <Carousel.NextArrow />,
     prevArrow: <Carousel.PrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
   };
 
   // const CarouselSlick = () => {

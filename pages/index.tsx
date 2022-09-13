@@ -1,5 +1,6 @@
 import CarouselContainerPage from "../src/components/commons/carousel/Carousel.container";
 import LandingContainerPage from "../src/components/unit/landing/Landing.container";
+import Scroll from "../src/commons/scroll";
 export default function LandingPage() {
   return (
     <>
@@ -11,6 +12,7 @@ export default function LandingPage() {
         <CarouselContainerPage />
       </div>
       <LandingContainerPage />
+      <Scroll />
     </>
   );
 }

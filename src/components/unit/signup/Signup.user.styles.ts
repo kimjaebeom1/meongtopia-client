@@ -108,7 +108,18 @@ export const Input = styled.input`
   height: 2.5rem;
   padding: 0px 10px;
   outline: none;
+  border: none;
   margin-top: 3px;
+`;
+
+export const InputElWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  width: 100%;
+  border-radius: 2px;
+  margin-right: 10px;
 `;
 
 export const NickNameInput = styled.input`
@@ -142,6 +153,7 @@ export const CheckBtn = styled.div`
 export const Timer = styled.div`
   width: 60px;
   height: 30px;
+  line-height: 30px;
   margin: 0px 10px;
   /* visibility: hidden; */
 `;
@@ -151,7 +163,6 @@ export const AgreeWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
 `;
 
 export const AgreeWrap2 = styled.div`
@@ -244,6 +255,7 @@ export const SignUpBtn = styled.div`
   background-color: #f5cf1f;
   color: white;
   text-align: center;
+  margin: 40px 0px;
   cursor: pointer;
 `;
 

@@ -146,7 +146,6 @@ export default function SignUpContainerPage() {
   };
 
   const onClickGetToken = async () => {
-    setIsCountdown((prev) => !prev); // countdown 시작
     if (phone.length < 11) {
       message.error({
         content: "번호를 제대로 입력해주세요",
@@ -164,6 +163,7 @@ export default function SignUpContainerPage() {
       Modal.success({
         content: "인증번호가 발송되었습니다.",
       });
+      setIsCountdown((prev) => !prev); // countdown 시작
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({
@@ -174,7 +174,6 @@ export default function SignUpContainerPage() {
   };
 
   const onClickCheckValidToken = async () => {
-    setIsCountdown(false);
     try {
       const result = await checkValidToken({
         variables: {
@@ -185,6 +184,7 @@ export default function SignUpContainerPage() {
       setPhoneCheck(true);
       console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
+      setIsCountdown((prev) => !prev);
     } catch (error) {
       if (error instanceof Error) {
         message.error("인증 실패. 다시 시도해주세요");

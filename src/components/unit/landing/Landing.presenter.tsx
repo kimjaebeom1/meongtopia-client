@@ -1,30 +1,40 @@
 import * as Landing from "./Landing.styles";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
+import { useInView } from "react-intersection-observer";
+import { SignUp } from "../login/Login.styles";
 
 export default function LandingPresenterPage() {
+  const [ref, inView] = useInView({
+    root: null,
+    rootMargin: "800px",
+    threshold: 0.2, // 0 - 1
+  });
+
   return (
     <Landing.Wrapper>
-      <Landing.ReCafeList>
-        <Landing.ReTitle>
-          추천
-          <Landing.Meong src="/images/meong.png" />
-          카페
-        </Landing.ReTitle>
-        <Landing.ReCafeWrap>
-          <Landing.Ad src="/images/landingad.png" />
-          <Landing.Line2 />
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
-        </Landing.ReCafeWrap>
-      </Landing.ReCafeList>
+      <Landing.DivWrap className={inView ? "isActive" : ""} ref={ref}>
+        <Landing.ReCafeList className={inView ? "isActive" : ""} ref={ref}>
+          <Landing.ReTitle>
+            추천
+            <Landing.Meong src="/images/meong.png" />
+            카페
+          </Landing.ReTitle>
+          <Landing.ReCafeWrap>
+            <Landing.Ad src="/images/landingad.png" />
+            <Landing.Line2 />
+            <Landing.TopWrap>
+              <Landing.TopImg src="/images/landingcafe2.jpeg" />
+            </Landing.TopWrap>
+            <Landing.TopWrap>
+              <Landing.TopImg src="/images/landingcafe2.jpeg" />
+            </Landing.TopWrap>
+            <Landing.TopWrap>
+              <Landing.TopImg src="/images/landingcafe2.jpeg" />
+            </Landing.TopWrap>
+          </Landing.ReCafeWrap>
+        </Landing.ReCafeList>
+      </Landing.DivWrap>
 
       <Landing.ReTitle>
         실시간 인기
