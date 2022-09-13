@@ -11,12 +11,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: "myfont";
-    /* src: url("/fonts/Cafe24Dongdong.ttf"); */
-    /* src: url("/fonts/Cafe24Syongsyong.ttf"); */
-    /* src: url("/fonts/KCC-Murukmuruk.ttf"); */
-    /* src: url("/fonts/Maplestory Bold.ttf"); */
     src: url("/fonts/Maplestory Light.ttf");
-    /* src: url("/fonts/RixInooAriDuriRegular.ttf"); */
   }
 
   html {

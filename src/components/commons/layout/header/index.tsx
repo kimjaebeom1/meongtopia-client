@@ -7,10 +7,7 @@ import MenuButton from "../../buttons/menu";
 import { FETCH_USER, LOGOUT } from "./Header.queries";
 import * as Header from "./Header.styles";
 
-const MENUS = [
-  { page: "/cafe", title: "애견카페 찾기" },
-  // { page: "/review", title: "리뷰 확인" },
-];
+const MENUS = [{ page: "/cafe", title: "애견카페 찾기" }];
 
 export default function LayoutHeader() {
   const router = useRouter();
@@ -36,24 +33,40 @@ export default function LayoutHeader() {
           {MENUS.map((el) => (
             <MenuButton key={el.page} page={el.page} title={el.title} />
           ))}
+          {userInfo?.role === "OWNER" ? (
+            <MenuButton page="/cafe/new" title="카페 등록" />
+          ) : (
+            <div></div>
+          )}
           <Header.LoginContainer>
             {data ? (
               userInfo.role === "CLIENT" ? (
-                <>
-                  <span>{`${userInfo.nickname}님 안녕하세요!`}</span>
-                  <LoginButton href="/mypage/user/reserve" title="마이페이지" />
-                  <Header.Logout onClick={onCLickLogout}>
-                    로그아웃
-                  </Header.Logout>
-                </>
+                <div>
+                  <Header.MypageContainer>
+                    <LoginButton
+                      href="/mypage/user/reserve"
+                      title="마이페이지"
+                    />
+                    <Header.Logout onClick={onCLickLogout}>
+                      로그아웃
+                    </Header.Logout>
+                  </Header.MypageContainer>
+                  <span
+                    style={{ display: "flex", justifyContent: "flex-end" }}
+                  >{`${userInfo.nickname}님 안녕하세요!`}</span>
+                </div>
               ) : (
-                <>
-                  <span>{`${userInfo.nickname}사장님 안녕하세요!`}</span>
-                  <LoginButton href="/mypage/store/" title="마이페이지" />
-                  <Header.Logout onClick={onCLickLogout}>
-                    로그아웃
-                  </Header.Logout>
-                </>
+                <div>
+                  <Header.MypageContainer>
+                    <LoginButton href="/mypage/store/" title="마이페이지" />
+                    <Header.Logout onClick={onCLickLogout}>
+                      로그아웃
+                    </Header.Logout>
+                  </Header.MypageContainer>
+                  <span
+                    style={{ display: "flex", justifyContent: "flex-end" }}
+                  >{`${userInfo.nickname}사장님 안녕하세요!`}</span>
+                </div>
               )
             ) : (
               <>

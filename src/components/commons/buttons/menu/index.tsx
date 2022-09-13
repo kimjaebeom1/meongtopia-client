@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { MouseEvent, useEffect, useState } from "react";
 import { Menu } from "./styles";
 
 interface IMenuButtonProps {
