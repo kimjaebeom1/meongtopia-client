@@ -10,19 +10,14 @@ import Dompurify from "dompurify";
 
 export default function DetailDogContentsUI(props) {
   const { Option } = Select;
-  const [count, setCount] = useState(1);
 
   const settings = {
     infinite: true,
     speed: 200,
     slidesToShow: 2,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     // prevArrow: <DogContents.PrevArrow />,
     nextArrow: <DogContents.NextArrow />,
-  };
-
-  const handleChange = (value: number) => {
-    setCount(value);
   };
 
   return (
@@ -44,33 +39,33 @@ export default function DetailDogContentsUI(props) {
         </DogContents.HeadInfo>
       </DogContents.StoreNameTag>
       <DogContents.CafeImageWrapper>
-        <Row gutter={10}>
-          <Col span={10}>
-            <DogContents.mainDogImg
+        <Row gutter={{ xs: 4, lg: 8 }}>
+          <Col xs={2} sm={4} md={6} lg={8} xl={10}>
+            <DogContents.mainCafeImg
               src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
             />
           </Col>
           <Col span={14}>
-            <Row gutter={10}>
+            <Row gutter={{ xs: 4, lg: 8 }}>
               <Col span={12}>
-                <DogContents.dogImg
+                <DogContents.cafeImg
                   src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[1].url}`}
                 />
               </Col>
               <Col span={12}>
-                <DogContents.dogImg
+                <DogContents.cafeImg
                   src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[2].url}`}
                 />
               </Col>
             </Row>
-            <Row gutter={10}>
+            <Row gutter={{ xs: 4, lg: 8 }}>
               <Col
                 style={{
                   paddingTop: "10px",
                 }}
                 span={12}
               >
-                <DogContents.dogImg
+                <DogContents.cafeImg
                   src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[3].url}`}
                 />
               </Col>
@@ -80,7 +75,7 @@ export default function DetailDogContentsUI(props) {
                 }}
                 span={12}
               >
-                <DogContents.dogImg
+                <DogContents.cafeImg
                   src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[4].url}`}
                 />
               </Col>
@@ -93,9 +88,14 @@ export default function DetailDogContentsUI(props) {
       <DogContents.Body>
         <DogContents.CafeInfoWrapper>
           <DogContents.BodyInfoTag>카페 정보</DogContents.BodyInfoTag>
-          {props.data?.fetchStore.locationTag.name}
-          <br />
-          {props.data?.fetchStore.storeTag.map((el) => el.name)}
+          <DogContents.StoreTagWrapper>
+            <DogContents.LocationTag>
+              {`# ${props.data?.fetchStore.locationTag.name}`}
+            </DogContents.LocationTag>
+            {props.data?.fetchStore.storeTag.map((el) => (
+              <DogContents.StoreTag>{`# ${el.name}`}</DogContents.StoreTag>
+            ))}
+          </DogContents.StoreTagWrapper>
           <DogContents.DogCount>
             <div>
               <img
@@ -127,6 +127,7 @@ export default function DetailDogContentsUI(props) {
           ) : (
             <div></div>
           )}
+
           <DogContents.AddressWrapper>
             <img src="/images/mapIcon.svg" />
             <div>
@@ -148,26 +149,30 @@ export default function DetailDogContentsUI(props) {
           <DogContents.DogTag>강아지 정보</DogContents.DogTag>
           <DogContents.DogListWrapper>
             <Slider {...settings}>
-              <DogContents.SliderItem>
-                <img src="/images/dog1.jpg" />
-              </DogContents.SliderItem>
-              <DogContents.SliderItem>
-                <img src="/images/dog2.jpg" />
-              </DogContents.SliderItem>
-              <DogContents.SliderItem>
-                <img src="/images/dog3.jpg" />
-              </DogContents.SliderItem>
-              <DogContents.SliderItem>
-                <img src="/images/dog4.jpg" />
-              </DogContents.SliderItem>
+              {props.data?.fetchStore.pet.map((el) => (
+                <DogContents.SliderItem>
+                  <img src={`https://storage.googleapis.com/${el.petImgUrl}`} />
+                  <div>이름: {el.name}</div>
+                  <div>나이: {el.age}</div>
+                  <div>견종: {el.breed}</div>
+                  <div>성격: {el.description}</div>
+                </DogContents.SliderItem>
+              ))}
             </Slider>
             <DogContents.Line />
           </DogContents.DogListWrapper>
+          <DogContents.Map>
+            <DogContents.MapTag>카페 오시는 길</DogContents.MapTag>
+            <KakaoMap data={props.data} />
+          </DogContents.Map>
         </DogContents.CafeInfoWrapper>
         <DogContents.ReservationWrapper>
           {props.data?.fetchStore.name}
           <DogContents.NumberTag>이용인원</DogContents.NumberTag>
-          <DogContents.SelectWrapper defaultValue="1명" onChange={handleChange}>
+          <DogContents.SelectWrapper
+            defaultValue="1명"
+            onChange={props.handleChange}
+          >
             <Option value="1">1명</Option>
             <Option value="2">2명</Option>
             <Option value="3">3명</Option>
@@ -176,12 +181,16 @@ export default function DetailDogContentsUI(props) {
             <Option value="6">6명</Option>
           </DogContents.SelectWrapper>
           <DogContents.NumberTag>애견동반 수</DogContents.NumberTag>
-          <DogContents.SelectWrapper defaultValue="1마리">
+          <DogContents.SelectWrapper defaultValue="없음">
+            <Option value="0">없음</Option>
             <Option value="1">1마리</Option>
             <Option value="2">2마리</Option>
             <Option value="3">3마리</Option>
+            <Option value="4">4마리</Option>
           </DogContents.SelectWrapper>
-          <DogContents.ReservationBtn>예약하기</DogContents.ReservationBtn>
+          <DogContents.ReservationBtn onClick={props.onClickReservation}>
+            예약하기
+          </DogContents.ReservationBtn>
           <DogContents.EntranceFee>
             <div>1명 입장료</div>
             <div>{`￦${props.data?.fetchStore.entranceFee}원`}</div>
@@ -197,15 +206,18 @@ export default function DetailDogContentsUI(props) {
           <DogContents.ReservationLine />
           <DogContents.Total>
             <div>총 합계</div>
-            <div>{`￦${props.data?.fetchStore.entranceFee * count}원`}</div>
+            <div>{`￦${
+              props.data?.fetchStore.entranceFee * props.count
+            }원`}</div>
           </DogContents.Total>
         </DogContents.ReservationWrapper>
       </DogContents.Body>
       <DogContents.Footer>
-        <DogContents.Map>
-          <DogContents.MapTag>카페 오시는 길</DogContents.MapTag>
-          <KakaoMap data={props.data} />
-        </DogContents.Map>
+        <DogContents.FooterInfo>
+          <img src="/images/star.svg" />
+          <div>{props.data?.fetchStore.avgRating}.0</div>
+          <div>후기</div>
+        </DogContents.FooterInfo>
       </DogContents.Footer>
     </DogContents.Wrapper>
   );

@@ -39,7 +39,7 @@ export default function CafeContentsWriteUI(props) {
                 {...props.register("name")}
               ></CafeContentsWrite.CafeNameInput>
               <CafeContentsWrite.Tag>
-                업체 사진을 추가해 주세요.
+                업체 사진을 추가해 주세요
                 <CafeContentsWrite.ImageUploadWrapper>
                   {props.fileUrls.map((el, index) => (
                     <CafeImgUpload
@@ -51,7 +51,7 @@ export default function CafeContentsWriteUI(props) {
                 </CafeContentsWrite.ImageUploadWrapper>
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.Tag>
-                상세 설명을 입력해주세요.
+                상세 설명을 입력해주세요
               </CafeContentsWrite.Tag>
 
               <ToastEditor
@@ -60,7 +60,7 @@ export default function CafeContentsWriteUI(props) {
                 onChangeDescription={props.onChangeDescription}
               />
               <CafeContentsWrite.Tag>
-                전화번호를 입력해주세요.
+                전화번호를 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNumberInput
                 {...props.register("phone")}
@@ -193,6 +193,14 @@ export default function CafeContentsWriteUI(props) {
                 >
                   대형견 있음
                 </CafeContentsWrite.LargeDogBtn>
+                <CafeContentsWrite.WithChildBtn
+                  type="button"
+                  withChild={props.withChild}
+                  value="아이동반 가능"
+                  onClick={props.onClickWithChild}
+                >
+                  아이동반 가능
+                </CafeContentsWrite.WithChildBtn>
               </CafeContentsWrite.OptionWrapper>
             </>
           )}

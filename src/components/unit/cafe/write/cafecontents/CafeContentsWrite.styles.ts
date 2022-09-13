@@ -166,51 +166,6 @@ export const AddressDetailInput = styled.input`
   border: 1px solid #808080;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-top: 1.7em;
-`;
-
-export const PrevButton = styled.button`
-  width: 7em;
-  height: 2.3em;
-  border-radius: 10px;
-  border: none;
-  background-color: #808080;
-  color: white;
-  font-size: 24px;
-  font-weight: 400;
-  cursor: pointer;
-`;
-
-export const NextButton = styled.button`
-  width: 7em;
-  height: 2.3em;
-  border-radius: 10px;
-  border: none;
-  background-color: #d9d9d9;
-  color: white;
-  font-size: 24px;
-  font-weight: 400;
-  margin-left: 10px;
-  cursor: pointer;
-`;
-
-export const SubmitButton = styled.button`
-  width: 7em;
-  height: 2.3em;
-  border-radius: 10px;
-  border: none;
-  background-color: #d9d9d9;
-  color: white;
-  font-size: 24px;
-  font-weight: 400;
-  margin-left: 10px;
-  cursor: pointer;
-`;
-
 export const AddressSearchInput = styled(DaumPostcodeEmbed)``;
 
 export const AddressModal = styled(Modal)`
@@ -237,6 +192,7 @@ export const LocationTagWrapper = styled(Radio.Group)`
         background-color: #f5cf1f;
         border-color: #f5cf1f;
         background: #f5cf1f;
+        transition: none;
 
         :first-child {
           border-right: #f5cf1f;
@@ -295,7 +251,7 @@ export const WithDogBtn = styled.button`
   display: inline-block;
   height: 32px;
   padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
+  color: ${(props) => (props.withDog ? "white" : "none")};
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
@@ -306,7 +262,7 @@ export const YardBtn = styled.button`
   margin-right: 20px;
   display: inline-block;
   padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
+  color: ${(props) => (props.yard ? "white" : "none")};
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
@@ -317,10 +273,67 @@ export const LargeDogBtn = styled.button`
   margin-right: 20px;
   display: inline-block;
   height: 32px;
+  color: ${(props) => (props.largeDog ? "white" : "none")};
   padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
   font-size: 14px;
   border: 1px solid #d9d9d9;
   cursor: pointer;
   background-color: ${(props) => (props.largeDog ? "#F5CF1F" : "white")};
+`;
+
+export const WithChildBtn = styled.button`
+  margin-right: 20px;
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  color: ${(props) => (props.withChild ? "white" : "none")};
+  background-color: ${(props) => (props.withChild ? "#F5CF1F" : "white")};
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1.7em;
+`;
+
+export const PrevButton = styled.button`
+  width: 7em;
+  height: 2.3em;
+  border-radius: 10px;
+  border: none;
+  background-color: #808080;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+`;
+
+export const NextButton = styled.button`
+  width: 7em;
+  height: 2.3em;
+  border-radius: 10px;
+  border: none;
+  background-color: #d9d9d9;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
+export const SubmitButton = styled.button`
+  width: 7em;
+  height: 2.3em;
+  border-radius: 10px;
+  border: none;
+  background-color: #d9d9d9;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 10px;
+  cursor: pointer;
 `;

@@ -24,6 +24,7 @@ export default function CafeContentsWrite() {
   const [largeDog, setLargeDog] = useState("");
   const [withDog, setWithDog] = useState("");
   const [yard, setYard] = useState("");
+  const [withChild, setWithChild] = useState("");
   const [petArr] = useRecoilState(petArrState);
   const [bigDog] = useRecoilState(bigDogState);
   const [smallDog] = useRecoilState(smallDogState);
@@ -95,7 +96,7 @@ export default function CafeContentsWrite() {
           address: data.address,
           addressDetail: data.addressDetail,
           locationTag: location,
-          storeTag: [withDog, yard, largeDog],
+          storeTag: [withDog, yard, largeDog, withChild],
           pet: [...petArr],
         },
       },
@@ -131,6 +132,14 @@ export default function CafeContentsWrite() {
     }
   };
 
+  const onClickWithChild = (event) => {
+    if (withChild) {
+      setWithChild("");
+    } else {
+      setWithChild(event.target.value);
+    }
+  };
+
   return (
     <CafeContentsWriteUI
       fileUrls={fileUrls}
@@ -154,9 +163,11 @@ export default function CafeContentsWrite() {
       onClickWithDog={onClickWithDog}
       onClickYard={onClickYard}
       onClickLargeDog={onClickLargeDog}
+      onClickWithChild={onClickWithChild}
       withDog={withDog}
       yard={yard}
       largeDog={largeDog}
+      withChild={withChild}
     />
   );
 }

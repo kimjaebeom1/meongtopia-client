@@ -32,17 +32,23 @@ export const HeadInfo = styled.div`
   }
 `;
 
+// 카페 이미지
 export const CafeImageWrapper = styled.div`
+  width: 1200px;
   padding-top: 2rem;
+  display: block;
+  @media screen {
+  }
 `;
 
-export const mainDogImg = styled.img`
+export const mainCafeImg = styled.img`
+  display: block;
   width: 100%;
   height: 410px;
   border-radius: 5px;
 `;
 
-export const dogImg = styled.img`
+export const cafeImg = styled.img`
   width: 100%;
   height: 200px;
   border-radius: 5px;
@@ -76,7 +82,7 @@ export const DogListWrapper = styled.div`
 
 export const SliderItem = styled.div`
   & > img {
-    width: 90%;
+    width: 100%;
     height: 200px;
     object-fit: cover;
     padding: 0.5rem;
@@ -94,13 +100,14 @@ export const SliderItem = styled.div`
 export const NextArrow = styled.div`
   display: block;
   width: 50px;
-  height: 50px;
+  height: 150px;
+  padding-left: 1.5rem;
 `;
 
 // 카페정보(Body)
 
 export const Body = styled.div`
-  width: 100%;
+  width: 1200px;
   display: flex;
   flex-direction: row;
   padding-bottom: 2rem;
@@ -114,6 +121,38 @@ export const CafeInfoWrapper = styled.div`
   font-weight: 500;
 `;
 
+export const LocationTag = styled.span`
+  background-color: #f5cf1f;
+  border-radius: 15px;
+  width: 85px;
+  border: 1px solid #d6bcd6;
+  display: block;
+  margin-top: 1em;
+  font-size: 12px;
+  padding: 7px 25px;
+  font-family: 700;
+  text-align: center;
+`;
+
+export const StoreTagWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const StoreTag = styled.span`
+  margin-left: 1em;
+  background-color: #f5cf1f;
+  border-radius: 15px;
+  width: 132px;
+  border: 1px solid #d6bcd6;
+  display: block;
+  margin-top: 1em;
+  font-size: 12px;
+  padding: 7px 25px;
+  font-family: 700;
+  text-align: center;
+`;
+
 export const BodyInfoTag = styled.div`
   font-size: 25px;
   font-weight: 700;
@@ -122,7 +161,7 @@ export const BodyInfoTag = styled.div`
 export const DogCount = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 2rem;
+  padding-top: 1rem;
   width: 100%;
   flex-direction: row;
   font-size: 17px;
@@ -249,10 +288,28 @@ export const Footer = styled.div`
   flex-direction: column;
 `;
 
+export const FooterInfo = styled.div`
+  font-size: 25px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+
+  & > img {
+    width: 30px;
+  }
+
+  & > div {
+    padding-top: 5px;
+    display: flex;
+    margin-left: 8px;
+    align-items: center;
+  }
+`;
+
 export const Map = styled.div`
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 95%;
   height: 400px;
   font-size: 14px;
 `;

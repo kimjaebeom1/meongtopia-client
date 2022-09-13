@@ -34,3 +34,18 @@ export const FETCH_STORE = gql`
     }
   }
 `;
+
+export const CREATE_RESERVATION = gql`
+  mutation createReservation(
+    $storeID: String!
+    $createReservationInput: CreateReservationInput!
+  ) {
+    createReservation(
+      storeID: $storeID
+      createReservationInput: $createReservationInput
+    ) {
+      resID
+      amount
+    }
+  }
+`;
