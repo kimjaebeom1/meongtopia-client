@@ -5,6 +5,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
 import { Description } from "@material-ui/icons";
 import Editor from "@toast-ui/editor";
+
 import {
   bigDogState,
   petArrState,
@@ -23,6 +24,7 @@ export default function CafeContentsWrite() {
   const [largeDog, setLargeDog] = useState("");
   const [withDog, setWithDog] = useState("");
   const [yard, setYard] = useState("");
+  const [withChild, setWithChild] = useState("");
   const [petArr] = useRecoilState(petArrState);
   const [bigDog] = useRecoilState(bigDogState);
   const [smallDog] = useRecoilState(smallDogState);
@@ -73,6 +75,7 @@ export default function CafeContentsWrite() {
 
   const onChangeDescription = () => {
     const inputs = editorRef.current?.getInstance().getHTML();
+
     setValue("description", inputs);
     trigger("description");
   };
@@ -83,17 +86,17 @@ export default function CafeContentsWrite() {
         createStoreInput: {
           name: data.name,
           phone: data.phone,
-          storeImage: fileUrls.join(),
+          storeImage: fileUrls.join().split(","),
           open: data.open,
           close: data.close,
-          bigDog: bigDog,
-          smallDog: smallDog,
+          bigDog: Number(bigDog),
+          smallDog: Number(smallDog),
           entranceFee: Number(data.entranceFee),
           description: data.description,
           address: data.address,
           addressDetail: data.addressDetail,
           locationTag: location,
-          storeTag: [withDog, yard, largeDog],
+          storeTag: [withDog, yard, largeDog, withChild],
           pet: [...petArr],
         },
       },
@@ -101,7 +104,9 @@ export default function CafeContentsWrite() {
     alert("게시글 생성이 완료되었습니다.");
     console.log(result);
     router.push(`/cafe/${result.data.createStore.storeID}`);
+    console.log(fileUrls);
   };
+  console.log(fileUrls);
 
   const onClickWithDog = (event) => {
     if (withDog === "") {
@@ -124,6 +129,14 @@ export default function CafeContentsWrite() {
       setLargeDog("");
     } else {
       setLargeDog(event.target.value);
+    }
+  };
+
+  const onClickWithChild = (event) => {
+    if (withChild) {
+      setWithChild("");
+    } else {
+      setWithChild(event.target.value);
     }
   };
 
@@ -150,9 +163,11 @@ export default function CafeContentsWrite() {
       onClickWithDog={onClickWithDog}
       onClickYard={onClickYard}
       onClickLargeDog={onClickLargeDog}
+      onClickWithChild={onClickWithChild}
       withDog={withDog}
       yard={yard}
       largeDog={largeDog}
+      withChild={withChild}
     />
   );
 }
