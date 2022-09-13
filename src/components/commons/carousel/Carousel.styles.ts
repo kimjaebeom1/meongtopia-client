@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   .slick-list {
     width: 100%;
     background: #fbfbfb;
-    /* border-radius: 1rem; */
   }
   .slick-dots {
     margin-bottom: 50px;
@@ -20,6 +19,50 @@ export const Wrapper = styled.div`
       width: 100%;
       height: 100%;
     }
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-family: "slick";
+    font-size: 20px;
+    line-height: 1;
+
+    color: lightblue;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .slick-prev {
+    width: 40px;
+    height: 40px;
+    /* top: 26rem; */
+  }
+
+  .slick-prev:before {
+    content: "";
+    background-image: url("/images/landing22.png");
+    background-size: 30px 30px; // 이미지 크기 조절
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-repeat: no-repeat;
+  }
+
+  .slick-next {
+    width: 40px;
+    height: 40px;
+    right: 0%;
+    /* top: 26rem; */
+  }
+
+  .slick-next:before {
+    content: "";
+    background-image: url("/images/landing00.png");
+    background-size: 30px 30px; // 이미지 크기 조절
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-repeat: no-repeat;
   }
 `;
 

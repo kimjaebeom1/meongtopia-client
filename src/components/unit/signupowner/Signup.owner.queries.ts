@@ -8,6 +8,13 @@ export const CREATE_OWNER = gql`
   }
 `;
 
+// img url 보내주는 api
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($files: [Upload!]!) {
+    uploadFile(files: $files)
+  }
+`;
+
 export const GET_TOKEN = gql`
   mutation getToken($phone: String!) {
     getToken(phone: $phone)

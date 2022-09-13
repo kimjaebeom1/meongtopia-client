@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
+import "animate.css";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -8,11 +9,24 @@ export const Wrapper = styled.div`
   /* background-color: lightblue; */
 `;
 
+export const DivWrap = styled.div`
+  width: auto;
+  height: auto;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
+  }
+`;
+
 export const ReCafeList = styled.div`
   display: flex;
   flex-direction: column;
   order: 1px solid black;
   margin-bottom: 50px;
+
+  animation: fadeInUp;
+  animation-duration: 2s;
 `;
 
 export const ReTitle = styled.div`

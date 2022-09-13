@@ -1,8 +1,34 @@
 import * as SignUp from "./Signup.user.styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-// import { Statistic } from "antd";
+import { useState, useEffect } from "react";
+import Checkbox from "@mui/material/Checkbox";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function SignUpPresenterPage(props: any) {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#F5CF1F",
+      },
+      secondary: {
+        main: "#C4C4C4",
+      },
+    },
+  });
+
+  const [checked, setChecked] = useState([true, true, true]);
+
+  const handleCheck = (i: any) => (event: any) => {
+    const newChecked = [...checked];
+    newChecked[i] = event.target.checked;
+    setChecked(newChecked);
+    console.log(checked);
+  };
+
+  useEffect(() => {
+    setChecked([false, false, false]);
+  }, []);
   return (
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
@@ -25,32 +51,40 @@ export default function SignUpPresenterPage(props: any) {
         <SignUp.ElWrap>
           <SignUp.IdPwWrap>
             <SignUp.Title>ID</SignUp.Title>
-            <SignUp.Input
-              placeholder="이메일을 입력해주세요"
-              onChange={props.onChangeEmail}
-            />
+            <SignUp.InputElWrap>
+              <SignUp.Input
+                placeholder="이메일을 입력해주세요"
+                onChange={props.onChangeEmail}
+              />
+            </SignUp.InputElWrap>
             <SignUp.Error>{props.emailError}</SignUp.Error>
             <SignUp.Title>Password</SignUp.Title>
-            <SignUp.Input
-              placeholder="비밀번호를 입력해주세요"
-              type="password"
-              onChange={props.onChangePassword}
-            />
+            <SignUp.InputElWrap>
+              <SignUp.Input
+                placeholder="비밀번호 8자리 이상 입력해주세요"
+                type="password"
+                onChange={props.onChangePassword}
+              />
+            </SignUp.InputElWrap>
             <SignUp.Error>{props.passwordError}</SignUp.Error>
-            <SignUp.Input
-              placeholder="비밀번호를 다시 입력해주세요"
-              type="password"
-              onChange={props.onChangePasswordChk}
-            />
+            <SignUp.InputElWrap>
+              <SignUp.Input
+                placeholder="비밀번호를 다시 입력해주세요"
+                type="password"
+                onChange={props.onChangePasswordChk}
+              />
+            </SignUp.InputElWrap>
             <SignUp.Error>{props.passwordChkError}</SignUp.Error>
           </SignUp.IdPwWrap>
 
           <SignUp.InputWrap>
             <SignUp.Title>이름 & 닉네임</SignUp.Title>
-            <SignUp.Input
-              placeholder="이름을 입력해주세요"
-              onChange={props.onChangeName}
-            />
+            <SignUp.InputElWrap>
+              <SignUp.Input
+                placeholder="이름을 입력해주세요"
+                onChange={props.onChangeName}
+              />
+            </SignUp.InputElWrap>
             <SignUp.Error>{props.nameError}</SignUp.Error>
             <SignUp.NickNameWrap>
               <SignUp.NickNameInput
@@ -104,7 +138,16 @@ export default function SignUpPresenterPage(props: any) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    checked={checked[0]}
+                    onChange={handleCheck(0)}
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>
               <SignUp.Line />
               <SignUp.AgreeChkWrap>
@@ -113,7 +156,16 @@ export default function SignUpPresenterPage(props: any) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    checked={checked[1]}
+                    onChange={handleCheck(1)}
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>{" "}
               <SignUp.Line />
               <SignUp.AgreeChkWrap>
@@ -124,7 +176,16 @@ export default function SignUpPresenterPage(props: any) {
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
                 <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <CheckCircleIcon color="disabled" />
+                <ThemeProvider theme={theme}>
+                  <Checkbox
+                    checked={checked[2]}
+                    onChange={handleCheck(2)}
+                    icon={<CheckCircleOutlineIcon color="secondary" />}
+                    checkedIcon={<CheckCircleIcon />}
+                    onClick={props.onClick}
+                    id={props.id}
+                  />
+                </ThemeProvider>
               </SignUp.AgreeChkWrap>
             </SignUp.AgreeWrap2>
           </SignUp.AgreeWrap>

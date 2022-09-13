@@ -61,7 +61,7 @@ export const Ment2 = styled.div`
 export const Title = styled.div`
   font-size: 20px;
   font-weight: 650;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 `;
 
 export const OwnerNumWrap = styled.div`
@@ -85,40 +85,33 @@ export const IdPwWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  /* background-color: blue; */
 `;
 
-export const NickNameWrap = styled.div`
+export const InputElWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   border: 1px solid rgb(118, 118, 118);
   width: 100%;
   border-radius: 2px;
+  margin-right: 10px;
 `;
-
+export const Input = styled.input`
+  width: 100%;
+  height: 2.5rem;
+  padding: 0px 10px;
+  border: none;
+  outline: none;
+  color: black;
+`;
 export const InputWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 30px;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  height: 2.5rem;
-  padding: 0px 10px;
-  outline: none;
-  margin-top: 3px;
-`;
-
-export const NickNameInput = styled.input`
-  width: 100%;
-  height: 2.5rem;
-  padding: 0px 10px;
-  border: none;
-  outline: none;
 `;
 
 export const Error = styled.div`
@@ -194,6 +187,7 @@ export const PhoneNumWrap = styled.div`
   flex-direction: row;
   /* align-items: center; */
   width: 100%;
+  margin-bottom: 13px;
 `;
 
 export const PhoneNum = styled.input`
@@ -204,9 +198,9 @@ export const PhoneNum = styled.input`
   padding: 0px 10px;
 `;
 export const NumBtn = styled.div`
-  width: 80px;
-  height: 50px;
-  line-height: 50px;
+  width: 10rem;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   border-radius: 20px;
   background-color: #f5cf1f;
@@ -218,6 +212,7 @@ export const NumberWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
   width: 100%;
   color: white;
 `;
@@ -239,6 +234,7 @@ export const SignUpBtn = styled.button`
   color: white;
   text-align: center;
   margin: 40px 0px;
+  border: none;
   cursor: pointer;
 `;
 
@@ -246,4 +242,15 @@ export const Line = styled.div`
   width: 100%;
   height: 2px;
   border-bottom: 1px solid lightgray;
+`;
+
+export const Timer = styled.div`
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0px 10px;
+  color: black;
+  font-size: 0.8rem;
+
+  /* visibility: hidden; */
 `;
