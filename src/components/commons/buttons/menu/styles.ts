@@ -5,9 +5,9 @@ interface IisActiveProps {
 }
 
 export const Menu = styled.li`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-right: 20px;
+  margin-right: 2rem;
   color: ${(props: IisActiveProps) => (props.isActive ? "#F5CF1F" : "#000")};
   cursor: pointer;
   :hover {

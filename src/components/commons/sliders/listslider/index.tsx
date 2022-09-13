@@ -7,11 +7,10 @@ import styled from "@emotion/styled";
 const Wrapper = styled.div`
   .slick-list {
     width: 100%;
-    background: #fbfbfb;
-    border-radius: 1rem;
+    height: 100%;
   }
   .slick-dots {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     & > li {
       color: white;
@@ -30,20 +29,19 @@ const SliderItem = styled.div`
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 2rem;
-    padding: 0.5rem;
+    border-radius: 8px;
   }
 `;
 
 const NextArrow = styled.div`
   display: block;
-  margin-right: 50px;
+  margin-right: 30px;
 `;
 
 const PrevArrow = styled.div`
   display: block;
   z-index: 2;
-  margin-left: 50px;
+  margin-left: 30px;
 `;
 
 export default function ListSlider() {

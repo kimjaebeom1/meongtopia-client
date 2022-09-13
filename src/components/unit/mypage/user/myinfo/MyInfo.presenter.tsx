@@ -28,7 +28,7 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
             <MyInfo.Data>{props.data?.fetchUser.name}</MyInfo.Data>
           </div>
           <MyInfo.UpdateBtn id="1" onClick={props.onClickToUpdate}>
-            수정
+            {`${props.menuId === "1" ? "취소" : "수정"}`}
           </MyInfo.UpdateBtn>
         </MyInfo.List>
         <MyInfo.List>
@@ -37,7 +37,7 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
             <MyInfo.Data>{phoneBlind(props.data?.fetchUser.phone)}</MyInfo.Data>
           </div>
           <MyInfo.UpdateBtn id="2" onClick={props.onClickToUpdate}>
-            수정
+            {`${props.menuId === "2" ? "취소" : "수정"}`}
           </MyInfo.UpdateBtn>
         </MyInfo.List>
         <MyInfo.List>
@@ -46,7 +46,7 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
             <MyInfo.Data>{props.data?.fetchUser.nickname}</MyInfo.Data>
           </div>
           <MyInfo.UpdateBtn id="3" onClick={props.onClickToUpdate}>
-            수정
+            {`${props.menuId === "3" ? "취소" : "수정"}`}
           </MyInfo.UpdateBtn>
         </MyInfo.List>
         <MyInfo.List>
@@ -54,7 +54,6 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
             <MyInfo.Label>{MENUS[4]}</MyInfo.Label>
             <MyInfo.Data>{props.data?.fetchUser.point} 원</MyInfo.Data>
           </div>
-          <MyInfo.UpdateBtn>환불</MyInfo.UpdateBtn>
         </MyInfo.List>
         <MyInfo.Footer>
           <MyInfo.UpdateBtn onClick={props.onClickToChangePwd}>
@@ -81,9 +80,14 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
                 defaultValue={DATA_INDEX_VALUE[props.menuId]}
               />
             </div>
-            <MyInfo.UpdateBtn onClick={props.onClickUpdate}>
-              수정하기
-            </MyInfo.UpdateBtn>
+            <div>
+              <MyInfo.UpdateBtn onClick={props.onClickToUpdate}>
+                취소하기
+              </MyInfo.UpdateBtn>
+              <MyInfo.UpdateBtn onClick={props.onClickUpdate}>
+                수정하기
+              </MyInfo.UpdateBtn>
+            </div>
           </MyInfo.UpdateWrapper>
         </MyInfo.Container>
       )}
@@ -108,11 +112,16 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
                 onChange={props.onChangePwdConfirm}
               />
             </div>
+          </MyInfo.UpdateWrapper>
+          <MyInfo.ErrorMessage>{props.errorMessage}</MyInfo.ErrorMessage>
+          <MyInfo.BtnContainer>
+            <MyInfo.UpdateBtn onClick={props.onClickToChangePwd}>
+              취소하기
+            </MyInfo.UpdateBtn>
             <MyInfo.UpdateBtn onClick={props.onClickChangePwd}>
               변경하기
             </MyInfo.UpdateBtn>
-          </MyInfo.UpdateWrapper>
-          <MyInfo.ErrorMessage>{props.errorMessage}</MyInfo.ErrorMessage>
+          </MyInfo.BtnContainer>
         </MyInfo.Container>
       )}
     </MyInfo.Wrapper>

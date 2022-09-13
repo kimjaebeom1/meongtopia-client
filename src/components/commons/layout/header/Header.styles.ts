@@ -3,7 +3,7 @@ import { breakPoints } from "../../../../commons/styles/media";
 
 export const Container = styled.header`
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem;
   box-shadow: 0px 10px 10px -15px black;
   display: flex;
   justify-content: center;
@@ -67,11 +67,17 @@ export const LoginContainer = styled.ul`
 `;
 
 export const Logout = styled.li`
-  font-size: 18px;
+  font-size: 0.9rem;
   margin-left: 1rem;
   color: #cacaca;
   cursor: pointer;
   :hover {
     color: #ffe812;
   }
+`;
+
+export const MypageContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
 `;

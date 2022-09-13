@@ -35,6 +35,7 @@ export const Data = styled.span`
 `;
 
 export const UpdateBtn = styled.button`
+  height: 100%;
   margin-left: 1rem;
   padding: 0 0.5rem;
   background-color: rgba(212, 216, 229, 0.25);
@@ -75,4 +76,10 @@ export const ErrorMessage = styled.div`
   font-size: 0.9rem;
   color: red;
   margin-top: 1rem;
+`;
+
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
 `;

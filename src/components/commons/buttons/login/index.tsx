@@ -7,7 +7,7 @@ interface ILoginButtonProps {
 }
 
 const Login = styled.a`
-  font-size: 18px;
+  font-size: 0.9rem;
   margin-left: 1rem;
   color: #cacaca;
   cursor: pointer;
