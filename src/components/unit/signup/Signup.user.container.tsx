@@ -202,11 +202,13 @@ export default function SignUpContainerPage() {
 
     if (!checkPassword(password)) {
       setPasswordError("비밀번호를 8자리 이상 입력해주세요");
+      return;
     }
 
     if (password !== passwordChk) {
       setPasswordError("비밀번호가 일치하지 않습니다");
       setPasswordChkError("비밀번호가 일치하지 않습니다");
+      return;
     }
 
     if (!name) {

@@ -66,9 +66,11 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Wrapper2 = styled.div``;
+
 export const SlideImg = styled.img`
   margin: auto;
-  height: 64vh;
+  height: 88vh;
   width: 100%;
   object-fit: cover;
 `;
@@ -89,4 +91,48 @@ export const NextArrow = styled.div`
   display: block;
   position: absolute;
   right: 10em;
+`;
+// ============================================================ //
+
+export const VideoWrap = styled.div`
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background-color: red;
+  height: 704px;
+  margin-bottom: 200px;
+`;
+
+export const Video = styled.video`
+  object-fit: contain;
+  width: 100%;
+  /* height: 700px; */
+`;
+
+export const VideoDivWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 24vw;
+  z-index: 999;
+  position: absolute;
+  top: 25vh;
+  left: 14%;
+
+  @media ${breakPoints.mobile} {
+    position: absolute;
+    top: 15vh;
+  }
+`;
+
+export const VideoContents1 = styled.div`
+  font-size: 1.4rem;
+  font-weight: 700;
+  z-index: 999;
+`;
+
+export const VideoImg = styled.img`
+  width: 60%;
+  height: 55%;
 `;
