@@ -67,6 +67,10 @@ export default function DogContentsWrite() {
   };
   console.log(petArr);
 
+  const onClickDelete = (index: any) => () => {
+    setPetArr(petArr.filter((el) => el !== index));
+  };
+
   return (
     <DogContentsWriteUI
       onClickAddDog={onClickAddDog}
@@ -80,6 +84,7 @@ export default function DogContentsWrite() {
       onChangeBigDog={onChangeBigDog}
       onChangeSmallDog={onChangeSmallDog}
       petArr={petArr}
+      onClickDelete={onClickDelete}
     />
   );
 }

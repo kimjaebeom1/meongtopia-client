@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { MdOutlineCancel } from "react-icons/md";
 
 export const Wrapper = styled.div``;
 
@@ -162,4 +163,8 @@ export const DogListImg = styled.img`
   border-radius: 2rem;
   transition: all 0.5s ease;
   cursor: pointer;
+`;
+
+export const DeleteBtn = styled(MdOutlineCancel)`
+  width: 200px;
 `;

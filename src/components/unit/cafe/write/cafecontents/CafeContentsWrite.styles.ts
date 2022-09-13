@@ -47,12 +47,17 @@ export const ProcedureUnderBar = styled.div`
 `;
 
 export const CafeNameInput = styled.input`
-  margin-top: 1.7em;
+  margin-top: 1rem;
   width: 100%;
   height: 3.4em;
   border-radius: 5px;
   border: 1px solid #808080;
   padding-left: 1em;
+`;
+
+export const ErrorTag = styled.div`
+  color: red;
+  font-size: 16px;
 `;
 
 export const Tag = styled.div`
@@ -66,14 +71,14 @@ export const ImageUploadWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  margin-top: 1.7em;
+  margin-top: 1rem;
 `;
 
 export const CafeNumberInput = styled.input`
   width: 100%;
   height: 3.4em;
   border-radius: 5px;
-  margin-top: 1.7em;
+  margin-top: 1rem;
   border: 1px solid #808080;
   padding-left: 1em;
 `;
@@ -95,7 +100,7 @@ export const TimeInputWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 1.7em;
+  margin-top: 1rem;
 
   & > div {
     width: 2.4em;
@@ -128,7 +133,7 @@ export const CafeFeeInput = styled.input`
   height: 3.4em;
   border-radius: 5px;
   border: 1px solid #808080;
-  margin-top: 1.7em;
+  margin-top: 1rem;
   padding-left: 1em;
 `;
 
@@ -137,11 +142,20 @@ export const FeeWrapper = styled.div`
   margin-left: 50px;
 `;
 
+export const TimeAndFeeErrorWrapper = styled.div`
+  display: flex;
+
+  & > div {
+    margin-right: 18px;
+    width: 30%;
+  }
+`;
+
 export const AddressInput = styled.input`
   width: 80%;
   height: 3.4em;
   border-radius: 5px;
-  margin-top: 1.7em;
+  margin-top: 1rem;
   padding-left: 1em;
   border: 1px solid #808080;
 `;
@@ -150,7 +164,7 @@ export const AddressBtn = styled.button`
   width: 20%;
   height: 3.4em;
   border-radius: 5px;
-  margin-top: 1.7em;
+  margin-top: 1rem;
   border: 1px solid #808080;
   margin-left: 4em;
   cursor: pointer;
@@ -162,7 +176,7 @@ export const AddressDetailInput = styled.input`
   padding-left: 1em;
   height: 3.4em;
   border-radius: 5px;
-  margin-top: 1.7em;
+  margin-top: 1rem;
   border: 1px solid #808080;
 `;
 
@@ -243,7 +257,7 @@ export const OptionWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
-  margin-top: 1.7em;
+  margin-top: 1rem;
 `;
 
 export const WithDogBtn = styled.button`
@@ -297,7 +311,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 1.7em;
+  margin-top: 3rem;
 `;
 
 export const PrevButton = styled.button`
@@ -317,7 +331,10 @@ export const NextButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: #d9d9d9;
+  background-color: ${(props) =>
+    !props.formState.isValid || !props.location || !props.storeArr.join("")
+      ? "#d9d9d9"
+      : "#f5cf1f"};
   color: white;
   font-size: 24px;
   font-weight: 400;

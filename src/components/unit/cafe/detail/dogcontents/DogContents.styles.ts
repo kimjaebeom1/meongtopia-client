@@ -124,7 +124,7 @@ export const CafeInfoWrapper = styled.div`
 export const LocationTag = styled.span`
   background-color: #f5cf1f;
   border-radius: 15px;
-  width: 85px;
+  width: 100px;
   border: 1px solid #d6bcd6;
   display: block;
   margin-top: 1em;
