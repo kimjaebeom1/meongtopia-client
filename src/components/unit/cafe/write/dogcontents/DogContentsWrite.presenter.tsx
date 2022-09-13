@@ -18,7 +18,7 @@ export default function DogContentsWriteUI(props) {
           type="number"
         ></DogContentsWrite.SmallDogCount>
       </DogContentsWrite.DogCountWrapper>
-      <DogContentsWrite.Tag>강아지 정보를 입력해주세요</DogContentsWrite.Tag>
+      <DogContentsWrite.Tag>강아지 정보를 입력해주세요 </DogContentsWrite.Tag>
       <div
         style={{
           display: "flex",
@@ -73,6 +73,9 @@ export default function DogContentsWriteUI(props) {
             <div>견종: {el.breed}</div>
             <div>성격: {el.description}</div>
           </DogContentsWrite.DogListColumn>
+          <DogContentsWrite.DeleteBtn onClick={props.onClickDelete(el)}>
+            삭제!
+          </DogContentsWrite.DeleteBtn>
         </DogContentsWrite.DogListWrapper>
       ))}
     </DogContentsWrite.Wrapper>

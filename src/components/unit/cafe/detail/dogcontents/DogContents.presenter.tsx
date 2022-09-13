@@ -2,10 +2,9 @@ import * as DogContents from "./DogContents.styles";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Row, Col, Select, Dropdown, Space, Menu } from "antd";
+import { Row, Col, Select } from "antd";
 import KakaoMap from "../../../../commons/map";
 import "antd/dist/antd.css";
-import { useState } from "react";
 import Dompurify from "dompurify";
 
 export default function DetailDogContentsUI(props) {

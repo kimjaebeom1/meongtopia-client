@@ -3,8 +3,8 @@ import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
-import { Description } from "@material-ui/icons";
 import Editor from "@toast-ui/editor";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   bigDogState,
@@ -13,6 +13,7 @@ import {
 } from "../../../../../commons/store";
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
+import { schema } from "../../../../../commons/libraries/validation";
 
 export default function CafeContentsWrite() {
   const router = useRouter();
@@ -28,14 +29,17 @@ export default function CafeContentsWrite() {
   const [petArr] = useRecoilState(petArrState);
   const [bigDog] = useRecoilState(bigDogState);
   const [smallDog] = useRecoilState(smallDogState);
+  const [description, setDescription] = useState("");
+  const [address, setAddress] = useState("");
 
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
     setValue("address", data.address);
     trigger("address");
-
     setIsOpen(false);
+    setAddress(data.address);
   };
+  console.log(address);
 
   const onClickAddressModal = () => {
     setIsOpen(true);
@@ -49,9 +53,13 @@ export default function CafeContentsWrite() {
     setIsOpen(false);
   };
 
-  const { register, handleSubmit, setValue, trigger, getValues } = useForm({
-    mode: "onChange",
-  });
+  const storeArr = [withDog, yard, largeDog, withChild];
+
+  const { register, handleSubmit, setValue, trigger, getValues, formState } =
+    useForm({
+      resolver: yupResolver(schema),
+      mode: "onChange",
+    });
 
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
@@ -62,10 +70,7 @@ export default function CafeContentsWrite() {
   const onClickPrev = () => {
     setNext(false);
   };
-
-  const onClickNext = () => {
-    setNext(true);
-  };
+  console.log(formState);
 
   const onChangeLocation = (event) => {
     setLocation(event.target.value);
@@ -75,9 +80,9 @@ export default function CafeContentsWrite() {
 
   const onChangeDescription = () => {
     const inputs = editorRef.current?.getInstance().getHTML();
-
     setValue("description", inputs);
     trigger("description");
+    setDescription(inputs);
   };
 
   const onClickCreateStore = async (data) => {
@@ -86,7 +91,7 @@ export default function CafeContentsWrite() {
         createStoreInput: {
           name: data.name,
           phone: data.phone,
-          storeImage: fileUrls.join().split(","),
+          storeImg: fileUrls.join().split(","),
           open: data.open,
           close: data.close,
           bigDog: Number(bigDog),
@@ -102,11 +107,8 @@ export default function CafeContentsWrite() {
       },
     });
     alert("게시글 생성이 완료되었습니다.");
-    console.log(result);
     router.push(`/cafe/${result.data.createStore.storeID}`);
-    console.log(fileUrls);
   };
-  console.log(fileUrls);
 
   const onClickWithDog = (event) => {
     if (withDog === "") {
@@ -140,6 +142,22 @@ export default function CafeContentsWrite() {
     }
   };
 
+  const onClickNext = () => {
+    if (
+      formState.isValid === false ||
+      !location ||
+      !storeArr.join("") ||
+      !description ||
+      description === "<p><br></p>"
+    ) {
+      alert("값을 입력해주세요");
+      return;
+    }
+    setNext(true);
+  };
+
+  console.log(fileUrls);
+
   return (
     <CafeContentsWriteUI
       fileUrls={fileUrls}
@@ -152,6 +170,7 @@ export default function CafeContentsWrite() {
       onClickCreateStore={onClickCreateStore}
       onChangeDescription={onChangeDescription}
       location={location}
+      storeArr={storeArr}
       next={next}
       isOpen={isOpen}
       onCompleteAddressSearch={onCompleteAddressSearch}
@@ -168,6 +187,9 @@ export default function CafeContentsWrite() {
       yard={yard}
       largeDog={largeDog}
       withChild={withChild}
+      formState={formState}
+      description={description}
+      storeArr={storeArr}
     />
   );
 }

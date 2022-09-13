@@ -36,8 +36,14 @@ export default function CafeContentsWriteUI(props) {
                 업체명을 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNameInput
+                required
+                placeholder="OO 애견카페"
                 {...props.register("name")}
               ></CafeContentsWrite.CafeNameInput>
+              <CafeContentsWrite.ErrorTag>
+                {props.formState.errors.name?.message}
+              </CafeContentsWrite.ErrorTag>
+
               <CafeContentsWrite.Tag>
                 업체 사진을 추가해 주세요
                 <CafeContentsWrite.ImageUploadWrapper>
@@ -53,38 +59,70 @@ export default function CafeContentsWriteUI(props) {
               <CafeContentsWrite.Tag>
                 상세 설명을 입력해주세요
               </CafeContentsWrite.Tag>
-
-              <ToastEditor
-                defaultValue=""
-                editorRef={props.editorRef}
-                onChangeDescription={props.onChangeDescription}
-              />
+              <div
+                style={{
+                  marginTop: "1rem",
+                }}
+              >
+                <ToastEditor
+                  defaultValue=""
+                  editorRef={props.editorRef}
+                  onChangeDescription={props.onChangeDescription}
+                />
+                {props.description === "<p><br></p>" || "" ? (
+                  <CafeContentsWrite.ErrorTag>
+                    상세 설명을 입력해주세요
+                  </CafeContentsWrite.ErrorTag>
+                ) : (
+                  ""
+                )}
+              </div>
               <CafeContentsWrite.Tag>
                 전화번호를 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNumberInput
+                placeholder="010-1234-5678"
                 {...props.register("phone")}
               ></CafeContentsWrite.CafeNumberInput>
+              <CafeContentsWrite.ErrorTag>
+                {props.formState.errors.phone?.message}
+              </CafeContentsWrite.ErrorTag>
               <CafeContentsWrite.TimeAndFeeWrapper>
                 <CafeContentsWrite.TimeWrapper>
                   <CafeContentsWrite.Tag>운영 시간</CafeContentsWrite.Tag>
                   <CafeContentsWrite.TimeInputWrapper>
                     <CafeContentsWrite.StartTimeInput
+                      placeholder="08:00"
                       {...props.register("open")}
                     ></CafeContentsWrite.StartTimeInput>
+
                     <div>~</div>
                     <CafeContentsWrite.CloseTimeInput
+                      placeholder="21:00"
                       {...props.register("close")}
                     ></CafeContentsWrite.CloseTimeInput>
                   </CafeContentsWrite.TimeInputWrapper>
                 </CafeContentsWrite.TimeWrapper>
+
                 <CafeContentsWrite.FeeWrapper>
                   <CafeContentsWrite.Tag>입장료</CafeContentsWrite.Tag>
                   <CafeContentsWrite.CafeFeeInput
+                    placeholder="5000"
                     {...props.register("entranceFee")}
                   ></CafeContentsWrite.CafeFeeInput>
                 </CafeContentsWrite.FeeWrapper>
               </CafeContentsWrite.TimeAndFeeWrapper>
+              <CafeContentsWrite.TimeAndFeeErrorWrapper>
+                <CafeContentsWrite.ErrorTag>
+                  {props.formState.errors.open?.message}
+                </CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag>
+                  {props.formState.errors.close?.message}
+                </CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag>
+                  {props.formState.errors.entranceFee?.message}
+                </CafeContentsWrite.ErrorTag>
+              </CafeContentsWrite.TimeAndFeeErrorWrapper>
               <CafeContentsWrite.Tag>주소를 입력해주세요</CafeContentsWrite.Tag>
               <div
                 style={{
@@ -98,7 +136,9 @@ export default function CafeContentsWriteUI(props) {
                   {...props.register("address")}
                   placeholder="주소 검색하기"
                 ></CafeContentsWrite.AddressInput>
-
+                <CafeContentsWrite.ErrorTag>
+                  {props.formState.errors.address?.message}
+                </CafeContentsWrite.ErrorTag>
                 <CafeContentsWrite.AddressBtn
                   onClick={props.onClickAddressModal}
                   type="button"
@@ -213,6 +253,10 @@ export default function CafeContentsWriteUI(props) {
             </CafeContentsWrite.PrevButton>
             {!props.next ? (
               <CafeContentsWrite.NextButton
+                storeArr={props.storeArr}
+                location={props.location}
+                fileUrls={props.fileUrls}
+                formState={props.formState}
                 type="button"
                 onClick={props.onClickNext}
               >
