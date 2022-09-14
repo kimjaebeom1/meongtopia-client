@@ -22,19 +22,11 @@ export default function DetailDogContentsUI(props) {
   return (
     <DogContents.Wrapper>
       <DogContents.StoreNameTag>
-        {/* {props.data?.fetchStore.storeImg[0].url} */}
-
         {props.data?.fetchStore.name}
+        <DogContents.Toggle onClick={props.onClickToggle} />
         <DogContents.HeadInfo>
           <img src="/images/star.svg" />
-          <div>{props.data?.fetchStore.avgRating}.0</div>
-          <div
-            style={{
-              textDecoration: "underline",
-            }}
-          >
-            {props.data?.fetchStore.address}
-          </div>
+          <div>{props.data?.fetchStore.avgRating}</div>
         </DogContents.HeadInfo>
       </DogContents.StoreNameTag>
       <DogContents.CafeImageWrapper>
@@ -180,7 +172,10 @@ export default function DetailDogContentsUI(props) {
             <Option value="6">6명</Option>
           </DogContents.SelectWrapper>
           <DogContents.NumberTag>애견동반 수</DogContents.NumberTag>
-          <DogContents.SelectWrapper defaultValue="없음">
+          <DogContents.SelectWrapper
+            onChange={props.onChangePetCount}
+            defaultValue="없음"
+          >
             <Option value="0">없음</Option>
             <Option value="1">1마리</Option>
             <Option value="2">2마리</Option>

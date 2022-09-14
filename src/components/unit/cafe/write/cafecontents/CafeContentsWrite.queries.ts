@@ -9,9 +9,3 @@ export const CREATE_STORE = gql`
     }
   }
 `;
-
-export const schema = yup.object({
-  name: yup.string().required("업체명을 입력해주세요"),
-  open: yup.string().required("오픈시간을 입력해주세요"),
-  close: yup.string().required("오픈시간을 입력해주세요"),
-});

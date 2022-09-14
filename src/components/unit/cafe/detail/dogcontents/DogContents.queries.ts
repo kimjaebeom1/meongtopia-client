@@ -49,3 +49,9 @@ export const CREATE_RESERVATION = gql`
     }
   }
 `;
+
+export const Toggle_Pick = gql`
+  mutation togglepick($storeID: String!) {
+    togglepick(storeID: $storeID)
+  }
+`;

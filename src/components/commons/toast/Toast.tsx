@@ -11,13 +11,14 @@ export default function ToastEditor(props: {
 }) {
   return (
     <Editor
+      placeholder="아메리카노 5000원"
       onChange={props.onChangeDescription}
       initialValue={props.defaultValue}
       previewStyle="tab"
       height="200px"
       initialEditType="markdown" // or wysiwyg
       language="ko-KR"
-      useCommandShortcut={true}
+      useCommandShortcut={false}
       hideModeSwitch={true}
       ref={props.editorRef}
     />

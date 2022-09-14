@@ -71,48 +71,6 @@ export const DogDesc = styled.textarea`
   resize: none;
 `;
 
-export const OptionWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  margin-top: 1.7em;
-`;
-
-export const WithDogBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  height: 32px;
-  padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.withDog ? "#F5CF1F" : "white")};
-`;
-
-export const YardBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.yard ? "#F5CF1F" : "white")};
-`;
-
-export const LargeDogBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  height: 32px;
-  padding: 0 15px;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.largeDog ? "#F5CF1F" : "white")};
-`;
-
 export const AddDogBtn = styled.button`
   margin-top: 1.5em;
   justify-content: center;
@@ -137,17 +95,17 @@ export const AddDogBtn = styled.button`
 export const DogListWrapper = styled.div`
   display: flex;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 2rem;
 `;
 
 export const DogListColumn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  width: 35%;
   & > div {
     height: 20%;
-    margin-left: 10px;
+    margin-left: 35px;
     font-size: 20px;
   }
 `;
@@ -157,14 +115,15 @@ export const DogListImg = styled.img`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  height: 200px;
+  width: 80%;
+  height: 259px;
   background: #ebebeb;
   border-radius: 2rem;
   transition: all 0.5s ease;
   cursor: pointer;
+  object-fit: cover;
 `;
 
 export const DeleteBtn = styled(MdOutlineCancel)`
-  width: 200px;
+  font-size: 35px;
 `;

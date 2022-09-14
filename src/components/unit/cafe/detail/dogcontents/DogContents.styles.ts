@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Select } from "antd";
 import { BiTime, BiPhone } from "react-icons/bi";
+import { GiDogHouse } from "react-icons/gi";
 
 export const Wrapper = styled.div`
   font-size: 25px;
@@ -15,7 +16,7 @@ export const Line = styled.div`
   border-bottom: 1px solid #e5e5e5;
 `;
 
-// 카페 이미지
+// 헤더
 
 export const StoreNameTag = styled.div``;
 
@@ -30,6 +31,11 @@ export const HeadInfo = styled.div`
     margin-left: 8px;
     align-items: center;
   }
+`;
+
+export const Toggle = styled(GiDogHouse)`
+  margin-left: 10px;
+  cursor: pointer;
 `;
 
 // 카페 이미지
@@ -86,6 +92,7 @@ export const SliderItem = styled.div`
     height: 200px;
     object-fit: cover;
     padding: 0.5rem;
+    border-radius: 20px;
   }
 `;
 

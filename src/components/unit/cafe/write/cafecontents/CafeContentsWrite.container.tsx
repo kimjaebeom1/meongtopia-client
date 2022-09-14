@@ -1,7 +1,7 @@
-import { useState, createRef, useEffect } from "react";
+import { useState, createRef, useEffect, MouseEvent } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CREATE_STORE } from "./CafeContentsWrite.queries";
 import Editor from "@toast-ui/editor";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,21 +16,24 @@ import { useRouter } from "next/router";
 import { schema } from "../../../../../commons/libraries/validation";
 
 export default function CafeContentsWrite() {
+  const [locationActive, setLocationActive] = useState("");
+  const [conditionActive, setConditionActive] = useState([""]);
   const router = useRouter();
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
   const [next, setNext] = useState(false);
   const [createStore] = useMutation(CREATE_STORE);
-  const [location, setLocation] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [largeDog, setLargeDog] = useState("");
-  const [withDog, setWithDog] = useState("");
-  const [yard, setYard] = useState("");
-  const [withChild, setWithChild] = useState("");
   const [petArr] = useRecoilState(petArrState);
   const [bigDog] = useRecoilState(bigDogState);
   const [smallDog] = useRecoilState(smallDogState);
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
+
+  const { register, handleSubmit, setValue, trigger, getValues, formState } =
+    useForm({
+      resolver: yupResolver(schema),
+      mode: "onChange",
+    });
 
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
@@ -53,27 +56,10 @@ export default function CafeContentsWrite() {
     setIsOpen(false);
   };
 
-  const storeArr = [withDog, yard, largeDog, withChild];
-
-  const { register, handleSubmit, setValue, trigger, getValues, formState } =
-    useForm({
-      resolver: yupResolver(schema),
-      mode: "onChange",
-    });
-
   const onChangeFileUrls = (fileUrl: string, index: number) => {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
-  };
-
-  const onClickPrev = () => {
-    setNext(false);
-  };
-  console.log(formState);
-
-  const onChangeLocation = (event) => {
-    setLocation(event.target.value);
   };
 
   const editorRef = createRef<Editor>();
@@ -86,69 +72,62 @@ export default function CafeContentsWrite() {
   };
 
   const onClickCreateStore = async (data) => {
-    const result = await createStore({
-      variables: {
-        createStoreInput: {
-          name: data.name,
-          phone: data.phone,
-          storeImg: fileUrls.join().split(","),
-          open: data.open,
-          close: data.close,
-          bigDog: Number(bigDog),
-          smallDog: Number(smallDog),
-          entranceFee: Number(data.entranceFee),
-          description: data.description,
-          address: data.address,
-          addressDetail: data.addressDetail,
-          locationTag: location,
-          storeTag: [withDog, yard, largeDog, withChild],
-          pet: [...petArr],
+    if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
+    if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
+
+    try {
+      const result = await createStore({
+        variables: {
+          createStoreInput: {
+            name: data.name,
+            phone: data.phone,
+            storeImg: fileUrls.join().split(","),
+            open: data.open,
+            close: data.close,
+            bigDog: Number(bigDog),
+            smallDog: Number(smallDog),
+            entranceFee: Number(data.entranceFee),
+            description: data.description,
+            address: data.address,
+            addressDetail: data.addressDetail,
+            locationTag: locationActive,
+            storeTag: conditionActive,
+            pet: [...petArr],
+          },
         },
-      },
-    });
-    alert("게시글 생성이 완료되었습니다.");
-    router.push(`/cafe/${result.data.createStore.storeID}`);
-  };
-
-  const onClickWithDog = (event) => {
-    if (withDog === "") {
-      setWithDog(event.target.value);
-    } else {
-      setWithDog("");
+      });
+      alert("게시글 생성이 완료되었습니다.");
+      router.push(`/cafe/${result.data.createStore.storeID}`);
+    } catch (error) {
+      if (error instanceof Error) alert("등록 실패");
     }
   };
 
-  const onClickYard = (event) => {
-    if (yard) {
-      setYard("");
-    } else {
-      setYard(event.target.value);
-    }
+  const onClickLocationTag = (e: MouseEvent<HTMLDivElement>) => {
+    setLocationActive((e.target as HTMLDivElement).id);
   };
 
-  const onClickLargeDog = (event) => {
-    if (largeDog) {
-      setLargeDog("");
-    } else {
-      setLargeDog(event.target.value);
-    }
+  const onClickConditionTag = (e: MouseEvent<HTMLDivElement>) => {
+    if (conditionActive.includes((e.target as HTMLDivElement).id)) {
+      setConditionActive(
+        conditionActive.filter((el) => el !== (e.target as HTMLDivElement).id)
+      );
+    } else
+      setConditionActive((prev) => [...prev, (e.target as HTMLDivElement).id]);
   };
 
-  const onClickWithChild = (event) => {
-    if (withChild) {
-      setWithChild("");
-    } else {
-      setWithChild(event.target.value);
-    }
+  const onClickPrev = () => {
+    setNext(false);
   };
 
   const onClickNext = () => {
     if (
       formState.isValid === false ||
-      !location ||
-      !storeArr.join("") ||
       !description ||
-      description === "<p><br></p>"
+      description === "<p><br></p>" ||
+      !fileUrls.join("") ||
+      !locationActive ||
+      !conditionActive.join()
     ) {
       alert("값을 입력해주세요");
       return;
@@ -156,21 +135,16 @@ export default function CafeContentsWrite() {
     setNext(true);
   };
 
-  console.log(fileUrls);
-
   return (
     <CafeContentsWriteUI
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
-      onChangeLocation={onChangeLocation}
       register={register}
       handleSubmit={handleSubmit}
       onClickNext={onClickNext}
       onClickPrev={onClickPrev}
       onClickCreateStore={onClickCreateStore}
       onChangeDescription={onChangeDescription}
-      location={location}
-      storeArr={storeArr}
       next={next}
       isOpen={isOpen}
       onCompleteAddressSearch={onCompleteAddressSearch}
@@ -179,17 +153,15 @@ export default function CafeContentsWrite() {
       closeModal={closeModal}
       address={getValues("address")}
       editorRef={editorRef}
-      onClickWithDog={onClickWithDog}
-      onClickYard={onClickYard}
-      onClickLargeDog={onClickLargeDog}
-      onClickWithChild={onClickWithChild}
-      withDog={withDog}
-      yard={yard}
-      largeDog={largeDog}
-      withChild={withChild}
       formState={formState}
       description={description}
-      storeArr={storeArr}
+      locationActive={locationActive}
+      conditionActive={conditionActive}
+      onClickLocationTag={onClickLocationTag}
+      onClickConditionTag={onClickConditionTag}
+      petArr={petArr}
+      bigDog={bigDog}
+      smallDog={smallDog}
     />
   );
 }
