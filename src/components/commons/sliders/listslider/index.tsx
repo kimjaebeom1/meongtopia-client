@@ -3,6 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "@emotion/styled";
+import { IStore } from "../../../../commons/types/generated/types";
+
+interface IListSliderProps {
+  url: any;
+}
 
 const Wrapper = styled.div`
   .slick-list {
@@ -26,16 +31,16 @@ const Wrapper = styled.div`
 
 const SliderItem = styled.div`
   & > img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 400px;
+    height: 264px;
+    object-fit: cover;
     border-radius: 8px;
   }
 `;
 
 const NextArrow = styled.div`
   display: block;
-  margin-right: 30px;
+  margin-right: 40px;
 `;
 
 const PrevArrow = styled.div`
@@ -44,7 +49,7 @@ const PrevArrow = styled.div`
   margin-left: 30px;
 `;
 
-export default function ListSlider() {
+export default function ListSlider(props: IListSliderProps) {
   const settings = {
     dots: true,
     infinite: true,
@@ -57,21 +62,15 @@ export default function ListSlider() {
   return (
     <Wrapper>
       <Slider {...settings}>
-        <SliderItem>
-          <img src="/images/dog1.jpg" />
-        </SliderItem>
-        <SliderItem>
-          <img src="/images/dog2.jpg" />
-        </SliderItem>
-        <SliderItem>
-          <img src="/images/dog3.jpg" />
-        </SliderItem>
-        <SliderItem>
-          <img src="/images/dog4.jpg" />
-        </SliderItem>
-        <SliderItem>
-          <img src="/images/dog5.jpg" />
-        </SliderItem>
+        {props.url.pet.map((el: any) => (
+          <SliderItem key={el}>
+            {el.petImgUrl ? (
+              <img src={`https://storage.googleapis.com/${el.petImgUrl}`} />
+            ) : (
+              <img src="/images/dogcharacter.jpg" />
+            )}
+          </SliderItem>
+        ))}
       </Slider>
     </Wrapper>
   );
