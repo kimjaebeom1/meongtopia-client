@@ -58,7 +58,8 @@ export default function MyPageUserMyInfo() {
     } else {
       setMenuId((e.target as HTMLButtonElement).id);
       const input = document.getElementById("input") as HTMLInputElement;
-      input.value = DATA_INDEX_VALUE[(e.target as HTMLButtonElement).id];
+      input.value =
+        DATA_INDEX_VALUE[Number((e.target as HTMLButtonElement).id)] || "";
     }
   };
 
@@ -75,7 +76,7 @@ export default function MyPageUserMyInfo() {
     try {
       const result = await updateUser({
         variables: {
-          email: data?.fetchUser.email,
+          email: String(data?.fetchUser.email),
           updateUserInput,
         },
         refetchQueries: [
@@ -97,7 +98,7 @@ export default function MyPageUserMyInfo() {
       try {
         const result = await deleteUser({
           variables: {
-            email: data?.fetchUser.email,
+            email: String(data?.fetchUser.email),
           },
         });
         await router.push("/");
@@ -139,7 +140,7 @@ export default function MyPageUserMyInfo() {
     try {
       const result = await updateUserPwd({
         variables: {
-          email: data?.fetchUser.email,
+          email: String(data?.fetchUser.email),
           updateUserPwdInput: pwd,
         },
       });

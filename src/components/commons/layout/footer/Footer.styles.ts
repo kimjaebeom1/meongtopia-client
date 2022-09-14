@@ -14,7 +14,6 @@ export const Container = styled.footer`
 export const Wrapper = styled.div`
   width: 100%;
   max-width: 1200px;
-  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   @media ${breakPoints.mobile} {
