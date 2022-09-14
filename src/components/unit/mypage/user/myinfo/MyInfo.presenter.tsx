@@ -34,7 +34,9 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
         <MyInfo.List>
           <div>
             <MyInfo.Label>{MENUS[2]}</MyInfo.Label>
-            <MyInfo.Data>{phoneBlind(props.data?.fetchUser.phone)}</MyInfo.Data>
+            <MyInfo.Data>
+              {phoneBlind(props.data?.fetchUser.phone || "")}
+            </MyInfo.Data>
           </div>
           <MyInfo.UpdateBtn id="2" onClick={props.onClickToUpdate}>
             {`${props.menuId === "2" ? "취소" : "수정"}`}
@@ -68,16 +70,18 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
       {/* 수정 컴포넌트 */}
       {props.menuId && (
         <MyInfo.Container>
-          <MyInfo.UpdateTitle>{MENUS[props.menuId]} 수정</MyInfo.UpdateTitle>
+          <MyInfo.UpdateTitle>
+            {MENUS[Number(props.menuId)]} 수정
+          </MyInfo.UpdateTitle>
           <MyInfo.UpdateWrapper>
             <div>
-              <MyInfo.Label>{MENUS[props.menuId]}</MyInfo.Label>
+              <MyInfo.Label>{MENUS[Number(props.menuId)]}</MyInfo.Label>
               <MyInfo.Input
                 id="input"
                 type="text"
                 autoFocus={true}
                 onChange={props.onChangeUpdate}
-                defaultValue={DATA_INDEX_VALUE[props.menuId]}
+                defaultValue={DATA_INDEX_VALUE[Number(props.menuId)]}
               />
             </div>
             <div>

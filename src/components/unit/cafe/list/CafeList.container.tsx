@@ -9,7 +9,7 @@ import { FETCH_STORES } from "./CafeList.queries";
 
 export default function CafeList() {
   const [locationActive, setLocationActive] = useState("전체");
-  const [conditionActive, setConditionActive] = useState([]);
+  const [conditionActive, setConditionActive] = useState([""]);
 
   const { data } = useQuery<Pick<IQuery, "fetchStores">, IQueryFetchStoresArgs>(
     FETCH_STORES
@@ -28,6 +28,10 @@ export default function CafeList() {
     } else
       setConditionActive((prev) => [...prev, (e.target as HTMLDivElement).id]);
   };
+
+  const onClickConditionTagInit = () => {
+    setConditionActive([""]);
+  };
   return (
     <CafeListUI
       data={data}
@@ -35,6 +39,7 @@ export default function CafeList() {
       conditionActive={conditionActive}
       onClickLocationTag={onClickLocationTag}
       onClickConditionTag={onClickConditionTag}
+      onClickConditionTagInit={onClickConditionTagInit}
     />
   );
 }

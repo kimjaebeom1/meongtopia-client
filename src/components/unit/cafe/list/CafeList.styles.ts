@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 import { IIsActiveProps } from "./CafeList.types";
 
+//
 // 검색 컴포넌트
+//
 export const SearchContainer = styled.nav`
   width: 100%;
   display: flex;
@@ -18,7 +20,8 @@ export const SearchWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  margin: 0;
 `;
 
 export const SearchList = styled.div`
@@ -72,7 +75,9 @@ export const SearchBar = styled.input`
   border-radius: 30px;
 `;
 
-// 카페 리스트
+//
+// 리스트 컴포넌트
+//
 export const ListContainer = styled.section`
   width: 100%;
   padding: 5rem 0;
@@ -113,9 +118,9 @@ export const SliderWrapper = styled.div`
   } */
 `;
 
-export const CafeList = styled.div`
-  flex-direction: column;
-  padding: 1rem 0 1rem 2rem;
+export const CafeList = styled.ul`
+  width: 100%;
+  padding: 1rem 3rem;
 
   /* @media ${breakPoints.mobile} {
     display: flex;
@@ -126,21 +131,32 @@ export const CafeList = styled.div`
   } */
 `;
 
-export const NameTag = styled.div`
+export const ContentsText = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 30px;
   font-weight: 700;
+  margin: 0.5rem 0;
+  & span {
+    font-size: 1rem;
+  }
 `;
 
-export const AddressTag = styled.div`
-  margin-top: 1em;
+export const RatingWrapper = styled.span`
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const SelectTag = styled.div`
-  margin-top: 1em;
+  font-size: 1rem;
   font-weight: 700;
-  color: brown;
+  color: #f5cf1f;
+  margin-bottom: 0.5rem;
 `;
 
-export const RatingTag = styled.div`
-  margin-top: 1em;
+export const Horizon = styled.div`
+  border-bottom: 1px solid #cacaca;
+  margin: 1rem 0;
 `;

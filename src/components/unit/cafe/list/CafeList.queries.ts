@@ -18,10 +18,12 @@ export const FETCH_STORES = gql`
         locationTagID
         name
       }
-      storeImg
       storeTag {
         tagID
         name
+      }
+      storeImg {
+        url
       }
     }
   }
