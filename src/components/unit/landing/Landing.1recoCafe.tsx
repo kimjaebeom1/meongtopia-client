@@ -15,18 +15,41 @@ export default function LandingRecoCafe() {
           <Landing.Meong src="/images/meong.png" />
           카페
         </Landing.ReTitle>
+
         <Landing.ReCafeWrap>
           <Landing.Ad src="/images/landingad.png" />
           <Landing.Line2 />
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
-          <Landing.TopWrap>
-            <Landing.TopImg src="/images/landingcafe2.jpeg" />
-          </Landing.TopWrap>
+
+          <Landing.Filp>
+            <Landing.TopWrap>
+              <Landing.TopImgFE>
+                {/* <Landing.TopContentWrap>
+                  <Landing.Title>멍멍이 세상</Landing.Title>
+                  <Landing.Title>멍멍이 세상</Landing.Title>
+                </Landing.TopContentWrap> */}
+              </Landing.TopImgFE>
+              <Landing.TopImgBE>
+                {/* <Landing.TopContentWrap>
+                  <Landing.Title>멍멍이 세상</Landing.Title>
+                  <Landing.Title>멍멍이 세상</Landing.Title>
+                </Landing.TopContentWrap> */}
+              </Landing.TopImgBE>
+            </Landing.TopWrap>
+          </Landing.Filp>
+
+          <Landing.Filp>
+            <Landing.TopWrap>
+              <Landing.TopImgFE />
+              <Landing.TopImgBE />
+            </Landing.TopWrap>
+          </Landing.Filp>
+
+          <Landing.Filp>
+            <Landing.TopWrap>
+              <Landing.TopImgFE />
+              <Landing.TopImgBE />
+            </Landing.TopWrap>
+          </Landing.Filp>
         </Landing.ReCafeWrap>
         {/* <Landing.FootPrint src="/images/landingFoot.png" /> */}
         {/* <Landing.DogsImg src="/images/landingDogs.png" /> */}
