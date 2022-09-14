@@ -15,6 +15,7 @@ export const DivWrap = styled.div`
   .isActive {
     animation: fadeInUp;
     animation-duration: 2s;
+    border: 1px solid black;
   }
 `;
 
@@ -29,19 +30,23 @@ export const DivWrap2 = styled.div`
 
 export const ReCafeList = styled.div`
   height: 80vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
   margin-bottom: 50px;
-  width: 100%;
+
   animation: fadeInUp;
   animation-duration: 2s;
 `;
 
 export const FootPrint = styled.img`
-  z-index: -1;
+  z-index: -2;
   width: 100%;
   height: 300px;
-  position: absolute;
+  position: relative;
+  top: -300px;
 `;
 
 // export const DogsImg = styled.img`
@@ -69,11 +74,12 @@ export const Meong = styled.img`
 `;
 
 export const ReCafeWrap = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-
+  margin-top: 10px;
   padding: 0px 120px;
 
   /* @media ${breakPoints.mobile} {
@@ -86,28 +92,80 @@ export const Ad = styled.img`
   width: 300px;
   height: 300px;
 `;
-export const TopWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px 10px;
-`;
 
-export const TopImg = styled.img`
-  width: 190px;
-  height: 230px;
-  transition: 1s;
+export const Filp = styled.div`
+  width: 100%;
+  height: 300px;
+  margin: 0px 10px;
+
+  /* perspective: 1000px; */
+  position: relative;
+
+  /* @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+  } */
+`;
+export const TopWrap = styled.div`
+  /* flex-direction: column; */
+  width: 100%;
+  height: 100%;
+  transition: 0.09s;
+  transform-style: preserve-3d;
 
   :hover {
     transform: rotateY(180deg);
   }
 `;
 
+export const TopImgType = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+`;
+
+export const TopImgFE = styled(TopImgType)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/landingcafe2.jpeg");
+  background-size: cover;
+  color: black;
+`;
+
+export const TopImgBE = styled(TopImgType)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/landingTopImg.jpg");
+  background-size: cover;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TopContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TopImgTitle = styled.div`
+  width: 100%;
+  height: 20px;
+  border: 3px solid red;
+  font-size: 2rem;
+  font-weight: 600;
+  word-break: break-all;
+`;
+
 export const Line2 = styled.div`
   width: 1px;
   height: 230px;
   margin: 0px 40px;
-  border: 0.5px solid #d9d9d9;
 `;
+
 export const CafeDetail = styled.div`
   /* display: flex;
   flex-direction: row;
@@ -268,6 +326,7 @@ export const Logo = styled.img`
 export const BallWrap = styled.div`
   z-index: 1;
   display: flex;
+  justify-content: start;
   flex-direction: row;
-  border: 1px solid black;
+  width: 100%;
 `;
