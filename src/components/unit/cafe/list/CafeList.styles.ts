@@ -11,6 +11,7 @@ export const SearchContainer = styled.nav`
   justify-content: center;
   box-shadow: 0px 10px 10px -15px black;
   padding: 3rem 0 2rem 0;
+  font-size: 1rem;
 `;
 
 export const SearchWrapper = styled.div`
@@ -48,14 +49,13 @@ export const Tag = styled.div`
   width: 8em;
   height: 2em;
   background-color: ${(props: IIsActiveProps) =>
-    props.isActive ? "#f5cf1f" : "#fff"};
+    props.isActive ? "orange" : "#fff"};
   border-radius: 30px;
   border: 1px solid
     ${(props: IIsActiveProps) =>
-      props.isActive ? "#f5cf1f" : "rgb(223, 227, 234)"};
+      props.isActive ? "orange" : "rgb(223, 227, 234)"};
   /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
-  font-weight: 600;
-  color: ${(props: IIsActiveProps) => (props.isActive ? "#fff" : "#cacaca")};
+  color: ${(props: IIsActiveProps) => (props.isActive ? "#fff" : "#999")};
   cursor: pointer;
 
   /* @media ${breakPoints.mobile} {
@@ -78,7 +78,7 @@ export const SearchBar = styled.input`
 //
 // 리스트 컴포넌트
 //
-export const ListContainer = styled.section`
+export const ListContainer = styled.div`
   width: 100%;
   padding: 5rem 0;
   display: flex;
@@ -93,12 +93,12 @@ export const ListWrapper = styled.section`
 
 export const CafeListWrapper = styled.div`
   width: 100%;
-  height: 16rem;
+  height: 17rem;
   margin-bottom: 2rem;
   display: flex;
   border: 1px solid rgb(235, 235, 235);
   border-radius: 8px;
-  /* box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px; */
+  box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
 
   /* @media ${breakPoints.mobile} {
     display: flex;
@@ -110,7 +110,7 @@ export const CafeListWrapper = styled.div`
 `;
 
 export const SliderWrapper = styled.div`
-  width: 25rem;
+  width: 26rem;
   height: 100%;
   padding: 0.2rem;
   /* @media ${breakPoints.mobile} {
@@ -119,8 +119,13 @@ export const SliderWrapper = styled.div`
 `;
 
 export const CafeList = styled.ul`
-  width: 100%;
+  width: 50rem;
   padding: 1rem 3rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
 
   /* @media ${breakPoints.mobile} {
     display: flex;
@@ -133,30 +138,40 @@ export const CafeList = styled.ul`
 
 export const ContentsText = styled.li`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  font-size: 30px;
+  line-height: normal;
   font-weight: 700;
   margin: 0.5rem 0;
   & span {
     font-size: 1rem;
+    line-height: normal;
+
+    & p {
+      margin: 0;
+      margin-top: 0.5rem;
+    }
   }
 `;
 
 export const RatingWrapper = styled.span`
   font-size: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const SelectTag = styled.div`
   font-size: 1rem;
   font-weight: 700;
-  color: #f5cf1f;
-  margin-bottom: 0.5rem;
+  color: orange;
 `;
 
 export const Horizon = styled.div`
   border-bottom: 1px solid #cacaca;
   margin: 1rem 0;
+`;
+
+export const DogWrapper = styled.span`
+  display: flex;
+  align-items: flex-end;
 `;

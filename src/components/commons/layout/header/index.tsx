@@ -40,7 +40,7 @@ export default function LayoutHeader() {
           )}
           <Header.LoginContainer>
             {data ? (
-              userInfo.role === "CLIENT" ? (
+              userInfo?.role === "CLIENT" ? (
                 <div>
                   <Header.MypageContainer>
                     <LoginButton
@@ -52,7 +52,11 @@ export default function LayoutHeader() {
                     </Header.Logout>
                   </Header.MypageContainer>
                   <span
-                    style={{ display: "flex", justifyContent: "flex-end" }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      lineHeight: "normal",
+                    }}
                   >{`${userInfo.nickname}님 안녕하세요!`}</span>
                 </div>
               ) : (
@@ -64,8 +68,12 @@ export default function LayoutHeader() {
                     </Header.Logout>
                   </Header.MypageContainer>
                   <span
-                    style={{ display: "flex", justifyContent: "flex-end" }}
-                  >{`${userInfo.nickname}사장님 안녕하세요!`}</span>
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      lineHeight: "normal",
+                    }}
+                  >{`${userInfo?.nickname}사장님 안녕하세요!`}</span>
                 </div>
               )
             ) : (

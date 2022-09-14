@@ -8,8 +8,9 @@ interface ILoginButtonProps {
 
 const Login = styled.a`
   font-size: 0.9rem;
+  line-height: normal;
   margin-left: 1rem;
-  color: #cacaca;
+  color: #999;
   cursor: pointer;
   :hover {
     color: #ffe812;

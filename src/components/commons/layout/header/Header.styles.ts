@@ -68,8 +68,9 @@ export const LoginContainer = styled.ul`
 
 export const Logout = styled.li`
   font-size: 0.9rem;
+  line-height: normal;
   margin-left: 1rem;
-  color: #cacaca;
+  color: #999;
   cursor: pointer;
   :hover {
     color: #ffe812;

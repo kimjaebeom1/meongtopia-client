@@ -22,8 +22,8 @@ export const FETCH_STORES = gql`
         tagID
         name
       }
-      storeImg {
-        url
+      pet {
+        petImgUrl
       }
     }
   }
