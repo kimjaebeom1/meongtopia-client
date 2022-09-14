@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { Modal, Radio } from "antd";
+import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -22,23 +23,39 @@ export const Procedure01 = styled.div`
   flex-direction: row;
   width: 50%;
   justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const Procedure02 = styled.div`
   width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const ProcedureUnderBar01 = styled.div`
   border-bottom: 4px solid #c4c4c4;
   width: 50%;
-  border-color: ${(props) => (!props.next ? "#F5CF1F" : "none")}; ;
+  border-color: ${(props) => (!props.next ? "#F5CF1F" : "none")};
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const ProcedureUnderBar02 = styled.div`
   width: 50%;
   border-bottom: 4px solid #c4c4c4;
-  border-color: ${(props) => (props.next ? "#F5CF1F" : "none")}; ;
+  border-color: ${(props) => (props.next ? "#F5CF1F" : "none")};
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const ProcedureUnderBar = styled.div`
@@ -72,6 +89,12 @@ export const ImageUploadWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 1rem;
+
+  @media ${breakPoints.mobile} {
+    height: 80px;
+    justify-content: space-evenly;
+    text-align: center;
+  }
 `;
 
 export const CafeNumberInput = styled.input`
@@ -81,12 +104,20 @@ export const CafeNumberInput = styled.input`
   margin-top: 1rem;
   border: 1px solid #808080;
   padding-left: 1em;
+
+  @media ${breakPoints.mobile} {
+    width: 80%;
+  }
 `;
 
 export const TimeAndFeeWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export const TimeWrapper = styled.div`
@@ -94,6 +125,11 @@ export const TimeWrapper = styled.div`
   flex-direction: column;
   width: 60%;
   margin-right: 30px;
+
+  @media ${breakPoints.mobile} {
+    width: 80%;
+    margin-right: 0px;
+  }
 `;
 
 export const TimeInputWrapper = styled.div`
@@ -118,6 +154,11 @@ export const StartTimeInput = styled.input`
   border-radius: 5px;
   border: 1px solid #808080;
   padding-left: 1em;
+
+  @media ${breakPoints.mobile} {
+    text-align: center;
+    padding-left: 0;
+  }
 `;
 
 export const CloseTimeInput = styled.input`
@@ -126,6 +167,11 @@ export const CloseTimeInput = styled.input`
   border-radius: 5px;
   border: 1px solid #808080;
   padding-left: 1em;
+
+  @media ${breakPoints.mobile} {
+    text-align: center;
+    padding-left: 0;
+  }
 `;
 
 export const CafeFeeInput = styled.input`
@@ -137,9 +183,19 @@ export const CafeFeeInput = styled.input`
   padding-left: 1em;
 `;
 
+export const ToastWrapper = styled.div`
+  margin-top: 1rem;
+  text-align: start;
+`;
+
 export const FeeWrapper = styled.div`
   width: 40%;
   margin-left: 50px;
+
+  @media ${breakPoints.mobile} {
+    width: 80%;
+    margin-left: 0px;
+  }
 `;
 
 export const TimeAndFeeErrorWrapper = styled.div`
@@ -189,68 +245,17 @@ export const AddressModal = styled(Modal)`
   transform: translate(-50%, -50%);
 `;
 
-export const LocationTagWrapper = styled(Radio.Group)`
+export const MapWrapper = styled.div`
   width: 100%;
-
-  label {
-    margin-right: 20px;
-    width: 10%;
-
-    :hover {
-      color: black;
-    }
-    &.ant-radio-button-wrapper {
-      text-align: center;
-
-      &.ant-radio-button-wrapper-checked {
-        background-color: #f5cf1f;
-        border-color: #f5cf1f;
-        background: #f5cf1f;
-        transition: none;
-
-        :first-child {
-          border-right: #f5cf1f;
-        }
-        :hover {
-          background: #f5cf1f;
-          border-color: #f5cf1f;
-        }
-        ::before {
-          background: #f5cf1f;
-        }
-      }
-    }
-    span {
-      &.ant-radio-button-checked {
-        background-color: #f5cf1f;
-      }
-      ::selection {
-        background: #f5cf1f;
-      }
-    }
-  }
+  height: 300px;
+  margin-top: 1.7em;
 `;
 
-export const LocationButton1 = styled(Radio.Button)`
-  background-color: ${(props) =>
-    props.location === "홍대" ? "#F5CF1F" : "none"}; ;
-`;
-
-export const LocationButton2 = styled(Radio.Button)`
-  background-color: ${(props) =>
-    props.location === "강남" ? "#F5CF1F" : "none"}; ;
-`;
-export const LocationButton3 = styled(Radio.Button)`
-  background-color: ${(props) =>
-    props.location === "대학로" ? "#F5CF1F" : "none"}; ;
-`;
-export const LocationButton4 = styled(Radio.Button)`
-  background-color: ${(props) =>
-    props.location === "건대" ? "#F5CF1F" : "none"}; ;
-`;
-export const LocationButton5 = styled(Radio.Button)`
-  background-color: ${(props) =>
-    props.location === "잠실" ? "#F5CF1F" : "none"}; ;
+export const LocationWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 1rem;
 `;
 
 export const OptionWrapper = styled.div`
@@ -259,54 +264,6 @@ export const OptionWrapper = styled.div`
   flex-direction: row;
   margin-top: 1rem;
 `;
-
-export const WithDogBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  height: 32px;
-  padding: 0 15px;
-  color: ${(props) => (props.withDog ? "white" : "none")};
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.withDog ? "#F5CF1F" : "white")};
-`;
-
-export const YardBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  padding: 0 15px;
-  color: ${(props) => (props.yard ? "white" : "none")};
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.yard ? "#F5CF1F" : "white")};
-`;
-
-export const LargeDogBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  height: 32px;
-  color: ${(props) => (props.largeDog ? "white" : "none")};
-  padding: 0 15px;
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  background-color: ${(props) => (props.largeDog ? "#F5CF1F" : "white")};
-`;
-
-export const WithChildBtn = styled.button`
-  margin-right: 20px;
-  display: inline-block;
-  height: 32px;
-  padding: 0 15px;
-  font-size: 14px;
-  border: 1px solid #d9d9d9;
-  cursor: pointer;
-  color: ${(props) => (props.withChild ? "white" : "none")};
-  background-color: ${(props) => (props.withChild ? "#F5CF1F" : "white")};
-`;
-
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -332,7 +289,12 @@ export const NextButton = styled.button`
   border-radius: 10px;
   border: none;
   background-color: ${(props) =>
-    !props.formState.isValid || !props.location || !props.storeArr.join("")
+    !props.formState.isValid ||
+    !props.fileUrls.join("") ||
+    !props.description ||
+    props.description === "<p><br></p>" ||
+    !props.locationActive ||
+    !props.conditionActive.join()
       ? "#d9d9d9"
       : "#f5cf1f"};
   color: white;
@@ -347,10 +309,30 @@ export const SubmitButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: #d9d9d9;
+  background-color: ${(props) =>
+    !props.petArr.join() || !props.bigDog || !props.smallDog
+      ? "#d9d9d9"
+      : "#f5cf1f"};
   color: white;
   font-size: 24px;
   font-weight: 400;
   margin-left: 10px;
+  cursor: pointer;
+`;
+
+export const StoreTag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+  width: 8em;
+  height: 2em;
+  background-color: ${(props) => (props.isActive ? "#f5cf1f" : "#fff")};
+  border-radius: 30px;
+  border: 1px solid
+    ${(props) => (props.isActive ? "#f5cf1f" : "rgb(223, 227, 234)")};
+  /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
+  font-weight: 600;
+  color: ${(props) => (props.isActive ? "#fff" : "#cacaca")};
   cursor: pointer;
 `;

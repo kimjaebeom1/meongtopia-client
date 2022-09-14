@@ -5,12 +5,21 @@ import "antd/dist/antd.css";
 import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
+import { ICafeContentsWriteUIProps } from "./CafeContentsWrite.types";
 
 const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
   ssr: false,
 });
 
-export default function CafeContentsWriteUI(props) {
+const LOCATION_TAGS = ["홍대", "강남", "대학로", "건대", "잠실"];
+const CONDITION_TAGS = [
+  "애견동반 가능",
+  "야외마당 있음",
+  "대형견 있음",
+  "아이동반 가능",
+];
+
+export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
   return (
     <>
       <CafeContentsWrite.Wrapper>
@@ -59,11 +68,7 @@ export default function CafeContentsWriteUI(props) {
               <CafeContentsWrite.Tag>
                 상세 설명을 입력해주세요
               </CafeContentsWrite.Tag>
-              <div
-                style={{
-                  marginTop: "1rem",
-                }}
-              >
+              <CafeContentsWrite.ToastWrapper>
                 <ToastEditor
                   defaultValue=""
                   editorRef={props.editorRef}
@@ -76,7 +81,7 @@ export default function CafeContentsWriteUI(props) {
                 ) : (
                   ""
                 )}
-              </div>
+              </CafeContentsWrite.ToastWrapper>
               <CafeContentsWrite.Tag>
                 전화번호를 입력해주세요
               </CafeContentsWrite.Tag>
@@ -154,93 +159,41 @@ export default function CafeContentsWriteUI(props) {
               <CafeContentsWrite.Tag>
                 우리 업체 위치를 확인해주세요
               </CafeContentsWrite.Tag>
-              <div
-                style={{
-                  marginTop: "1.7em",
-                  width: "100%",
-                  height: "300px",
-                }}
-              >
+              <CafeContentsWrite.MapWrapper>
                 <KakaoMap address={props.address} />
-              </div>
+              </CafeContentsWrite.MapWrapper>
               <CafeContentsWrite.Tag>위치 검색 키워드</CafeContentsWrite.Tag>
               <div
                 style={{
                   marginTop: "1.7em",
                 }}
               >
-                <CafeContentsWrite.LocationTagWrapper
-                  onChange={props.onChangeLocation}
-                  defaultValue="a"
-                  buttonStyle="solid"
-                >
-                  <CafeContentsWrite.LocationButton1
-                    location={props.location}
-                    value="홍대"
-                  >
-                    홍대
-                  </CafeContentsWrite.LocationButton1>
-                  <CafeContentsWrite.LocationButton2
-                    location={props.location}
-                    value="강남"
-                  >
-                    강남
-                  </CafeContentsWrite.LocationButton2>
-                  <CafeContentsWrite.LocationButton3
-                    location={props.location}
-                    value="대학로"
-                  >
-                    대학로
-                  </CafeContentsWrite.LocationButton3>
-                  <CafeContentsWrite.LocationButton4
-                    location={props.location}
-                    value="건대"
-                  >
-                    건대
-                  </CafeContentsWrite.LocationButton4>
-                  <CafeContentsWrite.LocationButton5
-                    location={props.location}
-                    value="잠실"
-                  >
-                    잠실
-                  </CafeContentsWrite.LocationButton5>
-                </CafeContentsWrite.LocationTagWrapper>
+                <CafeContentsWrite.LocationWrapper>
+                  {LOCATION_TAGS.map((el) => (
+                    <CafeContentsWrite.StoreTag
+                      id={el}
+                      key={el}
+                      isActive={props.locationActive === el}
+                      onClick={props.onClickLocationTag}
+                    >
+                      {el}
+                    </CafeContentsWrite.StoreTag>
+                  ))}
+                </CafeContentsWrite.LocationWrapper>
               </div>
 
               <CafeContentsWrite.Tag>옵션 검색 키워드</CafeContentsWrite.Tag>
               <CafeContentsWrite.OptionWrapper>
-                <CafeContentsWrite.WithDogBtn
-                  type="button"
-                  withDog={props.withDog}
-                  value="애견동반 가능"
-                  onClick={props.onClickWithDog}
-                >
-                  애견동반 가능
-                </CafeContentsWrite.WithDogBtn>
-                <CafeContentsWrite.YardBtn
-                  yard={props.yard}
-                  type="button"
-                  value="야외마당 있음"
-                  onClick={props.onClickYard}
-                >
-                  야외마당 있음
-                </CafeContentsWrite.YardBtn>
-                <CafeContentsWrite.LargeDogBtn
-                  type="button"
-                  largeDog={props.largeDog}
-                  value="대형견 있음"
-                  onClick={props.onClickLargeDog}
-                >
-                  대형견 있음
-                </CafeContentsWrite.LargeDogBtn>
-                <CafeContentsWrite.WithChildBtn
-                  type="button"
-                  withChild={props.withChild}
-                  value="아이동반 가능"
-                  onClick={props.onClickWithChild}
-                >
-                  아이동반 가능
-                </CafeContentsWrite.WithChildBtn>
+                {CONDITION_TAGS.map((el) => (
+                  <CafeContentsWrite.StoreTag
+                    id={el}
+                    key={el}
+                    isActive={props.conditionActive.includes(el)}
+                    onClick={props.onClickConditionTag}
+                  >
+                    {el}
+                  </CafeContentsWrite.StoreTag>
+                ))}
               </CafeContentsWrite.OptionWrapper>
             </>
           )}
@@ -253,17 +206,22 @@ export default function CafeContentsWriteUI(props) {
             </CafeContentsWrite.PrevButton>
             {!props.next ? (
               <CafeContentsWrite.NextButton
-                storeArr={props.storeArr}
-                location={props.location}
                 fileUrls={props.fileUrls}
                 formState={props.formState}
+                locationActive={props.locationActive}
+                conditionActive={props.conditionActive}
+                description={props.description}
                 type="button"
                 onClick={props.onClickNext}
               >
                 다음
               </CafeContentsWrite.NextButton>
             ) : (
-              <CafeContentsWrite.SubmitButton>
+              <CafeContentsWrite.SubmitButton
+                petArr={props.petArr}
+                bigDog={props.bigDog}
+                smallDog={props.smallDog}
+              >
                 등록 완료
               </CafeContentsWrite.SubmitButton>
             )}

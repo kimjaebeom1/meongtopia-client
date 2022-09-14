@@ -31,18 +31,22 @@ export default function DogContentsWriteUI(props) {
         />
         <DogContentsWrite.DogProfileWrapper>
           <DogContentsWrite.DogName
+            id="name"
             onChange={props.onChangeDogName}
             placeholder="강아지 이름을 적어주세요"
           ></DogContentsWrite.DogName>
           <DogContentsWrite.DogAge
+            id="age"
             onChange={props.onChangeDogAge}
             placeholder="강아지 나이를 적어주세요"
           ></DogContentsWrite.DogAge>
           <DogContentsWrite.DogBreed
+            id="breed"
             onChange={props.onChangeDogBreed}
             placeholder="견종을 적어주세요"
           ></DogContentsWrite.DogBreed>
           <DogContentsWrite.DogDesc
+            id="desc"
             onChange={props.onChangeDogDescription}
             placeholder="강아지 성격을 적어주세요"
           ></DogContentsWrite.DogDesc>
@@ -73,9 +77,9 @@ export default function DogContentsWriteUI(props) {
             <div>견종: {el.breed}</div>
             <div>성격: {el.description}</div>
           </DogContentsWrite.DogListColumn>
-          <DogContentsWrite.DeleteBtn onClick={props.onClickDelete(el)}>
-            삭제!
-          </DogContentsWrite.DeleteBtn>
+          <DogContentsWrite.DeleteBtn
+            onClick={props.onClickDelete(el)}
+          ></DogContentsWrite.DeleteBtn>
         </DogContentsWrite.DogListWrapper>
       ))}
     </DogContentsWrite.Wrapper>

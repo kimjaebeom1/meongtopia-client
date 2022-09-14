@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import {
@@ -17,31 +17,39 @@ export default function DogContentsWrite() {
   const [dogBreed, setDogBreed] = useState("");
   const [dogDescription, setDogDescription] = useState("");
   const [dogImage, setDogImage] = useState("");
-  const [petArr, setPetArr] = useRecoilState(petArrState);
+  const [petArr, setPetArr] = useRecoilState<
+    {
+      petImgUrl: string;
+      name: string;
+      age: number;
+      breed: string;
+      description: string;
+    }[]
+  >(petArrState);
   const [bigDog, setBigDog] = useRecoilState(bigDogState);
   const [smallDog, setSmallDog] = useRecoilState(smallDogState);
 
-  const onChangeBigDog = (event) => {
+  const onChangeBigDog = (event: ChangeEvent<HTMLInputElement>) => {
     setBigDog(event.target.value);
   };
 
-  const onChangeSmallDog = (event) => {
+  const onChangeSmallDog = (event: ChangeEvent<HTMLInputElement>) => {
     setSmallDog(event.target.value);
   };
 
-  const onChangeDogName = (event) => {
+  const onChangeDogName = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDogName(event.target.value);
   };
 
-  const onChangeDogAge = (event) => {
+  const onChangeDogAge = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDogAge(event.target.value);
   };
 
-  const onChangeDogBreed = (event) => {
+  const onChangeDogBreed = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDogBreed(event.target.value);
   };
 
-  const onChangeDogDescription = (event) => {
+  const onChangeDogDescription = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setDogDescription(event.target.value);
   };
 
@@ -57,10 +65,17 @@ export default function DogContentsWrite() {
         description: dogDescription,
       },
     ]);
-
-    console.log(petArr);
+    ((document.getElementById("name") as HTMLTextAreaElement).value = ""),
+      ((document.getElementById("breed") as HTMLTextAreaElement).value = ""),
+      ((document.getElementById("age") as HTMLTextAreaElement).value = ""),
+      ((document.getElementById("desc") as HTMLTextAreaElement).value = "");
     setDogImage("");
+    setDogAge(0);
+    setDogBreed("");
+    setDogName("");
+    setDogDescription("");
   };
+  console.log(petArr);
 
   const onChangeDogImage = (fileUrl: string) => {
     setDogImage(fileUrl);

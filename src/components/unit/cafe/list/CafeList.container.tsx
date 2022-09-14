@@ -27,6 +27,7 @@ export default function CafeList() {
       );
     } else
       setConditionActive((prev) => [...prev, (e.target as HTMLDivElement).id]);
+    console.log(conditionActive);
   };
   return (
     <CafeListUI
