@@ -19,6 +19,7 @@ export const SignUpWrap = styled.div`
   /* width: 35%; */
   width: 768px;
   margin: 0px auto;
+
   @media ${breakPoints.mobile} {
     z-index: 999;
     width: 100%;
@@ -32,7 +33,7 @@ export const BtnWrap = styled.div`
   margin-bottom: 20px;
 `;
 
-export const OwnerUserWrap = styled.div`
+export const UserWrap = styled.div`
   width: 50%;
   height: 60px;
   color: white;
@@ -40,15 +41,28 @@ export const OwnerUserWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #808080;
-  background-color: #f5cf1f; // 나중에 삼항연산자로 색 입히기
+  background-color: orange;
   margin: 0px 5px;
   margin-bottom: 20px;
+  border-radius: 50px;
+`;
+
+export const OwnerWrap = styled.div`
+  width: 50%;
+  height: 60px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: gray; // 나중에 삼항연산자로 색 입히기
+  margin: 0px 5px;
+  margin-bottom: 20px;
+  border-radius: 50px;
 `;
 
 export const Ment1 = styled.div`
-  font-weight: 600;
-  font-size: 15px;
+  font-size: 1.3rem;
   color: #ffffff;
   cursor: pointer;
 `;
@@ -145,7 +159,7 @@ export const CheckBtn = styled.div`
   font-weight: 450;
   line-height: 1.5rem;
   text-align: center;
-  background-color: #c8c8c8;
+  background-color: ${(props) => (props.isActive ? "orange" : "gray")};
   margin: 0px 10px;
   cursor: pointer;
 `;
@@ -155,6 +169,7 @@ export const Timer = styled.div`
   height: 30px;
   line-height: 30px;
   margin: 0px 10px;
+  font-size: 0.8rem;
   /* visibility: hidden; */
 `;
 
@@ -195,7 +210,7 @@ export const AgreeContents2 = styled.div`
 export const AgreeContents3 = styled.div`
   font-size: 12px;
   color: gray;
-  width: 15%;
+  width: 12%;
 `;
 
 export const PhoneWrap = styled.div`
@@ -221,12 +236,23 @@ export const PhoneNum = styled.input`
   padding: 0px 10px;
 `;
 export const NumBtn = styled.div`
-  width: 5rem;
-  height: 50px;
-  line-height: 50px;
+  width: 10rem;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: #f5cf1f;
+  background-color: ${(props) => (props.isActivePhone ? "burlywood" : "gray")};
+  color: white;
+  cursor: pointer;
+`;
+
+export const NumBtn2 = styled.div`
+  width: 10rem;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: ${(props) => (props.isActiveNum ? "burlywood" : "gray")};
   color: white;
   cursor: pointer;
 `;
@@ -252,10 +278,11 @@ export const SignUpBtn = styled.div`
   height: 3rem;
   line-height: 3rem;
   border-radius: 50px;
-  background-color: #f5cf1f;
+  background-color: orange;
   color: white;
   text-align: center;
   margin: 40px 0px;
+  font-size: 1.3rem;
   cursor: pointer;
 `;
 

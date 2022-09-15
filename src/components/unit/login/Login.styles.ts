@@ -11,6 +11,16 @@ export const Wrapper = styled.div`
   /* overflow-y: hidden; */
 `;
 
+export const Ad = styled.img`
+  width: 300px;
+  height: 300px;
+  display: flex;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
 export const LoginPartWrap = styled.div`
   display: flex;
   flex-direction: row;
@@ -49,20 +59,31 @@ export const SubTitle = styled.div`
 export const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly; */
   align-items: flex-start;
-  /* border: 2px solid green; */
   width: 100%;
   margin-bottom: 20px;
+
+  /* border: 1px solid black; */
 `;
 
 export const Input = styled.input`
   width: 100%;
   height: 3rem;
   padding: 0px 20px;
-  /* border: none; */
   outline: none;
+  border: none;
+  /* border: none; */
+  /* border: none; */
   /* border-bottom: 1px solid gray; */
+`;
+
+export const InputBorder = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  width: 100%;
+  border-radius: 2px;
 `;
 
 export const Error = styled.div`
@@ -72,21 +93,19 @@ export const Error = styled.div`
   /* margin-left: -200px; */
 `;
 
-export const PasswordChk = styled.input`
-  width: 20rem;
-  height: 3rem;
-`;
-
-export const LoginBtn = styled.div`
+export const LoginBtn = styled.button`
   width: 10rem;
   height: 3rem;
   line-height: 3rem;
   font-size: 1.3rem;
   text-align: center;
-  background-color: #f5cf1f;
+
   color: white;
   border-radius: 50px;
   margin-bottom: 10px;
+  border: none;
+
+  background-color: ${(props) => (props.isActive ? "#F5CF1F" : "none")};
 `;
 
 export const SignUp = styled.div`
@@ -115,21 +134,35 @@ export const SocialLoginWrap = styled.div`
   width: 14rem;
 `;
 
-export const SocialLoginBtn = styled.img`
+export const SocialLoginGoogle = styled.img`
   width: 3rem;
   height: 3rem;
   border-radius: 100px;
-  background-color: lightcoral;
+  cursor: pointer;
 `;
 
-export const Line = styled.div`
+export const SocialLoginNaver = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100px;
+  cursor: pointer;
+`;
+
+export const SocialLoginKakao = styled.img`
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100px;
+  background-image: url("/images/kakao.png");
+  cursor: pointer;
+`;
+
+export const Line = styled.img`
   width: 3px;
   height: 300px;
   border-left: 1px solid lightgray;
   margin: 0px 30px;
-`;
 
-export const Ad = styled.img`
-  width: 300px;
-  height: 300px;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;

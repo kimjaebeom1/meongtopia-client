@@ -33,19 +33,15 @@ export default function SignUpPresenterPage(props: any) {
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
         <SignUp.BtnWrap>
-          <SignUp.OwnerUserWrap>
-            <SignUp.Ment1 onClick={props.onClickMoveToUser}>
-              개 인 회 원 가 입
-            </SignUp.Ment1>
+          <SignUp.UserWrap onClick={props.onClickMoveToUser}>
+            <SignUp.Ment1>개 인 회 원 가 입</SignUp.Ment1>
             {/* <SignUp.Ment2>만 15세 이상 가능</SignUp.Ment2> */}
-          </SignUp.OwnerUserWrap>
+          </SignUp.UserWrap>
 
-          <SignUp.OwnerUserWrap>
-            <SignUp.Ment1 onClick={props.onClickMoveToOwner}>
-              사 장 님 회 원 가 입
-            </SignUp.Ment1>
+          <SignUp.OwnerWrap onClick={props.onClickMoveToOwner}>
+            <SignUp.Ment1>사 장 님 회 원 가 입</SignUp.Ment1>
             {/* <SignUp.Ment2></SignUp.Ment2> */}
-          </SignUp.OwnerUserWrap>
+          </SignUp.OwnerWrap>
         </SignUp.BtnWrap>
 
         <SignUp.ElWrap>
@@ -91,7 +87,10 @@ export default function SignUpPresenterPage(props: any) {
                 onChange={props.onChangeNickname}
                 placeholder="닉네임을 입력해주세요"
               />
-              <SignUp.CheckBtn onClick={props.onClickNicknameChk}>
+              <SignUp.CheckBtn
+                onClick={props.onClickNicknameChk}
+                isActive={props.isActive ? true : props.isActive}
+              >
                 중복확인
               </SignUp.CheckBtn>
             </SignUp.NickNameWrap>
@@ -105,7 +104,12 @@ export default function SignUpPresenterPage(props: any) {
                 onChange={props.onChangePhone}
                 placeholder="휴대전화 번호를 입력해주세요"
               />
-              <SignUp.NumBtn onClick={props.onClickGetToken}>
+              <SignUp.NumBtn
+                onClick={props.onClickGetToken}
+                isActivePhone={
+                  props.isActivePhone ? true : props.setIsActivePhone
+                }
+              >
                 인증
               </SignUp.NumBtn>
             </SignUp.PhoneNumWrap>
@@ -122,9 +126,12 @@ export default function SignUpPresenterPage(props: any) {
                   ).padStart(2, "0")}`}
                 </SignUp.Timer>
               </SignUp.NickNameWrap>
-              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
+              <SignUp.NumBtn2
+                onClick={props.onClickCheckValidToken}
+                isActiveNum={props.isActiveNum ? true : props.isActiveNum}
+              >
                 확인
-              </SignUp.NumBtn>
+              </SignUp.NumBtn2>
             </SignUp.PhoneNumWrap>
           </SignUp.PhoneWrap>
 

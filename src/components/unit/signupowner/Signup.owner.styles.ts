@@ -32,7 +32,7 @@ export const BtnWrap = styled.div`
   margin-bottom: 20px;
 `;
 
-export const OwnerUserWrap = styled.div`
+export const UserWrap = styled.div`
   width: 50%;
   height: 60px;
   color: white;
@@ -40,21 +40,34 @@ export const OwnerUserWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #808080;
-  background-color: #f5cf1f; // 나중에 삼항연산자로 색 입히기
+  background-color: gray; // 나중에 삼항연산자로 색 입히기
   margin: 0px 5px;
   margin-bottom: 20px;
+  border-radius: 30px;
+`;
+
+export const OwnerWrap = styled.div`
+  width: 50%;
+  height: 60px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: burlywood; // 나중에 삼항연산자로 색 입히기
+  margin: 0px 5px;
+  margin-bottom: 20px;
+  border-radius: 30px;
 `;
 
 export const Ment1 = styled.div`
-  font-weight: 600;
-  font-size: 15px;
+  font-size: 1.2rem;
   color: #ffffff;
   cursor: pointer;
 `;
 
 export const Ment2 = styled.div`
-  font-size: 9px;
+  font-size: 1.3rem;
   color: #ffffff;
 `;
 
@@ -172,7 +185,7 @@ export const AgreeContents2 = styled.div`
 export const AgreeContents3 = styled.div`
   font-size: 12px;
   color: gray;
-  width: 15%;
+  width: 12%;
 `;
 
 export const PhoneWrap = styled.div`
@@ -203,7 +216,18 @@ export const NumBtn = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: #f5cf1f;
+  background-color: ${(props) => (props.isActivePhone ? "burlywood" : "gray")};
+  color: white;
+  cursor: pointer;
+`;
+
+export const NumBtn2 = styled.div`
+  width: 10rem;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: ${(props) => (props.isActive ? "burlywood" : "gray")};
   color: white;
   cursor: pointer;
 `;

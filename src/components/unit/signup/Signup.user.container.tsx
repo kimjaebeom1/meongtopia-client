@@ -22,6 +22,10 @@ export default function SignUpContainerPage() {
 
   // 이메일,비밀번호,닉네임,전화번호,인증성공여부,약관동의 선택했는지
 
+  const [isActivePhone, setIsActivePhone] = useState(false);
+  const [isActiveNum, setIsActiveNum] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -77,6 +81,12 @@ export default function SignUpContainerPage() {
     if (event.target.value !== "") {
       setNicknameError("");
     }
+
+    if (event.target.value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
   };
 
   const onChangeEmail = (event: any) => {
@@ -99,12 +109,22 @@ export default function SignUpContainerPage() {
 
   const onChangePhone = (event: any) => {
     setPhone(event.target.value);
-    if (event.target.vaule !== "") {
+
+    if (event.target.value) {
+      setIsActivePhone(true);
+    } else {
+      setIsActivePhone(false);
     }
   };
 
   const onChangeCheckNum = (event: any) => {
     setCheckNum(event.target.value);
+
+    if (event.target.value) {
+      setIsActiveNum(true);
+    } else {
+      setIsActiveNum(false);
+    }
   };
 
   const onClickMoveToOwner = () => {
@@ -139,6 +159,7 @@ export default function SignUpContainerPage() {
           content: "닉네임 등록되었습니다",
         });
         setNicknameChk(true);
+        setIsActive(false);
       }
     } catch (error) {
       console.log(error);
@@ -153,7 +174,6 @@ export default function SignUpContainerPage() {
       return;
     }
     try {
-      console.log("시작");
       const result = await getToken({
         variables: {
           phone: String(phone),
@@ -185,6 +205,8 @@ export default function SignUpContainerPage() {
       console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
       setIsCountdown((prev) => !prev);
+      setIsActivePhone(false);
+      setIsActiveNum(false);
     } catch (error) {
       if (error instanceof Error) {
         message.error("인증 실패. 다시 시도해주세요");
@@ -202,13 +224,11 @@ export default function SignUpContainerPage() {
 
     if (!checkPassword(password)) {
       setPasswordError("비밀번호를 8자리 이상 입력해주세요");
-      return;
     }
 
     if (password !== passwordChk) {
       setPasswordError("비밀번호가 일치하지 않습니다");
       setPasswordChkError("비밀번호가 일치하지 않습니다");
-      return;
     }
 
     if (!name) {
@@ -217,6 +237,7 @@ export default function SignUpContainerPage() {
 
     if (!nickname) {
       setNicknameError("닉네임을 입력해주세요");
+      return;
     }
 
     if (nicknameChk === false) {
@@ -281,7 +302,9 @@ export default function SignUpContainerPage() {
       minutes={minutes}
       seconds={seconds}
       setIsCountdown={setIsCountdown}
-      // phoneError={PhoneError}
+      isActivePhone={isActivePhone}
+      isActiveNum={isActiveNum}
+      isActive={isActive}
     />
   );
 }

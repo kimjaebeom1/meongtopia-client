@@ -3,6 +3,10 @@ import { breakPoints } from "../../../commons/styles/media";
 import Slider from "react-slick";
 
 export const Wrapper = styled.div`
+  scroll-snap-align: start;
+  width: 100vw;
+  height: 100vh;
+
   .slick-list {
     width: 100%;
     background: #fbfbfb;
@@ -66,11 +70,9 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Wrapper2 = styled.div``;
-
 export const SlideImg = styled.img`
   margin: auto;
-  height: 88vh;
+  height: 100vh;
   width: 100%;
   object-fit: cover;
 `;
@@ -94,31 +96,17 @@ export const NextArrow = styled.div`
 `;
 // ============================================================ //
 
-export const VideoWrap = styled.div`
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  background-color: red;
-  height: 704px;
-  margin-bottom: 200px;
-`;
-
-export const Video = styled.video`
-  object-fit: contain;
-  width: 100%;
-  /* height: 700px; */
-`;
-
 export const VideoDivWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 24vw;
-  z-index: 999;
   position: absolute;
-  top: 25vh;
-  left: 14%;
+  top: 10vh;
+
+  /* border: 1px solid black; */
+  width: 100%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  /* width: 24vw; */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
 
   @media ${breakPoints.mobile} {
     position: absolute;
@@ -126,13 +114,70 @@ export const VideoDivWrap = styled.div`
   }
 `;
 
-export const VideoContents1 = styled.div`
-  font-size: 1.4rem;
-  font-weight: 700;
+export const VideoDivWrap2 = styled.div`
+  position: absolute;
+  top: 23vh;
+  left: 50%;
+  width: 40%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  /* width: 24vw; */
   z-index: 999;
+  display: flex;
+  justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    position: absolute;
+    top: 15vh;
+    left: 13%;
+    width: 70%;
+  }
 `;
 
-export const VideoImg = styled.img`
-  width: 60%;
-  height: 55%;
+export const VideoDivWrap3 = styled.div`
+  position: absolute;
+  top: 10vh;
+  left: 31%;
+  width: 80%;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  /* width: 24vw; */
+  z-index: 999;
+  right: 20%;
+  display: flex;
+  justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    position: absolute;
+    top: 10vh;
+    left: 9%;
+  }
+`;
+
+export const VideoContents1 = styled.div`
+  font-size: 2.4rem;
+  z-index: 999;
+  color: orange;
+
+  @media ${breakPoints.mobile} {
+    font-size: 2.1rem;
+  }
+`;
+
+export const VideoContents2 = styled.div`
+  font-size: 2.4rem;
+  z-index: 999;
+  color: orange;
+
+  @media ${breakPoints.mobile} {
+    font-size: 2.1rem;
+  }
+`;
+
+export const VideoContents3 = styled.div`
+  font-size: 2rem;
+  z-index: 999;
+  color: orange;
+
+  @media ${breakPoints.mobile} {
+    font-size: 2.1rem;
+  }
 `;
