@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 import { IIsActiveProps } from "./CafeList.types";
+import { AiFillHeart } from "react-icons/ai";
 
 //
 // 검색 컴포넌트
@@ -20,7 +21,7 @@ export const SearchWrapper = styled.div`
   } */
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-size: 1.6rem;
   margin: 0;
 `;
@@ -34,6 +35,10 @@ export const SearchList = styled.div`
     display: flex;
     flex-direction: column;
   } */
+`;
+
+export const TagLabel = styled.h3`
+  margin: 0;
 `;
 
 export const TagsWrapper = styled.div`
@@ -76,11 +81,33 @@ export const SearchBar = styled.input`
 `;
 
 //
+// 정렬 컴포넌트
+//
+export const SortContainer = styled.div`
+  width: 100%;
+  padding: 5rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+`;
+export const SortWrapper = styled.div`
+  width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+`;
+export const Sort = styled.select`
+  font-size: 1.1rem;
+  color: #555;
+  padding: 0 0.5rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+//
 // 리스트 컴포넌트
 //
 export const ListContainer = styled.div`
   width: 100%;
-  padding: 5rem 0;
   display: flex;
   justify-content: center;
 `;
@@ -174,4 +201,10 @@ export const Horizon = styled.div`
 export const DogWrapper = styled.span`
   display: flex;
   align-items: flex-end;
+`;
+
+export const Heart = styled(AiFillHeart)`
+  font-size: 1.2rem;
+  color: orangered;
+  margin-right: 0.5rem;
 `;

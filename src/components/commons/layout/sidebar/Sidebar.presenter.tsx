@@ -13,25 +13,31 @@ export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
     <Sidebar.Wrapper>
       <Sidebar.InfoContainer>
         <Sidebar.List>
-          <Sidebar.profileImg />
+          <input
+            type="file"
+            ref={props.fileRef}
+            style={{ display: "none" }}
+            onChange={props.onChangeImg}
+          />
+          {props.data?.fetchUser.profileImgUrl ? (
+            <>
+              <Sidebar.Delete onClick={props.onClickDeleteProfile} />
+              <img
+                onClick={props.onClickUpload}
+                src={`https://storage.googleapis.com/${props.data.fetchUser.profileImgUrl}`}
+              />
+            </>
+          ) : (
+            <Sidebar.profileImg onClick={props.onClickUpload} />
+          )}
         </Sidebar.List>
         <Sidebar.List>
           <Sidebar.InfoText>{props.data?.fetchUser.nickname}</Sidebar.InfoText>
           <span>님 안녕하세요!</span>
         </Sidebar.List>
         <Sidebar.List>
-          <Sidebar.PointIcon />
-          <span>내 포인트:&nbsp;</span>
-          <Sidebar.InfoText>
-            {props.data?.fetchUser.point.toLocaleString()}
-          </Sidebar.InfoText>
-          &nbsp;<span>원</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Sidebar.Charge>충전하기</Sidebar.Charge>
-        </Sidebar.List>
-        <Sidebar.List>
           <Sidebar.UpdateIcon />
-          <Sidebar.ClickSpan onClick={props.onClickUpdate}>
+          <Sidebar.ClickSpan onClick={props.onClickToUpdate}>
             회원정보 수정
           </Sidebar.ClickSpan>
         </Sidebar.List>
@@ -41,6 +47,17 @@ export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
             로그아웃
           </Sidebar.ClickSpan>
         </Sidebar.List>
+        <Sidebar.List>
+          <Sidebar.PointIcon />
+          <span>내 포인트:&nbsp;</span>
+          <Sidebar.InfoText>
+            {props.data?.fetchUser.point.toLocaleString()}
+          </Sidebar.InfoText>
+          &nbsp;<span>원</span>
+        </Sidebar.List>
+        <Sidebar.Charge onClick={props.onClickToPayment}>
+          충전하기
+        </Sidebar.Charge>
       </Sidebar.InfoContainer>
       <Sidebar.MenuContainer>
         {USER_MENUS.map((el) => (

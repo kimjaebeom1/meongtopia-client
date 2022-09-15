@@ -4,6 +4,7 @@ export const UPDATE_USER = gql`
   mutation updateUser($email: String!, $updateUserInput: UpdateUserInput!) {
     updateUser(email: $email, updateUserInput: $updateUserInput) {
       userID
+      profileImgUrl
     }
   }
 `;
@@ -15,7 +16,15 @@ export const DELETE_USER = gql`
 `;
 
 export const UPDATE_USER_PWD = gql`
-  mutation updateUserPwd($email: String!, $updateUserPwdInput: String!) {
-    updateUserPwd(email: $email, updateUserPwdInput: $updateUserPwdInput)
+  mutation updateUserPwd(
+    $email: String!
+    $updateUserPwdInput: String!
+    $phone: String!
+  ) {
+    updateUserPwd(
+      email: $email
+      updateUserPwdInput: $updateUserPwdInput
+      phone: $phone
+    )
   }
 `;

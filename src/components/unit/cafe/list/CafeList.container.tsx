@@ -14,11 +14,17 @@ export default function CafeList() {
   const [locationActive, setLocationActive] = useState("전체");
   const [conditionActive, setConditionActive] = useState([""]);
   const [search, setSearch] = useState("");
+  const [order, setOrder] = useState("최신순");
+  const [price, setPrice] = useState("가격기본순");
 
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchStores">,
     IQueryFetchStoresArgs
-  >(FETCH_STORES);
+  >(FETCH_STORES, {
+    variables: {
+      order: `${order === "최신순" && "DESC"}`,
+    },
+  });
 
   const onClickLocationTag = (e: MouseEvent<HTMLDivElement>) => {
     setLocationActive((e.target as HTMLDivElement).id);
@@ -61,10 +67,22 @@ export default function CafeList() {
     router.push(`/cafe/${(e.currentTarget as HTMLUListElement).id}`);
   };
 
+  //
+  // 정렬 함수
+  //
+  const onChangeOrder = (e: ChangeEvent<HTMLSelectElement>) => {
+    setOrder(e.target.value);
+  };
+
+  const onChangePrice = (e: ChangeEvent<HTMLSelectElement>) => {
+    setPrice(e.target.value);
+  };
+
   return (
     <CafeListUI
       data={data}
       search={search}
+      price={price}
       locationActive={locationActive}
       conditionActive={conditionActive}
       onClickLocationTag={onClickLocationTag}
@@ -73,6 +91,8 @@ export default function CafeList() {
       onFetchMore={onFetchMore}
       onChangeSearch={onChangeSearch}
       onClickMoveToDetail={onClickMoveToDetail}
+      onChangeOrder={onChangeOrder}
+      onChangePrice={onChangePrice}
     />
   );
 }

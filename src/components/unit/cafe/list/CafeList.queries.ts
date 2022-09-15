@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_STORES = gql`
-  query fetchStores($page: Float) {
-    fetchStores(page: $page) {
+  query fetchStores($page: Float, $order: String) {
+    fetchStores(page: $page, order: $order) {
       storeID
       name
       description
@@ -14,6 +14,7 @@ export const FETCH_STORES = gql`
       address
       addressDetail
       avgRating
+      pickCount
       locationTag {
         locationTagID
         name

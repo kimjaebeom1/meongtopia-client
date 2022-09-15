@@ -11,6 +11,7 @@ export const FETCH_USER = gql`
       phone
       point
       role
+      profileImgUrl
     }
   }
 `;

@@ -13,7 +13,7 @@ const Login = styled.a`
   color: #999;
   cursor: pointer;
   :hover {
-    color: #ffe812;
+    color: #f4840b;
   }
 `;
 

@@ -16,7 +16,7 @@ const CONDITION_TAGS = [
 ];
 
 export default function CafeListUI(props: ICafeListUIProps) {
-  let data = props.data?.fetchStores;
+  let data = [...(props.data?.fetchStores || [])];
 
   // 위치별 태그 필터링
   if (props.locationActive !== "전체") {
@@ -30,16 +30,17 @@ export default function CafeListUI(props: ICafeListUIProps) {
   if (props.conditionActive.length > 1) {
     let dataCondition = data;
 
-    for (let i = 0; i < CONDITION_TAGS.length; i++) {
-      if (props.conditionActive.includes(CONDITION_TAGS[i])) {
-        dataCondition = dataCondition?.filter((el) => {
-          for (let j = 0; j < el.storeTag.length; j++) {
-            if (el.storeTag[j].name === CONDITION_TAGS[i]) {
-              return el;
-            }
+    for (let i = 1; i < props.conditionActive.length; i++) {
+      dataCondition = dataCondition?.filter((el) => {
+        for (let j = 0; j < el.storeTag.length; j++) {
+          if (
+            el.storeTag[j].name === props.conditionActive[i] &&
+            el.storeTag.length === props.conditionActive.length - 1
+          ) {
+            return el;
           }
-        });
-      }
+        }
+      });
     }
     data = dataCondition;
   }
@@ -50,6 +51,17 @@ export default function CafeListUI(props: ICafeListUIProps) {
     data = dataSearch;
   }
 
+  // 정렬 필터링
+  let dataPrice: any = [];
+  if (props.price === "가격높은순") {
+    dataPrice = data?.sort((a, b) => b.entranceFee - a.entranceFee);
+    data = dataPrice;
+  }
+  if (props.price === "가격낮은순") {
+    dataPrice = data?.sort((a, b) => a.entranceFee - b.entranceFee);
+    data = dataPrice;
+  }
+
   return (
     <>
       {/* 검색 컴포넌트 */}
@@ -57,7 +69,7 @@ export default function CafeListUI(props: ICafeListUIProps) {
         <CafeList.SearchWrapper>
           <CafeList.Title>애견카페 맞춤 검색</CafeList.Title>
           <CafeList.SearchList>
-            <h3>위치별 태그</h3>
+            <CafeList.TagLabel>위치별 태그</CafeList.TagLabel>
             <CafeList.TagsWrapper>
               {LOCATION_TAGS.map((el) => (
                 <CafeList.Tag
@@ -72,7 +84,7 @@ export default function CafeListUI(props: ICafeListUIProps) {
             </CafeList.TagsWrapper>
           </CafeList.SearchList>
           <CafeList.SearchList>
-            <h3>조건별 태그</h3>
+            <CafeList.TagLabel>조건별 태그</CafeList.TagLabel>
             <CafeList.TagsWrapper>
               <CafeList.Tag
                 isActive={props.conditionActive.length === 1}
@@ -93,11 +105,25 @@ export default function CafeListUI(props: ICafeListUIProps) {
             </CafeList.TagsWrapper>
           </CafeList.SearchList>
           <CafeList.SearchList>
-            <h3>매장 이름 검색</h3>
+            <CafeList.TagLabel>매장 이름 검색</CafeList.TagLabel>
             <CafeList.SearchBar onChange={props.onChangeSearch} />
           </CafeList.SearchList>
         </CafeList.SearchWrapper>
       </CafeList.SearchContainer>
+      {/* 정렬 컴포넌트 */}
+      <CafeList.SortContainer>
+        <CafeList.SortWrapper>
+          <CafeList.Sort onChange={props.onChangeOrder}>
+            <option value="최신순">최신순</option>
+            <option value="과거순">과거순</option>
+          </CafeList.Sort>
+          <CafeList.Sort onChange={props.onChangePrice}>
+            <option value="가격기본순">가격기본순</option>
+            <option value="가격높은순">가격높은순</option>
+            <option value="가격낮은순">가격낮은순</option>
+          </CafeList.Sort>
+        </CafeList.SortWrapper>
+      </CafeList.SortContainer>
       {/* 리스트 컴포넌트 */}
       <CafeList.ListContainer>
         <InfiniteScroll
@@ -108,9 +134,11 @@ export default function CafeListUI(props: ICafeListUIProps) {
           <CafeList.ListWrapper>
             {data?.map((el) => (
               <CafeList.CafeListWrapper key={uuidv4()}>
+                {/* 슬라이더 컴포넌트 */}
                 <CafeList.SliderWrapper>
                   <ListSlider url={el} />
                 </CafeList.SliderWrapper>
+                {/* 상세정보 컴포넌트 */}
                 <CafeList.CafeList
                   id={el.storeID}
                   onClick={props.onClickMoveToDetail}
@@ -119,7 +147,9 @@ export default function CafeListUI(props: ICafeListUIProps) {
                     <CafeList.Title>{el.name}</CafeList.Title>
                     <CafeList.RatingWrapper>
                       <Rate value={el.avgRating} disabled />
-                      <span>&nbsp;&nbsp;&nbsp;{el.avgRating}</span>
+                      <span style={{ marginLeft: "0.5rem" }}>
+                        {el.avgRating}
+                      </span>
                     </CafeList.RatingWrapper>
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
@@ -161,13 +191,19 @@ export default function CafeListUI(props: ICafeListUIProps) {
                         >{`# ${el.name}`}</span>
                       ))}
                     </CafeList.SelectTag>
+                    <span style={{ display: "flex", alignItems: "center" }}>
+                      <CafeList.Heart />
+                      {el.pickCount}
+                    </span>
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <span>{el.address}</span>
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <span>{`${el.open} ~ ${el.close}`}</span>
-                    <span>{`${el.entranceFee.toLocaleString()}원`}</span>
+                    <span
+                      style={{ fontSize: "1.2rem" }}
+                    >{`입장료 ${el.entranceFee.toLocaleString()}원`}</span>
                   </CafeList.ContentsText>
                 </CafeList.CafeList>
               </CafeList.CafeListWrapper>

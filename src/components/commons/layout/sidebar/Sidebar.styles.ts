@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { BsPersonCircle } from "react-icons/bs";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { BiLogOut, BiWon } from "react-icons/bi";
+import { TiDelete } from "react-icons/ti";
 
 export const Wrapper = styled.aside`
   width: 25rem;
@@ -16,14 +17,25 @@ export const InfoContainer = styled.ul`
 
 export const List = styled.li`
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   display: flex;
   align-items: center;
+
+  & img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    cursor: pointer;
+  }
 `;
 
 export const profileImg = styled(BsPersonCircle)`
-  font-size: 5rem;
+  font-size: 8rem;
   color: #999;
+  margin-bottom: 1rem;
+  cursor: pointer;
 `;
 
 export const InfoText = styled.span`
@@ -40,9 +52,10 @@ export const MenuContainer = styled.ul`
 
 export const Charge = styled.button`
   padding: 0.2rem;
-  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
   color: #fff;
-  background-color: #f5cf1f;
+  background-color: orange;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -50,19 +63,19 @@ export const Charge = styled.button`
 
 export const PointIcon = styled(BiWon)`
   font-size: 1.2rem;
-  color: #f5cf1f;
+  color: orange;
   margin-right: 0.5rem;
 `;
 
 export const UpdateIcon = styled(RiUserSettingsLine)`
   font-size: 1.3rem;
-  color: #f5cf1f;
+  color: orange;
   margin-right: 0.5rem;
 `;
 
 export const LogoutIcon = styled(BiLogOut)`
   font-size: 1.3rem;
-  color: #f5cf1f;
+  color: orange;
   margin-right: 0.5rem;
 `;
 
@@ -70,6 +83,18 @@ export const ClickSpan = styled.span`
   cursor: pointer;
 
   :hover {
-    color: #f5cf1f;
+    color: orange;
+  }
+`;
+
+export const Delete = styled(TiDelete)`
+  font-size: 2rem;
+  color: #cacaca;
+  position: absolute;
+  margin-top: -4.6rem;
+  margin-left: -1rem;
+  cursor: pointer;
+  :hover {
+    color: orange;
   }
 `;

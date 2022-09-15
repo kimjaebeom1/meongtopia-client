@@ -1,7 +1,14 @@
+import { ChangeEvent, RefObject } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
 export interface IMyPageSidebarUIProps {
-  onClickUpdate: () => void;
+  fileRef: RefObject<HTMLInputElement>;
+  onClickUpload: () => void;
+  onChangeImg: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClickUpdateProfile: (imgUrl: string) => void;
+  onClickToUpdate: () => void;
   onClickLogout: () => void;
-  data: Pick<IQuery, "fetchUser">;
+  onClickToPayment: () => void;
+  onClickDeleteProfile: () => void;
+  data?: Pick<IQuery, "fetchUser">;
 }
