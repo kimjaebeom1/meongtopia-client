@@ -221,7 +221,7 @@ export const DeleteBtn = styled.button`
   padding: 0.3rem;
   border: none;
   border-radius: 50%;
-  background: #999;
+  background-color: #808080;
   margin-left: 1.2rem;
   margin-top: 0.7rem;
 

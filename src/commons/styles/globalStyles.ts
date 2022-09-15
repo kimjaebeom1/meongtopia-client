@@ -11,16 +11,20 @@ export const globalStyles = css`
 
   @font-face {
     font-family: "myfont";
-    src: url("/fonts/Maplestory Light.ttf");
+    /* src: url("/fonts/Maplestory Light.ttf"); */
   }
 
   html {
     font-size: 16px;
     @media ${breakPoints.tablet} {
       font-size: 14px;
+      max-width: 991px;
+      min-width: 768px;
     }
     @media ${breakPoints.mobile} {
-      font-size: 12px;
+      font-size: 10px;
+      max-width: 767px;
+      min-width: 370px;
     }
   }
 

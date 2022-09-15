@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import {
@@ -8,7 +8,7 @@ import {
 } from "../../../../../commons/store";
 import DogContentsWriteUI from "./DogContentsWrite.presenter";
 
-export default function DogContentsWrite() {
+export default function DogContentsWrite(props) {
   const { register } = useForm({
     mode: "onChange",
   });
@@ -28,6 +28,12 @@ export default function DogContentsWrite() {
   >(petArrState);
   const [bigDog, setBigDog] = useRecoilState(bigDogState);
   const [smallDog, setSmallDog] = useRecoilState(smallDogState);
+
+  useEffect(() => {
+    if (props.data?.fetchStore.pet?.length) {
+      setPetArr([...props.data?.fetchStore.pet]);
+    }
+  }, [props.data]);
 
   const onChangeBigDog = (event: ChangeEvent<HTMLInputElement>) => {
     setBigDog(event.target.value);
@@ -100,6 +106,7 @@ export default function DogContentsWrite() {
       onChangeSmallDog={onChangeSmallDog}
       petArr={petArr}
       onClickDelete={onClickDelete}
+      data={props.data}
     />
   );
 }

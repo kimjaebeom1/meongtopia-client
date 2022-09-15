@@ -45,11 +45,11 @@ export const Procedure02 = styled.div`
 export const ProcedureUnderBar01 = styled.div`
   border-bottom: 4px solid #c4c4c4;
   width: 50%;
-  border-color: ${(props) => (!props.next ? "#f4840b" : "none")};
+  border-color: ${(props) => (!props.next ? "orange" : "none")};
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    border-color: ${(props) => (!props.next ? "#f4840b" : "#f4840b")};
+    border-color: ${(props) => (!props.next ? "orange" : "orange")};
   }
 `;
 export const ProcedureUnderBar02 = styled.div`
@@ -107,7 +107,6 @@ export const MobileUploadWrapper = styled.div`
   @media ${breakPoints.mobile} {
     margin-top: 1rem;
     display: flex;
-    width: 100%;
   }
 `;
 

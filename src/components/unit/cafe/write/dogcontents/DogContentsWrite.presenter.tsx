@@ -63,7 +63,10 @@ export default function DogContentsWriteUI(props) {
       </div>
       {props.petArr.map((el) => (
         <>
-          <DogContentsWrite.MobileDeleteBtn onClick={props.onClickDelete(el)}>
+          <DogContentsWrite.MobileDeleteBtn
+            key={uuidv4()}
+            onClick={props.onClickDelete(el)}
+          >
             <img src="/images/delete.svg" alt="" />
           </DogContentsWrite.MobileDeleteBtn>
           <DogContentsWrite.DogListWrapper key={uuidv4()}>
