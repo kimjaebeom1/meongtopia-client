@@ -7,24 +7,23 @@ export default function DogContentsWriteUI(props) {
     <DogContentsWrite.Wrapper>
       <DogContentsWrite.Tag>우라카페 강아지 몇마리?</DogContentsWrite.Tag>
       <DogContentsWrite.DogCountWrapper>
-        대형견:
-        <DogContentsWrite.BigDogCount
-          onChange={props.onChangeBigDog}
-          type="number"
-        ></DogContentsWrite.BigDogCount>
-        소형견:
-        <DogContentsWrite.SmallDogCount
-          onChange={props.onChangeSmallDog}
-          type="number"
-        ></DogContentsWrite.SmallDogCount>
+        <DogContentsWrite.DogCount>
+          대형견:
+          <DogContentsWrite.BigDogCount
+            onChange={props.onChangeBigDog}
+            type="number"
+          ></DogContentsWrite.BigDogCount>
+        </DogContentsWrite.DogCount>
+        <DogContentsWrite.DogCount>
+          소형견:
+          <DogContentsWrite.SmallDogCount
+            onChange={props.onChangeSmallDog}
+            type="number"
+          ></DogContentsWrite.SmallDogCount>
+        </DogContentsWrite.DogCount>
       </DogContentsWrite.DogCountWrapper>
       <DogContentsWrite.Tag>강아지 정보를 입력해주세요 </DogContentsWrite.Tag>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
+      <DogContentsWrite.DogAddWrapper>
         <DogImgUpload
           dogImage={props.dogImage}
           onChangeDogImage={props.onChangeDogImage}
@@ -51,7 +50,7 @@ export default function DogContentsWriteUI(props) {
             placeholder="강아지 성격을 적어주세요"
           ></DogContentsWrite.DogDesc>
         </DogContentsWrite.DogProfileWrapper>
-      </div>
+      </DogContentsWrite.DogAddWrapper>
       <div
         style={{
           display: "flex",
@@ -63,24 +62,30 @@ export default function DogContentsWriteUI(props) {
         </DogContentsWrite.AddDogBtn>
       </div>
       {props.petArr.map((el) => (
-        <DogContentsWrite.DogListWrapper key={uuidv4()}>
-          {el.petImgUrl ? (
-            <DogContentsWrite.DogListImg
-              src={`https://storage.googleapis.com/${el.petImgUrl}`}
-            />
-          ) : (
-            <DogContentsWrite.DogListImg src="/images/dogcharacter.jpg" />
-          )}
-          <DogContentsWrite.DogListColumn>
-            <div>이름: {el.name}</div>
-            <div>나이: {el.age}</div>
-            <div>견종: {el.breed}</div>
-            <div>성격: {el.description}</div>
-          </DogContentsWrite.DogListColumn>
-          <DogContentsWrite.DeleteBtn
-            onClick={props.onClickDelete(el)}
-          ></DogContentsWrite.DeleteBtn>
-        </DogContentsWrite.DogListWrapper>
+        <>
+          <DogContentsWrite.MobileDeleteBtn onClick={props.onClickDelete(el)}>
+            <img src="/images/delete.svg" alt="" />
+          </DogContentsWrite.MobileDeleteBtn>
+          <DogContentsWrite.DogListWrapper key={uuidv4()}>
+            {el.petImgUrl ? (
+              <DogContentsWrite.DogListImg
+                src={`https://storage.googleapis.com/${el.petImgUrl}`}
+              />
+            ) : (
+              <DogContentsWrite.DogListImg src="/images/dogcharacter.jpg" />
+            )}
+
+            <DogContentsWrite.DogListColumn>
+              <div>이름: {el.name}</div>
+              <div>나이: {el.age}</div>
+              <div>견종: {el.breed}</div>
+              <div>성격: {el.description}</div>
+            </DogContentsWrite.DogListColumn>
+            <DogContentsWrite.DeleteBtn onClick={props.onClickDelete(el)}>
+              <img src="/images/delete.svg" alt="" />
+            </DogContentsWrite.DeleteBtn>
+          </DogContentsWrite.DogListWrapper>
+        </>
       ))}
     </DogContentsWrite.Wrapper>
   );

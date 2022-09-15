@@ -1,15 +1,17 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const DogImage = styled.div`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0;
   width: 70%;
-  height: 259px;
+  height: 279px;
   background: #ebebeb;
-  border-radius: 2rem;
+  border-radius: 1rem;
   transition: all 0.5s ease;
   cursor: pointer;
 
@@ -30,17 +32,24 @@ export const DogImage = styled.div`
       filter: brightness(0) invert(1);
     }
   }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const DogUploadImage = styled.img`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 70%;
-  height: 259px;
+  height: 279px;
   background: #ebebeb;
-  border-radius: 2rem;
+  border-radius: 1rem;
   transition: all 0.5s ease;
-  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;

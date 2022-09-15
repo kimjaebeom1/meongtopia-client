@@ -8,8 +8,8 @@ export const UploadImg = styled.img`
   object-fit: cover;
 
   @media ${breakPoints.mobile} {
-    width: 100%;
-    height: 60px;
+    width: 100px;
+    height: 80px;
     text-align: center;
   }
 `;

@@ -16,7 +16,6 @@ const Wrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    text-align: center;
   }
 `;
 

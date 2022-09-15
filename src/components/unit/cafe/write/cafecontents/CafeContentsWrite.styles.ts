@@ -9,13 +9,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  color: black;
 `;
 
 export const ProcedureWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
 
 export const Procedure01 = styled.div`
@@ -26,6 +27,7 @@ export const Procedure01 = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 100%;
+    display: ${(props) => (!props.next ? "flex" : "none")};
   }
 `;
 export const Procedure02 = styled.div`
@@ -35,23 +37,25 @@ export const Procedure02 = styled.div`
   justify-content: center;
 
   @media ${breakPoints.mobile} {
-    display: none;
+    display: ${(props) => (props.next ? "flex" : "none")};
+    width: 100%;
   }
 `;
 
 export const ProcedureUnderBar01 = styled.div`
   border-bottom: 4px solid #c4c4c4;
   width: 50%;
-  border-color: ${(props) => (!props.next ? "#F5CF1F" : "none")};
+  border-color: ${(props) => (!props.next ? "#f4840b" : "none")};
 
   @media ${breakPoints.mobile} {
     width: 100%;
+    border-color: ${(props) => (!props.next ? "#f4840b" : "#f4840b")};
   }
 `;
 export const ProcedureUnderBar02 = styled.div`
   width: 50%;
   border-bottom: 4px solid #c4c4c4;
-  border-color: ${(props) => (props.next ? "#F5CF1F" : "none")};
+  border-color: ${(props) => (props.next ? "#f4840b" : "none")};
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -79,8 +83,7 @@ export const ErrorTag = styled.div`
 
 export const Tag = styled.div`
   margin-top: 2em;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.4rem;
 `;
 
 export const ImageUploadWrapper = styled.div`
@@ -91,9 +94,20 @@ export const ImageUploadWrapper = styled.div`
   margin-top: 1rem;
 
   @media ${breakPoints.mobile} {
+    display: none;
     height: 80px;
     justify-content: space-evenly;
     text-align: center;
+  }
+`;
+
+export const MobileUploadWrapper = styled.div`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    margin-top: 1rem;
+    display: flex;
+    width: 100%;
   }
 `;
 
@@ -106,7 +120,7 @@ export const CafeNumberInput = styled.input`
   padding-left: 1em;
 
   @media ${breakPoints.mobile} {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -127,7 +141,7 @@ export const TimeWrapper = styled.div`
   margin-right: 30px;
 
   @media ${breakPoints.mobile} {
-    width: 80%;
+    width: 100%;
     margin-right: 0px;
   }
 `;
@@ -193,7 +207,7 @@ export const FeeWrapper = styled.div`
   margin-left: 50px;
 
   @media ${breakPoints.mobile} {
-    width: 80%;
+    width: 100%;
     margin-left: 0px;
   }
 `;
@@ -222,7 +236,7 @@ export const AddressBtn = styled.button`
   border-radius: 5px;
   margin-top: 1rem;
   border: 1px solid #808080;
-  margin-left: 4em;
+  margin-left: 2rem;
   cursor: pointer;
   text-align: center;
 `;
@@ -296,7 +310,7 @@ export const NextButton = styled.button`
     !props.locationActive ||
     !props.conditionActive.join()
       ? "#d9d9d9"
-      : "#f5cf1f"};
+      : "orange"};
   color: white;
   font-size: 24px;
   font-weight: 400;
@@ -312,12 +326,13 @@ export const SubmitButton = styled.button`
   background-color: ${(props) =>
     !props.petArr.join() || !props.bigDog || !props.smallDog
       ? "#d9d9d9"
-      : "#f5cf1f"};
+      : "orange"};
   color: white;
   font-size: 24px;
   font-weight: 400;
   margin-left: 10px;
   cursor: pointer;
+  color: white;
 `;
 
 export const StoreTag = styled.div`
@@ -327,12 +342,11 @@ export const StoreTag = styled.div`
   margin-right: 1rem;
   width: 8em;
   height: 2em;
-  background-color: ${(props) => (props.isActive ? "#f5cf1f" : "#fff")};
+  background-color: ${(props) => (props.isActive ? "orange" : "#fff")};
   border-radius: 30px;
   border: 1px solid
-    ${(props) => (props.isActive ? "#f5cf1f" : "rgb(223, 227, 234)")};
+    ${(props) => (props.isActive ? "#f4840b" : "rgb(223, 227, 234)")};
   /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
-  font-weight: 600;
-  color: ${(props) => (props.isActive ? "#fff" : "#cacaca")};
+  color: ${(props) => (props.isActive ? "white" : "#999")};
   cursor: pointer;
 `;

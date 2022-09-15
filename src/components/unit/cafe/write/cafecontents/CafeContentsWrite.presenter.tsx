@@ -6,6 +6,9 @@ import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { ICafeContentsWriteUIProps } from "./CafeContentsWrite.types";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button, Space, Upload } from "antd";
+import React from "react";
 
 const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
   ssr: false,
@@ -24,11 +27,11 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
     <>
       <CafeContentsWrite.Wrapper>
         <CafeContentsWrite.ProcedureWrapper>
-          <CafeContentsWrite.Procedure01>
-            01 카페정보 입력
+          <CafeContentsWrite.Procedure01 next={props.next}>
+            01. 카페정보 입력
           </CafeContentsWrite.Procedure01>
-          <CafeContentsWrite.Procedure02>
-            02 강아지정보 입력
+          <CafeContentsWrite.Procedure02 next={props.next}>
+            02. 강아지정보 입력
           </CafeContentsWrite.Procedure02>
         </CafeContentsWrite.ProcedureWrapper>
         <CafeContentsWrite.ProcedureUnderBar>
@@ -42,7 +45,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
           {!props.next && (
             <>
               <CafeContentsWrite.Tag>
-                업체명을 입력해주세요
+                카페 이름을 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNameInput
                 required
@@ -54,7 +57,25 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               </CafeContentsWrite.ErrorTag>
 
               <CafeContentsWrite.Tag>
-                업체 사진을 추가해 주세요
+                카페 이미지를 추가해주세요 (최대 5장)
+                <CafeContentsWrite.MobileUploadWrapper>
+                  <Space
+                    direction="vertical"
+                    style={{ width: "100%" }}
+                    size="large"
+                  >
+                    <Upload
+                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      listType="picture"
+                      maxCount={5}
+                      multiple
+                    >
+                      <Button icon={<UploadOutlined />}>
+                        사진 추가 (최대 5장)
+                      </Button>
+                    </Upload>
+                  </Space>
+                </CafeContentsWrite.MobileUploadWrapper>
                 <CafeContentsWrite.ImageUploadWrapper>
                   {props.fileUrls.map((el, index) => (
                     <CafeImgUpload
@@ -76,7 +97,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                 />
                 {props.description === "<p><br></p>" || "" ? (
                   <CafeContentsWrite.ErrorTag>
-                    상세 설명을 입력해주세요
+                    가게 설명을 입력해주세요
                   </CafeContentsWrite.ErrorTag>
                 ) : (
                   ""
