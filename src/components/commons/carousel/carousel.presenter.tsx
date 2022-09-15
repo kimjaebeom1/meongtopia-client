@@ -4,21 +4,9 @@ import Slider from "react-slick";
 export default function CarouselPresenter(props) {
   return (
     <Carousel.Wrapper>
-      {/* <Carousel.VideoWrap>
-        <Carousel.Video
-          src="/images/landingVideo3.mp4"
-          autoPlay={true}
-          loop={true}
-          muted={true}
-        />
-        <Carousel.VideoDivWrap>
-          <Carousel.VideoImg src="/images/landinglogo.png" />
-        </Carousel.VideoDivWrap>
-      </Carousel.VideoWrap> */}
-
       <Slider {...props.settings}>
         <div>
-          <Carousel.SlideImg src="/images/landigndog1.png" />
+          <Carousel.SlideImg src="/images/carousel1.png" />
           <Carousel.VideoDivWrap>
             <Carousel.VideoContents1>
               멍토피아에 오신 걸 환영합니다
@@ -26,20 +14,22 @@ export default function CarouselPresenter(props) {
           </Carousel.VideoDivWrap>
         </div>
         <div>
-          <Carousel.SlideImg src="/images/landigndog1.png" />
-          <Carousel.VideoDivWrap>
-            <Carousel.VideoContents1>
-              멍토피아에 오신 걸 환영합니다
-            </Carousel.VideoContents1>
-          </Carousel.VideoDivWrap>
+          <Carousel.SlideImg src="/images/carousel2.png" />
+          <Carousel.VideoDivWrap2>
+            <Carousel.VideoContents2>
+              귀여운 강아지들을 만날 수 있어요
+            </Carousel.VideoContents2>
+          </Carousel.VideoDivWrap2>
         </div>
         <div>
-          <Carousel.SlideImg src="/images/landigndog1.png" />
-          <Carousel.VideoDivWrap>
-            <Carousel.VideoContents1>3333</Carousel.VideoContents1>
-          </Carousel.VideoDivWrap>
+          <Carousel.SlideImg src="/images/carousel3.png" />
+          <Carousel.VideoDivWrap3>
+            <Carousel.VideoContents3>
+              가까이 있는 강아지들을 만나러 오세요
+            </Carousel.VideoContents3>
+          </Carousel.VideoDivWrap3>
         </div>
-        <div>
+        {/* <div>
           <Carousel.SlideImg src="/images/landigndog1.png" />
           <Carousel.VideoDivWrap>
             <Carousel.VideoContents1>44444</Carousel.VideoContents1>
@@ -50,7 +40,7 @@ export default function CarouselPresenter(props) {
           <Carousel.VideoDivWrap>
             <Carousel.VideoContents1>55555</Carousel.VideoContents1>
           </Carousel.VideoDivWrap>
-        </div>
+        </div> */}
       </Slider>
     </Carousel.Wrapper>
   );

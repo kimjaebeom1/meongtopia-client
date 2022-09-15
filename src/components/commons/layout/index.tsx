@@ -19,7 +19,7 @@ const LayoutBody = styled.section`
 export default function Layout(props: ILayoutProps) {
   return (
     <LayoutWrapper>
-      <LayoutHeader />
+      {/* <LayoutHeader /> */}
       <LayoutBody>{props.children}</LayoutBody>
       <LayoutFooter />
     </LayoutWrapper>

@@ -3,24 +3,41 @@ import { breakPoints } from "../../../commons/styles/media";
 import "animate.css";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 80%;
   margin: auto;
   margin-top: 50px;
-  /* background-color: lightblue; */
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
 `;
 
 export const DivWrap = styled.div`
-  width: auto;
+  transition: all 1.5s ease-in-out;
 
   .isActive {
     animation: fadeInUp;
     animation-duration: 2s;
-    border: 1px solid black;
+    opacity: 1;
+  }
+`;
+
+export const DivWrap1 = styled.div`
+  height: 100vh;
+  width: 100%;
+  /* padding-top: 50px; */
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
   }
 `;
 
 export const DivWrap2 = styled.div`
-  width: auto;
+  height: 100vh;
+  width: 100%;
+
+  margin: 0px auto;
+  height: 100vh;
+  border: 1px solid black;
 
   .isActive {
     animation: fadeInUp;
@@ -29,24 +46,14 @@ export const DivWrap2 = styled.div`
 `;
 
 export const ReCafeList = styled.div`
-  height: 80vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  margin-bottom: 50px;
-
+  padding-top: 50px;
+  background-color: #ffdcdc;
   animation: fadeInUp;
   animation-duration: 2s;
-`;
-
-export const FootPrint = styled.img`
-  z-index: -2;
-  width: 100%;
-  height: 300px;
-  position: relative;
-  top: -300px;
 `;
 
 // export const DogsImg = styled.img`
@@ -58,9 +65,8 @@ export const FootPrint = styled.img`
 // `;
 
 export const ReTitle = styled.div`
-  padding-left: 10%;
-  font-weight: 600;
-  font-size: 23px;
+  width: 80%;
+  font-size: 1.6rem;
   display: flex;
   margin-bottom: 20px;
   @media ${breakPoints.mobile} {
@@ -74,43 +80,52 @@ export const Meong = styled.img`
 `;
 
 export const ReCafeWrap = styled.div`
+  width: 100%;
   z-index: 1;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 10px;
-  padding: 0px 120px;
+  flex-direction: column;
+  align-items: center;
 
-  /* @media ${breakPoints.mobile} {
-    display: flex;
-    flex-direction: column;
-  } */
+  @media ${breakPoints.mobile} {
+    height: 100%;
+  }
 `;
 
-export const Ad = styled.img`
-  width: 300px;
-  height: 300px;
+// export const Ad = styled.img`
+//   width: 300px;
+//   height: 300px;
+// `;
+export const FlipWrap = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100%;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
 `;
 
 export const Filp = styled.div`
-  width: 100%;
-  height: 300px;
-  margin: 0px 10px;
-
-  /* perspective: 1000px; */
+  width: 18rem;
+  height: 20rem;
   position: relative;
-
-  /* @media ${breakPoints.mobile} {
-    display: flex;
-    flex-direction: column;
-  } */
+  margin: 0px 5px;
+  :hover {
+    cursor: pointer;
+  }
 `;
+
 export const TopWrap = styled.div`
   /* flex-direction: column; */
+  position: relative;
   width: 100%;
   height: 100%;
-  transition: 0.09s;
+  transition: 0.1s;
   transform-style: preserve-3d;
 
   :hover {
@@ -119,20 +134,23 @@ export const TopWrap = styled.div`
 `;
 
 export const TopImgType = styled.div`
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   backface-visibility: hidden;
   display: flex;
 `;
 
 export const TopImgFE = styled(TopImgType)`
   position: absolute;
+  display: flex;
   width: 100%;
   height: 100%;
   background-image: url("/images/landingcafe2.jpeg");
-  background-size: cover;
-  color: black;
+  background-size: 100% 100%;
+  /* :hover {
+    transform: rotateY(180deg);
+  } */
 `;
 
 export const TopImgBE = styled(TopImgType)`
@@ -144,20 +162,66 @@ export const TopImgBE = styled(TopImgType)`
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
+  padding: 20px;
 `;
 
 export const TopContentWrap = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
 `;
 
-export const TopImgTitle = styled.div`
+export const ImgStoreInfo = styled.div`
   width: 100%;
-  height: 20px;
-  border: 3px solid red;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  margin-bottom: 90px;
+`;
+
+export const ImgStoreName = styled.div`
+  /* height: 100%; */
+  text-align: end;
+  font-size: 1.3rem;
   font-weight: 600;
   word-break: break-all;
+  color: black;
+  padding-right: 10px;
+`;
+
+export const Rank = styled.div`
+  /* height: 100%; */
+  line-height: 100%;
+  font-size: 4rem;
+  font-weight: 600;
+  word-break: break-all;
+  color: orange;
+  margin-bottom: 30px;
+`;
+export const ImgRating = styled.div`
+  width: 100%;
+  height: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-all;
+  text-align: end;
+  color: white;
+  padding-right: 10px;
+  margin-bottom: 20px;
+`;
+
+export const ImgDesc = styled.div`
+  width: 100%;
+  height: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  word-break: break-all;
+  text-align: center;
 `;
 
 export const Line2 = styled.div`
@@ -245,26 +309,22 @@ export const Line = styled.div`
 
 export const DescWrap = styled.div`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+  border: 1px solid black;
 `;
 
 export const Title = styled.div`
   font-weight: 500;
   font-size: 1rem;
-  margin-top: 8rem;
   margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* @media ${breakPoints.mobile} {
-    font-weight: 800;
-    font-size: 20px;
-  } */
 `;
 
 export const DetailWrap = styled.div`
@@ -284,7 +344,7 @@ export const Detail = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 0px 40px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 `;
 
 export const DescImg = styled.img`
@@ -308,19 +368,19 @@ export const DescMents2 = styled.div`
 export const LastPart = styled.div`
   z-index: -1;
   width: 100%;
-  height: 450px;
+  height: 100vh;
   background-color: #f5cf1f;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 export const Logo = styled.img`
   z-index: 999;
-  width: 225px;
-  height: 100px;
-  margin: 0px 30px;
+  width: 17rem;
+  height: 120px;
+  margin-bottom: 30px;
 `;
 
 export const BallWrap = styled.div`
@@ -329,4 +389,17 @@ export const BallWrap = styled.div`
   justify-content: start;
   flex-direction: row;
   width: 100%;
+`;
+
+export const Btn = styled.button`
+  width: 17rem;
+  height: 50px;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  border: none;
+  background-color: orange;
+  :hover {
+    background-color: white;
+    border: 3px solid orange;
+  }
 `;

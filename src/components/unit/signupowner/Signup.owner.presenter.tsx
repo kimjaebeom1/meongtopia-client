@@ -47,19 +47,19 @@ export default function SignUpOwnerPresenterPage(props: any) {
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
         <SignUp.BtnWrap>
-          <SignUp.OwnerUserWrap>
+          <SignUp.UserWrap>
             <SignUp.Ment1 onClick={props.onClickMoveToUser}>
               개 인 회 원 가 입
             </SignUp.Ment1>
             {/* <SignUp.Ment2>만 15세 이상 가능</SignUp.Ment2> */}
-          </SignUp.OwnerUserWrap>
+          </SignUp.UserWrap>
 
-          <SignUp.OwnerUserWrap>
+          <SignUp.OwnerWrap>
             <SignUp.Ment1 onClick={props.onClickMoveToOwner}>
               사 장 님 회 원 가 입
             </SignUp.Ment1>
             {/* <SignUp.Ment2></SignUp.Ment2> */}
-          </SignUp.OwnerUserWrap>
+          </SignUp.OwnerWrap>
         </SignUp.BtnWrap>
         {/* <form onSubmit={props.handleSubmit(props.onClickSubmit)}> */}
         <SignUp.OwnerNumWrap>
@@ -143,21 +143,14 @@ export default function SignUpOwnerPresenterPage(props: any) {
                   placeholder="휴대전화 번호를 입력해주세요"
                 />
               </SignUp.InputElWrap>
-              <SignUp.NumBtn onClick={props.onClickGetToken}>
+              <SignUp.NumBtn
+                onClick={props.onClickGetToken}
+                isActivePhone={props.isActivePhone ? true : props.isActivePhone}
+              >
                 인증
               </SignUp.NumBtn>
             </SignUp.PhoneNumWrap>
 
-            {/* <SignUp.NumberWrap>
-              <SignUp.Number
-                onChange={props.onChangeCheckNum}
-                placeholder="인증번호를 입력해주세요"
-              />
-
-              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
-                확인
-              </SignUp.NumBtn>
-            </SignUp.NumberWrap> */}
             <SignUp.NumberWrap>
               <SignUp.InputElWrap>
                 <SignUp.Input
@@ -170,9 +163,12 @@ export default function SignUpOwnerPresenterPage(props: any) {
                   ).padStart(2, "0")}`}
                 </SignUp.Timer>
               </SignUp.InputElWrap>
-              <SignUp.NumBtn onClick={props.onClickCheckValidToken}>
+              <SignUp.NumBtn2
+                onClick={props.onClickCheckValidToken}
+                isActiveNum={props.isActiveNum ? true : props.isActiveNum}
+              >
                 확인
-              </SignUp.NumBtn>
+              </SignUp.NumBtn2>
             </SignUp.NumberWrap>
           </SignUp.PhoneWrap>
 

@@ -25,7 +25,10 @@ export default function LandingWebInfo() {
         <Landing.Detail>
           <Landing.DescMents1>
             월간 사용자 수 <br />
-            <animated.span>{props.number}</animated.span> +
+            <animated.span className={inView ? "isActive" : ""} ref={ref}>
+              {props.number}
+            </animated.span>
+            +
           </Landing.DescMents1>
           <Landing.DescMents2>
             월간 200만명 이상의 유저들이 <br />
@@ -37,7 +40,10 @@ export default function LandingWebInfo() {
           <Landing.DescMents1>
             SNS채널
             <br />
-            <animated.span>{props.number}</animated.span> +
+            <animated.span className={inView ? "isActive" : ""} ref={ref}>
+              {props.number}
+            </animated.span>{" "}
+            +
           </Landing.DescMents1>
           <Landing.DescMents2>
             약 800만명의 팔로워를 <br />
@@ -48,7 +54,10 @@ export default function LandingWebInfo() {
         <Landing.Detail>
           <Landing.DescMents1>
             페이지뷰 <br />
-            <animated.span>{props.number}</animated.span> +
+            <animated.span className={inView ? "isActive" : ""} ref={ref}>
+              {props.number}
+            </animated.span>{" "}
+            +
           </Landing.DescMents1>
           <Landing.DescMents2>
             멍토피아는 앱/웹/SNS채널의 <br />

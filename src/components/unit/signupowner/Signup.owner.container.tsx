@@ -18,6 +18,8 @@ import { checkEmail } from "../../../commons/libraries/utils";
 
 export default function SignUpOwnerContainerPage() {
   const router = useRouter();
+  const [isActivePhone, setIsActivePhone] = useState(false);
+  const [isActiveNum, setIsActiveNum] = useState(false);
 
   const [getToken] = useMutation(GET_TOKEN);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
@@ -70,9 +72,19 @@ export default function SignUpOwnerContainerPage() {
 
   const onChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
     setPhone(event.target.value);
+    if (event.target.value) {
+      setIsActivePhone(true);
+    } else {
+      setIsActivePhone(false);
+    }
   };
   const onChangeCheckNum = (event: ChangeEvent<HTMLInputElement>) => {
     setCheckNum(event.target.value);
+    if (event.target.value) {
+      setIsActiveNum(true);
+    } else {
+      setIsActiveNum(false);
+    }
   };
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
@@ -130,7 +142,6 @@ export default function SignUpOwnerContainerPage() {
       return;
     }
     try {
-      console.log("시작");
       const result = await getToken({
         variables: {
           phone: String(phone),
@@ -162,6 +173,8 @@ export default function SignUpOwnerContainerPage() {
       console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
       setIsCountdown((prev) => !prev);
+      setIsActivePhone(false);
+      setIsActiveNum(false);
     } catch (error) {
       if (error instanceof Error) {
         message.error("인증 실패. 다시 시도해주세요");
@@ -267,6 +280,8 @@ export default function SignUpOwnerContainerPage() {
       minutes={minutes}
       seconds={seconds}
       isCountdown={isCountdown}
+      isActivePhone={isActivePhone}
+      isActiveNum={isActiveNum}
       onClickGetToken={onClickGetToken}
       onClickCheckValidToken={onClickCheckValidToken}
       onClickSubmit={onClickSubmit}

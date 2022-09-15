@@ -22,7 +22,7 @@ const onClickScroll = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-export default function Scroll() {
+export default function ScrollUp() {
   return (
     <Button onClick={onClickScroll}>
       <ArrowUpOutlined />

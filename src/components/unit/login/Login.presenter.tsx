@@ -10,23 +10,32 @@ export default function LoginPresenterPage(props) {
             <Login.SubTitle>
               멍토피아 회원이 아니라면 지금 회원가입 해주세요
             </Login.SubTitle>
-            <Login.Input
-              placeholder="이메일을 입력해주세요"
-              onChange={props.onChangeEmail}
-            />
-            <Login.Error>이름을 입력해주세요</Login.Error>
+            <Login.InputBorder>
+              <Login.Input
+                placeholder="이메일을 입력해주세요"
+                onChange={props.onChangeEmail}
+              />
+            </Login.InputBorder>
+            <Login.Error>{props.emailError}</Login.Error>
           </Login.InputWrap>
 
           <Login.InputWrap>
-            <Login.Input
-              placeholder="비밀번호를 입력해주세요"
-              type="password"
-              onChange={props.onChangePassword}
-            />
-            <Login.Error>비밀번호를 입력해주세요</Login.Error>
+            <Login.InputBorder>
+              <Login.Input
+                placeholder="비밀번호를 입력해주세요"
+                type="password"
+                onChange={props.onChangePassword}
+              />
+            </Login.InputBorder>
+            <Login.Error>{props.passwordError}</Login.Error>
           </Login.InputWrap>
 
-          <Login.LoginBtn onClick={props.onClickLogin}>로그인</Login.LoginBtn>
+          <Login.LoginBtn
+            onClick={props.onClickLogin}
+            isActive={props.isActive ? true : props.isActive}
+          >
+            로그인
+          </Login.LoginBtn>
 
           <Login.SignUp>
             아직 계정이 없으신가요?
@@ -36,9 +45,18 @@ export default function LoginPresenterPage(props) {
           </Login.SignUp>
 
           <Login.SocialLoginWrap>
-            <Login.SocialLoginBtn src="/images/kakao.png" />
-            <Login.SocialLoginBtn src="/images/naver.png" />
-            <Login.SocialLoginBtn src="/images/google.png" />
+            <Login.SocialLoginGoogle
+              src="/images/google.png"
+              onClick={props.onClickGoogle}
+            />
+            <Login.SocialLoginNaver
+              src="/images/naver.png"
+              onClick={props.onClickNaver}
+            />
+            <Login.SocialLoginKakao
+              src="/images/kakao.png"
+              onClick={props.onClickKakao}
+            />
           </Login.SocialLoginWrap>
         </Login.ElWrap>
 
