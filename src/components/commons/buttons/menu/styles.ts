@@ -9,9 +9,9 @@ export const Menu = styled.li`
   font-weight: 500;
   line-height: normal;
   margin-right: 2rem;
-  color: ${(props: IisActiveProps) => (props.isActive ? "#F5CF1F" : "#000")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#000")};
   cursor: pointer;
   :hover {
-    color: #f5cf1f;
+    color: #f4840b;
   }
 `;

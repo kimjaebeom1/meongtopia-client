@@ -10,8 +10,9 @@ export const Title = styled.h1`
 `;
 
 export const Container = styled.div`
-  border: 1px solid #f5cf1f;
+  border: 1px solid orange;
   border-radius: 1rem;
+  box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
   margin: 5rem 0;
   padding: 2rem;
 `;
@@ -67,6 +68,10 @@ export const Input = styled.input`
 `;
 
 export const UpdateWrapper = styled.div`
+  width: 100%;
+`;
+
+export const PwdWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

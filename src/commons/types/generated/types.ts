@@ -27,6 +27,17 @@ export type ICreatePetInput = {
   petImgUrl?: InputMaybe<Scalars['String']>;
 };
 
+export type ICreateReservationInput = {
+  amount?: InputMaybe<Scalars['Int']>;
+  members?: InputMaybe<Scalars['Int']>;
+  pets?: InputMaybe<Scalars['Int']>;
+};
+
+export type ICreateReviewInput = {
+  contents: Scalars['String'];
+  rating: Scalars['Float'];
+};
+
 export type ICreateStoreInput = {
   address?: InputMaybe<Scalars['String']>;
   addressDetail?: InputMaybe<Scalars['String']>;
@@ -41,7 +52,7 @@ export type ICreateStoreInput = {
   pet?: InputMaybe<Array<ICreatePetInput>>;
   phone?: InputMaybe<Scalars['String']>;
   smallDog?: InputMaybe<Scalars['Int']>;
-  storeImage?: InputMaybe<Array<Scalars['String']>>;
+  storeImg?: InputMaybe<Array<Scalars['String']>>;
   storeTag?: InputMaybe<Array<Scalars['String']>>;
 };
 
@@ -55,12 +66,27 @@ export type ICreateUserInput = {
   storeName?: InputMaybe<Scalars['String']>;
 };
 
+export type IIncome = {
+  __typename?: 'Income';
+  cancelNum: Scalars['Int'];
+  date: Scalars['Int'];
+  incomeID: Scalars['String'];
+  paymentNum: Scalars['Int'];
+  store: IStore;
+  totalCash: Scalars['Int'];
+};
+
 export type IMutation = {
   __typename?: 'Mutation';
+  cancelPayment: IPayment;
+  cancelReservation: Scalars['Boolean'];
+  checkNickname: Scalars['Boolean'];
   checkValidToken: Scalars['String'];
   createAdim: IUser;
   createLocationTag: IStrLocationTag;
   createOwner: IUser;
+  createPayment: IPayment;
+  createReservation: IReservation;
   createResponse: IReviewResponse;
   createReview: IReview;
   createStore: IStore;
@@ -74,10 +100,11 @@ export type IMutation = {
   deleteTag: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
   getToken: Scalars['String'];
+  getTokenEmail: Scalars['String'];
   login: Scalars['String'];
   logout: Scalars['String'];
   restoreAccessToken: Scalars['String'];
-  togglepick: Scalars['Boolean'];
+  togglePick: Scalars['Boolean'];
   updateLocationTag: IStrLocationTag;
   updateResponse: IReviewResponse;
   updateReview: IReview;
@@ -86,6 +113,25 @@ export type IMutation = {
   updateUser: IUser;
   updateUserPwd: Scalars['String'];
   uploadFile: Array<Scalars['String']>;
+  usePoint: Scalars['Boolean'];
+};
+
+
+export type IMutationCancelPaymentArgs = {
+  amount: Scalars['Int'];
+  impUid: Scalars['String'];
+  reason: Scalars['String'];
+};
+
+
+export type IMutationCancelReservationArgs = {
+  date: Scalars['String'];
+  storeID: Scalars['String'];
+};
+
+
+export type IMutationCheckNicknameArgs = {
+  nickname: Scalars['String'];
 };
 
 
@@ -107,6 +153,18 @@ export type IMutationCreateLocationTagArgs = {
 
 export type IMutationCreateOwnerArgs = {
   createUserInput: ICreateUserInput;
+};
+
+
+export type IMutationCreatePaymentArgs = {
+  amount: Scalars['Int'];
+  impUid: Scalars['String'];
+};
+
+
+export type IMutationCreateReservationArgs = {
+  createReservationInput: ICreateReservationInput;
+  storeID: Scalars['String'];
 };
 
 
@@ -157,13 +215,18 @@ export type IMutationGetTokenArgs = {
 };
 
 
+export type IMutationGetTokenEmailArgs = {
+  email: Scalars['String'];
+};
+
+
 export type IMutationLoginArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
 
-export type IMutationTogglepickArgs = {
+export type IMutationTogglePickArgs = {
   storeID: Scalars['String'];
 };
 
@@ -204,12 +267,18 @@ export type IMutationUpdateUserArgs = {
 
 export type IMutationUpdateUserPwdArgs = {
   email: Scalars['String'];
+  phone: Scalars['String'];
   updateUserPwdInput: Scalars['String'];
 };
 
 
 export type IMutationUploadFileArgs = {
   files: Array<Scalars['Upload']>;
+};
+
+
+export type IMutationUsePointArgs = {
+  amount: Scalars['Int'];
 };
 
 export enum IPayment_Enum {
@@ -227,9 +296,24 @@ export type IPayment = {
   user: IUser;
 };
 
+export type IPet = {
+  __typename?: 'Pet';
+  age: Scalars['Int'];
+  breed: Scalars['String'];
+  description: Scalars['String'];
+  name: Scalars['String'];
+  petID: Scalars['String'];
+  petImgUrl: Scalars['String'];
+  store: IStore;
+};
+
 export type IQuery = {
   __typename?: 'Query';
+  ReviewCount: Scalars['Int'];
   fetchLocationTags: Array<IStrLocationTag>;
+  fetchPickRank: Array<IStore>;
+  fetchPicks: Array<IStore>;
+  fetchReservation: Array<IReservation>;
   fetchReview: Array<IReviewResponse>;
   fetchStore: IStore;
   fetchStores: Array<IStore>;
@@ -238,6 +322,17 @@ export type IQuery = {
   fetchTags: Array<IStoreTag>;
   fetchUser: IUser;
   fetchUsers: Array<IUser>;
+  searchStores: Array<IStore>;
+};
+
+
+export type IQueryReviewCountArgs = {
+  storeID: Scalars['String'];
+};
+
+
+export type IQueryFetchPickRankArgs = {
+  order?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -247,7 +342,8 @@ export type IQueryFetchStoreArgs = {
 
 
 export type IQueryFetchStoresArgs = {
-  search?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['Float']>;
 };
 
 
@@ -258,6 +354,28 @@ export type IQueryFetchStoresLocationArgs = {
 
 export type IQueryFetchStoresTagArgs = {
   name: Scalars['String'];
+};
+
+
+export type IQueryFetchUsersArgs = {
+  name: Scalars['String'];
+};
+
+
+export type IQuerySearchStoresArgs = {
+  search?: InputMaybe<Scalars['String']>;
+};
+
+export type IReservation = {
+  __typename?: 'Reservation';
+  amount: Scalars['Int'];
+  date: Scalars['String'];
+  income: IIncome;
+  members: Scalars['Int'];
+  pets: Scalars['Int'];
+  resID: Scalars['String'];
+  store: IStore;
+  user: IUser;
 };
 
 export type IReview = {
@@ -291,11 +409,21 @@ export type IStore = {
   menuImg: Scalars['String'];
   name: Scalars['String'];
   open: Scalars['String'];
+  pet: Array<IPet>;
   phone: Scalars['String'];
+  pickCount: Scalars['Int'];
   smallDog: Scalars['Int'];
   storeID: Scalars['String'];
+  storeImg: Array<IStoreImg>;
   storeTag: Array<IStoreTag>;
   user: IUser;
+};
+
+export type IStoreImg = {
+  __typename?: 'StoreImg';
+  store: IStore;
+  storeImgID: Scalars['String'];
+  url: Scalars['String'];
 };
 
 export type IStoreTag = {
@@ -317,6 +445,11 @@ export enum IUser_Role_Enum {
   Owner = 'OWNER'
 }
 
+export type IUpdateReviewInput = {
+  contents?: InputMaybe<Scalars['String']>;
+  rating?: InputMaybe<Scalars['Float']>;
+};
+
 export type IUpdateStoreInput = {
   address?: InputMaybe<Scalars['String']>;
   addressDetail?: InputMaybe<Scalars['String']>;
@@ -331,7 +464,7 @@ export type IUpdateStoreInput = {
   petInput?: InputMaybe<Array<IUpdatePetInput>>;
   phone?: InputMaybe<Scalars['String']>;
   smallDog?: InputMaybe<Scalars['Int']>;
-  storeImage?: InputMaybe<Array<Scalars['String']>>;
+  storeImg?: InputMaybe<Array<Scalars['String']>>;
   storeTag?: InputMaybe<Array<Scalars['String']>>;
 };
 
@@ -363,20 +496,10 @@ export type IUser = {
   userID: Scalars['String'];
 };
 
-export type ICreateReviewInput = {
-  contents: Scalars['String'];
-  rating: Scalars['Float'];
-};
-
 export type IUpdatePetInput = {
   age?: InputMaybe<Scalars['Int']>;
   breed?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   petImgUrl?: InputMaybe<Scalars['String']>;
-};
-
-export type IUpdateReviewInput = {
-  contents?: InputMaybe<Scalars['String']>;
-  rating?: InputMaybe<Scalars['Float']>;
 };

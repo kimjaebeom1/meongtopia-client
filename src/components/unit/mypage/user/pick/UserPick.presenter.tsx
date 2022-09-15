@@ -1,54 +1,59 @@
 import * as UserPick from "./UserPick.styles";
 import { Rate } from "antd";
 import "antd/dist/antd.css";
+import { IMyPageUserPickUIProps } from "./UserPick.types";
+import { v4 as uuidv4 } from "uuid";
 
-export default function MyPageUserPickUI() {
+export default function MyPageUserPickUI(props: IMyPageUserPickUIProps) {
   return (
     <UserPick.Wrapper>
-      <UserPick.SortWrapper>
-        <UserPick.SortSelect name="정렬방식">
-          <option>정렬방식</option>
-        </UserPick.SortSelect>
-      </UserPick.SortWrapper>
-      <UserPick.ListContainer>
-        <UserPick.Img src="/images/cafe2.jpeg" />
-        <UserPick.DetailContainer>
-          <UserPick.Title>상수역 멍멍 애견카페</UserPick.Title>
-          <UserPick.RatingContainer>
-            <UserPick.RatingLabel>별점</UserPick.RatingLabel>
-            <Rate value={5} disabled />
-          </UserPick.RatingContainer>
-          <UserPick.Text>서울특별시 마포구 상수동 123</UserPick.Text>
-          <UserPick.Text>9:00 ~ 20:00</UserPick.Text>
-          <UserPick.Text>입장료 9000원</UserPick.Text>
-        </UserPick.DetailContainer>
-      </UserPick.ListContainer>
-      <UserPick.ListContainer>
-        <UserPick.Img src="/images/cafe2.jpeg" />
-        <UserPick.DetailContainer>
-          <UserPick.Title>상수역 멍멍 애견카페</UserPick.Title>
-          <UserPick.RatingContainer>
-            <UserPick.RatingLabel>별점</UserPick.RatingLabel>
-            <Rate value={5} disabled />
-          </UserPick.RatingContainer>
-          <UserPick.Text>서울특별시 마포구 상수동 123</UserPick.Text>
-          <UserPick.Text>9:00 ~ 20:00</UserPick.Text>
-          <UserPick.Text>입장료 9000원</UserPick.Text>
-        </UserPick.DetailContainer>
-      </UserPick.ListContainer>
-      <UserPick.ListContainer>
-        <UserPick.Img src="/images/cafe2.jpeg" />
-        <UserPick.DetailContainer>
-          <UserPick.Title>상수역 멍멍 애견카페</UserPick.Title>
-          <UserPick.RatingContainer>
-            <UserPick.RatingLabel>별점</UserPick.RatingLabel>
-            <Rate value={5} disabled />
-          </UserPick.RatingContainer>
-          <UserPick.Text>서울특별시 마포구 상수동 123</UserPick.Text>
-          <UserPick.Text>9:00 ~ 20:00</UserPick.Text>
-          <UserPick.Text>입장료 9000원</UserPick.Text>
-        </UserPick.DetailContainer>
-      </UserPick.ListContainer>
+      {props.data?.fetchPicks.map((el) => (
+        <UserPick.ListWrapper key={uuidv4()}>
+          {/* {el.storeImg?.[0].url ? ( */}
+          <UserPick.Img
+            src={`https://storage.googleapis.com/meongtopia-storage/2022-9-14/5b6a9254-b2b1-46a4-8eec-c64a35d58f86/origin/dog2.jpg`}
+          />
+          {/* ) : (<div></div> */}
+          {/* )} */}
+          <UserPick.UserList>
+            <UserPick.ContentsText>
+              <UserPick.Title>{el.name}</UserPick.Title>
+              <UserPick.RatingWrapper>
+                <Rate value={el.avgRating} disabled />
+                <span style={{ marginLeft: "0.5rem" }}>{el.avgRating}</span>
+              </UserPick.RatingWrapper>
+            </UserPick.ContentsText>
+
+            <UserPick.Horizon />
+            <UserPick.ContentsText>
+              <UserPick.SelectTag>
+                {el.storeTag.map((el) => (
+                  <span
+                    key={el.tagID}
+                    style={{ marginRight: "0.5rem", fontSize: "0.9rem" }}
+                  >{`# ${el.name}`}</span>
+                ))}
+              </UserPick.SelectTag>
+              <span style={{ display: "flex", alignItems: "center" }}>
+                <UserPick.Heart />
+                {el.pickCount}
+              </span>
+            </UserPick.ContentsText>
+            <UserPick.ContentsText>
+              <span>{el.address}</span>
+            </UserPick.ContentsText>
+            <UserPick.ContentsText>
+              <span>{`${el.open} ~ ${el.close}`}</span>
+              <span
+                style={{ fontSize: "1.2rem" }}
+              >{`입장료 ${el.entranceFee.toLocaleString()}원`}</span>
+            </UserPick.ContentsText>
+          </UserPick.UserList>
+          <UserPick.Reserve id={el.storeID} onClick={props.onClickToReserve}>
+            예약하기
+          </UserPick.Reserve>
+        </UserPick.ListWrapper>
+      ))}
     </UserPick.Wrapper>
   );
 }

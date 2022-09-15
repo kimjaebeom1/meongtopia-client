@@ -67,11 +67,7 @@ export const CSWrapper = styled.div`
   margin-top: 2rem;
 
   @media ${breakPoints.mobile} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    padding: 1rem;
+    display: none;
   }
 `;
 

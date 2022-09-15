@@ -54,7 +54,9 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
         <MyInfo.List>
           <div>
             <MyInfo.Label>{MENUS[4]}</MyInfo.Label>
-            <MyInfo.Data>{props.data?.fetchUser.point} 원</MyInfo.Data>
+            <MyInfo.Data>
+              {props.data?.fetchUser.point.toLocaleString()} 원
+            </MyInfo.Data>
           </div>
         </MyInfo.List>
         <MyInfo.Footer>
@@ -101,20 +103,26 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
         <MyInfo.Container>
           <MyInfo.UpdateTitle>비밀번호 변경</MyInfo.UpdateTitle>
           <MyInfo.UpdateWrapper>
+            <MyInfo.PwdWrapper>
+              <div style={{ marginBottom: "2rem" }}>
+                <MyInfo.Label>비밀번호</MyInfo.Label>
+                <MyInfo.Input
+                  type="password"
+                  autoFocus
+                  onChange={props.onChangePwd}
+                />
+              </div>
+              <div>
+                <MyInfo.Label>비밀번호 확인</MyInfo.Label>
+                <MyInfo.Input
+                  type="password"
+                  onChange={props.onChangePwdConfirm}
+                />
+              </div>
+            </MyInfo.PwdWrapper>
             <div>
-              <MyInfo.Label>비밀번호</MyInfo.Label>
-              <MyInfo.Input
-                type="password"
-                autoFocus
-                onChange={props.onChangePwd}
-              />
-            </div>
-            <div>
-              <MyInfo.Label>비밀번호 확인</MyInfo.Label>
-              <MyInfo.Input
-                type="password"
-                onChange={props.onChangePwdConfirm}
-              />
+              <MyInfo.Label>휴대폰 번호</MyInfo.Label>
+              <MyInfo.Input type="text" onChange={props.onChangePhoneNumber} />
             </div>
           </MyInfo.UpdateWrapper>
           <MyInfo.ErrorMessage>{props.errorMessage}</MyInfo.ErrorMessage>

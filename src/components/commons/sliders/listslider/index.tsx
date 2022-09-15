@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 
 const SliderItem = styled.div`
   & > img {
-    width: 400px;
+    width: 410px;
     height: 264px;
     object-fit: cover;
     border-radius: 8px;

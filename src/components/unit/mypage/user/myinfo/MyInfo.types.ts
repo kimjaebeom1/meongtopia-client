@@ -7,11 +7,12 @@ export interface IMyPageUserMyInfoUIProps {
   isChangePwd: boolean;
   errorMessage: string;
   onClickToUpdate: (e: MouseEvent<HTMLButtonElement>) => void;
-  onChangeUpdate: (e: ChangeEvent<HTMLInputElement>) => void;
   onClickUpdate: () => void;
   onClickDelete: () => void;
   onClickToChangePwd: () => void;
+  onClickChangePwd: () => void;
+  onChangeUpdate: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangePwd: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangePwdConfirm: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClickChangePwd: () => void;
+  onChangePhoneNumber: (e: ChangeEvent<HTMLInputElement>) => void;
 }

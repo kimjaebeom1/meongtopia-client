@@ -24,9 +24,10 @@ export default function MyPageUserMyInfo() {
   const [menuId, setMenuId] = useState("");
   const [update, setUpdate] = useState("");
   const [isChangePwd, setIsChangePwd] = useState(false);
-  const [pwd, setPwd] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [pwd, setPwd] = useState("");
   const [pwdConfirm, setPwdConfirm] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
 
@@ -131,10 +132,18 @@ export default function MyPageUserMyInfo() {
     setPwdConfirm(e.target.value);
   };
 
+  const onChangePhoneNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhoneNumber(e.target.value);
+  };
+
   // 비밀번호 변경 함수
   const onClickChangePwd = async () => {
     if (pwd !== pwdConfirm) {
       setErrorMessage("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+    if (phoneNumber !== data?.fetchUser.phone) {
+      setErrorMessage("휴대폰 번호가 일치하지 않습니다.");
       return;
     }
     try {
@@ -142,6 +151,7 @@ export default function MyPageUserMyInfo() {
         variables: {
           email: String(data?.fetchUser.email),
           updateUserPwdInput: pwd,
+          phone: phoneNumber,
         },
       });
       alert("변경이 완료되었습니다.");
@@ -158,13 +168,14 @@ export default function MyPageUserMyInfo() {
       isChangePwd={isChangePwd}
       errorMessage={errorMessage}
       onClickToUpdate={onClickToUpdate}
-      onChangeUpdate={onChangeUpdate}
       onClickUpdate={onClickUpdate}
       onClickDelete={onClickDelete}
       onClickToChangePwd={onClickToChangePwd}
+      onClickChangePwd={onClickChangePwd}
+      onChangeUpdate={onChangeUpdate}
       onChangePwd={onChangePwd}
       onChangePwdConfirm={onChangePwdConfirm}
-      onClickChangePwd={onClickChangePwd}
+      onChangePhoneNumber={onChangePhoneNumber}
     />
   );
 }
