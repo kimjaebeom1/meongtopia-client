@@ -16,7 +16,7 @@ export default function DetailDogContents() {
   const [createReservation] = useMutation(CREATE_RESERVATION);
   const [count, setCount] = useState(1);
   const [petCount, setPetCount] = useState(0);
-  const [togglepick] = useMutation(Toggle_Pick);
+  const [togglePick] = useMutation(Toggle_Pick);
   const onChangePetCount = (value: number) => {
     setPetCount(value);
   };
@@ -26,7 +26,7 @@ export default function DetailDogContents() {
   };
 
   const onClickToggle = async () => {
-    const result = await togglepick({
+    const result = await togglePick({
       variables: {
         storeID: router.query.cafeid,
       },

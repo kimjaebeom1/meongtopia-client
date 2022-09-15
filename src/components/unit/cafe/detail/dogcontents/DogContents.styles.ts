@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { Select } from "antd";
 import { BiTime, BiPhone } from "react-icons/bi";
-import { GiDogHouse } from "react-icons/gi";
+import { FaRegHeart } from "react-icons/fa";
+import { breakPoints } from "../../../../../commons/styles/media";
+import { Rate } from "antd";
 
 export const Wrapper = styled.div`
-  font-size: 25px;
-  font-weight: 700;
   width: 100%;
+  height: 100%;
 `;
 
 export const Line = styled.div`
@@ -18,13 +19,17 @@ export const Line = styled.div`
 
 // 헤더
 
-export const StoreNameTag = styled.div``;
+export const StoreNameTag = styled.div`
+  width: 100%;
+  font-size: 2.2rem;
+`;
 
 export const HeadInfo = styled.div`
-  font-size: 14px;
+  font-size: 1rem;
   color: #808080;
   display: flex;
   flex-direction: row;
+
   & > div {
     padding-top: 5px;
     display: flex;
@@ -33,15 +38,21 @@ export const HeadInfo = styled.div`
   }
 `;
 
-export const Toggle = styled(GiDogHouse)`
+export const Toggle = styled(FaRegHeart)`
   margin-left: 10px;
   cursor: pointer;
+  font-size: 1.5rem;
+
+  :hover {
+    color: orange;
+  }
 `;
 
+export const Star = styled(Rate)``;
 // 카페 이미지
 export const CafeImageWrapper = styled.div`
-  width: 1200px;
-  padding-top: 2rem;
+  width: 100%;
+  padding-top: 1rem;
   display: block;
   @media screen {
   }
@@ -50,12 +61,14 @@ export const CafeImageWrapper = styled.div`
 export const mainCafeImg = styled.img`
   display: block;
   width: 100%;
+  object-fit: cover;
   height: 410px;
   border-radius: 5px;
 `;
 
 export const cafeImg = styled.img`
   width: 100%;
+  object-fit: cover;
   height: 200px;
   border-radius: 5px;
 `;
@@ -70,6 +83,8 @@ export const DogTag = styled.div`
 
 export const DogListWrapper = styled.div`
   width: 90%;
+  & > div {
+  }
 
   & > li {
     color: white;
@@ -82,8 +97,15 @@ export const DogListWrapper = styled.div`
 
   .slick-next:before {
     font-size: 50px;
-    color: #f5cf1f;
+    color: #f4840b;
   }
+`;
+
+export const oneImage = styled.img`
+  width: 50%;
+  height: 200px;
+  object-fit: cover;
+  padding: 0.5rem;
 `;
 
 export const SliderItem = styled.div`
@@ -91,8 +113,7 @@ export const SliderItem = styled.div`
     width: 100%;
     height: 200px;
     object-fit: cover;
-    padding: 0.5rem;
-    border-radius: 20px;
+    padding-right: 1rem;
   }
 `;
 
@@ -114,7 +135,7 @@ export const NextArrow = styled.div`
 // 카페정보(Body)
 
 export const Body = styled.div`
-  width: 1200px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   padding-bottom: 2rem;
@@ -126,38 +147,47 @@ export const CafeInfoWrapper = styled.div`
   width: 65%;
   font-size: 16px;
   font-weight: 500;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
+
+export const TagWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 export const LocationTag = styled.span`
-  background-color: #f5cf1f;
+  background-color: orange;
   border-radius: 15px;
-  width: 100px;
   border: 1px solid #d6bcd6;
   display: block;
-  margin-top: 1em;
-  font-size: 12px;
+  font-size: 1rem;
   padding: 7px 25px;
-  font-family: 700;
+  color: white;
   text-align: center;
-`;
-
-export const StoreTagWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+  margin-right: 1em;
+  margin-top: 1rem;
 `;
 
 export const StoreTag = styled.span`
-  margin-left: 1em;
-  background-color: #f5cf1f;
+  margin-right: 1em;
+  background-color: #f4840b;
   border-radius: 15px;
-  width: 132px;
   border: 1px solid #d6bcd6;
   display: block;
-  margin-top: 1em;
-  font-size: 12px;
+  font-size: 1rem;
   padding: 7px 25px;
-  font-family: 700;
   text-align: center;
+  color: white;
+  margin-top: 1rem;
 `;
 
 export const BodyInfoTag = styled.div`
@@ -235,6 +265,11 @@ export const ReservationWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
+  font-size: 1.5rem;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const NumberTag = styled.div`
@@ -253,8 +288,9 @@ export const SelectWrapper = styled(Select)`
 
 export const ReservationBtn = styled.button`
   margin-top: 2rem;
-  background-color: #f5cf1f;
+  background-color: orange;
   width: 100%;
+  font-size: 1.5rem;
   color: white;
   border: none;
   border-radius: 5px;
@@ -262,7 +298,7 @@ export const ReservationBtn = styled.button`
 `;
 
 export const EntranceFee = styled.div`
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: space-between;
   font-size: 14px;
@@ -272,7 +308,7 @@ export const FeeInfo = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 0.8rem;
-  font-size: 12px;
+  font-size: 0.8rem;
   font-weight: 400;
 `;
 
@@ -284,8 +320,17 @@ export const ReservationLine = styled.div`
 
 export const Total = styled.div`
   display: flex;
-  padding-top: 2rem;
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
   justify-content: space-between;
+`;
+
+export const TotalCount = styled.div`
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  padding-top: rem;
+  justify-content: flex-end;
 `;
 
 // footer

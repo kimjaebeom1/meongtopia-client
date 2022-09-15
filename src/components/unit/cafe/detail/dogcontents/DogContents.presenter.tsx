@@ -23,30 +23,42 @@ export default function DetailDogContentsUI(props) {
     <DogContents.Wrapper>
       <DogContents.StoreNameTag>
         {props.data?.fetchStore.name}
+
         <DogContents.Toggle onClick={props.onClickToggle} />
         <DogContents.HeadInfo>
-          <img src="/images/star.svg" />
-          <div>{props.data?.fetchStore.avgRating}</div>
+          <DogContents.Star value={props.data?.fetchStore.avgRating} disabled />
         </DogContents.HeadInfo>
       </DogContents.StoreNameTag>
       <DogContents.CafeImageWrapper>
         <Row gutter={{ xs: 4, lg: 8 }}>
           <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-            <DogContents.mainCafeImg
-              src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
-            />
+            {props.data?.fetchStore.storeImg[0].url ? (
+              <DogContents.mainCafeImg
+                src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
+              />
+            ) : (
+              <DogContents.mainCafeImg src="/images/instacafe.jpeg" />
+            )}
           </Col>
           <Col span={14}>
             <Row gutter={{ xs: 4, lg: 8 }}>
               <Col span={12}>
-                <DogContents.cafeImg
-                  src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[1].url}`}
-                />
+                {props.data?.fetchStore.storeImg[1].url ? (
+                  <DogContents.cafeImg
+                    src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[1].url}`}
+                  />
+                ) : (
+                  <DogContents.cafeImg src="/images/instacafe1.jpg" />
+                )}
               </Col>
               <Col span={12}>
-                <DogContents.cafeImg
-                  src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[2].url}`}
-                />
+                {props.data?.fetchStore.storeImg[2].url ? (
+                  <DogContents.cafeImg
+                    src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[2].url}`}
+                  />
+                ) : (
+                  <DogContents.cafeImg src="/images/instacafe2.jpg" />
+                )}
               </Col>
             </Row>
             <Row gutter={{ xs: 4, lg: 8 }}>
@@ -56,9 +68,13 @@ export default function DetailDogContentsUI(props) {
                 }}
                 span={12}
               >
-                <DogContents.cafeImg
-                  src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[3].url}`}
-                />
+                {props.data?.fetchStore.storeImg[3].url ? (
+                  <DogContents.cafeImg
+                    src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[3].url}`}
+                  />
+                ) : (
+                  <DogContents.cafeImg src="/images/instacafe4.jpg" />
+                )}
               </Col>
               <Col
                 style={{
@@ -66,9 +82,13 @@ export default function DetailDogContentsUI(props) {
                 }}
                 span={12}
               >
-                <DogContents.cafeImg
-                  src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[4].url}`}
-                />
+                {props.data?.fetchStore.storeImg[4].url ? (
+                  <DogContents.cafeImg
+                    src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[4].url}`}
+                  />
+                ) : (
+                  <DogContents.cafeImg src="/images/instacafe3.jpg" />
+                )}
               </Col>
             </Row>
           </Col>
@@ -79,14 +99,16 @@ export default function DetailDogContentsUI(props) {
       <DogContents.Body>
         <DogContents.CafeInfoWrapper>
           <DogContents.BodyInfoTag>카페 정보</DogContents.BodyInfoTag>
-          <DogContents.StoreTagWrapper>
+          <DogContents.TagWrapper>
             <DogContents.LocationTag>
               {`# ${props.data?.fetchStore.locationTag.name}`}
             </DogContents.LocationTag>
-            {props.data?.fetchStore.storeTag.map((el) => (
-              <DogContents.StoreTag>{`# ${el.name}`}</DogContents.StoreTag>
-            ))}
-          </DogContents.StoreTagWrapper>
+            <div>
+              {props.data?.fetchStore.storeTag.map((el) => (
+                <DogContents.StoreTag>{`# ${el.name}`}</DogContents.StoreTag>
+              ))}
+            </div>
+          </DogContents.TagWrapper>
           <DogContents.DogCount>
             <div>
               <img
@@ -138,20 +160,36 @@ export default function DetailDogContentsUI(props) {
             <div>{props.data?.fetchStore.phone}</div>
           </DogContents.TimeWrapper>
           <DogContents.DogTag>강아지 정보</DogContents.DogTag>
-          <DogContents.DogListWrapper>
-            <Slider {...settings}>
-              {props.data?.fetchStore.pet.map((el) => (
-                <DogContents.SliderItem>
-                  <img src={`https://storage.googleapis.com/${el.petImgUrl}`} />
-                  <div>이름: {el.name}</div>
-                  <div>나이: {el.age}</div>
-                  <div>견종: {el.breed}</div>
-                  <div>성격: {el.description}</div>
-                </DogContents.SliderItem>
-              ))}
-            </Slider>
-            <DogContents.Line />
-          </DogContents.DogListWrapper>
+
+          {props.data?.fetchStore.pet.length === 1 ? (
+            <DogContents.DogListWrapper>
+              <DogContents.oneImage
+                src={`https://storage.googleapis.com/${props.data?.fetchStore.pet[0].petImgUrl}`}
+              />
+              <div>이름: {props.data?.fetchStore.pet[0].name}</div>
+              <div>나이: {props.data?.fetchStore.pet[0].age}</div>
+              <div>견종: {props.data?.fetchStore.pet[0].breed}</div>
+              <div>성격: {props.data?.fetchStore.pet[0].description}</div>
+            </DogContents.DogListWrapper>
+          ) : (
+            <DogContents.DogListWrapper>
+              <Slider {...settings}>
+                {props.data?.fetchStore.pet.map((el) => (
+                  <DogContents.SliderItem>
+                    <img
+                      src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                    />
+                    <div>이름: {el.name}</div>
+                    <div>나이: {el.age}</div>
+                    <div>견종: {el.breed}</div>
+                    <div>성격: {el.description}</div>
+                  </DogContents.SliderItem>
+                ))}
+              </Slider>
+              <DogContents.Line />
+            </DogContents.DogListWrapper>
+          )}
+
           <DogContents.Map>
             <DogContents.MapTag>카페 오시는 길</DogContents.MapTag>
             <KakaoMap data={props.data} />
@@ -186,8 +224,8 @@ export default function DetailDogContentsUI(props) {
             예약하기
           </DogContents.ReservationBtn>
           <DogContents.EntranceFee>
-            <div>1명 입장료</div>
-            <div>{`￦${props.data?.fetchStore.entranceFee}원`}</div>
+            <div>1인 입장료</div>
+            <div>{`${props.data?.fetchStore.entranceFee.toLocaleString()}원`}</div>
           </DogContents.EntranceFee>
           <DogContents.EntranceFee>
             <div>애견동반 입장료</div>
@@ -199,11 +237,14 @@ export default function DetailDogContentsUI(props) {
 
           <DogContents.ReservationLine />
           <DogContents.Total>
-            <div>총 합계</div>
-            <div>{`￦${
-              props.data?.fetchStore.entranceFee * props.count
-            }원`}</div>
+            <div>총 합계 </div>
+            <div>{`1인 입장료(${props.data?.fetchStore.entranceFee.toLocaleString()}원) x 이용인원(${
+              props.count
+            }명)`}</div>
           </DogContents.Total>
+          <DogContents.TotalCount>{`${(
+            props.data?.fetchStore.entranceFee * props.count
+          ).toLocaleString()}원`}</DogContents.TotalCount>
         </DogContents.ReservationWrapper>
       </DogContents.Body>
       <DogContents.Footer>
