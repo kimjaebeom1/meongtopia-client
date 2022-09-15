@@ -26,7 +26,7 @@ export const DogImage = styled.div`
   }
 
   :hover {
-    background: #f5cf1f;
+    background: orange;
     color: #ffffff;
     img {
       filter: brightness(0) invert(1);

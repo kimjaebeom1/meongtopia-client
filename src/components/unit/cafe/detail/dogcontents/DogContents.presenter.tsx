@@ -6,6 +6,7 @@ import { Row, Col, Select } from "antd";
 import KakaoMap from "../../../../commons/map";
 import "antd/dist/antd.css";
 import Dompurify from "dompurify";
+import { v4 as uuidv4 } from "uuid";
 
 export default function DetailDogContentsUI(props) {
   const { Option } = Select;
@@ -19,29 +20,56 @@ export default function DetailDogContentsUI(props) {
     nextArrow: <DogContents.NextArrow />,
   };
 
+  const mobileSettings = {
+    infinite: true,
+    speed: 200,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <DogContents.NextArrow />,
+  };
+
   return (
     <DogContents.Wrapper>
       <DogContents.StoreNameTag>
-        {props.data?.fetchStore.name}
-
-        <DogContents.Toggle onClick={props.onClickToggle} />
+        <div>{props.data?.fetchStore.name}</div>
         <DogContents.HeadInfo>
           <DogContents.Star value={props.data?.fetchStore.avgRating} disabled />
+          <div>
+            저장
+            {props.picked ? (
+              <DogContents.Toggled onClick={props.onClickToggle} />
+            ) : (
+              <DogContents.Toggle onClick={props.onClickToggle} />
+            )}{" "}
+          </div>
         </DogContents.HeadInfo>
       </DogContents.StoreNameTag>
+
+      <DogContents.MobileCafeListWrapper>
+        <Slider {...mobileSettings}>
+          {props.data?.fetchStore.storeImg.map((el) => (
+            <DogContents.MobileSliderItem key={uuidv4()}>
+              <img src={`https://storage.googleapis.com/${el.url}`} />
+            </DogContents.MobileSliderItem>
+          ))}
+        </Slider>
+      </DogContents.MobileCafeListWrapper>
+
       <DogContents.CafeImageWrapper>
-        <Row gutter={{ xs: 4, lg: 8 }}>
-          <Col xs={2} sm={4} md={6} lg={8} xl={10}>
-            {props.data?.fetchStore.storeImg[0].url ? (
-              <DogContents.mainCafeImg
-                src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
-              />
-            ) : (
-              <DogContents.mainCafeImg src="/images/instacafe.jpeg" />
-            )}
+        <Row gutter={{ xs: 4, lg: 8, md: 8 }}>
+          <Col span={10}>
+            <Row gutter={{ xs: 4, md: 0, lg: 0, xl: 0 }}>
+              {props.data?.fetchStore.storeImg[0].url ? (
+                <DogContents.mainCafeImg
+                  src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
+                />
+              ) : (
+                <DogContents.mainCafeImg src="/images/instacafe.jpeg" />
+              )}
+            </Row>
           </Col>
           <Col span={14}>
-            <Row gutter={{ xs: 4, lg: 8 }}>
+            <Row gutter={{ xs: 4, lg: 8, md: 6 }}>
               <Col span={12}>
                 {props.data?.fetchStore.storeImg[1].url ? (
                   <DogContents.cafeImg
@@ -61,10 +89,10 @@ export default function DetailDogContentsUI(props) {
                 )}
               </Col>
             </Row>
-            <Row gutter={{ xs: 4, lg: 8 }}>
+            <Row gutter={{ xs: 4, lg: 8, md: 8 }}>
               <Col
                 style={{
-                  paddingTop: "10px",
+                  paddingTop: "0.625rem",
                 }}
                 span={12}
               >
@@ -78,7 +106,7 @@ export default function DetailDogContentsUI(props) {
               </Col>
               <Col
                 style={{
-                  paddingTop: "10px",
+                  paddingTop: "0.625rem",
                 }}
                 span={12}
               >
@@ -99,13 +127,13 @@ export default function DetailDogContentsUI(props) {
       <DogContents.Body>
         <DogContents.CafeInfoWrapper>
           <DogContents.BodyInfoTag>카페 정보</DogContents.BodyInfoTag>
+
           <DogContents.TagWrapper>
-            <DogContents.LocationTag>
-              {`# ${props.data?.fetchStore.locationTag.name}`}
-            </DogContents.LocationTag>
             <div>
               {props.data?.fetchStore.storeTag.map((el) => (
-                <DogContents.StoreTag>{`# ${el.name}`}</DogContents.StoreTag>
+                <DogContents.StoreTag
+                  key={uuidv4()}
+                >{`# ${el.name}`}</DogContents.StoreTag>
               ))}
             </div>
           </DogContents.TagWrapper>
@@ -159,6 +187,7 @@ export default function DetailDogContentsUI(props) {
             <DogContents.Phone />
             <div>{props.data?.fetchStore.phone}</div>
           </DogContents.TimeWrapper>
+          <DogContents.MobileLine />
           <DogContents.DogTag>강아지 정보</DogContents.DogTag>
 
           {props.data?.fetchStore.pet.length === 1 ? (
@@ -175,7 +204,7 @@ export default function DetailDogContentsUI(props) {
             <DogContents.DogListWrapper>
               <Slider {...settings}>
                 {props.data?.fetchStore.pet.map((el) => (
-                  <DogContents.SliderItem>
+                  <DogContents.SliderItem key={uuidv4()}>
                     <img
                       src={`https://storage.googleapis.com/${el.petImgUrl}`}
                     />

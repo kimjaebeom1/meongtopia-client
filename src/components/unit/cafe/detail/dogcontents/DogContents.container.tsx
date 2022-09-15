@@ -20,6 +20,7 @@ export default function DetailDogContents() {
   const onChangePetCount = (value: number) => {
     setPetCount(value);
   };
+  const [picked, setPicked] = useState(false);
 
   const handleChange = (value: number) => {
     setCount(value);
@@ -32,6 +33,7 @@ export default function DetailDogContents() {
       },
     });
     console.log(result);
+    setPicked((prev) => !prev);
   };
 
   const onClickReservation = async () => {
@@ -54,6 +56,8 @@ export default function DetailDogContents() {
     }
   };
 
+  console.log(data?.fetchStore.storeImg);
+
   return (
     <DetailDogContentsUI
       count={count}
@@ -62,6 +66,7 @@ export default function DetailDogContents() {
       onChangePetCount={onChangePetCount}
       onClickToggle={onClickToggle}
       data={data}
+      picked={picked}
     />
   );
 }

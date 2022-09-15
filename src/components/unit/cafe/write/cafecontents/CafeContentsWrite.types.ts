@@ -11,6 +11,8 @@ export interface ICafeContentsWriteUIProps {
   formState: FormState<FieldValues>;
   handleSubmit: UseFormHandleSubmit<FieldValues>;
   onClickCreateStore: (data: any) => Promise<void>;
+  onClickUpdateStore: (data: any) => Promise<void>;
+
   register: UseFormRegister<FieldValues>;
   bigDog: number;
   smallDog: number;

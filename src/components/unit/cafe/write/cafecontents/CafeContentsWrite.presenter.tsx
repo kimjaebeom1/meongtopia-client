@@ -6,9 +6,13 @@ import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { ICafeContentsWriteUIProps } from "./CafeContentsWrite.types";
-import { UploadOutlined } from "@ant-design/icons";
-import { Button, Space, Upload } from "antd";
-import React from "react";
+import { v4 as uuidv4 } from "uuid";
+
+// import { FilePond, registerPlugin } from "react-filepond";
+// import "filepond/dist/filepond.min.css";
+// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
   ssr: false,
@@ -21,6 +25,8 @@ const CONDITION_TAGS = [
   "대형견 있음",
   "아이동반 가능",
 ];
+
+// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
   return (
@@ -40,14 +46,21 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
           <CafeContentsWrite.ProcedureUnderBar02 next={props.next} />
         </CafeContentsWrite.ProcedureUnderBar>
 
-        {props.next && <DogContentsWrite />}
-        <form onSubmit={props.handleSubmit(props.onClickCreateStore)}>
+        {props.next && <DogContentsWrite data={props.data} />}
+        <form
+          onSubmit={
+            props.isEdit
+              ? props.handleSubmit(props.onClickCreateStore)
+              : props.handleSubmit(props.onClickUpdateStore)
+          }
+        >
           {!props.next && (
             <>
               <CafeContentsWrite.Tag>
                 카페 이름을 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNameInput
+                defaultValue={props.data?.fetchStore.name || ""}
                 required
                 placeholder="OO 애견카페"
                 {...props.register("name")}
@@ -57,32 +70,26 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               </CafeContentsWrite.ErrorTag>
 
               <CafeContentsWrite.Tag>
-                카페 이미지를 추가해주세요 (최대 5장)
-                <CafeContentsWrite.MobileUploadWrapper>
-                  <Space
-                    direction="vertical"
-                    style={{ width: "100%" }}
-                    size="large"
-                  >
-                    <Upload
-                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                      listType="picture"
-                      maxCount={5}
-                      multiple
-                    >
-                      <Button icon={<UploadOutlined />}>
-                        사진 추가 (최대 5장)
-                      </Button>
-                    </Upload>
-                  </Space>
-                </CafeContentsWrite.MobileUploadWrapper>
+                {/* <CafeContentsWrite.MobileUploadWrapper> */}
+                {/* <FilePond
+                  server="https://meongtopiaserver.shop/graphql"
+                  files={props.files}
+                  allowReorder={true}
+                  allowMultiple={true}
+                  maxFiles={5}
+                  onupdatefiles={props.setFiles}
+                  labelIdle="사진 파일을 추가해주세요"
+                /> */}
+                {/* </CafeContentsWrite.MobileUploadWrapper> */}
                 <CafeContentsWrite.ImageUploadWrapper>
                   {props.fileUrls.map((el, index) => (
-                    <CafeImgUpload
-                      index={index}
-                      fileUrl={el}
-                      onChangeFileUrls={props.onChangeFileUrls}
-                    />
+                    <div key={uuidv4()}>
+                      <CafeImgUpload
+                        index={index}
+                        fileUrl={el}
+                        onChangeFileUrls={props.onChangeFileUrls}
+                      />
+                    </div>
                   ))}
                 </CafeContentsWrite.ImageUploadWrapper>
               </CafeContentsWrite.Tag>
@@ -91,7 +98,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.ToastWrapper>
                 <ToastEditor
-                  defaultValue=""
+                  defaultValue={props.data?.fetchStore.description || ""}
                   editorRef={props.editorRef}
                   onChangeDescription={props.onChangeDescription}
                 />
@@ -107,6 +114,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                 전화번호를 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNumberInput
+                defaultValue={props.data?.fetchStore.phone || ""}
                 placeholder="010-1234-5678"
                 {...props.register("phone")}
               ></CafeContentsWrite.CafeNumberInput>
@@ -118,12 +126,14 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                   <CafeContentsWrite.Tag>운영 시간</CafeContentsWrite.Tag>
                   <CafeContentsWrite.TimeInputWrapper>
                     <CafeContentsWrite.StartTimeInput
+                      defaultValue={props.data?.fetchStore.open || ""}
                       placeholder="08:00"
                       {...props.register("open")}
                     ></CafeContentsWrite.StartTimeInput>
 
                     <div>~</div>
                     <CafeContentsWrite.CloseTimeInput
+                      defaultValue={props.data?.fetchStore.close || ""}
                       placeholder="21:00"
                       {...props.register("close")}
                     ></CafeContentsWrite.CloseTimeInput>
@@ -133,6 +143,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                 <CafeContentsWrite.FeeWrapper>
                   <CafeContentsWrite.Tag>입장료</CafeContentsWrite.Tag>
                   <CafeContentsWrite.CafeFeeInput
+                    defaultValue={props.data?.fetchStore.entranceFee || ""}
                     placeholder="5000"
                     {...props.register("entranceFee")}
                   ></CafeContentsWrite.CafeFeeInput>
@@ -158,7 +169,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               >
                 <CafeContentsWrite.AddressInput
                   readOnly
-                  value={props.address}
+                  value={props.address || props.data?.fetchStore.address}
                   {...props.register("address")}
                   placeholder="주소 검색하기"
                 ></CafeContentsWrite.AddressInput>
@@ -173,6 +184,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                 </CafeContentsWrite.AddressBtn>
               </div>
               <CafeContentsWrite.AddressDetailInput
+                defaultValue={props.data?.fetchStore.addressDetail || ""}
                 type="text"
                 {...props.register("addressDetail")}
                 placeholder="상세주소 입력하기"
@@ -192,6 +204,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
                 <CafeContentsWrite.LocationWrapper>
                   {LOCATION_TAGS.map((el) => (
                     <CafeContentsWrite.StoreTag
+                      defaultValue={props.data?.fetchStore.locationTag || ""}
                       id={el}
                       key={el}
                       isActive={props.locationActive === el}
@@ -207,6 +220,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               <CafeContentsWrite.OptionWrapper>
                 {CONDITION_TAGS.map((el) => (
                   <CafeContentsWrite.StoreTag
+                    defaultValue={props.data?.fetchStore.storeTag || ""}
                     id={el}
                     key={el}
                     isActive={props.conditionActive.includes(el)}
@@ -254,7 +268,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
         <CafeContentsWrite.AddressModal
           onOk={props.handleOk}
           onCancel={props.closeModal}
-          visible={true}
+          open={true}
         >
           <CafeContentsWrite.AddressSearchInput
             onComplete={props.onCompleteAddressSearch}

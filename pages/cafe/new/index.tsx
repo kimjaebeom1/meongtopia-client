@@ -23,7 +23,7 @@ export default function CafeWritePage() {
   return (
     <Container>
       <Wrapper>
-        <CafeContentsWrite />
+        <CafeContentsWrite isEdit={false} />
       </Wrapper>
     </Container>
   );

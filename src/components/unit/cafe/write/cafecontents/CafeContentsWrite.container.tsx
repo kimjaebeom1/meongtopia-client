@@ -1,8 +1,12 @@
 import { useState, createRef, useEffect, MouseEvent } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@apollo/client";
-import { CREATE_STORE } from "./CafeContentsWrite.queries";
+import { useMutation, useQuery } from "@apollo/client";
+import {
+  CREATE_STORE,
+  FETCH_STORE,
+  UPDATE_STORE,
+} from "./CafeContentsWrite.queries";
 import Editor from "@toast-ui/editor";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -15,25 +19,35 @@ import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { schema } from "../../../../../commons/libraries/validation";
 
-export default function CafeContentsWrite() {
+export default function CafeContentsWrite(props) {
   const [locationActive, setLocationActive] = useState("");
   const [conditionActive, setConditionActive] = useState([""]);
   const router = useRouter();
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
   const [next, setNext] = useState(false);
   const [createStore] = useMutation(CREATE_STORE);
+  const [updateStore] = useMutation(UPDATE_STORE);
   const [isOpen, setIsOpen] = useState(false);
   const [petArr] = useRecoilState(petArrState);
   const [bigDog] = useRecoilState(bigDogState);
   const [smallDog] = useRecoilState(smallDogState);
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-
+  const [files, setFiles] = useState([]);
+  const { data } = useQuery(FETCH_STORE, {
+    variables: { storeID: String(router.query.cafeid) },
+  });
   const { register, handleSubmit, setValue, trigger, getValues, formState } =
     useForm({
       resolver: yupResolver(schema),
       mode: "onChange",
     });
+
+  useEffect(() => {
+    if (props.data?.fetchStore.storeImg?.length) {
+      setFileUrls([...props.data?.fetchStore.storeImg]);
+    }
+  }, [props.data]);
 
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
@@ -42,7 +56,6 @@ export default function CafeContentsWrite() {
     setIsOpen(false);
     setAddress(data.address);
   };
-  console.log(address);
 
   const onClickAddressModal = () => {
     setIsOpen(true);
@@ -75,6 +88,8 @@ export default function CafeContentsWrite() {
     if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
     if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
 
+    console.log(files);
+    console.log(setFiles);
     try {
       const result = await createStore({
         variables: {
@@ -100,6 +115,40 @@ export default function CafeContentsWrite() {
       router.push(`/cafe/${result.data.createStore.storeID}`);
     } catch (error) {
       if (error instanceof Error) alert("등록 실패");
+    }
+  };
+
+  const onClickUpdateStore = async (data) => {
+    if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
+    if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
+
+    console.log(files);
+    console.log(setFiles);
+    try {
+      const result = await createStore({
+        variables: {
+          updateStoreInput: {
+            name: data.name,
+            phone: data.phone,
+            storeImg: fileUrls.join().split(","),
+            open: data.open,
+            close: data.close,
+            bigDog: Number(bigDog),
+            smallDog: Number(smallDog),
+            entranceFee: Number(data.entranceFee),
+            description: data.description,
+            address: data.address,
+            addressDetail: data.addressDetail,
+            locationTag: locationActive,
+            storeTag: conditionActive,
+            pet: [...petArr],
+          },
+        },
+      });
+      alert("게시글 수정이 완료되었습니다.");
+      router.push(`/cafe/${result.data.createStore.storeID}`);
+    } catch (error) {
+      if (error instanceof Error) alert("수정 실패");
     }
   };
 
@@ -162,6 +211,11 @@ export default function CafeContentsWrite() {
       petArr={petArr}
       bigDog={bigDog}
       smallDog={smallDog}
+      isEdit={props.isEdit}
+      data={data}
+      files={files}
+      setFiles={setFiles}
+      onClickUpdateStore={onClickUpdateStore}
     />
   );
 }

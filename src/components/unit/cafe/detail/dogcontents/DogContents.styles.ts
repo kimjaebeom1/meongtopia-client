@@ -1,13 +1,14 @@
 import styled from "@emotion/styled";
 import { Select } from "antd";
 import { BiTime, BiPhone } from "react-icons/bi";
-import { FaRegHeart } from "react-icons/fa";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { breakPoints } from "../../../../../commons/styles/media";
 import { Rate } from "antd";
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  padding: 2rem;
 `;
 
 export const Line = styled.div`
@@ -21,40 +22,61 @@ export const Line = styled.div`
 
 export const StoreNameTag = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   font-size: 2.2rem;
+  font-weight: 700;
 `;
 
 export const HeadInfo = styled.div`
-  font-size: 1rem;
-  color: #808080;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
-
+  text-decoration: underline;
   & > div {
     padding-top: 5px;
     display: flex;
     margin-left: 8px;
     align-items: center;
   }
-`;
 
-export const Toggle = styled(FaRegHeart)`
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 1.5rem;
+  @media ${breakPoints.mobile} {
+    justify-content: flex-end;
 
-  :hover {
-    color: orange;
+    & > div {
+      padding-top: 0px;
+    }
   }
 `;
 
-export const Star = styled(Rate)``;
+export const Toggle = styled(AiOutlineHeart)`
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+`;
+
+export const Toggled = styled(AiFillHeart)`
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: orangered;
+`;
+
+export const Star = styled(Rate)`
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
 // 카페 이미지
 export const CafeImageWrapper = styled.div`
   width: 100%;
   padding-top: 1rem;
   display: block;
-  @media screen {
+
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
@@ -62,14 +84,14 @@ export const mainCafeImg = styled.img`
   display: block;
   width: 100%;
   object-fit: cover;
-  height: 410px;
+  height: 25.625rem;
   border-radius: 5px;
 `;
 
 export const cafeImg = styled.img`
   width: 100%;
   object-fit: cover;
-  height: 200px;
+  height: 12.5rem;
   border-radius: 5px;
 `;
 
@@ -113,7 +135,11 @@ export const SliderItem = styled.div`
     width: 100%;
     height: 200px;
     object-fit: cover;
-    padding-right: 1rem;
+    padding-right: 2rem;
+  }
+
+  & > div {
+    padding-top: 0.5rem;
   }
 `;
 
@@ -164,35 +190,29 @@ export const TagWrapper = styled.div`
   }
 `;
 
-export const LocationTag = styled.span`
+export const StoreTag = styled.span`
+  margin-right: 1em;
   background-color: orange;
   border-radius: 15px;
   border: 1px solid #d6bcd6;
   display: block;
   font-size: 1rem;
   padding: 7px 25px;
-  color: white;
-  text-align: center;
-  margin-right: 1em;
-  margin-top: 1rem;
-`;
-
-export const StoreTag = styled.span`
-  margin-right: 1em;
-  background-color: #f4840b;
-  border-radius: 15px;
-  border: 1px solid #d6bcd6;
-  display: block;
-  font-size: 1rem;
-  padding: 7px 25px;
   text-align: center;
   color: white;
   margin-top: 1rem;
+  font-weight: 700;
 `;
 
 export const BodyInfoTag = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-size: 25px;
   font-weight: 700;
+
+  & > div {
+    padding-right: 6rem;
+  }
 `;
 
 export const DogCount = styled.div`
@@ -266,6 +286,7 @@ export const ReservationWrapper = styled.div`
   flex-direction: column;
   padding: 1.5rem;
   font-size: 1.5rem;
+  font-weight: 500;
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -295,6 +316,11 @@ export const ReservationBtn = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 500;
+
+  :hover {
+    background-color: #f4840b;
+  }
 `;
 
 export const EntranceFee = styled.div`
@@ -370,4 +396,36 @@ export const MapTag = styled.div`
   margin-bottom: 1em;
   font-size: 25px;
   font-weight: 700;
+`;
+
+export const MobileCafeListWrapper = styled.div`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: block;
+    padding-top: 1rem;
+  }
+`;
+
+export const MobileSliderItem = styled.div`
+  & > img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  & > div {
+    padding-top: 0.5rem;
+  }
+`;
+
+export const MobileLine = styled.div`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    margin-top: 20px;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+  }
 `;
