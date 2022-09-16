@@ -84,8 +84,24 @@ export default function MyPageSidebar() {
     router.push("/mypage/user/payment/");
   };
 
-  const onClickDeleteProfile = () => {
-    deleteProfile();
+  const onClickDeleteProfile = async () => {
+    const updateUserInput: IUpdateUserInput = {};
+    updateUserInput.profileImgUrl = "";
+    try {
+      const result = await updateUser({
+        variables: {
+          email: String(data?.fetchUser.email),
+          updateUserInput,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_USER,
+          },
+        ],
+      });
+    } catch (error) {
+      getErrorMessage(error);
+    }
   };
 
   return (

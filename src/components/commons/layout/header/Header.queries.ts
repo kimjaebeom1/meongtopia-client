@@ -12,6 +12,29 @@ export const FETCH_USER = gql`
       point
       role
       profileImgUrl
+      pick {
+        store {
+          storeID
+          name
+          description
+          entranceFee
+          bigDog
+          smallDog
+          open
+          close
+          address
+          addressDetail
+          avgRating
+          pickCount
+          storeTag {
+            tagID
+            name
+          }
+          storeImg {
+            url
+          }
+        }
+      }
     }
   }
 `;

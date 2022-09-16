@@ -72,8 +72,8 @@ export default function CafeListUI(props: ICafeListUIProps) {
             <CafeList.TagsWrapper>
               {LOCATION_TAGS.map((el) => (
                 <CafeList.Tag
+                  key={uuidv4()}
                   id={el}
-                  key={el}
                   isActive={props.locationActive === el}
                   onClick={props.onClickLocationTag}
                 >
@@ -93,8 +93,8 @@ export default function CafeListUI(props: ICafeListUIProps) {
               </CafeList.Tag>
               {CONDITION_TAGS.map((el) => (
                 <CafeList.Tag
+                  key={uuidv4()}
                   id={el}
-                  key={el}
                   isActive={props.conditionActive.includes(el)}
                   onClick={props.onClickConditionTag}
                 >
@@ -155,7 +155,7 @@ export default function CafeListUI(props: ICafeListUIProps) {
                     <CafeList.SelectTag>
                       {el.storeTag.map((el) => (
                         <span
-                          key={el.tagID}
+                          key={uuidv4()}
                           style={{ marginRight: "1rem" }}
                         >{`# ${el.name}`}</span>
                       ))}
@@ -196,11 +196,15 @@ export default function CafeListUI(props: ICafeListUIProps) {
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <CafeList.DogImgContainer>
-                      {el.pet.map((el) => (
-                        <CafeList.DogImg
-                          src={`https://storage.googleapis.com/${el.petImgUrl}`}
-                        />
-                      ))}
+                      {el.pet
+                        .filter((_, i) => i < 4)
+                        .map((el) => (
+                          <CafeList.DogImg
+                            key={uuidv4()}
+                            src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                          />
+                        ))}
+                      <CafeList.Add>더 보기{` >`}</CafeList.Add>
                     </CafeList.DogImgContainer>
                     <span
                       style={{ fontSize: "1.2rem" }}

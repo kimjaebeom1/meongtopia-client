@@ -184,7 +184,7 @@ export const ContentsText = styled.li`
 export const RatingWrapper = styled.span`
   font-size: 1rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export const SelectTag = styled.div`
@@ -219,4 +219,13 @@ export const DogImg = styled.img`
   object-fit: cover;
   margin-right: 0.5rem;
   border-radius: 10px;
+`;
+
+export const Add = styled.div`
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0.5rem 0;
+  color: #666;
 `;

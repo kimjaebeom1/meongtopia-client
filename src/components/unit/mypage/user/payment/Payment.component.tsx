@@ -41,7 +41,7 @@ export default function PaymentComponent() {
         // pay_method: "card",
         // merchant_uid: "ORD20180131-0000011",
         name: `포인트 ${amount}원 충전`,
-        amount: amount,
+        amount,
         buyer_email: data?.fetchUser.email,
         buyer_name: data?.fetchUser.name,
         buyer_tel: data?.fetchUser.phone,
@@ -51,15 +51,15 @@ export default function PaymentComponent() {
       (rsp: any) => {
         // callback
         if (rsp.success) {
-          console.log(rsp);
+          // console.log(rsp);
           const result = createPayment({
             variables: {
               impUid: rsp.imp_uid,
-              amount: Number(rsp.paid.amount),
+              amount: rsp.paid_amount,
             },
           });
-          console.log(result);
-          // location.reload();
+          // console.log(result);
+          location.reload();
         } else {
           alert("결제에 실패했습니다. 다시 시도해 주세요.");
         }

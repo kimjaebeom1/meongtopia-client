@@ -46,7 +46,6 @@ export type ICreateStoreInput = {
   description?: InputMaybe<Scalars['String']>;
   entranceFee?: InputMaybe<Scalars['Int']>;
   locationTag?: InputMaybe<Scalars['String']>;
-  menuImg?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   open?: InputMaybe<Scalars['String']>;
   pet?: InputMaybe<Array<ICreatePetInput>>;
@@ -288,11 +287,11 @@ export enum IPayment_Enum {
 
 export type IPayment = {
   __typename?: 'Payment';
-  amount: Scalars['Int'];
-  createdAt: Scalars['DateTime'];
-  impUid: Scalars['String'];
-  paymentID: Scalars['String'];
-  status: IPayment_Enum;
+  amount?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  impUid?: Maybe<Scalars['String']>;
+  paymentID?: Maybe<Scalars['String']>;
+  status?: Maybe<IPayment_Enum>;
   user: IUser;
 };
 
@@ -307,6 +306,13 @@ export type IPet = {
   store: IStore;
 };
 
+export type IPick = {
+  __typename?: 'Pick';
+  pickID: Scalars['String'];
+  store?: Maybe<IStore>;
+  user?: Maybe<IUser>;
+};
+
 export type IQuery = {
   __typename?: 'Query';
   ReviewCount: Scalars['Int'];
@@ -316,6 +322,7 @@ export type IQuery = {
   fetchReservation: Array<IReservation>;
   fetchReview: Array<IReviewResponse>;
   fetchStore: IStore;
+  fetchStoreReviewes: Array<IReview>;
   fetchStores: Array<IStore>;
   fetchStoresLocation: Array<IStore>;
   fetchStoresTag: Array<IStore>;
@@ -337,6 +344,11 @@ export type IQueryFetchPickRankArgs = {
 
 
 export type IQueryFetchStoreArgs = {
+  storeID: Scalars['String'];
+};
+
+
+export type IQueryFetchStoreReviewesArgs = {
   storeID: Scalars['String'];
 };
 
@@ -381,11 +393,12 @@ export type IReservation = {
 export type IReview = {
   __typename?: 'Review';
   contents: Scalars['String'];
+  createdAt: Scalars['DateTime'];
   rating: Scalars['Float'];
   reviewID: Scalars['String'];
   reviewRes: IReviewResponse;
-  store: Array<IStore>;
-  user: Array<IUser>;
+  store: IStore;
+  user: IUser;
 };
 
 export type IReviewResponse = {
@@ -393,7 +406,7 @@ export type IReviewResponse = {
   contents: Scalars['String'];
   review: IReview;
   reviewResID: Scalars['String'];
-  user: Array<IUser>;
+  user: IUser;
 };
 
 export type IStore = {
@@ -406,7 +419,6 @@ export type IStore = {
   description: Scalars['String'];
   entranceFee: Scalars['Int'];
   locationTag: IStrLocationTag;
-  menuImg: Scalars['String'];
   name: Scalars['String'];
   open: Scalars['String'];
   pet: Array<IPet>;
@@ -458,10 +470,9 @@ export type IUpdateStoreInput = {
   description?: InputMaybe<Scalars['String']>;
   entranceFee?: InputMaybe<Scalars['Int']>;
   locationTag?: InputMaybe<Scalars['String']>;
-  menuImg?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   open?: InputMaybe<Scalars['String']>;
-  petInput?: InputMaybe<Array<IUpdatePetInput>>;
+  pet?: InputMaybe<Array<IUpdatePetInput>>;
   phone?: InputMaybe<Scalars['String']>;
   smallDog?: InputMaybe<Scalars['Int']>;
   storeImg?: InputMaybe<Array<Scalars['String']>>;
@@ -489,6 +500,7 @@ export type IUser = {
   nickname: Scalars['String'];
   password: Scalars['String'];
   phone: Scalars['String'];
+  pick: Array<IPick>;
   point: Scalars['Int'];
   profileImgUrl: Scalars['String'];
   role: IUser_Role_Enum;
