@@ -114,7 +114,7 @@ export default function LoginContainerPage() {
       isActive={isActive}
       onClickNaver={onClickNaver}
       onClickGoogle={onClickGoogle}
-      onClickKaKao={onClickKakao}
+      onClickKakao={onClickKakao}
     />
   );
 }

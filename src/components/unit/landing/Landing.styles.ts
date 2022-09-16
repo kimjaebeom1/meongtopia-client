@@ -1,32 +1,248 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 import "animate.css";
+import { keyframes } from "@emotion/react";
 
-export const Wrapper = styled.div`
-  width: 80%;
-  margin: auto;
-  margin-top: 50px;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
+const Fade = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity:1;
+  }
 `;
 
-export const DivWrap = styled.div`
-  transition: all 1.5s ease-in-out;
+// ============================================================//
+export const FirstLanding = styled.div`
+  height: 100vh;
+  width: 100%;
+  padding: 0px 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("/images/landingImg1.png");
+  background-size: cover;
+  opacity: 1;
+  animation: ${Fade} 4s;
+  /* animation: animate__fadeInLeftBig;
+  animation-duration: 2s; */
+
+  @media ${breakPoints.mobile} {
+    background-position-x: 83%;
+  }
+`;
+
+export const Wrap1 = styled.div`
+  /* width: 100%; */
+  /* height: 60vh; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* border: 1px solid black; */
+  margin-top: 30px;
+  /* transition: all 1.5s ease-in-out; */
 
   .isActive {
-    animation: fadeInUp;
-    animation-duration: 2s;
+    /* animation: fadeInDown; */
+    /* animation-duration: 2s; */
     opacity: 1;
   }
 `;
+
+export const Part1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 100%; */
+`;
+
+export const Contents = styled.div`
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 40px;
+  letter-spacing: 8px;
+  line-height: 2;
+  transition-delay: 1s;
+`;
+
+export const Content = styled.div`
+  font-size: 1.3rem;
+  transition-delay: 1s;
+`;
+
+export const Strong = styled.div`
+  font-weight: 600;
+  color: #ffa500;
+  text-shadow: 3px 3px 2px white;
+  font-size: 2rem;
+  transition-delay: 1s;
+`;
+
+export const Highlight = styled.div`
+  background-color: lightyellow;
+  transition-delay: 1s;
+`;
+
+export const Logo = styled.img`
+  width: 17rem;
+  height: 14vh;
+  margin: 20px 0px;
+  transition-delay: 3s;
+
+  @media ${breakPoints.mobile} {
+    width: 21rem;
+    height: 14vh;
+  }
+
+  .isActive {
+    /* animation: fadeInDown; */
+    animation-duration: 4s;
+    opacity: 1;
+  }
+`;
+
+// ============================================================//
+export const SecondeWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-image: url("/images/landingImg33.png");
+  background-size: cover;
+  border: 2px solid red;
+
+  @media ${breakPoints.mobile} {
+    background-position-y: 90px;
+    background-position-x: 83%;
+    justify-content: center;
+    align-items: flex-start;
+  }
+`;
+
+export const Wrap = styled.div`
+  width: 50%;
+  height: 90vh;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 20px;
+  /* border: 1px solid black; */
+
+  .isActive {
+    animation: fadeInDown;
+    animation-duration: 2s;
+  }
+
+  @media ${breakPoints.mobile} {
+    height: 50vh;
+    width: 80%;
+  }
+`;
+
+// =============================================================//
+
+export const ThirdWrapper = styled.div`
+  margin: 0px auto;
+  height: 100vh;
+  width: 100%;
+  background-image: url("/images/landingImg3-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  @media ${breakPoints.mobile} {
+    height: 100vh;
+    width: 100%;
+    background-position-x: -123px;
+    background-position-y: 90px;
+  }
+`;
+
+export const LeftWrapper = styled.div`
+  position: relative;
+  width: 35rem;
+  height: 45vh;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media ${breakPoints.mobile} {
+    height: 60vh;
+  }
+`;
+
+export const LeftItem1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid blue;
+  width: 33%;
+`;
+
+export const LeftItem2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid red;
+  width: 33%;
+`;
+export const LeftItem3 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 2px solid pink;
+  width: 33%;
+`;
+
+export const RightWrapper = styled.div`
+  position: relative;
+  /* left: 50%; */
+  width: 40rem;
+  height: 80vh;
+  border: 1px solid black;
+
+  @media ${breakPoints.mobile} {
+    height: 60vh;
+    position: relative;
+    left: 0%;
+    width: 85%;
+    margin: 0px auto;
+  }
+`;
+export const Count = styled.div`
+  font-size: 1.2rem;
+  font-weight: 900;
+`;
+
+// =============================================================//
+
+// 이거 지우면 안된다
+// export const DivWrap = styled.div`
+//   transition: all 1.5s ease-in-out;
+
+//   .isActive {
+//     animation: fadeInUp;
+//     animation-duration: 2s;
+//     opacity: 1;
+//   }
+// `;
 
 export const DivWrap1 = styled.div`
   height: 100vh;
   width: 100%;
   /* padding-top: 50px; */
   .isActive {
-    animation: fadeInUp;
+    animation: slideInDown;
     animation-duration: 2s;
   }
 `;
@@ -34,35 +250,17 @@ export const DivWrap1 = styled.div`
 export const DivWrap2 = styled.div`
   height: 100vh;
   width: 100%;
-
   margin: 0px auto;
   height: 100vh;
-  border: 1px solid black;
 
+  background-color: #ffdcdc;
+  border-bottom-right-radius: 300px;
+  border-bottom-left-radius: 300px;
   .isActive {
     animation: fadeInUp;
     animation-duration: 2s;
   }
 `;
-
-export const ReCafeList = styled.div`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 50px;
-  background-color: #ffdcdc;
-  animation: fadeInUp;
-  animation-duration: 2s;
-`;
-
-// export const DogsImg = styled.img`
-//   z-index: -1;
-//   width: 100%;
-//   height: 200px;
-//   position: relative;
-//   top: 10px;
-// `;
 
 export const ReTitle = styled.div`
   width: 80%;
@@ -115,12 +313,33 @@ export const Filp = styled.div`
   height: 20rem;
   position: relative;
   margin: 0px 5px;
+
   :hover {
     cursor: pointer;
   }
 `;
 
 export const TopWrap = styled.div`
+  /* flex-direction: column; */
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: 0.1s;
+  transform-style: preserve-3d;
+
+  :hover {
+    transform: rotateY(180deg);
+  }
+
+  .isActive {
+    animation: animate__fadeInLeft;
+    animation-duration: 2s;
+    opacity: 1;
+  }
+`;
+
+export const TopWrap2 = styled.div`
   /* flex-direction: column; */
   position: relative;
   width: 100%;
@@ -130,6 +349,31 @@ export const TopWrap = styled.div`
 
   :hover {
     transform: rotateY(180deg);
+  }
+
+  .isActive {
+    animation: animate__bounceInRight;
+    animation-duration: 2s;
+    opacity: 1;
+  }
+`;
+
+export const TopWrap3 = styled.div`
+  /* flex-direction: column; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: 0.1s;
+  transform-style: preserve-3d;
+
+  :hover {
+    transform: rotateY(180deg);
+  }
+
+  .isActive {
+    animation: animate__fadeInRight;
+    animation-duration: 2s;
+    opacity: 1;
   }
 `;
 
@@ -148,9 +392,6 @@ export const TopImgFE = styled(TopImgType)`
   height: 100%;
   background-image: url("/images/landingcafe2.jpeg");
   background-size: 100% 100%;
-  /* :hover {
-    transform: rotateY(180deg);
-  } */
 `;
 
 export const TopImgBE = styled(TopImgType)`
@@ -308,16 +549,29 @@ export const Line = styled.div`
 `;
 
 export const DescWrap = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  /* height: 100vh; */
+
+  /* object-fit: cover; */
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.2);
+  /* margin-top: 196px; */
+`;
+
+export const Video = styled.video`
+  z-index: -1;
+  width: 100%;
+  /* width: 100%;
+  height: 90vh; */
+  /* height: 500px; */
 `;
 
 export const Title = styled.div`
+  z-index: 1;
   font-weight: 500;
   font-size: 1rem;
   margin-bottom: 80px;
@@ -328,6 +582,7 @@ export const Title = styled.div`
 `;
 
 export const DetailWrap = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -353,6 +608,13 @@ export const DescImg = styled.img`
   background-color: lightcyan;
 `;
 
+export const MentWrap = styled.div`
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+`;
+
 export const DescMents1 = styled.div`
   font-size: 1.2rem;
   font-weight: 600;
@@ -374,13 +636,6 @@ export const LastPart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-export const Logo = styled.img`
-  z-index: 999;
-  width: 17rem;
-  height: 120px;
-  margin-bottom: 30px;
 `;
 
 export const BallWrap = styled.div`
