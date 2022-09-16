@@ -1,6 +1,6 @@
 import * as Landing from "./Landing.styles";
 import { useInView } from "react-intersection-observer";
-import useCountNum from "../../commons/count/countUp";
+import useCountNum from "../../commons/count/Countup";
 
 export default function SecondLandingPage() {
   // ref가 화면에 나타나면, inView는 true, 아니면 false를 반환한다.

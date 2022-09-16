@@ -12,6 +12,11 @@ export const FETCH_USER = gql`
       point
       role
       profileImgUrl
+      pick {
+        store {
+          storeID
+        }
+      }
     }
   }
 `;
