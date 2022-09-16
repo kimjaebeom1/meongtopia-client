@@ -7,6 +7,7 @@ import KakaoMap from "../../../../commons/map";
 import "antd/dist/antd.css";
 import Dompurify from "dompurify";
 import { v4 as uuidv4 } from "uuid";
+import ReviewWrite from "../../review/ReviewWrite.container";
 
 export default function DetailDogContentsUI(props) {
   const { Option } = Select;
@@ -33,8 +34,33 @@ export default function DetailDogContentsUI(props) {
       <DogContents.StoreNameTag>
         <div>{props.data?.fetchStore.name}</div>
         <DogContents.HeadInfo>
-          <DogContents.Star value={props.data?.fetchStore.avgRating} disabled />
           <div>
+            <DogContents.Star
+              value={props.data?.fetchStore.avgRating}
+              disabled
+            />
+            <div
+              style={{
+                display: "flex",
+                paddingTop: "0.5rem",
+              }}
+            >
+              {props.data?.fetchStore.avgRating}.0
+              <div
+                style={{
+                  paddingLeft: "0.5rem",
+                  textDecoration: "underline",
+                }}
+              >
+                후기
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              textDecoration: "underline",
+            }}
+          >
             저장
             {props.picked ? (
               <DogContents.Toggled onClick={props.onClickToggle} />
@@ -126,7 +152,7 @@ export default function DetailDogContentsUI(props) {
 
       <DogContents.Body>
         <DogContents.CafeInfoWrapper>
-          <DogContents.BodyInfoTag>카페 정보</DogContents.BodyInfoTag>
+          <DogContents.BodyInfoTag>카페 소개</DogContents.BodyInfoTag>
 
           <DogContents.TagWrapper>
             <div>
@@ -137,28 +163,16 @@ export default function DetailDogContentsUI(props) {
               ))}
             </div>
           </DogContents.TagWrapper>
-          <DogContents.DogCount>
-            <div>
-              <img
-                style={{
-                  width: "35px",
-                  height: "80px",
-                }}
-                src="/images/bigdog.svg"
-              />
-              대형견 {props.data?.fetchStore.bigDog} 마리
-            </div>
-            <div>
-              <img
-                style={{
-                  width: "40px",
-                  height: "80px",
-                }}
-                src="/images/smalldog.svg"
-              />{" "}
-              소형견 {props.data?.fetchStore.smallDog}마리
-            </div>
-          </DogContents.DogCount>
+
+          <div
+            style={{
+              color: "orangered",
+              paddingTop: "1rem",
+            }}
+          >
+            입장료를 내면 원하시는 음료는 1잔 무료로 드립니다.
+          </div>
+
           {typeof window !== "undefined" ? (
             <DogContents.DescriptionWrapper
               dangerouslySetInnerHTML={{
@@ -168,6 +182,9 @@ export default function DetailDogContentsUI(props) {
           ) : (
             <div></div>
           )}
+          <DogContents.BodyLine />
+
+          <DogContents.BodyInfoTag>카페 세부정보</DogContents.BodyInfoTag>
 
           <DogContents.AddressWrapper>
             <img src="/images/mapIcon.svg" />
@@ -188,8 +205,31 @@ export default function DetailDogContentsUI(props) {
             <div>{props.data?.fetchStore.phone}</div>
           </DogContents.TimeWrapper>
           <DogContents.MobileLine />
-          <DogContents.DogTag>강아지 정보</DogContents.DogTag>
+          <DogContents.BodyLine />
 
+          <DogContents.BodyInfoTag>강아지 소개</DogContents.BodyInfoTag>
+          <DogContents.DogCount>
+            <div>
+              <img
+                style={{
+                  width: "35px",
+                  height: "80px",
+                }}
+                src="/images/bigdog.svg"
+              />
+              대형견 : {props.data?.fetchStore.bigDog} 마리
+            </div>
+            <div>
+              <img
+                style={{
+                  width: "40px",
+                  height: "80px",
+                }}
+                src="/images/smalldog.svg"
+              />{" "}
+              소형견 : {props.data?.fetchStore.smallDog}마리
+            </div>
+          </DogContents.DogCount>
           {props.data?.fetchStore.pet.length === 1 ? (
             <DogContents.DogListWrapper>
               <DogContents.oneImage
@@ -215,9 +255,9 @@ export default function DetailDogContentsUI(props) {
                   </DogContents.SliderItem>
                 ))}
               </Slider>
-              <DogContents.Line />
             </DogContents.DogListWrapper>
           )}
+          <DogContents.BodyLine />
 
           <DogContents.Map>
             <DogContents.MapTag>카페 오시는 길</DogContents.MapTag>
@@ -276,12 +316,15 @@ export default function DetailDogContentsUI(props) {
           ).toLocaleString()}원`}</DogContents.TotalCount>
         </DogContents.ReservationWrapper>
       </DogContents.Body>
+      <DogContents.Line />
+
       <DogContents.Footer>
         <DogContents.FooterInfo>
           <img src="/images/star.svg" />
           <div>{props.data?.fetchStore.avgRating}.0</div>
           <div>후기</div>
         </DogContents.FooterInfo>
+        <ReviewWrite />
       </DogContents.Footer>
     </DogContents.Wrapper>
   );

@@ -8,7 +8,11 @@ import { Rate } from "antd";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 2rem;
+  padding: 2rem 0;
+
+  @media ${breakPoints.mobile} {
+    padding: 2rem;
+  }
 `;
 
 export const Line = styled.div`
@@ -24,17 +28,16 @@ export const StoreNameTag = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
 `;
 
 export const HeadInfo = styled.div`
-  font-size: 1.3rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  text-decoration: underline;
   & > div {
     padding-top: 5px;
     display: flex;
@@ -54,17 +57,19 @@ export const HeadInfo = styled.div`
 export const Toggle = styled(AiOutlineHeart)`
   margin-left: 10px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 export const Toggled = styled(AiFillHeart)`
   margin-left: 10px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: orangered;
 `;
 
 export const Star = styled(Rate)`
+  margin-right: 1rem;
+
   @media ${breakPoints.mobile} {
     display: none;
   }
@@ -98,13 +103,14 @@ export const cafeImg = styled.img`
 // 강아지 이미지 슬라이더
 
 export const DogTag = styled.div`
-  padding-top: 2rem;
-  font-size: 25px;
+  padding-top: 1rem;
+  font-size: 1rem;
   font-weight: 700;
 `;
 
 export const DogListWrapper = styled.div`
   width: 90%;
+  margin-top: 1rem;
   & > div {
   }
 
@@ -167,6 +173,17 @@ export const Body = styled.div`
   padding-bottom: 2rem;
 `;
 
+export const BodyLine = styled.div`
+  margin-top: 20px;
+  margin-bottom: 1rem;
+  width: 95%;
+  border-bottom: 1px solid #e5e5e5;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
 export const CafeInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -207,7 +224,7 @@ export const StoreTag = styled.span`
 export const BodyInfoTag = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 700;
 
   & > div {
@@ -234,7 +251,7 @@ export const DogCount = styled.div`
 `;
 
 export const DescriptionWrapper = styled.div`
-  padding-top: 2rem;
+  padding-top: 1rem;
   width: 70%;
 `;
 
@@ -245,7 +262,6 @@ export const AddressWrapper = styled.div`
 
   & > div {
     margin-left: 1rem;
-    font-weight: 600;
   }
 
   & > img {
@@ -260,7 +276,6 @@ export const TimeWrapper = styled.div`
 
   & > div {
     margin-left: 1rem;
-    font-weight: 600;
   }
 `;
 
@@ -393,7 +408,7 @@ export const Map = styled.div`
 `;
 
 export const MapTag = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   font-size: 25px;
   font-weight: 700;
 `;

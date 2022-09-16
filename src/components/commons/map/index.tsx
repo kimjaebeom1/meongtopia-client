@@ -8,6 +8,7 @@ declare const window: typeof globalThis & {
 const MapDiv = styled.div`
   width: 100%;
   height: 100%;
+  border-radius: 5px;
 `;
 
 export default function KakaoMap(props: any) {

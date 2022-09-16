@@ -50,8 +50,8 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
         <form
           onSubmit={
             props.isEdit
-              ? props.handleSubmit(props.onClickCreateStore)
-              : props.handleSubmit(props.onClickUpdateStore)
+              ? props.handleSubmit(props.onClickUpdateStore)
+              : props.handleSubmit(props.onClickCreateStore)
           }
         >
           {!props.next && (
