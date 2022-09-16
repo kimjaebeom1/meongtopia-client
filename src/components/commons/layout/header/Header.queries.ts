@@ -19,10 +19,12 @@ export const FETCH_USER = gql`
       }
     }
   }
+;
 `;
 
 export const LOGOUT = gql`
   mutation logout {
     logout
   }
+;
 `;

@@ -7,9 +7,15 @@ export const Wrapper = styled.div`
   margin: 5rem 0;
 `;
 
+export const PageTitle = styled.h1`
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+`;
+
 export const ListWrapper = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 14rem;
   margin-bottom: 2rem;
   display: flex;
   border: 1px solid rgb(235, 235, 235);
@@ -59,12 +65,12 @@ export const ContentsText = styled.li`
 export const RatingWrapper = styled.span`
   font-size: 1rem;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export const SelectTag = styled.div`
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: orange;
 `;
 
@@ -94,6 +100,21 @@ export const Reserve = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+
+  :hover {
+    background-color: #f4840b;
+  }
+`;
+
+export const AddBtn = styled.button`
+  background-color: orange;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem 0.3rem 1rem;
+
   cursor: pointer;
 
   :hover {
