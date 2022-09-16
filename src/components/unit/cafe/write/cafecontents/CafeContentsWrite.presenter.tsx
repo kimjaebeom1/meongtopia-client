@@ -28,7 +28,7 @@ const CONDITION_TAGS = [
 
 // registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
-export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
+export default function CafeContentsWriteUI(props: any) {
   return (
     <>
       <CafeContentsWrite.Wrapper>
@@ -70,26 +70,14 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               </CafeContentsWrite.ErrorTag>
 
               <CafeContentsWrite.Tag>
-                {/* <CafeContentsWrite.MobileUploadWrapper> */}
-                {/* <FilePond
-                  server="https://meongtopiaserver.shop/graphql"
-                  files={props.files}
-                  allowReorder={true}
-                  allowMultiple={true}
-                  maxFiles={5}
-                  onupdatefiles={props.setFiles}
-                  labelIdle="사진 파일을 추가해주세요"
-                /> */}
-                {/* </CafeContentsWrite.MobileUploadWrapper> */}
                 <CafeContentsWrite.ImageUploadWrapper>
                   {props.fileUrls.map((el, index) => (
-                    <div key={uuidv4()}>
-                      <CafeImgUpload
-                        index={index}
-                        fileUrl={el}
-                        onChangeFileUrls={props.onChangeFileUrls}
-                      />
-                    </div>
+                    <CafeImgUpload
+                      key={uuidv4()}
+                      index={index}
+                      fileUrl={el}
+                      onChangeFileUrls={props.onChangeFileUrls}
+                    />
                   ))}
                 </CafeContentsWrite.ImageUploadWrapper>
               </CafeContentsWrite.Tag>
@@ -98,7 +86,7 @@ export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.ToastWrapper>
                 <ToastEditor
-                  defaultValue={props.data?.fetchStore.description || ""}
+                  defaultValue={props.data?.fetchStore.description}
                   editorRef={props.editorRef}
                   onChangeDescription={props.onChangeDescription}
                 />

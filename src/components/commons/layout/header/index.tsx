@@ -25,7 +25,7 @@ export default function LayoutHeader() {
   return (
     <Header.Container>
       <Header.Wrapper>
-        <Link href="/">
+        <Link href="/home">
           <Header.Logo src="/images/logo01.svg" />
         </Link>
         <Header.MenuContainer>

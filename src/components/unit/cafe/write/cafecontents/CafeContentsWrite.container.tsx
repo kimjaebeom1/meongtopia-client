@@ -2,11 +2,7 @@ import { useState, createRef, useEffect, MouseEvent } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/client";
-import {
-  CREATE_STORE,
-  FETCH_STORE,
-  UPDATE_STORE,
-} from "./CafeContentsWrite.queries";
+import { CREATE_STORE, UPDATE_STORE } from "./CafeContentsWrite.queries";
 import Editor from "@toast-ui/editor";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -24,6 +20,7 @@ export default function CafeContentsWrite(props) {
   const [conditionActive, setConditionActive] = useState([""]);
   const router = useRouter();
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
+
   const [next, setNext] = useState(false);
   const [createStore] = useMutation(CREATE_STORE);
   const [updateStore] = useMutation(UPDATE_STORE);
@@ -34,20 +31,12 @@ export default function CafeContentsWrite(props) {
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
   const [files, setFiles] = useState([]);
-  const { data } = useQuery(FETCH_STORE, {
-    variables: { storeID: String(router.query.cafeid) },
-  });
+
   const { register, handleSubmit, setValue, trigger, getValues, formState } =
     useForm({
       resolver: yupResolver(schema),
       mode: "onChange",
     });
-
-  useEffect(() => {
-    if (props.data?.fetchStore.storeImg?.length) {
-      setFileUrls([...props.data?.fetchStore.storeImg]);
-    }
-  }, [props.data]);
 
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
@@ -69,12 +58,6 @@ export default function CafeContentsWrite(props) {
     setIsOpen(false);
   };
 
-  const onChangeFileUrls = (fileUrl: string, index: number) => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls[index] = fileUrl;
-    setFileUrls(newFileUrls);
-  };
-
   const editorRef = createRef<Editor>();
 
   const onChangeDescription = () => {
@@ -88,8 +71,6 @@ export default function CafeContentsWrite(props) {
     if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
     if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
 
-    console.log(files);
-    console.log(setFiles);
     try {
       const result = await createStore({
         variables: {
@@ -118,14 +99,12 @@ export default function CafeContentsWrite(props) {
     }
   };
 
-  const onClickUpdateStore = async (data) => {
+  const onClickUpdateStore = async (data: any) => {
     if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
     if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
 
-    console.log(files);
-    console.log(setFiles);
     try {
-      const result = await createStore({
+      const result = await updateStore({
         variables: {
           updateStoreInput: {
             name: data.name,
@@ -171,7 +150,7 @@ export default function CafeContentsWrite(props) {
 
   const onClickNext = () => {
     if (
-      formState.isValid === false ||
+      // formState.isValid === false ||
       !description ||
       description === "<p><br></p>" ||
       !fileUrls.join("") ||
@@ -183,6 +162,22 @@ export default function CafeContentsWrite(props) {
     }
     setNext(true);
   };
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  useEffect(() => {
+    const html: any = props.data?.fetchStore.description;
+    editorRef.current?.getInstance().setHTML(html);
+
+    if (props.data?.fetchStore.storeTag.length)
+      setConditionActive(props.data?.fetchStore.storeTag.map((el) => el.name));
+
+    if (props.data?.fetchStore.locationTag.name)
+      setLocationActive(props.data?.fetchStore.locationTag.name);
+  }, [props.data]);
 
   return (
     <CafeContentsWriteUI
@@ -208,14 +203,14 @@ export default function CafeContentsWrite(props) {
       conditionActive={conditionActive}
       onClickLocationTag={onClickLocationTag}
       onClickConditionTag={onClickConditionTag}
-      petArr={petArr}
       bigDog={bigDog}
       smallDog={smallDog}
       isEdit={props.isEdit}
-      data={data}
+      data={props.data}
       files={files}
       setFiles={setFiles}
       onClickUpdateStore={onClickUpdateStore}
+      petArr={petArr}
     />
   );
 }

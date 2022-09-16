@@ -301,8 +301,8 @@ export const NextButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: ${(props) =>
-    !props.formState.isValid ||
+  background-color: ${(props: any) =>
+    // !props.formState.isValid ||
     !props.fileUrls.join("") ||
     !props.description ||
     props.description === "<p><br></p>" ||

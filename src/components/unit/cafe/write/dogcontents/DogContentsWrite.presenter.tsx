@@ -10,6 +10,7 @@ export default function DogContentsWriteUI(props) {
         <DogContentsWrite.DogCount>
           대형견:
           <DogContentsWrite.BigDogCount
+            defaultValue={props.data?.fetchStore.bigDog || ""}
             onChange={props.onChangeBigDog}
             type="number"
           ></DogContentsWrite.BigDogCount>
@@ -17,6 +18,7 @@ export default function DogContentsWriteUI(props) {
         <DogContentsWrite.DogCount>
           소형견:
           <DogContentsWrite.SmallDogCount
+            defaultValue={props.data?.fetchStore.smallDog || ""}
             onChange={props.onChangeSmallDog}
             type="number"
           ></DogContentsWrite.SmallDogCount>

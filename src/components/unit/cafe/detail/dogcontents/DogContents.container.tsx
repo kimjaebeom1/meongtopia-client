@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
 import DetailDogContentsUI from "./DogContents.presenter";
 import {
   CREATE_RESERVATION,
@@ -10,7 +11,8 @@ import {
 
 export default function DetailDogContents() {
   const router = useRouter();
-  const { data } = useQuery(FETCH_STORE, {
+  const { data: userData } = useQuery(FETCH_USER);
+  const { data, refetch } = useQuery(FETCH_STORE, {
     variables: { storeID: String(router.query.cafeid) },
   });
   const [createReservation] = useMutation(CREATE_RESERVATION);
@@ -26,14 +28,44 @@ export default function DetailDogContents() {
     setCount(value);
   };
 
+  const pick = userData?.fetchUser.pick.filter(
+    (el: any) => el.store.storeID === router.query.cafeid
+  );
+
+  useEffect(() => {
+    userData?.fetchUser.pick.filter(
+      (el) => el.store.storeID === router.query.cafeid
+    ).length === 1
+      ? setPicked(true)
+      : setPicked(false);
+  }, [userData?.fetchUser.pick]);
+
+  console.log(
+    userData?.fetchUser.pick.filter(
+      (el) => el.store.storeID === router.query.cafeid
+    ).length === 1
+  );
   const onClickToggle = async () => {
-    const result = await togglePick({
+    await togglePick({
       variables: {
-        storeID: router.query.cafeid,
+        storeID: String(router.query.cafeid),
       },
+      refetchQueries: [
+        {
+          query: FETCH_STORE,
+          variables: { StoreID: router.query.cafeid },
+        },
+        {
+          query: FETCH_USER,
+        },
+      ],
     });
-    console.log(result);
-    setPicked((prev) => !prev);
+
+    if (!picked) {
+      setPicked(true);
+    } else {
+      setPicked(false);
+    }
   };
 
   const onClickReservation = async () => {
@@ -56,8 +88,7 @@ export default function DetailDogContents() {
     }
   };
 
-  console.log(data?.fetchStore.storeImg);
-
+  console.log(picked);
   return (
     <DetailDogContentsUI
       count={count}

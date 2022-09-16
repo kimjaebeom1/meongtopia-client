@@ -1,7 +1,7 @@
 import * as Landing from "./Landing.styles";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
-import CountUp from "../../commons/count/countUp";
+import CountUp from "../../commons/count/Countup";
 
 export default function LandingWebInfo() {
   const [ref, inView] = useInView({
