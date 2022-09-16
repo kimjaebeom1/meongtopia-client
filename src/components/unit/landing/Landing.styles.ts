@@ -13,18 +13,25 @@ const Fade = keyframes`
   }
 `;
 
+const TextUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+
+  to {
+    opacity:1;
+    transform:none;
+  }
+`;
+
 // ============================================================//
 export const FirstLanding = styled.div`
   height: 100vh;
   width: 100%;
-  padding: 0px 10%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-image: url("/images/landingImg1.png");
   background-size: cover;
-  opacity: 1;
-  animation: ${Fade} 4s;
+
   /* animation: animate__fadeInLeftBig;
   animation-duration: 2s; */
 
@@ -34,54 +41,124 @@ export const FirstLanding = styled.div`
 `;
 
 export const Wrap1 = styled.div`
-  /* width: 100%; */
-  /* height: 60vh; */
+  z-index: 0;
+  height: 60vh;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* border: 1px solid black; */
-  margin-top: 30px;
-  /* transition: all 1.5s ease-in-out; */
-
-  .isActive {
-    /* animation: fadeInDown; */
-    /* animation-duration: 2s; */
-    opacity: 1;
-  }
 `;
 
 export const Part1 = styled.div`
+  width: 100%;
+  /* border: 5px solid red; */
+  display: flex;
+  justify-content: center;
+  /*width: 100%; */
+`;
+
+export const UnOTitle = styled.div`
+  font-size: 2.3rem;
+  color: #8b4513;
+  border-bottom: 6px double #ffc846;
+`;
+
+export const PhoneWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+`;
+
+export const Span = styled.div`
+  animation: TextUp 3s ease-in;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2.5s;
+  }
+`;
+
+export const PhoneCon = styled.div`
+  font-size: 1.2rem;
+`;
+
+export const PhonePic1Wrap = styled.div`
+  /* width: 15vw; */
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* width: 100%; */
+  align-items: center;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
+  }
 `;
 
-export const Contents = styled.div`
-  text-align: center;
-  font-size: 1.3rem;
-  margin-top: 40px;
-  letter-spacing: 8px;
-  line-height: 2;
-  transition-delay: 1s;
+export const PhonePic1 = styled.img`
+  width: 15vw;
+  height: 50%;
+  margin-top: 30px;
 `;
 
-export const Content = styled.div`
-  font-size: 1.3rem;
-  transition-delay: 1s;
+export const PhonePic2Wrap = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
+  }
 `;
 
-export const Strong = styled.div`
-  font-weight: 600;
-  color: #ffa500;
-  text-shadow: 3px 3px 2px white;
-  font-size: 2rem;
-  transition-delay: 1s;
+export const PhonePic2 = styled.img`
+  width: 15vw;
+  height: 50%;
+  margin-top: 30px;
 `;
 
-export const Highlight = styled.div`
-  background-color: lightyellow;
-  transition-delay: 1s;
+export const PhonePic3Wrap = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
+  }
+`;
+
+export const PhonePic3 = styled.img`
+  width: 15vw;
+  height: 50%;
+  margin-top: 30px;
+`;
+export const PhonePic4Wrap = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .isActive {
+    animation: fadeInUp;
+    animation-duration: 2s;
+  }
+`;
+
+export const PhonePic4 = styled.img`
+  width: 15vw;
+  height: 50%;
+  margin-top: 30px;
 `;
 
 export const Logo = styled.img`
@@ -102,6 +179,10 @@ export const Logo = styled.img`
   }
 `;
 
+export const Part2 = styled.div`
+  width: 50%;
+  /* border: 1px solid blue; */
+`;
 // ============================================================//
 export const SecondeWrapper = styled.div`
   height: 100vh;
@@ -123,7 +204,6 @@ export const SecondeWrapper = styled.div`
 export const Wrap = styled.div`
   width: 50%;
   height: 90vh;
-  border: 1px solid blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -147,13 +227,13 @@ export const ThirdWrapper = styled.div`
   margin: 0px auto;
   height: 100vh;
   width: 100%;
-  background-image: url("/images/landingImg3-1.png");
+  left: 50%;
+  background-image: url("/images/landing111.png");
   background-repeat: no-repeat;
   background-size: cover;
-  border: 2px solid yellow;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  animation: ${Fade} 4s;
 
   @media ${breakPoints.mobile} {
     height: 100vh;
@@ -163,19 +243,32 @@ export const ThirdWrapper = styled.div`
   }
 `;
 
+export const Wrapper1 = styled.div`
+  position: relative;
+  left: 47%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+`;
+
 export const LeftWrapper = styled.div`
   position: relative;
-  width: 35rem;
-  height: 45vh;
-  border: 2px solid red;
+  /* left: 50%; */
+  width: 45rem;
+  height: 40vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
 
   @media ${breakPoints.mobile} {
     height: 60vh;
   }
+`;
+
+export const Content3 = styled.div`
+  font-size: 1.1rem;
 `;
 
 export const LeftItem1 = styled.div`
@@ -183,8 +276,13 @@ export const LeftItem1 = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid blue;
   width: 33%;
+  height: 26vh;
+
+  .isActive {
+    animation: fadeInDown;
+    animation-duration: 2s;
+  }
 `;
 
 export const LeftItem2 = styled.div`
@@ -192,24 +290,39 @@ export const LeftItem2 = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid red;
   width: 33%;
+  height: 26vh;
+
+  .isActive {
+    animation: fadeInDown;
+    animation-duration: 3s;
+  }
 `;
 export const LeftItem3 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid pink;
   width: 33%;
+  height: 26vh;
+
+  .isActive {
+    animation: fadeInDown;
+    animation-duration: 4s;
+  }
 `;
 
 export const RightWrapper = styled.div`
-  position: relative;
   /* left: 50%; */
-  width: 40rem;
-  height: 80vh;
-  border: 1px solid black;
+  width: 44rem;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
 
   @media ${breakPoints.mobile} {
     height: 60vh;
@@ -219,6 +332,23 @@ export const RightWrapper = styled.div`
     margin: 0px auto;
   }
 `;
+
+export const MainLogo = styled.img`
+  width: 20vw;
+  height: 16vh;
+  margin-bottom: 30px;
+  opacity: 1;
+
+  .isActive {
+    opacity: 1;
+  }
+`;
+export const LogoInfo = styled.div`
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+`;
+
 export const Count = styled.div`
   font-size: 1.2rem;
   font-weight: 900;
@@ -477,7 +607,7 @@ export const CafeDetail = styled.div`
   width: 80%;
   justify-content: space-between; */
   /* background-color: lightyellow; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
 `;
 
 export const CafeImg = styled.img`
@@ -568,17 +698,6 @@ export const Video = styled.video`
   /* width: 100%;
   height: 90vh; */
   /* height: 500px; */
-`;
-
-export const Title = styled.div`
-  z-index: 1;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-bottom: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 `;
 
 export const DetailWrap = styled.div`
