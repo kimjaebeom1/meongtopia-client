@@ -9,12 +9,13 @@ export default function MyPageUserPickUI(props: IMyPageUserPickUIProps) {
     <UserPick.Wrapper>
       {props.data?.fetchPicks.map((el) => (
         <UserPick.ListWrapper key={uuidv4()}>
-          {/* {el.storeImg?.[0].url ? ( */}
-          <UserPick.Img
-            src={`https://storage.googleapis.com/meongtopia-storage/2022-9-14/5b6a9254-b2b1-46a4-8eec-c64a35d58f86/origin/dog2.jpg`}
-          />
-          {/* ) : (<div></div> */}
-          {/* )} */}
+          {el.storeImg?.[0].url ? (
+            <UserPick.Img
+              src={`https://storage.googleapis.com/${el.storeImg?.[0].url}`}
+            />
+          ) : (
+            <UserPick.Img src="/images/dogcharacter.jpg" />
+          )}
           <UserPick.UserList>
             <UserPick.ContentsText>
               <UserPick.Title>{el.name}</UserPick.Title>

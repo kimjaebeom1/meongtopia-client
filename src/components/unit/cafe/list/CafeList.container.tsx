@@ -78,6 +78,8 @@ export default function CafeList() {
     setPrice(e.target.value);
   };
 
+  console.log(data);
+
   return (
     <CafeListUI
       data={data}

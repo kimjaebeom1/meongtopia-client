@@ -120,11 +120,11 @@ export default function MyPageUserMyInfoUI(props: IMyPageUserMyInfoUIProps) {
                 />
               </div>
             </MyInfo.PwdWrapper>
-            <div>
-              <MyInfo.Label>휴대폰 번호</MyInfo.Label>
-              <MyInfo.Input type="text" onChange={props.onChangePhoneNumber} />
-            </div>
           </MyInfo.UpdateWrapper>
+          <div>
+            <MyInfo.Label>휴대폰 번호</MyInfo.Label>
+            <MyInfo.Input type="text" onChange={props.onChangePhoneNumber} />
+          </div>
           <MyInfo.ErrorMessage>{props.errorMessage}</MyInfo.ErrorMessage>
           <MyInfo.BtnContainer>
             <MyInfo.UpdateBtn onClick={props.onClickToChangePwd}>

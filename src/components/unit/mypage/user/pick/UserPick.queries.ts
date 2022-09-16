@@ -26,6 +26,9 @@ export const FETCH_PICKS = gql`
       pet {
         petImgUrl
       }
+      storeImg {
+        url
+      }
     }
   }
 `;

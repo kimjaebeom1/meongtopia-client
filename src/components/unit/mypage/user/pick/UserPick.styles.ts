@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 
 export const ListWrapper = styled.div`
   width: 100%;
+  height: 15rem;
   margin-bottom: 2rem;
   display: flex;
   border: 1px solid rgb(235, 235, 235);
@@ -18,12 +19,13 @@ export const ListWrapper = styled.div`
 
 export const Img = styled.img`
   width: 200px;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px 0 0 10px;
 `;
 
 export const UserList = styled.ul`
-  width: 100%;
+  width: 65%;
   padding: 1rem 2rem;
   margin: 0;
   display: flex;
@@ -83,7 +85,7 @@ export const Heart = styled(AiFillHeart)`
 `;
 
 export const Reserve = styled.div`
-  width: 10rem;
+  width: 6rem;
   background-color: orange;
   color: #fff;
   font-size: 1.4rem;
