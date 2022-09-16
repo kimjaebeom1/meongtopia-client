@@ -4,7 +4,6 @@ import ListSlider from "../../../commons/sliders/listslider";
 import * as CafeList from "./CafeList.styles";
 import { ICafeListUIProps } from "./CafeList.types";
 import { v4 as uuidv4 } from "uuid";
-import Dompurify from "dompurify";
 import InfiniteScroll from "react-infinite-scroller";
 
 const LOCATION_TAGS = ["전체", "홍대", "강남", "대학로", "건대", "잠실"];
@@ -153,11 +152,22 @@ export default function CafeListUI(props: ICafeListUIProps) {
                     </CafeList.RatingWrapper>
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: Dompurify.sanitize(el.description),
-                      }}
-                    />
+                    <CafeList.SelectTag>
+                      {el.storeTag.map((el) => (
+                        <span
+                          key={el.tagID}
+                          style={{ marginRight: "1rem" }}
+                        >{`# ${el.name}`}</span>
+                      ))}
+                    </CafeList.SelectTag>
+                    <span style={{ display: "flex", alignItems: "center" }}>
+                      <CafeList.Heart />
+                      {el.pickCount}
+                    </span>
+                  </CafeList.ContentsText>
+                  <CafeList.Horizon />
+                  <CafeList.ContentsText>
+                    <span>{el.address}</span>
                     <CafeList.DogWrapper>
                       <img
                         style={{
@@ -181,26 +191,17 @@ export default function CafeListUI(props: ICafeListUIProps) {
                       >{`소형견 ${el.smallDog} 마리`}</span>
                     </CafeList.DogWrapper>
                   </CafeList.ContentsText>
-                  <CafeList.Horizon />
-                  <CafeList.ContentsText>
-                    <CafeList.SelectTag>
-                      {el.storeTag.map((el) => (
-                        <span
-                          key={el.tagID}
-                          style={{ marginRight: "1rem" }}
-                        >{`# ${el.name}`}</span>
-                      ))}
-                    </CafeList.SelectTag>
-                    <span style={{ display: "flex", alignItems: "center" }}>
-                      <CafeList.Heart />
-                      {el.pickCount}
-                    </span>
-                  </CafeList.ContentsText>
-                  <CafeList.ContentsText>
-                    <span>{el.address}</span>
-                  </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <span>{`${el.open} ~ ${el.close}`}</span>
+                  </CafeList.ContentsText>
+                  <CafeList.ContentsText>
+                    <CafeList.DogImgContainer>
+                      {el.pet.map((el) => (
+                        <CafeList.DogImg
+                          src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                        />
+                      ))}
+                    </CafeList.DogImgContainer>
                     <span
                       style={{ fontSize: "1.2rem" }}
                     >{`입장료 ${el.entranceFee.toLocaleString()}원`}</span>

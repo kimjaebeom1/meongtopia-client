@@ -26,6 +26,9 @@ export const FETCH_STORES = gql`
       pet {
         petImgUrl
       }
+      storeImg {
+        url
+      }
     }
   }
 `;

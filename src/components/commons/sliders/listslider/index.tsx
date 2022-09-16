@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 const SliderItem = styled.div`
   & > img {
     width: 410px;
-    height: 264px;
+    height: 296px;
     object-fit: cover;
     border-radius: 8px;
   }
@@ -56,16 +56,16 @@ export default function ListSlider(props: IListSliderProps) {
     speed: 200,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
+    // prevArrow: <PrevArrow />,
+    // nextArrow: <NextArrow />,
   };
   return (
     <Wrapper>
       <Slider {...settings}>
-        {props.url.pet.map((el: any) => (
+        {props.url.storeImg.map((el: any) => (
           <SliderItem key={el}>
-            {el.petImgUrl ? (
-              <img src={`https://storage.googleapis.com/${el.petImgUrl}`} />
+            {el.url ? (
+              <img src={`https://storage.googleapis.com/${el.url}`} />
             ) : (
               <img src="/images/dogcharacter.jpg" />
             )}

@@ -69,6 +69,8 @@ export const Input = styled.input`
 
 export const UpdateWrapper = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const PwdWrapper = styled.div`
@@ -86,5 +88,4 @@ export const ErrorMessage = styled.div`
 export const BtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
 `;

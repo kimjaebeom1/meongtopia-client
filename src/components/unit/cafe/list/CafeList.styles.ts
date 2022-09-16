@@ -120,7 +120,7 @@ export const ListWrapper = styled.section`
 
 export const CafeListWrapper = styled.div`
   width: 100%;
-  height: 17rem;
+  height: 19rem;
   margin-bottom: 2rem;
   display: flex;
   border: 1px solid rgb(235, 235, 235);
@@ -195,7 +195,7 @@ export const SelectTag = styled.div`
 
 export const Horizon = styled.div`
   border-bottom: 1px solid #cacaca;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
 `;
 
 export const DogWrapper = styled.span`
@@ -207,4 +207,16 @@ export const Heart = styled(AiFillHeart)`
   font-size: 1.2rem;
   color: orangered;
   margin-right: 0.5rem;
+`;
+
+export const DogImgContainer = styled.div`
+  display: flex;
+`;
+
+export const DogImg = styled.img`
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  border-radius: 10px;
 `;
