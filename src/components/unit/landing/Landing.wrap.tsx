@@ -1,6 +1,7 @@
 import FirstLandingPage from "./Landing.FirstLanding";
 import SecondLandingPage from "./Landing.SecondeLanding";
 import ThirdLandingPage from "./Landing.Third";
+import LastLandingPage from "./Landing.LastLanding";
 
 import styled from "@emotion/styled";
 
@@ -76,6 +77,7 @@ export default function LandingWrap() {
       <ThirdLandingPage />
       <FirstLandingPage />
       <SecondLandingPage />
+      <LastLandingPage />
     </Wrap>
   );
 }

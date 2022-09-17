@@ -22,7 +22,7 @@ export default function LandingWebInfo() {
             </span>
             로
             <br />
-            <span>주변 정보 및 추천 경로 리스트</span>등, <br />
+            <span>주변 정보 및 추천 경로 리스트</span> 등, <br />
             <span style={{ borderBottom: "4px double lightsalmon" }}>
               최적의 사용자 경험을 기반으로 검색서비스를 제공하고 있습니다.
             </span>
@@ -37,10 +37,15 @@ export default function LandingWebInfo() {
         <Landing.LeftWrapper>
           <Landing.LeftItem1 className={inView ? "isActive" : ""} ref={ref}>
             <div className={inView ? "isActive" : ""} ref={ref}>
-              <div style={{ fontSize: "20px" }}>
+              <div style={{ fontSize: "23px" }}>
                 전국
                 <br />
-                <span style={{ fontFamily: "Happiness-Sans-Bold" }}>
+                <span
+                  style={{
+                    fontFamily: "Happiness-Sans-Bold",
+                    color: "#8B4513",
+                  }}
+                >
                   {CountUp(147)}개
                 </span>
                 <br />
@@ -61,10 +66,15 @@ export default function LandingWebInfo() {
 
           <Landing.LeftItem2 className={inView ? "isActive" : ""} ref={ref}>
             <div className={inView ? "isActive" : ""} ref={ref}>
-              <div style={{ fontSize: "20px" }}>
+              <div style={{ fontSize: "23px" }}>
                 월간 사용자 수
                 <br />
-                <span style={{ fontFamily: "Happiness-Sans-Bold" }}>
+                <span
+                  style={{
+                    fontFamily: "Happiness-Sans-Bold",
+                    color: "#8B4513",
+                  }}
+                >
                   {CountUp(1342812)}
                 </span>
                 <br />
@@ -83,10 +93,15 @@ export default function LandingWebInfo() {
 
           <Landing.LeftItem3 className={inView ? "isActive" : ""} ref={ref}>
             <div className={inView ? "isActive" : ""} ref={ref}>
-              <div style={{ fontSize: "20px" }}>
+              <div style={{ fontSize: "23px" }}>
                 패이지뷰
                 <br />
-                <span style={{ fontFamily: "Happiness-Sans-Bold" }}>
+                <span
+                  style={{
+                    fontFamily: "Happiness-Sans-Bold",
+                    color: "#8B4513",
+                  }}
+                >
                   {CountUp(8483532)}
                 </span>
                 <br />건 +

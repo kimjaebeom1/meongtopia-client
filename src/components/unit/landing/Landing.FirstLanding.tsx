@@ -13,9 +13,9 @@ export default function FirstLandingPage() {
     // <div className={inView ? "isActive" : ""} ref={ref}>
     // Wrap1, Part1 에 넣기
     <Landing.FirstLanding>
-      <Landing.Wrap1 className={inView ? "isActive" : ""} ref={ref}>
-        <Landing.Part1 className={inView ? "isActive" : ""} ref={ref}>
-          {/* <Landing.UnOTitle></Landing.UnOTitle> */}
+      <Landing.Wrap1>
+        <Landing.Part1>
+          <Landing.UnOTitle></Landing.UnOTitle>
           <Landing.PhoneWrap>
             <Landing.PhonePic1Wrap
               className={inView ? "isActive" : ""}
@@ -26,8 +26,7 @@ export default function FirstLandingPage() {
                 ref={ref}
                 style={{
                   fontFamily: "YUniverse-B",
-                  fontSize: "30px",
-                  color: "black",
+                  fontSize: "1.7rem",
                 }}
               >
                 내가 가고싶은 카페에
@@ -40,6 +39,7 @@ export default function FirstLandingPage() {
                 style={{
                   fontFamily: "Y_Spotlight",
                   fontSize: "30px",
+                  borderBottom: "5px double lightsalmon",
                 }}
               >
                 어떤 멍멍이들이 있을까?
@@ -60,8 +60,9 @@ export default function FirstLandingPage() {
                 ref={ref}
                 style={{
                   fontFamily: "YUniverse-B",
-                  fontSize: "30px",
-                  color: "black",
+                  fontSize: "1.7rem",
+
+                  backgroundColor: "#F0B469",
                 }}
               >
                 내 주변에 동반가능한
@@ -94,7 +95,7 @@ export default function FirstLandingPage() {
                 ref={ref}
                 style={{
                   fontFamily: "YUniverse-B",
-                  fontSize: "30px",
+                  fontSize: "1.7rem",
                   color: "black",
                 }}
               >
@@ -108,9 +109,10 @@ export default function FirstLandingPage() {
                 style={{
                   fontFamily: "Y_Spotlight",
                   fontSize: "30px",
+                  borderBottom: "5px double lightsalmon",
                 }}
               >
-                솔직후기
+                솔직후기~
               </Landing.Span>
               <Landing.PhonePic3
                 src="images/landingPhoneCo.svg"
@@ -128,11 +130,10 @@ export default function FirstLandingPage() {
                 ref={ref}
                 style={{
                   fontFamily: "YUniverse-B",
-                  fontSize: "30px",
-                  color: "black",
+                  fontSize: "1.7rem",
                 }}
               >
-                이용자만 남길 수 있는
+                멍토피아에서만 제공하는
                 <br />
               </Landing.Span>
 
@@ -144,7 +145,7 @@ export default function FirstLandingPage() {
                   fontSize: "30px",
                 }}
               >
-                솔직후기
+                특별 이벤트!✨
               </Landing.Span>
               <Landing.PhonePic4
                 src="images/landingPhoneAd.svg"
