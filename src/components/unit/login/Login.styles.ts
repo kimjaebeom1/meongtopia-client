@@ -4,17 +4,27 @@ import { breakPoints } from "../../../commons/styles/media";
 export const Wrapper = styled.div`
   /* height: 968px; */
   width: 100%;
-  margin: 0px auto;
-  padding: 50px 0px;
+  /* margin: auto; */
+  padding: 8rem 0;
   /* display: flex; */
   /* flex-direction: row; */
   /* overflow-y: hidden; */
+  display: flex;
+  justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    padding: 5rem 0;
+  }
 `;
 
 export const Ad = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 420px;
+  height: 420px;
   display: flex;
+
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -25,12 +35,18 @@ export const LoginPartWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  margin: 0px auto;
-  width: 768px;
-  padding: 0rem 3rem;
+  justify-content: space-between;
+  /* margin: 0px auto; */
+  width: 1024px;
+  padding: 0rem 2rem;
+
+  @media ${breakPoints.tablet} {
+    /* z-index: 999; */
+    width: 100%;
+  }
+
   @media ${breakPoints.mobile} {
-    z-index: 999;
+    /* z-index: 999; */
     width: 100%;
   }
 `;
@@ -39,20 +55,28 @@ export const ElWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 45%;
-  width: 300px;
+  justify-content: space-between;
+  /* height: 45%; */
+  width: 40%;
+
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
-export const Title = styled.div`
-  font-size: 17px;
+export const Title = styled.h1`
+  font-size: 1.6rem;
   font-weight: 600;
-  margin-top: 30px;
-  margin-bottom: 5px;
+  /* margin-top: 30px; */
+  margin-bottom: 0.5rem;
 `;
 
 export const SubTitle = styled.div`
-  font-size: 11px;
+  font-size: 1rem;
   color: #808080;
   margin-bottom: 30px;
 `;
@@ -69,9 +93,10 @@ export const InputWrap = styled.div`
 export const Input = styled.input`
   width: 100%;
   height: 3rem;
-  padding: 0px 20px;
+  padding: 0px 1rem;
   outline: none;
-  border: none;
+  border: 1px solid #cacaca;
+  border-radius: 10px;
   /* border: none; */
   /* border: none; */
   /* border-bottom: 1px solid gray; */
@@ -101,16 +126,23 @@ export const LoginBtn = styled.button`
   text-align: center;
 
   color: white;
+  background-color: #999;
   border-radius: 50px;
-  margin-bottom: 10px;
+  margin: 1rem 0;
   border: none;
 
-  background-color: ${(props) => (props.isActive ? "#F5CF1F" : "none")};
+  cursor: pointer;
+  :hover {
+    background-color: #f4840b;
+  }
+
+  background-color: ${(props) => (props.isActive ? "orange" : "none")};
 `;
 
 export const SignUp = styled.div`
-  width: 12rem;
-  font-size: 0.8rem;
+  /* width: 18rem; */
+  font-size: 1rem;
+  margin-top: 1rem;
   color: gray;
   display: flex;
   flex-direction: row;
@@ -118,8 +150,11 @@ export const SignUp = styled.div`
 `;
 
 export const MoveToSignUp = styled.div`
-  font-size: 0.8rem;
+  font-size: 1rem;
+  margin-left: 1rem;
   color: black;
+  cursor: pointer;
+
   :hover {
     text-decoration: underline;
     color: black;
@@ -135,32 +170,36 @@ export const SocialLoginWrap = styled.div`
 `;
 
 export const SocialLoginGoogle = styled.img`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100px;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
   cursor: pointer;
 `;
 
 export const SocialLoginNaver = styled.img`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100px;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
   cursor: pointer;
 `;
 
 export const SocialLoginKakao = styled.img`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 100px;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
   background-image: url("/images/kakao.png");
   cursor: pointer;
 `;
 
-export const Line = styled.img`
+export const Line = styled.div`
   width: 3px;
-  height: 300px;
+  height: 45vh;
   border-left: 1px solid lightgray;
   margin: 0px 30px;
+
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
 
   @media ${breakPoints.mobile} {
     display: none;
