@@ -6,6 +6,8 @@ export const UploadImg = styled.img`
   width: 120px;
   height: 120px;
   object-fit: cover;
+  position: relative;
+  z-index: 2;
 
   @media ${breakPoints.mobile} {
     width: 100px;

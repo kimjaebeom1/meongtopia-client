@@ -5,14 +5,7 @@ import "antd/dist/antd.css";
 import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { ICafeContentsWriteUIProps } from "./CafeContentsWrite.types";
 import { v4 as uuidv4 } from "uuid";
-
-// import { FilePond, registerPlugin } from "react-filepond";
-// import "filepond/dist/filepond.min.css";
-// import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
-// import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-// import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
   ssr: false,
@@ -47,27 +40,21 @@ export default function CafeContentsWriteUI(props: any) {
         </CafeContentsWrite.ProcedureUnderBar>
 
         {props.next && <DogContentsWrite data={props.data} />}
-        <form
-          onSubmit={
-            props.isEdit
-              ? props.handleSubmit(props.onClickUpdateStore)
-              : props.handleSubmit(props.onClickCreateStore)
-          }
-        >
+        <>
           {!props.next && (
             <>
               <CafeContentsWrite.Tag>
                 카페 이름을 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNameInput
+                id="name"
+                onChange={props.onChangeInputs}
                 defaultValue={props.data?.fetchStore.name || ""}
                 required
                 placeholder="OO 애견카페"
-                {...props.register("name")}
+                // {...props.register("name")}
               ></CafeContentsWrite.CafeNameInput>
-              <CafeContentsWrite.ErrorTag>
-                {props.formState.errors.name?.message}
-              </CafeContentsWrite.ErrorTag>
+              <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
 
               <CafeContentsWrite.Tag>
                 <CafeContentsWrite.ImageUploadWrapper>
@@ -91,9 +78,7 @@ export default function CafeContentsWriteUI(props: any) {
                   onChangeDescription={props.onChangeDescription}
                 />
                 {props.description === "<p><br></p>" || "" ? (
-                  <CafeContentsWrite.ErrorTag>
-                    가게 설명을 입력해주세요
-                  </CafeContentsWrite.ErrorTag>
+                  <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
                 ) : (
                   ""
                 )}
@@ -102,13 +87,13 @@ export default function CafeContentsWriteUI(props: any) {
                 전화번호를 입력해주세요
               </CafeContentsWrite.Tag>
               <CafeContentsWrite.CafeNumberInput
+                id="phone"
+                onChange={props.onChangeInputs}
                 defaultValue={props.data?.fetchStore.phone || ""}
                 placeholder="010-1234-5678"
-                {...props.register("phone")}
+                // {...props.register("phone")}
               ></CafeContentsWrite.CafeNumberInput>
-              <CafeContentsWrite.ErrorTag>
-                {props.formState.errors.phone?.message}
-              </CafeContentsWrite.ErrorTag>
+              <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
               <CafeContentsWrite.TimeAndFeeWrapper>
                 <CafeContentsWrite.TimeWrapper>
                   <CafeContentsWrite.Tag>운영 시간</CafeContentsWrite.Tag>
@@ -116,14 +101,18 @@ export default function CafeContentsWriteUI(props: any) {
                     <CafeContentsWrite.StartTimeInput
                       defaultValue={props.data?.fetchStore.open || ""}
                       placeholder="08:00"
-                      {...props.register("open")}
+                      id="open"
+                      onChange={props.onChangeInputs}
+                      // {...props.register("open")}
                     ></CafeContentsWrite.StartTimeInput>
 
                     <div>~</div>
                     <CafeContentsWrite.CloseTimeInput
                       defaultValue={props.data?.fetchStore.close || ""}
                       placeholder="21:00"
-                      {...props.register("close")}
+                      id="close"
+                      onChange={props.onChangeInputs}
+                      // {...props.register("close")}
                     ></CafeContentsWrite.CloseTimeInput>
                   </CafeContentsWrite.TimeInputWrapper>
                 </CafeContentsWrite.TimeWrapper>
@@ -133,20 +122,15 @@ export default function CafeContentsWriteUI(props: any) {
                   <CafeContentsWrite.CafeFeeInput
                     defaultValue={props.data?.fetchStore.entranceFee || ""}
                     placeholder="5000"
-                    {...props.register("entranceFee")}
+                    onChange={props.onChangeEntranceFee}
+                    // {...props.register("entranceFee")}
                   ></CafeContentsWrite.CafeFeeInput>
                 </CafeContentsWrite.FeeWrapper>
               </CafeContentsWrite.TimeAndFeeWrapper>
               <CafeContentsWrite.TimeAndFeeErrorWrapper>
-                <CafeContentsWrite.ErrorTag>
-                  {props.formState.errors.open?.message}
-                </CafeContentsWrite.ErrorTag>
-                <CafeContentsWrite.ErrorTag>
-                  {props.formState.errors.close?.message}
-                </CafeContentsWrite.ErrorTag>
-                <CafeContentsWrite.ErrorTag>
-                  {props.formState.errors.entranceFee?.message}
-                </CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
               </CafeContentsWrite.TimeAndFeeErrorWrapper>
               <CafeContentsWrite.Tag>주소를 입력해주세요</CafeContentsWrite.Tag>
               <div
@@ -158,12 +142,11 @@ export default function CafeContentsWriteUI(props: any) {
                 <CafeContentsWrite.AddressInput
                   readOnly
                   value={props.address || props.data?.fetchStore.address}
-                  {...props.register("address")}
+                  id="address"
+                  onChange={props.onChangeInputs}
                   placeholder="주소 검색하기"
                 ></CafeContentsWrite.AddressInput>
-                <CafeContentsWrite.ErrorTag>
-                  {props.formState.errors.address?.message}
-                </CafeContentsWrite.ErrorTag>
+                <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
                 <CafeContentsWrite.AddressBtn
                   onClick={props.onClickAddressModal}
                   type="button"
@@ -174,7 +157,8 @@ export default function CafeContentsWriteUI(props: any) {
               <CafeContentsWrite.AddressDetailInput
                 defaultValue={props.data?.fetchStore.addressDetail || ""}
                 type="text"
-                {...props.register("addressDetail")}
+                id="addressDetail"
+                onChange={props.onChangeInputs}
                 placeholder="상세주소 입력하기"
               ></CafeContentsWrite.AddressDetailInput>
               <CafeContentsWrite.Tag>
@@ -230,7 +214,6 @@ export default function CafeContentsWriteUI(props: any) {
             {!props.next ? (
               <CafeContentsWrite.NextButton
                 fileUrls={props.fileUrls}
-                formState={props.formState}
                 locationActive={props.locationActive}
                 conditionActive={props.conditionActive}
                 description={props.description}
@@ -244,12 +227,17 @@ export default function CafeContentsWriteUI(props: any) {
                 petArr={props.petArr}
                 bigDog={props.bigDog}
                 smallDog={props.smallDog}
+                onClick={
+                  props.isEdit
+                    ? props.onClickUpdateStore
+                    : props.onClickCreateStore
+                }
               >
                 등록 완료
               </CafeContentsWrite.SubmitButton>
             )}
           </CafeContentsWrite.ButtonWrapper>
-        </form>
+        </>
       </CafeContentsWrite.Wrapper>
 
       {props.isOpen && (

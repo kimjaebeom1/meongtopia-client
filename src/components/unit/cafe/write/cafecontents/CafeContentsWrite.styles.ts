@@ -322,7 +322,7 @@ export const SubmitButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: ${(props) =>
+  background-color: ${(props: any) =>
     !props.petArr.join() || !props.bigDog || !props.smallDog
       ? "#d9d9d9"
       : "orange"};

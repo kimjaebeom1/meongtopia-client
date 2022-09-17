@@ -55,3 +55,11 @@ export const Toggle_Pick = gql`
     togglePick(storeID: $storeID)
   }
 `;
+
+export const FETCH_RESERVATION = gql`
+  query fetchReservation {
+    fetchReservation {
+      resID
+    }
+  }
+`;

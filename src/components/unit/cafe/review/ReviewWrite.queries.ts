@@ -5,8 +5,9 @@ export const CREATE_REVIEW = gql`
     $createReviewInput: CreateReviewInput!
     $storeID: String!
   ) {
-    createReview(createReviewInput: $createReviewInput, storeID: $StoreID) {
+    createReview(createReviewInput: $createReviewInput, storeID: $storeID) {
       contents
+      rating
     }
   }
 `;
@@ -16,8 +17,22 @@ export const UPDATE_REVIEW = gql`
     $updateReviewInput: UpdateReviewInput!
     $storeID: String!
   ) {
-    updateReview(updateReviewInput: $updateReviewInput, storeID: $StoreID) {
+    updateReview(updateReviewInput: $updateReviewInput, storeID: $storeID) {
       contents
+    }
+  }
+`;
+
+export const FETCH_STORE_REVIEWS = gql`
+  query fetchStoreReviewes($storeID: String!) {
+    fetchStoreReviewes(storeID: $storeID) {
+      rating
+      contents
+      createdAt
+      user {
+        nickname
+        profileImgUrl
+      }
     }
   }
 `;

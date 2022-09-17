@@ -5,6 +5,7 @@ import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
 import DetailDogContentsUI from "./DogContents.presenter";
 import {
   CREATE_RESERVATION,
+  FETCH_RESERVATION,
   FETCH_STORE,
   Toggle_Pick,
 } from "./DogContents.queries";
@@ -15,6 +16,9 @@ export default function DetailDogContents() {
   const { data, refetch } = useQuery(FETCH_STORE, {
     variables: { storeID: String(router.query.cafeid) },
   });
+  const { data: reservationData } = useQuery(FETCH_RESERVATION);
+  console.log(reservationData);
+
   const [createReservation] = useMutation(CREATE_RESERVATION);
   const [count, setCount] = useState(1);
   const [petCount, setPetCount] = useState(0);
@@ -40,11 +44,6 @@ export default function DetailDogContents() {
       : setPicked(false);
   }, [userData?.fetchUser.pick]);
 
-  console.log(
-    userData?.fetchUser.pick.filter(
-      (el) => el.store.storeID === router.query.cafeid
-    ).length === 1
-  );
   const onClickToggle = async () => {
     await togglePick({
       variables: {
@@ -80,7 +79,11 @@ export default function DetailDogContents() {
           },
         },
       });
-      alert("예약이 완료되었습니다");
+      if (window.confirm("예약하시겠습니까?")) {
+        alert("예약 되었습니다.");
+      } else {
+        alert("취소 되었습니다.");
+      }
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -88,7 +91,6 @@ export default function DetailDogContents() {
     }
   };
 
-  console.log(picked);
   return (
     <DetailDogContentsUI
       count={count}
