@@ -8,25 +8,25 @@ export default function LoginPresenterPage(props) {
           <Login.InputWrap>
             <Login.Title>로그인이 필요한 서비스입니다.</Login.Title>
             <Login.SubTitle>
-              멍토피아 회원이 아니라면 지금 회원가입 해주세요
+              멍토피아 회원이 아니라면 지금 회원가입 해주세요.
             </Login.SubTitle>
-            <Login.InputBorder>
-              <Login.Input
-                placeholder="이메일을 입력해주세요"
-                onChange={props.onChangeEmail}
-              />
-            </Login.InputBorder>
+            {/* <Login.InputBorder> */}
+            <Login.Input
+              placeholder="이메일을 입력해주세요."
+              onChange={props.onChangeEmail}
+            />
+            {/* </Login.InputBorder> */}
             <Login.Error>{props.emailError}</Login.Error>
           </Login.InputWrap>
 
           <Login.InputWrap>
-            <Login.InputBorder>
-              <Login.Input
-                placeholder="비밀번호를 입력해주세요"
-                type="password"
-                onChange={props.onChangePassword}
-              />
-            </Login.InputBorder>
+            {/* <Login.InputBorder> */}
+            <Login.Input
+              placeholder="비밀번호를 입력해주세요."
+              type="password"
+              onChange={props.onChangePassword}
+            />
+            {/* </Login.InputBorder> */}
             <Login.Error>{props.passwordError}</Login.Error>
           </Login.InputWrap>
 
