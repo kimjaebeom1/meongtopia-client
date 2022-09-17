@@ -1,27 +1,39 @@
+import { getDate } from "../../../../commons/libraries/utils";
 import * as ReviewWrite from "./ReviewWrite.styles";
 
 export default function ReviewWriteUI(props) {
   return (
     <>
       <ReviewWrite.Body>
-        <ReviewWrite.BodyInfo>
+        <ReviewWrite.Review>
+          <ReviewWrite.CommentsTag>리뷰</ReviewWrite.CommentsTag>{" "}
           <ReviewWrite.ListContainer>
-            <ReviewWrite.ProfileContainer>
-              <ReviewWrite.ProfileIcon />
-              <ReviewWrite.ProfileWrapper>
-                <ReviewWrite.Name>홍길동님</ReviewWrite.Name>
-                <ReviewWrite.Date>2022년 9월 1일</ReviewWrite.Date>
-              </ReviewWrite.ProfileWrapper>
-            </ReviewWrite.ProfileContainer>
-            <ReviewWrite.Contents>
-              가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하regerger
-            </ReviewWrite.Contents>
+            {props.data?.fetchStoreReviewes.map((el) => (
+              <>
+                <ReviewWrite.ProfileContainer>
+                  <ReviewWrite.ProfileWrapper>
+                    <ReviewWrite.ProfileImg
+                      src={`https://storage.googleapis.com/${el.user.profileImgUrl}`}
+                    />
+                    <ReviewWrite.Profile>
+                      <ReviewWrite.Name>{el.user.nickname}</ReviewWrite.Name>
+                      <ReviewWrite.Date>
+                        {getDate(el.createdAt)}
+                      </ReviewWrite.Date>
+                    </ReviewWrite.Profile>
+                  </ReviewWrite.ProfileWrapper>
+                </ReviewWrite.ProfileContainer>
+                <ReviewWrite.Star value={el.rating} />
+                <ReviewWrite.Contents>{el.contents}</ReviewWrite.Contents>
+              </>
+            ))}
+
             <ReviewWrite.More>더보기 {">"}</ReviewWrite.More>
           </ReviewWrite.ListContainer>
-        </ReviewWrite.BodyInfo>
+        </ReviewWrite.Review>
         <ReviewWrite.WriteWrapper>
-          <ReviewWrite.CommentsTag>의견 남기기</ReviewWrite.CommentsTag>
-          <ReviewWrite.Star onChange={props.setRating} />
+          <ReviewWrite.CommentsTag>리뷰 남기기</ReviewWrite.CommentsTag>
+          <ReviewWrite.Star defaultValue={5} onChange={props.setRating} />
           <ReviewWrite.CommentsBox
             placeholder="리뷰를 작성해주세요"
             // value={

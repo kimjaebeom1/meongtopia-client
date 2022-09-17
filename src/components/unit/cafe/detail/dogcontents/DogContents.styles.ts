@@ -385,7 +385,7 @@ export const FooterInfo = styled.div`
   font-size: 25px;
   font-weight: 700;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   & > img {
     width: 30px;
@@ -394,8 +394,6 @@ export const FooterInfo = styled.div`
   & > div {
     padding-top: 5px;
     display: flex;
-    margin-left: 8px;
-    align-items: center;
   }
 `;
 

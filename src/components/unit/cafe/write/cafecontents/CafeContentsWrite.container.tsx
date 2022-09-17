@@ -15,12 +15,21 @@ import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { schema } from "../../../../../commons/libraries/validation";
 
+const initialInputs = {
+  name: "",
+  phone: "",
+  open: "",
+  close: "",
+  addressDetail: "",
+  address: "",
+};
+
 export default function CafeContentsWrite(props) {
   const [locationActive, setLocationActive] = useState("");
   const [conditionActive, setConditionActive] = useState([""]);
   const router = useRouter();
   const [fileUrls, setFileUrls] = useState(["", "", "", "", ""]);
-
+  const [inputs, setInputs] = useState(initialInputs);
   const [next, setNext] = useState(false);
   const [createStore] = useMutation(CREATE_STORE);
   const [updateStore] = useMutation(UPDATE_STORE);
@@ -31,17 +40,22 @@ export default function CafeContentsWrite(props) {
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
   const [files, setFiles] = useState([]);
+  const [entranceFee, setEntranceFee] = useState(0);
 
-  const { register, handleSubmit, setValue, trigger, getValues, formState } =
-    useForm({
-      resolver: yupResolver(schema),
-      mode: "onChange",
-    });
+  const onChangeInputs = (event: any) => {
+    const _inputs = {
+      ...inputs,
+      [event?.target.id]: event?.target.value,
+    };
+    setInputs(_inputs);
+  };
+
+  const onChangeEntranceFee = (event) => {
+    setEntranceFee(event.target.value);
+  };
 
   // 주소 관련
   const onCompleteAddressSearch = (data: any) => {
-    setValue("address", data.address);
-    trigger("address");
     setIsOpen(false);
     setAddress(data.address);
   };
@@ -62,12 +76,10 @@ export default function CafeContentsWrite(props) {
 
   const onChangeDescription = () => {
     const inputs = editorRef.current?.getInstance().getHTML();
-    setValue("description", inputs);
-    trigger("description");
     setDescription(inputs);
   };
 
-  const onClickCreateStore = async (data) => {
+  const onClickCreateStore = async () => {
     if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
     if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
 
@@ -75,17 +87,13 @@ export default function CafeContentsWrite(props) {
       const result = await createStore({
         variables: {
           createStoreInput: {
-            name: data.name,
-            phone: data.phone,
+            ...inputs,
+            address,
+            description: description,
+            entranceFee: Number(entranceFee),
             storeImg: fileUrls.join().split(","),
-            open: data.open,
-            close: data.close,
             bigDog: Number(bigDog),
             smallDog: Number(smallDog),
-            entranceFee: Number(data.entranceFee),
-            description: data.description,
-            address: data.address,
-            addressDetail: data.addressDetail,
             locationTag: locationActive,
             storeTag: conditionActive,
             pet: [...petArr],
@@ -107,17 +115,13 @@ export default function CafeContentsWrite(props) {
       const result = await updateStore({
         variables: {
           updateStoreInput: {
-            name: data.name,
-            phone: data.phone,
+            ...inputs,
+            address,
+            description: description,
+            entranceFee: Number(entranceFee),
             storeImg: fileUrls.join().split(","),
-            open: data.open,
-            close: data.close,
             bigDog: Number(bigDog),
             smallDog: Number(smallDog),
-            entranceFee: Number(data.entranceFee),
-            description: data.description,
-            address: data.address,
-            addressDetail: data.addressDetail,
             locationTag: locationActive,
             storeTag: conditionActive,
             pet: [...petArr],
@@ -169,7 +173,11 @@ export default function CafeContentsWrite(props) {
   };
 
   useEffect(() => {
-    const html: any = props.data?.fetchStore.description;
+    if (props.data?.fetchStore.storeImg.length) {
+      setFileUrls([...props.data?.fetchStore.storeImg.map((el) => el.url)]);
+    }
+
+    const html = props.data?.fetchStore.description;
     editorRef.current?.getInstance().setHTML(html);
 
     if (props.data?.fetchStore.storeTag.length)
@@ -179,12 +187,12 @@ export default function CafeContentsWrite(props) {
       setLocationActive(props.data?.fetchStore.locationTag.name);
   }, [props.data]);
 
+  console.log(props.data);
+
   return (
     <CafeContentsWriteUI
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
-      register={register}
-      handleSubmit={handleSubmit}
       onClickNext={onClickNext}
       onClickPrev={onClickPrev}
       onClickCreateStore={onClickCreateStore}
@@ -195,9 +203,7 @@ export default function CafeContentsWrite(props) {
       onClickAddressModal={onClickAddressModal}
       handleOk={handleOk}
       closeModal={closeModal}
-      address={getValues("address")}
       editorRef={editorRef}
-      formState={formState}
       description={description}
       locationActive={locationActive}
       conditionActive={conditionActive}
@@ -211,6 +217,9 @@ export default function CafeContentsWrite(props) {
       setFiles={setFiles}
       onClickUpdateStore={onClickUpdateStore}
       petArr={petArr}
+      onChangeInputs={onChangeInputs}
+      onChangeEntranceFee={onChangeEntranceFee}
+      address={address}
     />
   );
 }

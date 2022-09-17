@@ -45,7 +45,7 @@ export default function DetailDogContentsUI(props) {
                 paddingTop: "0.5rem",
               }}
             >
-              {props.data?.fetchStore.avgRating}.0
+              {props.data?.fetchStore.avgRating}
               <div
                 style={{
                   paddingLeft: "0.5rem",
@@ -320,11 +320,8 @@ export default function DetailDogContentsUI(props) {
 
       <DogContents.Footer>
         <DogContents.FooterInfo>
-          <img src="/images/star.svg" />
-          <div>{props.data?.fetchStore.avgRating}.0</div>
-          <div>후기</div>
+          <ReviewWrite />
         </DogContents.FooterInfo>
-        <ReviewWrite />
       </DogContents.Footer>
     </DogContents.Wrapper>
   );

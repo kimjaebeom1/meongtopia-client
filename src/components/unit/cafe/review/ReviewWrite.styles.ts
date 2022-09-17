@@ -10,31 +10,38 @@ export const Body = styled.div`
   padding-top: 1rem;
 `;
 
-export const BodyInfo = styled.div`
+export const Review = styled.div`
   display: flex;
   flex-direction: column;
   width: 65%;
   font-size: 16px;
-  font-weight: 500;
 `;
 
 export const ListContainer = styled.div`
+  padding-top: 1rem;
   margin-bottom: 30px;
 `;
 
 export const ProfileContainer = styled.div`
   display: flex;
-`;
-
-export const ProfileIcon = styled(BsPersonCircle)`
-  font-size: 40px;
-  margin-right: 20px;
-  color: #808080;
+  padding-top: 0.5rem;
 `;
 
 export const ProfileWrapper = styled.div`
   display: flex;
+  align-items: center;
+`;
+
+export const ProfileImg = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+`;
+
+export const Profile = styled.div`
+  display: flex;
   flex-direction: column;
+  padding-left: 1rem;
 `;
 
 export const Name = styled.h3`
@@ -55,6 +62,7 @@ export const Contents = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
+  padding-top: 0.3rem;
 
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -88,6 +96,7 @@ export const CommentsBox = styled.textarea`
   height: 147px;
   border: none;
   border-radius: 5px;
+  font-size: 15px;
 `;
 
 export const CommentsBtn = styled.button`
