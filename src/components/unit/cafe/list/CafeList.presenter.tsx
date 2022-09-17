@@ -5,6 +5,8 @@ import * as CafeList from "./CafeList.styles";
 import { ICafeListUIProps } from "./CafeList.types";
 import { v4 as uuidv4 } from "uuid";
 import InfiniteScroll from "react-infinite-scroller";
+import Select from "react-select";
+import { breakPoints } from "../../../../commons/styles/media";
 
 const LOCATION_TAGS = ["전체", "홍대", "강남", "대학로", "건대", "잠실"];
 const CONDITION_TAGS = [
@@ -12,6 +14,17 @@ const CONDITION_TAGS = [
   "야외마당 있음",
   "대형견 있음",
   "아이동반 가능",
+];
+
+const ORDER_OPTIONS = [
+  { value: "최신순", label: "최신순" },
+  { value: "과거순", label: "과거순" },
+];
+
+const PRICE_OPTIONS = [
+  { value: "가격기본순", label: "가격기본순" },
+  { value: "가격높은순", label: "가격높은순" },
+  { value: "가격낮은순", label: "가격낮은순" },
 ];
 
 export default function CafeListUI(props: ICafeListUIProps) {
@@ -112,15 +125,18 @@ export default function CafeListUI(props: ICafeListUIProps) {
       {/* 정렬 컴포넌트 */}
       <CafeList.SortContainer>
         <CafeList.SortWrapper>
-          <CafeList.Sort onChange={props.onChangeOrder}>
-            <option value="최신순">최신순</option>
-            <option value="과거순">과거순</option>
-          </CafeList.Sort>
-          <CafeList.Sort onChange={props.onChangePrice}>
-            <option value="가격기본순">가격기본순</option>
-            <option value="가격높은순">가격높은순</option>
-            <option value="가격낮은순">가격낮은순</option>
-          </CafeList.Sort>
+          <div style={{ marginRight: "1rem" }}>
+            <Select
+              options={ORDER_OPTIONS}
+              defaultValue={ORDER_OPTIONS[0]}
+              onChange={props.onChangeOrder}
+            />
+          </div>
+          <Select
+            options={PRICE_OPTIONS}
+            defaultValue={PRICE_OPTIONS[0]}
+            onChange={props.onChangePrice}
+          />
         </CafeList.SortWrapper>
       </CafeList.SortContainer>
       {/* 리스트 컴포넌트 */}
@@ -160,10 +176,10 @@ export default function CafeListUI(props: ICafeListUIProps) {
                         >{`# ${el.name}`}</span>
                       ))}
                     </CafeList.SelectTag>
-                    <span style={{ display: "flex", alignItems: "center" }}>
+                    <CafeList.PickWrapper>
                       <CafeList.Heart />
                       {el.pickCount}
-                    </span>
+                    </CafeList.PickWrapper>
                   </CafeList.ContentsText>
                   <CafeList.Horizon />
                   <CafeList.ContentsText>
@@ -193,6 +209,12 @@ export default function CafeListUI(props: ICafeListUIProps) {
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <span>{`${el.open} ~ ${el.close}`}</span>
+                    <CafeList.RatingWrapperMobile>
+                      <Rate value={el.avgRating} disabled />
+                      <span style={{ marginLeft: "0.5rem" }}>
+                        {el.avgRating}
+                      </span>
+                    </CafeList.RatingWrapperMobile>
                   </CafeList.ContentsText>
                   <CafeList.ContentsText>
                     <CafeList.DogImgContainer>
@@ -209,6 +231,10 @@ export default function CafeListUI(props: ICafeListUIProps) {
                     <span
                       style={{ fontSize: "1.2rem" }}
                     >{`입장료 ${el.entranceFee.toLocaleString()}원`}</span>
+                    <CafeList.PickWrapperMobile>
+                      <CafeList.Heart />
+                      {el.pickCount}
+                    </CafeList.PickWrapperMobile>
                   </CafeList.ContentsText>
                 </CafeList.CafeList>
               </CafeList.CafeListWrapper>

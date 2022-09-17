@@ -46,7 +46,7 @@ export const getErrorMessage = (error: unknown) => {
   alert(message);
 };
 
-export const getDate = (value) => {
+export const getDate = (value: any) => {
   const date = new Date(value);
   const yyyy = date.getFullYear();
   const mm = String(date.getMonth() + 1).padStart(2, "0");

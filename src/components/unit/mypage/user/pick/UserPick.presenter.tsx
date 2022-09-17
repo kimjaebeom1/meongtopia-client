@@ -22,6 +22,12 @@ export default function MyPageUserPickUI(props: IMyPageUserPickUIProps) {
             <UserPick.UserList>
               <UserPick.ContentsText>
                 <UserPick.Title>{el.store?.name}</UserPick.Title>
+                <UserPick.RatingWrapperMobile>
+                  <UserPick.Star />
+                  <span style={{ marginLeft: "0.5rem" }}>
+                    {el.store?.avgRating}
+                  </span>
+                </UserPick.RatingWrapperMobile>
                 <UserPick.RatingWrapper>
                   <Rate value={el.store?.avgRating} disabled />
                   <span style={{ marginLeft: "0.5rem" }}>
@@ -36,17 +42,21 @@ export default function MyPageUserPickUI(props: IMyPageUserPickUIProps) {
                   {el.store?.storeTag.map((el) => (
                     <span
                       key={el.tagID}
-                      style={{ marginRight: "0.5rem", fontSize: "0.9rem" }}
+                      style={{ marginRight: "0.5rem" }}
                     >{`# ${el.name}`}</span>
                   ))}
                 </UserPick.SelectTag>
-                <span style={{ display: "flex", alignItems: "center" }}>
+                <UserPick.PickWrapper>
                   <UserPick.Heart />
                   {el.store?.pickCount}
-                </span>
+                </UserPick.PickWrapper>
               </UserPick.ContentsText>
               <UserPick.ContentsText>
                 <span>{el.store?.address}</span>
+                <UserPick.PickWrapperMobile>
+                  <UserPick.Heart />
+                  {el.store?.pickCount}
+                </UserPick.PickWrapperMobile>
               </UserPick.ContentsText>
               <UserPick.ContentsText>
                 <span>{`${el.store?.open} ~ ${el.store?.close}`}</span>

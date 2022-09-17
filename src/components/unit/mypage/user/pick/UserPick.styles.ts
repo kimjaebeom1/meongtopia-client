@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillStar } from "react-icons/ai";
 import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   width: 100%;
   margin: 5rem 0;
+
+  @media ${breakPoints.mobile} {
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
 `;
 
 export const PageTitle = styled.h1`
@@ -28,6 +33,10 @@ export const Img = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 10px 0 0 10px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const UserList = styled.ul`
@@ -37,6 +46,10 @@ export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -52,7 +65,7 @@ export const ContentsText = styled.li`
   font-weight: 700;
   margin: 0.5rem 0;
   & span {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: normal;
 
     & p {
@@ -66,12 +79,34 @@ export const RatingWrapper = styled.span`
   font-size: 1rem;
   display: flex;
   align-items: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const RatingWrapperMobile = styled.span`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-end;
+  }
 `;
 
 export const SelectTag = styled.div`
   font-size: 1rem;
   font-weight: 600;
   color: orange;
+
+  & span {
+    font-size: 0.9rem;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 export const Horizon = styled.div`
@@ -105,6 +140,12 @@ export const Reserve = styled.div`
   :hover {
     background-color: #f4840b;
   }
+
+  @media ${breakPoints.mobile} {
+    width: 12%;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
 `;
 
 export const AddBtn = styled.button`
@@ -120,4 +161,27 @@ export const AddBtn = styled.button`
   :hover {
     background-color: #f4840b;
   }
+`;
+
+export const PickWrapper = styled.span`
+  display: flex;
+  align-items: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const PickWrapperMobile = styled.span`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    align-items: flex-start;
+  }
+`;
+
+export const Star = styled(AiFillStar)`
+  font-size: 1.4rem;
+  color: #f5cf1f;
 `;

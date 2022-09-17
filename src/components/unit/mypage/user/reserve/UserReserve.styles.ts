@@ -5,6 +5,11 @@ import { breakPoints } from "../../../../../commons/styles/media";
 export const Wrapper = styled.div`
   width: 100%;
   margin: 5rem 0;
+
+  @media ${breakPoints.mobile} {
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
 `;
 
 export const PageTitle = styled.h1`
@@ -34,12 +39,21 @@ export const State = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${breakPoints.mobile} {
+    width: 12%;
+    padding-left: 1rem;
+  }
 `;
 
 export const Img = styled.img`
   width: 200px;
   height: 100%;
   object-fit: cover;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const UserList = styled.ul`
@@ -49,6 +63,10 @@ export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`
@@ -122,6 +140,12 @@ export const Cancel = styled.div`
 
   :hover {
     background-color: #f4840b;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 12%;
+    font-size: 1.4rem;
+    padding-left: 1rem;
   }
 `;
 

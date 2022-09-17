@@ -13,8 +13,8 @@ export interface ICafeListUIProps {
   onFetchMore: () => void;
   onChangeSearch: (e: ChangeEvent<HTMLInputElement>) => void;
   onClickMoveToDetail: (e: MouseEvent<HTMLUListElement>) => void;
-  onChangeOrder: (e: ChangeEvent<HTMLSelectElement>) => void;
-  onChangePrice: (e: ChangeEvent<HTMLSelectElement>) => void;
+  onChangeOrder: (e: any) => void;
+  onChangePrice: (e: any) => void;
 }
 
 export interface IIsActiveProps {

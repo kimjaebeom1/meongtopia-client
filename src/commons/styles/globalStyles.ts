@@ -22,7 +22,7 @@ export const globalStyles = css`
       min-width: 768px;
     }
     @media ${breakPoints.mobile} {
-      font-size: 10px;
+      font-size: 12px;
       max-width: 767px;
       min-width: 370px;
     }

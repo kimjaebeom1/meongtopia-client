@@ -70,12 +70,12 @@ export default function CafeList() {
   //
   // 정렬 함수
   //
-  const onChangeOrder = (e: ChangeEvent<HTMLSelectElement>) => {
-    setOrder(e.target.value);
+  const onChangeOrder = (e: any) => {
+    setOrder(e.value);
   };
 
-  const onChangePrice = (e: ChangeEvent<HTMLSelectElement>) => {
-    setPrice(e.target.value);
+  const onChangePrice = (e: any) => {
+    setPrice(e.value);
   };
 
   return (
