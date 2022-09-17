@@ -13,9 +13,9 @@ export const FETCH_RESERVATION = gql`
         avgRating
         name
         entranceFee
-        # storeImg {
-        #   url
-        # }
+        storeImg {
+          url
+        }
       }
     }
   }

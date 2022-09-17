@@ -5,7 +5,13 @@ import { IMyPageSidebarUIProps } from "./Sidebar.types";
 const USER_MENUS = [
   { page: "/mypage/user/reserve", title: "예약 내역" },
   { page: "/mypage/user/pick", title: "내가 찜한 목록" },
-  { page: "/mypage/user/review", title: "내가 쓴 리뷰" },
+  { page: "/mypage/user/review", title: "내가 쓴 댓글" },
+];
+
+const STORE_MENUS = [
+  { page: "/mypage/store/mycafe", title: "내 카페" },
+  { page: "/mypage/store/income", title: "수익 내역" },
+  { page: "/mypage/store/response", title: "내가 쓴 답글" },
 ];
 
 export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
@@ -55,14 +61,24 @@ export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
           </Sidebar.InfoText>
           &nbsp;<span>원</span>
         </Sidebar.List>
-        <Sidebar.Charge onClick={props.onClickToPayment}>
-          충전하기
-        </Sidebar.Charge>
+        {props.data?.fetchUser.role === "CLIENT" ? (
+          <Sidebar.Charge onClick={props.onClickToPayment}>
+            충전하기
+          </Sidebar.Charge>
+        ) : (
+          <Sidebar.Charge onClick={() => alert("준비중입니다.")}>
+            정산하기
+          </Sidebar.Charge>
+        )}
       </Sidebar.InfoContainer>
       <Sidebar.MenuContainer>
-        {USER_MENUS.map((el) => (
-          <MenuButton key={el.page} page={el.page} title={el.title} />
-        ))}
+        {props.data?.fetchUser.role === "CLIENT"
+          ? USER_MENUS.map((el) => (
+              <MenuButton key={el.page} page={el.page} title={el.title} />
+            ))
+          : STORE_MENUS.map((el) => (
+              <MenuButton key={el.page} page={el.page} title={el.title} />
+            ))}
       </Sidebar.MenuContainer>
     </Sidebar.Wrapper>
   );

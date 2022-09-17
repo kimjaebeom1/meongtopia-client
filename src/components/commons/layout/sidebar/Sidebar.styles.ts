@@ -51,14 +51,18 @@ export const MenuContainer = styled.ul`
 `;
 
 export const Charge = styled.button`
-  padding: 0.2rem;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #fff;
   background-color: orange;
+  color: #fff;
+  font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+
   cursor: pointer;
+
+  :hover {
+    background-color: #f4840b;
+  }
 `;
 
 export const PointIcon = styled(BiWon)`
