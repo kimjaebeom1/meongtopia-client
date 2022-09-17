@@ -6,8 +6,13 @@ import LoginButton from "../../buttons/login";
 import MenuButton from "../../buttons/menu";
 import { FETCH_USER, LOGOUT } from "./Header.queries";
 import * as Header from "./Header.styles";
+import { v4 as uuidv4 } from "uuid";
 
-const MENUS = [{ page: "/cafe", title: "애견카페 찾기" }];
+const MENUS = [
+  { page: "/home", title: "홈으로" },
+  { page: "/cafe", title: "카페 검색" },
+  { page: "/review", title: "이용 후기" },
+];
 
 export default function LayoutHeader() {
   const router = useRouter();
@@ -19,25 +24,25 @@ export default function LayoutHeader() {
 
   const onCLickLogout = async () => {
     logout();
-    await router.push("/");
+    await router.push("/home/");
     location.reload();
   };
   return (
     <Header.Container>
       <Header.Wrapper>
-        <Link href="/home">
+        <Link href="/">
           <Header.Logo src="/images/logo01.svg" />
         </Link>
         <Header.MenuContainer>
           <Header.DogIcon src="/images/dog.gif" />
           {MENUS.map((el) => (
-            <MenuButton key={el.page} page={el.page} title={el.title} />
+            <MenuButton key={uuidv4()} page={el.page} title={el.title} />
           ))}
-          {userInfo?.role === "OWNER" ? (
+          {/* {userInfo?.role === "OWNER" ? (
             <MenuButton page="/cafe/new" title="카페 등록" />
           ) : (
             <div></div>
-          )}
+          )} */}
           <Header.LoginContainer>
             {data ? (
               userInfo?.role === "CLIENT" ? (
@@ -56,13 +61,17 @@ export default function LayoutHeader() {
                       display: "flex",
                       justifyContent: "flex-end",
                       lineHeight: "normal",
+                      fontSize: "0.9rem",
                     }}
                   >{`${userInfo.nickname}님 안녕하세요!`}</span>
                 </div>
               ) : (
                 <div>
                   <Header.MypageContainer>
-                    <LoginButton href="/mypage/store/" title="마이페이지" />
+                    <LoginButton
+                      href="/mypage/store/mycafe"
+                      title="마이페이지"
+                    />
                     <Header.Logout onClick={onCLickLogout}>
                       로그아웃
                     </Header.Logout>
@@ -72,6 +81,7 @@ export default function LayoutHeader() {
                       display: "flex",
                       justifyContent: "flex-end",
                       lineHeight: "normal",
+                      fontSize: "0.9rem",
                     }}
                   >{`${userInfo?.nickname}사장님 안녕하세요!`}</span>
                 </div>

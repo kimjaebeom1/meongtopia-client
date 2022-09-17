@@ -1,5 +1,4 @@
 import * as UserReserve from "./UserReserve.styles";
-import { Rate } from "antd";
 import "antd/dist/antd.css";
 import { IMyPageUserReserveUIProps } from "./UserReserve.types";
 

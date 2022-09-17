@@ -37,7 +37,7 @@ export const State = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 180px;
+  width: 200px;
   height: 100%;
   object-fit: cover;
 `;
