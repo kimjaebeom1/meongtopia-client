@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../src/commons/styles/media";
 import MyPageSidebar from "../../../../src/components/commons/layout/sidebar/Sidebar.container";
 import PaymentComponent from "../../../../src/components/unit/mypage/user/payment/Payment.component";
 
@@ -11,6 +12,11 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 1200px;
   display: flex;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default function PaymentPage() {

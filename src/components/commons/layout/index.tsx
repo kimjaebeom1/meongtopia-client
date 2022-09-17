@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import LayoutFooter from "./footer";
 import LayoutHeader from "./header";
+import LayoutNavigator from "./navigator";
 
 interface ILayoutProps {
   children: ReactNode;
@@ -28,6 +29,7 @@ export default function Layout(props: ILayoutProps) {
       {!isHiddenHeader && <LayoutHeader />}
       <LayoutBody>{props.children}</LayoutBody>
       {!isHiddenFooter && <LayoutFooter />}
+      <LayoutNavigator />
     </LayoutWrapper>
   );
 }

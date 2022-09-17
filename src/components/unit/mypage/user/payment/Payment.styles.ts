@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.section`
   width: 100%;
+
+  @media ${breakPoints.mobile} {
+    padding: 0 1rem;
+  }
 `;
 
 export const Container = styled.div`

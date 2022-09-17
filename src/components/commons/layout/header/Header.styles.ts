@@ -7,10 +7,6 @@ export const Container = styled.header`
   box-shadow: 0px 10px 10px -15px black;
   display: flex;
   justify-content: center;
-  /* @media ${breakPoints.mobile} {
-    padding: 1rem;
-    font-size: 1rem;
-  } */
 `;
 
 export const Wrapper = styled.div`
@@ -19,10 +15,10 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* @media ${breakPoints.mobile} {
-    width: 100%;
-    padding: 0 1rem;
-  } */
+  @media ${breakPoints.mobile} {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Logo = styled.img`
@@ -52,6 +48,9 @@ export const MenuContainer = styled.ul`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const DogIcon = styled.img`

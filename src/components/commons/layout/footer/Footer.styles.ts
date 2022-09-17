@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   @media ${breakPoints.mobile} {
-    display: flex;
+    width: 100%;
   }
 `;
 
@@ -27,11 +27,13 @@ export const InfoWrapper = styled.div`
   margin-right: 8rem;
 
   @media ${breakPoints.mobile} {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
-    padding: 0;
+    margin: 0;
+    margin-bottom: 60px;
+    padding: 1rem 0;
   }
 `;
 
@@ -42,7 +44,7 @@ export const Title = styled.div`
 
   @media ${breakPoints.mobile} {
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -52,7 +54,7 @@ export const Contents = styled.div`
   margin-bottom: 0.5rem;
 
   @media ${breakPoints.mobile} {
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
 `;
 

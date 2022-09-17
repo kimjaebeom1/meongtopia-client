@@ -19,6 +19,28 @@ export enum IAccess_Enum {
   Pendding = 'PENDDING'
 }
 
+export type IBoard = {
+  __typename?: 'Board';
+  boardID: Scalars['String'];
+  boardImg: Array<IBoardImg>;
+  contents?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  user: IUser;
+};
+
+export type IBoardImg = {
+  __typename?: 'BoardImg';
+  board: IBoard;
+  boardImgID: Scalars['String'];
+  url?: Maybe<Scalars['String']>;
+};
+
+export type ICreateBoardInput = {
+  boardImg?: InputMaybe<Array<Scalars['String']>>;
+  contents?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
 export type ICreatePetInput = {
   age?: InputMaybe<Scalars['Int']>;
   breed?: InputMaybe<Scalars['String']>;
@@ -68,7 +90,7 @@ export type ICreateUserInput = {
 export type IIncome = {
   __typename?: 'Income';
   cancelNum: Scalars['Int'];
-  date: Scalars['Int'];
+  date: Scalars['String'];
   incomeID: Scalars['String'];
   paymentNum: Scalars['Int'];
   store: IStore;
@@ -82,6 +104,7 @@ export type IMutation = {
   checkNickname: Scalars['Boolean'];
   checkValidToken: Scalars['String'];
   createAdim: IUser;
+  createBoard: IBoard;
   createLocationTag: IStrLocationTag;
   createOwner: IUser;
   createPayment: IPayment;
@@ -91,6 +114,7 @@ export type IMutation = {
   createStore: IStore;
   createTag: IStoreTag;
   createUser: IUser;
+  deleteBoard: Scalars['Boolean'];
   deleteLocationTag: Scalars['Boolean'];
   deleteProfile: Scalars['String'];
   deleteResponse: Scalars['Boolean'];
@@ -104,6 +128,7 @@ export type IMutation = {
   logout: Scalars['String'];
   restoreAccessToken: Scalars['String'];
   togglePick: Scalars['Boolean'];
+  updateBoard: IBoard;
   updateLocationTag: IStrLocationTag;
   updateResponse: IReviewResponse;
   updateReview: IReview;
@@ -142,6 +167,11 @@ export type IMutationCheckValidTokenArgs = {
 
 export type IMutationCreateAdimArgs = {
   createUserInput: ICreateUserInput;
+};
+
+
+export type IMutationCreateBoardArgs = {
+  createBoardInput: ICreateBoardInput;
 };
 
 
@@ -194,6 +224,11 @@ export type IMutationCreateUserArgs = {
 };
 
 
+export type IMutationDeleteBoardArgs = {
+  boardID: Scalars['String'];
+};
+
+
 export type IMutationDeleteLocationTagArgs = {
   name: Scalars['String'];
 };
@@ -227,6 +262,11 @@ export type IMutationLoginArgs = {
 
 export type IMutationTogglePickArgs = {
   storeID: Scalars['String'];
+};
+
+
+export type IMutationUpdateBoardArgs = {
+  updateBoardInput: IUpdateBoardInput;
 };
 
 
@@ -316,19 +356,25 @@ export type IPick = {
 export type IQuery = {
   __typename?: 'Query';
   ReviewCount: Scalars['Int'];
+  fetchBoard: IBoard;
+  fetchBoards: Array<IBoard>;
+  fetchIncomes: Array<Array<IIncome>>;
   fetchLocationTags: Array<IStrLocationTag>;
   fetchPickRank: Array<IStore>;
   fetchPicks: Array<IStore>;
   fetchReservation: Array<IReservation>;
   fetchReview: Array<IReviewResponse>;
   fetchStore: IStore;
+  fetchStoreIncome: Array<IIncome>;
   fetchStoreReviewes: Array<IReview>;
   fetchStores: Array<IStore>;
   fetchStoresLocation: Array<IStore>;
   fetchStoresTag: Array<IStore>;
   fetchTags: Array<IStoreTag>;
   fetchUser: IUser;
+  fetchUserBoards: Array<IBoard>;
   fetchUsers: Array<IUser>;
+  /** Return : 검색한 가게들의 정보 */
   searchStores: Array<IStore>;
 };
 
@@ -338,12 +384,28 @@ export type IQueryReviewCountArgs = {
 };
 
 
+export type IQueryFetchBoardArgs = {
+  boardID: Scalars['String'];
+};
+
+
+export type IQueryFetchIncomesArgs = {
+  order?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchPickRankArgs = {
   order?: InputMaybe<Scalars['String']>;
 };
 
 
 export type IQueryFetchStoreArgs = {
+  storeID: Scalars['String'];
+};
+
+
+export type IQueryFetchStoreIncomeArgs = {
+  order?: InputMaybe<Scalars['String']>;
   storeID: Scalars['String'];
 };
 
@@ -456,6 +518,13 @@ export enum IUser_Role_Enum {
   Client = 'CLIENT',
   Owner = 'OWNER'
 }
+
+export type IUpdateBoardInput = {
+  boardID: Scalars['String'];
+  boardImg?: InputMaybe<Array<Scalars['String']>>;
+  contents?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+};
 
 export type IUpdateReviewInput = {
   contents?: InputMaybe<Scalars['String']>;

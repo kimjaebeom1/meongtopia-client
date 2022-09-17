@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 const MENUS = [
   { page: "/home", title: "홈으로" },
   { page: "/cafe", title: "카페 검색" },
-  { page: "/review", title: "이용 후기" },
+  { page: "/community", title: "커뮤니티" },
 ];
 
 export default function LayoutHeader() {
@@ -23,7 +23,7 @@ export default function LayoutHeader() {
   const [logout] = useMutation(LOGOUT);
 
   const onCLickLogout = async () => {
-    logout();
+    await logout();
     await router.push("/home/");
     location.reload();
   };

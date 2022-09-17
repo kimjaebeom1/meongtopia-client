@@ -13,17 +13,29 @@ export const SearchContainer = styled.nav`
   box-shadow: 0px 10px 10px -15px black;
   padding: 3rem 0 2rem 0;
   font-size: 1rem;
+
+  @media ${breakPoints.mobile} {
+    padding: 1rem 0 0 0;
+  }
 `;
 
 export const SearchWrapper = styled.div`
   width: 1200px;
-  /* @media ${breakPoints.mobile} {
-  } */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
 `;
 
 export const Title = styled.h2`
   font-size: 1.6rem;
   margin: 0;
+  @media ${breakPoints.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 export const SearchList = styled.div`
@@ -31,10 +43,13 @@ export const SearchList = styled.div`
   margin: 2rem 0;
   display: flex;
   align-items: center;
-  /* @media ${breakPoints.mobile} {
+  @media ${breakPoints.mobile} {
     display: flex;
     flex-direction: column;
-  } */
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
 `;
 
 export const TagLabel = styled.h3`
@@ -44,6 +59,14 @@ export const TagLabel = styled.h3`
 export const TagsWrapper = styled.div`
   display: flex;
   margin-left: 3.5rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 0;
+    margin-top: 1rem;
+  }
 `;
 
 export const Tag = styled.div`
@@ -51,6 +74,7 @@ export const Tag = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
+  padding-top: 0.3rem;
   width: 8em;
   height: 2em;
   background-color: ${(props: IIsActiveProps) =>
@@ -59,14 +83,13 @@ export const Tag = styled.div`
   border: 1px solid
     ${(props: IIsActiveProps) =>
       props.isActive ? "orange" : "rgb(223, 227, 234)"};
-  /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
   color: ${(props: IIsActiveProps) => (props.isActive ? "#fff" : "#999")};
   cursor: pointer;
 
-  /* @media ${breakPoints.mobile} {
-    width: 5.2em;
-    margin-left: 1em;
-  } */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 export const SearchBar = styled.input`
@@ -76,8 +99,12 @@ export const SearchBar = styled.input`
   padding-left: 1.5rem;
   margin-left: 2rem;
   border: 1px solid rgb(235, 235, 235);
-  /* box-shadow: rgb(0 0 0 / 5%) 0px 0px 5px 0px; */
   border-radius: 30px;
+
+  @media ${breakPoints.mobile} {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
 `;
 
 //
@@ -88,12 +115,21 @@ export const SortContainer = styled.div`
   padding: 5rem 0 1rem 0;
   display: flex;
   justify-content: center;
+  @media ${breakPoints.mobile} {
+    padding: 4rem 1rem 1rem 1rem;
+    font-size: 1.2rem;
+  }
 `;
+
 export const SortWrapper = styled.div`
   width: 1200px;
   display: flex;
   justify-content: flex-end;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
+
 export const Sort = styled.select`
   font-size: 1.1rem;
   color: #555;
@@ -103,6 +139,7 @@ export const Sort = styled.select`
   border-radius: 5px;
   cursor: pointer;
 `;
+
 //
 // 리스트 컴포넌트
 //
@@ -116,6 +153,11 @@ export const ListWrapper = styled.section`
   width: 1200px;
   display: flex;
   flex-direction: column;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;
 
 export const CafeListWrapper = styled.div`
@@ -127,22 +169,22 @@ export const CafeListWrapper = styled.div`
   border-radius: 8px;
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
 
-  /* @media ${breakPoints.mobile} {
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 0;
-    width: 100%;
-  } */
+  }
 `;
 
 export const SliderWrapper = styled.div`
   width: 26rem;
   height: 100%;
   padding: 0.2rem;
-  /* @media ${breakPoints.mobile} {
-    width: 100%;
-  } */
+  @media ${breakPoints.mobile} {
+    width: 90vw;
+    padding: 1rem 0rem 0 1rem;
+  }
 `;
 
 export const CafeList = styled.ul`
@@ -154,13 +196,10 @@ export const CafeList = styled.ul`
   justify-content: center;
   cursor: pointer;
 
-  /* @media ${breakPoints.mobile} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding-top: 0em;
-  } */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 1rem;
+  }
 `;
 
 export const ContentsText = styled.li`
@@ -168,16 +207,26 @@ export const ContentsText = styled.li`
   align-items: flex-end;
   justify-content: space-between;
   line-height: normal;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0.5rem 0;
   & span {
     font-size: 1rem;
     line-height: normal;
 
+    @media ${breakPoints.mobile} {
+      font-size: 1.2rem;
+      margin: 0.2rem 0;
+    }
+
     & p {
       margin: 0;
       margin-top: 0.5rem;
     }
+  }
+
+  @media ${breakPoints.mobile} {
+    margin: 0.2rem 0;
+    padding: 0rem;
   }
 `;
 
@@ -185,6 +234,19 @@ export const RatingWrapper = styled.span`
   font-size: 1rem;
   display: flex;
   align-items: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const RatingWrapperMobile = styled.span`
+  display: none;
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const SelectTag = styled.div`
@@ -196,11 +258,19 @@ export const SelectTag = styled.div`
 export const Horizon = styled.div`
   border-bottom: 1px solid #cacaca;
   margin: 0 0 1rem 0;
+
+  @media ${breakPoints.mobile} {
+    margin: 0.5rem 0;
+  }
 `;
 
 export const DogWrapper = styled.span`
   display: flex;
   align-items: flex-end;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const Heart = styled(AiFillHeart)`
@@ -211,6 +281,10 @@ export const Heart = styled(AiFillHeart)`
 
 export const DogImgContainer = styled.div`
   display: flex;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const DogImg = styled.img`
@@ -228,4 +302,22 @@ export const Add = styled.div`
   align-items: flex-end;
   padding: 0.5rem 0;
   color: #666;
+`;
+
+export const PickWrapper = styled.span`
+  display: flex;
+  align-items: center;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const PickWrapperMobile = styled.span`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    align-items: center;
+  }
 `;
