@@ -40,6 +40,8 @@ export const FETCH_PICK_RANK = gql`
       bigDog
       smallDog
       storeID
+      avgRating
+      description
       storeImg {
         url
       }
