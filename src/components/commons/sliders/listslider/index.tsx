@@ -7,19 +7,17 @@ import { IStore } from "../../../../commons/types/generated/types";
 import { breakPoints } from "../../../../commons/styles/media";
 
 interface IListSliderProps {
-  url: any;
+  url: IStore;
 }
 
 const Wrapper = styled.div`
-  .slick-slide {
-    width: 100%;
-    /* margin-right: 1rem; */
+  .slick-slider {
+    width: 86vw;
+    margin: 0;
   }
   .slick-list {
     width: 100%;
     height: 100%;
-    padding: 0;
-    margin: 0;
   }
   .slick-dots {
     margin-bottom: 35px;
@@ -27,12 +25,17 @@ const Wrapper = styled.div`
     & > li {
       color: white;
     }
+  }
 
-    /* & li > div > img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-    } */
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+
+  .slick-next,
+  .slick-prev {
+    left: 0;
+    right: 0;
   }
 `;
 
@@ -50,17 +53,6 @@ const SliderItem = styled.div`
   }
 `;
 
-// const NextArrow = styled.div`
-//   display: block;
-//   margin-right: 40px;
-// `;
-
-// const PrevArrow = styled.div`
-//   display: block;
-//   z-index: 2;
-//   margin-left: 30px;
-// `;
-
 export default function ListSlider(props: IListSliderProps) {
   const settings = {
     dots: true,
@@ -68,8 +60,6 @@ export default function ListSlider(props: IListSliderProps) {
     speed: 200,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // prevArrow: <PrevArrow />,
-    // nextArrow: <NextArrow />,
   };
   return (
     <Wrapper>

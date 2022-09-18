@@ -8,13 +8,19 @@ import {
 } from "../../../../../commons/types/generated/types";
 import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
 import MyPageUserReserveUI from "./UserReserve.presenter";
-import { CANCEL_RESERVATION, FETCH_RESERVATION } from "./UserReserve.queries";
+import {
+  CANCEL_RESERVATION,
+  FETCH_CANCEL_RESERVATION,
+  FETCH_RESERVATION,
+} from "./UserReserve.queries";
 
 export default function MyPageUserReserve() {
   const [add, setAdd] = useState(1);
 
-  const { data } =
+  const { data: reserveData } =
     useQuery<Pick<IQuery, "fetchReservation">>(FETCH_RESERVATION);
+
+  const { data: cancelData } = useQuery(FETCH_CANCEL_RESERVATION);
 
   const [cancelReservation] = useMutation<
     Pick<IMutation, "cancelReservation">,
@@ -51,7 +57,8 @@ export default function MyPageUserReserve() {
 
   return (
     <MyPageUserReserveUI
-      data={data}
+      reserveData={reserveData}
+      cancelData={cancelData}
       add={add}
       onClickCancel={onClickCancel}
       onClickAdd={onClickAdd}

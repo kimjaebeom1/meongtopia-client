@@ -21,6 +21,14 @@ export const FETCH_RESERVATION = gql`
   }
 `;
 
+export const FETCH_CANCEL_RESERVATION = gql`
+  query fetchCancelReservation {
+    fetchCancelReservation {
+      resID
+    }
+  }
+`;
+
 export const CANCEL_RESERVATION = gql`
   mutation cancelReservation($storeID: String!, $date: String!) {
     cancelReservation(storeID: $storeID, date: $date)

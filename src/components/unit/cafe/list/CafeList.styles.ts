@@ -77,6 +77,8 @@ export const Tag = styled.div`
   padding-top: 0.3rem;
   width: 8em;
   height: 2em;
+  font-size: 1.1rem;
+  font-weight: 600;
   background-color: ${(props: IIsActiveProps) =>
     props.isActive ? "orange" : "#fff"};
   border-radius: 30px;
@@ -89,6 +91,7 @@ export const Tag = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     margin: 0;
+    font-weight: 500;
   }
 `;
 
@@ -182,8 +185,8 @@ export const SliderWrapper = styled.div`
   height: 100%;
   padding: 0.2rem;
   @media ${breakPoints.mobile} {
-    width: 90vw;
-    padding: 1rem 0rem 0 1rem;
+    width: 100%;
+    padding: 1rem;
   }
 `;
 
@@ -198,7 +201,6 @@ export const CafeList = styled.ul`
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    padding: 1rem;
   }
 `;
 

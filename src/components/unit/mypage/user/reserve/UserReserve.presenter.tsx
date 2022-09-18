@@ -3,14 +3,22 @@ import "antd/dist/antd.css";
 import { IMyPageUserReserveUIProps } from "./UserReserve.types";
 
 export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
+  const data = props.cancelData?.fetchCancelReservation;
+  const temp: string[] = [];
+  for (let i = 0; i < data?.length; i++) {
+    temp.push(data[i].resID);
+  }
+
   return (
     <UserReserve.Wrapper>
       <UserReserve.PageTitle>예약 내역</UserReserve.PageTitle>
-      {props.data?.fetchReservation
+      {props.reserveData?.fetchReservation
         .filter((_, i) => i < Number(props.add) * 2)
         .map((el) => (
           <UserReserve.ListWrapper key={el.resID}>
-            <UserReserve.State>예약중</UserReserve.State>
+            <UserReserve.State>
+              {temp.includes(el.resID) ? "예약취소" : "예약중"}
+            </UserReserve.State>
             {el.store?.storeImg?.[0].url ? (
               <UserReserve.Img
                 src={`https://storage.googleapis.com/${el.store?.storeImg?.[0].url}`}
@@ -37,16 +45,21 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
                 <span>{`${el.amount}원`}</span>
               </UserReserve.ContentsText>
             </UserReserve.UserList>
-            <UserReserve.Cancel
-              onClick={() => props.onClickCancel(el.store.storeID, el.date)}
-            >
-              취소하기
-            </UserReserve.Cancel>
+            {temp.includes(el.resID) ? (
+              <div></div>
+            ) : (
+              <UserReserve.Cancel
+                onClick={() => props.onClickCancel(el.store.storeID, el.date)}
+              >
+                취소하기
+              </UserReserve.Cancel>
+            )}
           </UserReserve.ListWrapper>
         ))}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {props.data?.fetchReservation[0] ? (
-          Number(props.add) * 2 < props.data?.fetchReservation.length && (
+        {props.reserveData?.fetchReservation[0] ? (
+          Number(props.add) * 2 <
+            props.reserveData?.fetchReservation.length && (
             <UserReserve.AddBtn onClick={props.onClickAdd}>
               더보기
             </UserReserve.AddBtn>
