@@ -13,7 +13,7 @@ export default function HomeContainer() {
     },
   });
   const router = useRouter();
-
+  console.log(data);
   console.log(recentData);
 
   const onClickMoveToPick = (el) => () => {

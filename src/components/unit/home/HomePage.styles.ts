@@ -1,6 +1,8 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
+  /* padding-top: 2rem; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,18 +14,21 @@ export const Banner = styled.div`
   height: 600px;
   font-family: "myfont";
   background-image: url("/images/Rectangle123.png");
-  opacity: "0.7";
   background-size: cover;
   color: white;
   font-size: 2.5rem;
   content: "";
   padding-top: 8rem;
-  opacity: 0.9;
-  padding-left: 20.5rem;
+  opacity: 1;
   background-position-y: center;
+  opacity: 1;
+  justify-content: center;
+  display: flex;
 `;
 
-export const BannerText = styled.div``;
+export const BannerText = styled.div`
+  width: 1200px;
+`;
 
 export const BannerInfoText = styled.div`
   padding-top: 1.5rem;
@@ -33,9 +38,18 @@ export const BannerInfoText = styled.div`
 
 export const BannerTextRow = styled.div`
   display: flex;
+  flex-direction: column;
 
   & > div {
-    padding-left: 1rem;
+    color: orange;
+  }
+
+  & > span {
+    display: flex;
+    flex-direction: row;
+  }
+
+  & > span > div {
     color: orange;
   }
 `;
@@ -51,21 +65,26 @@ export const BannerBtn = styled.button`
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 1rem;
+  padding-top: 2rem;
   width: 75rem;
   display: flex;
   flex-direction: column;
   font-size: 1.7rem;
 `;
 
+export const RecommendWrapper = styled.div``;
+
 export const PickTag = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   font-weight: 500;
+  font-size: 30px;
 
   & > div {
     color: orange;
+    font-weight: 600;
+    font-size: 32px;
   }
 `;
 
@@ -73,7 +92,7 @@ export const PickListWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   height: 400px;
 `;
 
@@ -83,6 +102,19 @@ export const PickList = styled.div`
   align-items: center;
   width: 23.125rem;
   cursor: pointer;
+
+  display: inline-block;
+  transition-duration: $defaultDuration;
+  transition-property: transform;
+
+  @include hideTapHighlightColor();
+  @include hardwareAccel();
+  @include improveAntiAlias();
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+  }
 `;
 
 export const PickImage = styled.img`
@@ -101,13 +133,35 @@ export const PickName = styled.li`
 `;
 
 export const PickDescription = styled.li`
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
   text-align: left;
   width: 100%;
   font-size: 16px;
+  height: 50px;
   font-weight: 300;
   color: #949494;
-  height: 60px;
-  padding-top: 1rem;
+  text-overflow: ellipsis;
+  padding-top: 0.3rem;
+`;
 
-  /* overflow: hidden; */
+export const Bottom = styled.div`
+  margin-top: 2rem;
+  width: 100%;
+  height: 300px;
+  font-family: "myfont";
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/images/homebottom1.jpg");
+  background-size: cover;
+  color: white;
+  font-size: 3.5rem;
+  content: "";
+  padding-top: 2em;
+  opacity: 1;
+  background-position-y: center;
+  opacity: 1;
+  justify-content: center;
+  display: flex;
+  /* filter: brightness(35%); */
 `;
