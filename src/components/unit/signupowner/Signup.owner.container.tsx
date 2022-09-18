@@ -125,7 +125,7 @@ export default function SignUpOwnerContainerPage() {
 
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
-      setFile(result.data?.uploadFile);
+      setFile(result.data?.uploadFile); // aks
       console.log(result.data?.uploadFile);
     } catch (error) {
       if (error instanceof Error) {
