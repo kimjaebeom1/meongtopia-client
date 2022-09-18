@@ -9,9 +9,16 @@ export const CREATE_BOARD = gql`
       # boardImg {
       #   url
       # }
-      user {
-        nickname
-      }
+    }
+  }
+`;
+
+export const UPDATE_BOARD = gql`
+  mutation updateBoard($updateBoardInput: UpdateBoardInput!) {
+    updateBoard(updateBoardInput: $updateBoardInput) {
+      boardID
+      title
+      contents
     }
   }
 `;

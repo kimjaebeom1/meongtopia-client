@@ -6,7 +6,11 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function CommunityPresenterPage(props: any) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(
+        props.isEdit ? props.onClickUpdate : props.onClickSubmit
+      )}
+    >
       <Write.Wrapper>
         <Write.ColumnWrap>
           <Write.Title>제목</Write.Title>
@@ -14,6 +18,7 @@ export default function CommunityPresenterPage(props: any) {
             placeholder="게시물 제목을 입력해주세요"
             type="text"
             {...props.register("title")}
+            defaultValue={props.data?.fetchBoard.title}
           />
         </Write.ColumnWrap>
 
@@ -31,7 +36,7 @@ export default function CommunityPresenterPage(props: any) {
           <Write.Title>내용</Write.Title>
           <ReactQuill onChange={props.handleChange} />
         </Write.ColumnWrap>
-        <Write.Button>등록하기</Write.Button>
+        <Write.Button>{props.isEdit ? "수정하기" : "등록하기"}</Write.Button>
       </Write.Wrapper>
     </form>
   );
