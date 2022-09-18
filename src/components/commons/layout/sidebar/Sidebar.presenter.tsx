@@ -10,7 +10,7 @@ const USER_MENUS = [
 
 const STORE_MENUS = [
   { page: "/mypage/store/mycafe", title: "내 카페" },
-  { page: "/mypage/store/income", title: "수익 내역" },
+  { page: "/mypage/store/income", title: "수입 내역" },
   { page: "/mypage/store/response", title: "내가 쓴 답글" },
 ];
 

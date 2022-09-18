@@ -74,9 +74,9 @@ export const Tag = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
-  padding-top: 0.3rem;
   width: 8em;
-  height: 2em;
+  height: 2.2em;
+  line-height: 2.2rem;
   font-size: 1.1rem;
   font-weight: 600;
   background-color: ${(props: IIsActiveProps) =>
@@ -92,6 +92,8 @@ export const Tag = styled.div`
     width: 100%;
     margin: 0;
     font-weight: 500;
+    height: 2.5rem;
+    line-height: 2.5rem;
   }
 `;
 

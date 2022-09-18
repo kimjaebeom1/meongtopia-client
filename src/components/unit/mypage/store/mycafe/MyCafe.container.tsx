@@ -14,8 +14,12 @@ export default function MyPageStoreMyCafe() {
   const [deleteStore] =
     useMutation<Pick<IMutation, "deleteStore">>(DELETE_STORE);
 
-  const onClickToDetail = (e: MouseEvent<HTMLDivElement>) => {
-    router.push(`/cafe/${(e.target as HTMLDivElement).id}`);
+  const onClickToDetail = (e: MouseEvent<HTMLUListElement>) => {
+    router.push(`/cafe/${(e.currentTarget as HTMLUListElement).id}`);
+  };
+
+  const onClickToEdit = (e: MouseEvent<HTMLDivElement>) => {
+    router.push(`/cafe/${(e.currentTarget as HTMLDivElement).id}/edit`);
   };
 
   const onClickDelete = async (e: MouseEvent<HTMLDivElement>) => {
@@ -38,6 +42,7 @@ export default function MyPageStoreMyCafe() {
       add={add}
       onClickAdd={onClickAdd}
       onClickToDetail={onClickToDetail}
+      onClickToEdit={onClickToEdit}
       onClickDelete={onClickDelete}
     />
   );

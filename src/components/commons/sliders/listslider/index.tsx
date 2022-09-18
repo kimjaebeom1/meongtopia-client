@@ -12,8 +12,12 @@ interface IListSliderProps {
 
 const Wrapper = styled.div`
   .slick-slider {
-    width: 86vw;
+    width: 100%;
     margin: 0;
+
+    @media ${breakPoints.mobile} {
+      width: 86vw;
+    }
   }
   .slick-list {
     width: 100%;

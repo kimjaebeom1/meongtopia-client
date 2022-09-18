@@ -92,7 +92,9 @@ export const Charge = styled.button`
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+  padding: 0 0.5rem;
+  height: 2rem;
+  line-height: 2rem;
 
   cursor: pointer;
 
