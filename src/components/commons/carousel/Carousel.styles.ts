@@ -5,7 +5,7 @@ import Slider from "react-slick";
 export const Wrapper = styled.div`
   scroll-snap-align: start;
   width: 100vw;
-  height: 100vh;
+  height: 400px;
 
   .slick-list {
     width: 100%;

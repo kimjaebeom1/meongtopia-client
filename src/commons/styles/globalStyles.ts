@@ -4,14 +4,14 @@ import { breakPoints } from "./media";
 export const globalStyles = css`
   * {
     box-sizing: border-box;
-    font-family: "myfont";
+    /* font-family: "myfont"; */
     margin: 0;
     padding: 0;
   }
 
   @font-face {
     font-family: "myfont";
-    /* src: url("/fonts/Maplestory Light.ttf"); */
+    src: url("/fonts/Maplestory Light.ttf");
   }
 
   html {
@@ -22,7 +22,7 @@ export const globalStyles = css`
       min-width: 768px;
     }
     @media ${breakPoints.mobile} {
-      font-size: 10px;
+      font-size: 12px;
       max-width: 767px;
       min-width: 370px;
     }
