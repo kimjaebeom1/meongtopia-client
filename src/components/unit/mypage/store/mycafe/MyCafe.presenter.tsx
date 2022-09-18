@@ -27,7 +27,10 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
             ) : (
               <MyCafe.Img src="/images/dogcharacter.jpg" />
             )}
-            <MyCafe.UserList>
+            <MyCafe.UserList
+              id={el.store?.storeID}
+              onClick={props.onClickToDetail}
+            >
               <MyCafe.ContentsText>
                 <MyCafe.Title>{el.store?.name}</MyCafe.Title>
                 <MyCafe.RatingWrapperMobile>
@@ -76,9 +79,9 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
             <MyCafe.BtnWrapper>
               <MyCafe.BtnDetail
                 id={el.store?.storeID}
-                onClick={props.onClickToDetail}
+                onClick={props.onClickToEdit}
               >
-                상세정보
+                수정하기
               </MyCafe.BtnDetail>
               <MyCafe.BtnDelete
                 id={el.store?.storeID}

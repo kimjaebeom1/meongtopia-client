@@ -53,6 +53,8 @@ export const ListWrapper = styled.div`
   border: 1px solid rgb(235, 235, 235);
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
+
+  cursor: pointer;
 `;
 
 export const Img = styled.img`

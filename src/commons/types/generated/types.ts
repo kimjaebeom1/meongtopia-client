@@ -358,6 +358,7 @@ export type IQuery = {
   ReviewCount: Scalars['Int'];
   fetchBoard: IBoard;
   fetchBoards: Array<IBoard>;
+  fetchCancelReservation: Array<IReservation>;
   fetchIncomes: Array<Array<IIncome>>;
   fetchLocationTags: Array<IStrLocationTag>;
   fetchPickRank: Array<IStore>;
@@ -544,6 +545,7 @@ export type IUpdateStoreInput = {
   pet?: InputMaybe<Array<IUpdatePetInput>>;
   phone?: InputMaybe<Scalars['String']>;
   smallDog?: InputMaybe<Scalars['Int']>;
+  storeID: Scalars['String'];
   storeImg?: InputMaybe<Array<Scalars['String']>>;
   storeTag?: InputMaybe<Array<Scalars['String']>>;
 };
@@ -572,6 +574,7 @@ export type IUser = {
   pick: Array<IPick>;
   point: Scalars['Int'];
   profileImgUrl: Scalars['String'];
+  review: Array<IReview>;
   role: IUser_Role_Enum;
   storeName: Scalars['String'];
   userID: Scalars['String'];
