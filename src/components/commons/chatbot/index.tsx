@@ -3,8 +3,9 @@ import { useEffect } from "react";
 export default function ChatBot() {
   useEffect(() => {
     const script = document.createElement("script");
-    document.head.appendChild(script);
+    script.async = true;
     script.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+    document.head.appendChild(script);
 
     script.onload = (): any => {
       const w = window;
