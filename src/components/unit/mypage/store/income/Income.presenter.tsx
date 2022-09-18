@@ -30,8 +30,13 @@ export default function MyPageStoreInComeUI(props: IMyPageStoreInComeUIProps) {
             .filter((el: []) => el.length)
             .map((el: any) => el[0])
             .map((el: any) => (
-              <Income.TableRow>
-                <Income.DateName>{el.store.name}</Income.DateName>
+              <Income.TableRow key={uuidv4()}>
+                <Income.DateName
+                  id={el.store.storeID}
+                  onClick={props.onClickToStore}
+                >
+                  {el.store.name}
+                </Income.DateName>
                 <Income.Date>{el.paymentNum}</Income.Date>
                 <Income.Date>{el.cancelNum}</Income.Date>
                 <Income.Date>{`${el.totalCash.toLocaleString()}원`}</Income.Date>

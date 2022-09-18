@@ -45,16 +45,16 @@ export const ListWrapper = styled.div`
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
 `;
 
-export const ListTable = styled.table`
+export const ListTable = styled.div`
   width: 100%;
 `;
 
-export const TableRow = styled.tr`
+export const TableRow = styled.div`
   display: flex;
   padding: 0.5rem 1rem;
 `;
 
-export const Head = styled.th`
+export const Head = styled.div`
   width: 25%;
   display: flex;
   justify-content: flex-end;
@@ -66,7 +66,7 @@ export const Head = styled.th`
   }
 `;
 
-export const HeadName = styled.th`
+export const HeadName = styled.div`
   width: 25%;
   display: flex;
   border-bottom: 1px solid #cacaca;
@@ -77,15 +77,19 @@ export const HeadName = styled.th`
   }
 `;
 
-export const Date = styled.td`
+export const Date = styled.div`
   width: 25%;
   display: flex;
   justify-content: flex-end;
 `;
 
-export const DateName = styled.td`
+export const DateName = styled.div`
   width: 25%;
   display: flex;
+  cursor: pointer;
+  :hover {
+    color: orange;
+  }
 
   @media ${breakPoints.mobile} {
     font-size: 1rem;

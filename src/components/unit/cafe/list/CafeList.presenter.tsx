@@ -6,7 +6,6 @@ import { ICafeListUIProps } from "./CafeList.types";
 import { v4 as uuidv4 } from "uuid";
 import InfiniteScroll from "react-infinite-scroller";
 import Select from "react-select";
-import { breakPoints } from "../../../../commons/styles/media";
 
 const LOCATION_TAGS = ["전체", "홍대", "강남", "대학로", "건대", "잠실"];
 const CONDITION_TAGS = [

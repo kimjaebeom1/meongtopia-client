@@ -32,7 +32,7 @@ export const State = styled.div`
   width: 5rem;
   height: 100%;
   background-color: #f1f1f1;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   border-radius: 10px 0 0 10px;
   padding: 0 0.5rem;
