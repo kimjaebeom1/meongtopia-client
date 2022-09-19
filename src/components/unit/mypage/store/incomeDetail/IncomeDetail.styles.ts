@@ -13,11 +13,21 @@ export const Wrapper = styled.div`
   align-items: center;
 
   @media ${breakPoints.mobile} {
-    padding: 0 1rem;
+    margin: 3rem 0rem;
+    border: none;
   }
 `;
 
 export const Title = styled.h2`
   font-size: 1.6rem;
   font-weight: 600;
+`;
+
+export const Chart = styled.div`
+  width: 770px;
+
+  @media ${breakPoints.mobile} {
+    margin-top: 1rem;
+    width: 94vw;
+  }
 `;

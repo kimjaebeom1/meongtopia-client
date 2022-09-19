@@ -20,7 +20,9 @@ export default function MyPageUserReserve() {
   const { data: reserveData } =
     useQuery<Pick<IQuery, "fetchReservation">>(FETCH_RESERVATION);
 
-  const { data: cancelData } = useQuery(FETCH_CANCEL_RESERVATION);
+  const { data: cancelData } = useQuery<Pick<IQuery, "fetchCancelReservation">>(
+    FETCH_CANCEL_RESERVATION
+  );
 
   const [cancelReservation] = useMutation<
     Pick<IMutation, "cancelReservation">,

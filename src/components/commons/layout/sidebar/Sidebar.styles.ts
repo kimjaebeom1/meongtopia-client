@@ -138,15 +138,15 @@ export const Delete = styled(TiDelete)`
   font-size: 2rem;
   color: #cacaca;
   position: absolute;
-  margin-top: -4.6rem;
-  margin-left: -1rem;
+  margin-top: -4.2rem;
+  margin-left: -0.6rem;
   cursor: pointer;
   :hover {
     color: orange;
   }
 
   @media ${breakPoints.mobile} {
-    margin-top: -1.5rem;
+    margin-top: -1.6rem;
     font-size: 1.5rem;
   }
 `;

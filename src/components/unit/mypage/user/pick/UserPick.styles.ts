@@ -154,7 +154,9 @@ export const AddBtn = styled.button`
   font-size: 1.2rem;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem 1rem 0.3rem 1rem;
+  padding: 0 1rem;
+  line-height: 3rem;
+  height: 3rem;
 
   cursor: pointer;
 

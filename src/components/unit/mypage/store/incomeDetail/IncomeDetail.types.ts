@@ -1,3 +1,5 @@
+import { IQuery } from "../../../../../commons/types/generated/types";
+
 export interface IMyPageStoreInComeDetailUIProps {
-  data?: any;
+  data?: Pick<IQuery, "fetchStoreIncome">;
 }

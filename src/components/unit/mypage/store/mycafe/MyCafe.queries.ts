@@ -34,7 +34,7 @@ export const FETCH_INCOMES = gql`
 `;
 
 export const DELETE_STORE = gql`
-  mutation deleteStore {
-    deleteStore
+  mutation deleteStore($storeID: String!) {
+    deleteStore(storeID: $storeID)
   }
 `;

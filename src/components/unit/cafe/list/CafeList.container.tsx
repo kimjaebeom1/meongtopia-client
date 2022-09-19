@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import {
   IQuery,
   IQueryFetchStoresArgs,
@@ -17,7 +17,7 @@ export default function CafeList() {
   const [order, setOrder] = useState("최신순");
   const [price, setPrice] = useState("가격기본순");
 
-  const { data, fetchMore } = useQuery<
+  const { data, fetchMore, refetch } = useQuery<
     Pick<IQuery, "fetchStores">,
     IQueryFetchStoresArgs
   >(FETCH_STORES, {
@@ -25,6 +25,10 @@ export default function CafeList() {
       order: `${order === "최신순" && "DESC"}`,
     },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [data]);
 
   const onClickLocationTag = (e: MouseEvent<HTMLDivElement>) => {
     setLocationActive((e.target as HTMLDivElement).id);

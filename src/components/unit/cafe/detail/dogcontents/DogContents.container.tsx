@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
+import { FETCH_STORES } from "../../list/CafeList.queries";
 import DetailDogContentsUI from "./DogContents.presenter";
 import {
   CREATE_RESERVATION,

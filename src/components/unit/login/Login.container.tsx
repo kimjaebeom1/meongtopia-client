@@ -81,7 +81,6 @@ export default function LoginContainerPage() {
         },
       });
       const accessToken = result.data?.login;
-      alert("로그인 되었습니다");
       setAccessToken(accessToken);
       setIsActive(true);
 
@@ -89,7 +88,7 @@ export default function LoginContainerPage() {
         alert("로그인 실패. 다시 시도해주세요!");
         return;
       }
-      router.push("/");
+      router.push("/home");
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({
