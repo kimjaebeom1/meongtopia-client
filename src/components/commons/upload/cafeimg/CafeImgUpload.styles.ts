@@ -7,10 +7,11 @@ export const UploadImg = styled.img`
   height: 120px;
   object-fit: cover;
   position: relative;
+  border-radius: 5px;
   z-index: 2;
 
   @media ${breakPoints.mobile} {
-    width: 100px;
+    width: 80px;
     height: 80px;
     text-align: center;
   }
@@ -27,7 +28,7 @@ export const UploadBtn = styled.button`
   color: #808080;
 
   @media ${breakPoints.mobile} {
-    width: 70px;
+    width: 80px;
     height: 80px;
 
     text-align: center;

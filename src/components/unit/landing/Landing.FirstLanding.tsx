@@ -45,7 +45,7 @@ export default function FirstLandingPage() {
                 어떤 멍멍이들이 있을까?
               </Landing.Span>
               <Landing.PhonePic1
-                src="images/landingPhoneintro.svg"
+                src="images/landingPhoneIntro.svg"
                 className={inView ? "isActive" : ""}
                 ref={ref}
               />

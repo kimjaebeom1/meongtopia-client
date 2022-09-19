@@ -34,15 +34,14 @@ export default function ReviewWrite() {
             rating,
             contents,
           },
-          refetchQueries: [
-            {
-              query: FETCH_STORE_REVIEWS,
-              variables: { storeID: router.query.cafeid },
-            },
-          ],
         },
+        refetchQueries: [
+          {
+            query: FETCH_STORE_REVIEWS,
+            variables: { storeID: router.query.cafeid },
+          },
+        ],
       });
-
       setContents("");
       setRating(0);
       alert("리뷰 작성이 완료되었습니다");

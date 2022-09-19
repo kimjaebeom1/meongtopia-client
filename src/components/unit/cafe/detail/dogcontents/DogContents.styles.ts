@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Line = styled.div`
-  margin-top: 20px;
+  margin-top: 1.25rem;
   margin-bottom: 1rem;
   width: 100%;
   border-bottom: 1px solid #e5e5e5;
@@ -30,6 +30,10 @@ export const StoreNameTag = styled.div`
   flex-direction: column;
   font-size: 2rem;
   font-weight: 700;
+
+  @media ${breakPoints.mobile} {
+    text-align: center;
+  }
 `;
 
 export const HeadInfo = styled.div`
@@ -38,30 +42,37 @@ export const HeadInfo = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: row;
+
   & > div {
-    padding-top: 5px;
+    padding-top: 0.313rem;
     display: flex;
-    margin-left: 8px;
-    align-items: center;
+    margin-left: 0.5rem;
+    align-items: flex-end;
+    line-height: normal;
+  }
+  & > div > div {
+    align-items: flex-end;
+    line-height: normal;
+    font-size: 1rem;
   }
 
   @media ${breakPoints.mobile} {
     justify-content: flex-end;
 
     & > div {
-      padding-top: 0px;
+      padding-top: 0rem;
     }
   }
 `;
 
 export const Toggle = styled(AiOutlineHeart)`
-  margin-left: 10px;
+  margin-left: 0.625rem;
   cursor: pointer;
   font-size: 1.5rem;
 `;
 
 export const Toggled = styled(AiFillHeart)`
-  margin-left: 10px;
+  margin-left: 0.625rem;
   cursor: pointer;
   font-size: 1.5rem;
   color: orangered;
@@ -108,6 +119,13 @@ export const DogTag = styled.div`
   font-weight: 700;
 `;
 
+export const PcDogWrapper = styled.div`
+  display: block;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
 export const DogListWrapper = styled.div`
   width: 90%;
   margin-top: 1rem;
@@ -124,14 +142,18 @@ export const DogListWrapper = styled.div`
   } */
 
   .slick-next:before {
-    font-size: 50px;
+    font-size: 3.125rem;
     color: #f4840b;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
   }
 `;
 
 export const oneImage = styled.img`
   width: 50%;
-  height: 200px;
+  height: 12.5rem;
   object-fit: cover;
   padding: 0.5rem;
 `;
@@ -139,9 +161,13 @@ export const oneImage = styled.img`
 export const SliderItem = styled.div`
   & > img {
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     object-fit: cover;
     padding-right: 2rem;
+
+    @media ${breakPoints.mobile} {
+      padding-right: 0rem;
+    }
   }
 
   & > div {
@@ -149,19 +175,17 @@ export const SliderItem = styled.div`
   }
 `;
 
-// export const PrevArrow = styled.div`
-//   display: block;
-//   z-index: 2;
-//   margin-left: 25px;
-//   width: 50px;
-//   height: 50px;
-// `;
-
 export const NextArrow = styled.div`
   display: block;
-  width: 50px;
-  height: 150px;
+  width: 3.125rem;
+  height: 9.375rem;
   padding-left: 1.5rem;
+
+  @media ${breakPoints.mobile} {
+    padding-left: 0rem;
+    margin-right: 0.1rem;
+    opacity: 0.7;
+  }
 `;
 
 // 카페정보(Body)
@@ -174,7 +198,7 @@ export const Body = styled.div`
 `;
 
 export const BodyLine = styled.div`
-  margin-top: 20px;
+  margin-top: 1.25rem;
   margin-bottom: 1rem;
   width: 95%;
   border-bottom: 1px solid #e5e5e5;
@@ -188,7 +212,7 @@ export const CafeInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 65%;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
 
   @media ${breakPoints.mobile} {
@@ -204,17 +228,24 @@ export const TagWrapper = styled.div`
   & > div {
     display: flex;
     flex-direction: row;
+
+    @media ${breakPoints.mobile} {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0;
+    }
   }
 `;
 
 export const StoreTag = styled.span`
   margin-right: 1em;
   background-color: orange;
-  border-radius: 15px;
+  border-radius: 0.938rem;
   border: 1px solid #d6bcd6;
   display: block;
   font-size: 1rem;
-  padding: 7px 25px;
+  padding: 0.438rem 1.563rem;
   text-align: center;
   color: white;
   margin-top: 1rem;
@@ -238,25 +269,36 @@ export const DogCount = styled.div`
   padding-top: 1rem;
   width: 100%;
   flex-direction: row;
-  font-size: 17px;
+  font-size: 1rem;
 
   & > div > img {
     margin-right: 0.5rem;
-    width: 30px;
+    width: 1.875rem;
   }
 
   & > div {
     margin-right: 2rem;
+
+    @media ${breakPoints.mobile} {
+      display: flex;
+      font-size: 1.1rem;
+      align-items: center;
+    }
   }
 `;
 
 export const DescriptionWrapper = styled.div`
   padding-top: 1rem;
   width: 70%;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding-top: 2rem;
+  }
 `;
 
 export const AddressWrapper = styled.div`
-  font-size: 16px;
+  font-size: 1rem;
   display: flex;
   padding-top: 2rem;
 
@@ -265,14 +307,14 @@ export const AddressWrapper = styled.div`
   }
 
   & > img {
-    width: 20px;
+    width: 1.25rem;
   }
 `;
 
 export const TimeWrapper = styled.div`
   display: flex;
   padding-top: 1rem;
-  font-size: 16px;
+  font-size: 1rem;
 
   & > div {
     margin-left: 1rem;
@@ -280,23 +322,23 @@ export const TimeWrapper = styled.div`
 `;
 
 export const Time = styled(BiTime)`
-  font-size: 23px;
+  font-size: 1.438rem;
 `;
 
 export const Phone = styled(BiPhone)`
-  font-size: 23px;
+  font-size: 1.438rem;
 `;
 
 // 예약 부분
 
 export const ReservationWrapper = styled.div`
   position: sticky;
-  top: 50px;
+  top: 3.125rem;
   width: 35%;
-  height: 500px;
+  height: 31.25rem;
   border: 1px solid rgb(221, 221, 221);
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -310,14 +352,14 @@ export const ReservationWrapper = styled.div`
 
 export const NumberTag = styled.div`
   padding-top: 1rem;
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
 
 export const SelectWrapper = styled(Select)`
   width: 100%;
   .div {
     .ant-select {
-      height: 300px;
+      height: 18.75rem;
     }
   }
 `;
@@ -342,7 +384,7 @@ export const EntranceFee = styled.div`
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
 
 export const FeeInfo = styled.div`
@@ -354,7 +396,7 @@ export const FeeInfo = styled.div`
 `;
 
 export const ReservationLine = styled.div`
-  margin-top: 20px;
+  margin-top: 1.25rem;
   width: 100%;
   border-bottom: 1px solid black;
 `;
@@ -382,13 +424,13 @@ export const Footer = styled.div`
 `;
 
 export const FooterInfo = styled.div`
-  font-size: 25px;
+  font-size: 1.563rem;
   font-weight: 700;
   display: flex;
   flex-direction: column;
 
   & > img {
-    width: 30px;
+    width: 1.875rem;
   }
 
   & > div {
@@ -401,14 +443,18 @@ export const Map = styled.div`
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 400px;
-  font-size: 14px;
+  height: 25rem;
+  font-size: 0.875rem;
 `;
 
 export const MapTag = styled.div`
   margin-bottom: 1rem;
-  font-size: 25px;
+  font-size: 1.563rem;
   font-weight: 700;
+
+  @media ${breakPoints.mobile} {
+    padding-top: 1rem;
+  }
 `;
 
 export const MobileCafeListWrapper = styled.div`
@@ -416,13 +462,23 @@ export const MobileCafeListWrapper = styled.div`
   @media ${breakPoints.mobile} {
     display: block;
     padding-top: 1rem;
+    .slick-prev::before,
+    .slick-next::before {
+      display: none;
+    }
+
+    .slick-next,
+    .slick-prev {
+      left: 0;
+      right: 0;
+    }
   }
 `;
 
 export const MobileSliderItem = styled.div`
   & > img {
     width: 100%;
-    height: 310px;
+    height: 19.375rem;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -435,10 +491,18 @@ export const MobileLine = styled.div`
   display: none;
 
   @media ${breakPoints.mobile} {
-    margin-top: 20px;
+    margin-top: 1.25rem;
     margin-bottom: 1rem;
     width: 100%;
     border-bottom: 1px solid #e5e5e5;
     display: flex;
+  }
+`;
+
+export const MobileDogListWrapper = styled.div`
+  display: none;
+
+  @media ${breakPoints.mobile} {
+    display: block;
   }
 `;

@@ -17,7 +17,6 @@ export default function DetailDogContentsUI(props) {
     speed: 200,
     slidesToShow: 2,
     slidesToScroll: 2,
-    // prevArrow: <DogContents.PrevArrow />,
     nextArrow: <DogContents.NextArrow />,
   };
 
@@ -183,6 +182,7 @@ export default function DetailDogContentsUI(props) {
             <div></div>
           )}
           <DogContents.BodyLine />
+          <DogContents.MobileLine />
 
           <DogContents.BodyInfoTag>카페 세부정보</DogContents.BodyInfoTag>
 
@@ -230,33 +230,66 @@ export default function DetailDogContentsUI(props) {
               소형견 : {props.data?.fetchStore.smallDog}마리
             </div>
           </DogContents.DogCount>
-          {props.data?.fetchStore.pet.length === 1 ? (
-            <DogContents.DogListWrapper>
-              <DogContents.oneImage
-                src={`https://storage.googleapis.com/${props.data?.fetchStore.pet[0].petImgUrl}`}
-              />
-              <div>이름: {props.data?.fetchStore.pet[0].name}</div>
-              <div>나이: {props.data?.fetchStore.pet[0].age}</div>
-              <div>견종: {props.data?.fetchStore.pet[0].breed}</div>
-              <div>성격: {props.data?.fetchStore.pet[0].description}</div>
-            </DogContents.DogListWrapper>
-          ) : (
-            <DogContents.DogListWrapper>
-              <Slider {...settings}>
-                {props.data?.fetchStore.pet.map((el) => (
-                  <DogContents.SliderItem key={uuidv4()}>
-                    <img
-                      src={`https://storage.googleapis.com/${el.petImgUrl}`}
-                    />
-                    <div>이름: {el.name}</div>
-                    <div>나이: {el.age}</div>
-                    <div>견종: {el.breed}</div>
-                    <div>성격: {el.description}</div>
-                  </DogContents.SliderItem>
-                ))}
-              </Slider>
-            </DogContents.DogListWrapper>
-          )}
+
+          <DogContents.PcDogWrapper>
+            {props.data?.fetchStore.pet.length === 1 ? (
+              <DogContents.DogListWrapper>
+                <DogContents.oneImage
+                  src={`https://storage.googleapis.com/${props.data?.fetchStore.pet[0].petImgUrl}`}
+                />
+                <div>이름: {props.data?.fetchStore.pet[0].name}</div>
+                <div>나이: {props.data?.fetchStore.pet[0].age}</div>
+                <div>견종: {props.data?.fetchStore.pet[0].breed}</div>
+                <div>성격: {props.data?.fetchStore.pet[0].description}</div>
+              </DogContents.DogListWrapper>
+            ) : (
+              <DogContents.DogListWrapper>
+                <Slider {...settings}>
+                  {props.data?.fetchStore.pet.map((el) => (
+                    <DogContents.SliderItem key={uuidv4()}>
+                      <img
+                        src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                      />
+                      <div>이름: {el.name}</div>
+                      <div>나이: {el.age}</div>
+                      <div>견종: {el.breed}</div>
+                      <div>성격: {el.description}</div>
+                    </DogContents.SliderItem>
+                  ))}
+                </Slider>
+              </DogContents.DogListWrapper>
+            )}
+          </DogContents.PcDogWrapper>
+          <DogContents.MobileDogListWrapper>
+            {props.data?.fetchStore.pet.length === 1 ? (
+              <DogContents.DogListWrapper>
+                <DogContents.oneImage
+                  src={`https://storage.googleapis.com/${props.data?.fetchStore.pet[0].petImgUrl}`}
+                />
+                <div>이름: {props.data?.fetchStore.pet[0].name}</div>
+                <div>나이: {props.data?.fetchStore.pet[0].age}</div>
+                <div>견종: {props.data?.fetchStore.pet[0].breed}</div>
+                <div>성격: {props.data?.fetchStore.pet[0].description}</div>
+              </DogContents.DogListWrapper>
+            ) : (
+              <DogContents.DogListWrapper>
+                <Slider {...mobileSettings}>
+                  {props.data?.fetchStore.pet.map((el) => (
+                    <DogContents.SliderItem key={uuidv4()}>
+                      <img
+                        src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                      />
+                      <div>이름: {el.name}</div>
+                      <div>나이: {el.age}</div>
+                      <div>견종: {el.breed}</div>
+                      <div>성격: {el.description}</div>
+                    </DogContents.SliderItem>
+                  ))}
+                </Slider>
+              </DogContents.DogListWrapper>
+            )}
+          </DogContents.MobileDogListWrapper>
+
           <DogContents.BodyLine />
 
           <DogContents.Map>

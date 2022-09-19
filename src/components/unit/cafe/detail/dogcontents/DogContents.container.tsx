@@ -29,42 +29,55 @@ export default function DetailDogContents() {
   };
   const [picked, setPicked] = useState(false);
 
+  console.log(reservationData);
+
   const handleChange = (value: number) => {
     setCount(value);
   };
 
+  console.log(data);
   const pick = userData?.fetchUser.pick.filter(
-    (el: any) => el.store.storeID === router.query.cafeid
+    (el: any) => el.store?.storeID === router.query.cafeid
   );
 
   useEffect(() => {
     userData?.fetchUser.pick.filter(
-      (el) => el.store.storeID === router.query.cafeid
+      (el) => el.store?.storeID === router.query.cafeid
     ).length === 1
       ? setPicked(true)
       : setPicked(false);
   }, [userData?.fetchUser.pick]);
 
-  const onClickToggle = async () => {
-    await togglePick({
-      variables: {
-        storeID: String(router.query.cafeid),
-      },
-      refetchQueries: [
-        {
-          query: FETCH_STORE,
-          variables: { StoreID: router.query.cafeid },
-        },
-        {
-          query: FETCH_USER,
-        },
-      ],
-    });
+  console.log();
 
-    if (!picked) {
-      setPicked(true);
-    } else {
-      setPicked(false);
+  const onClickToggle = async () => {
+    try {
+      await togglePick({
+        variables: {
+          storeID: String(router.query.cafeid),
+        },
+
+        refetchQueries: [
+          {
+            query: FETCH_STORE,
+            variables: { StoreID: router.query.cafeid },
+          },
+          {
+            query: FETCH_USER,
+          },
+          {
+            query: FETCH_STORES,
+          },
+        ],
+      });
+
+      if (!picked) {
+        setPicked(true);
+      } else {
+        setPicked(false);
+      }
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
     }
   };
 
@@ -82,6 +95,7 @@ export default function DetailDogContents() {
       });
       if (window.confirm("예약하시겠습니까?")) {
         alert("예약 되었습니다.");
+        router.push("/mypage/user/reserve/");
       } else {
         alert("취소 되었습니다.");
       }

@@ -9,13 +9,13 @@ export const DogProfileWrapper = styled.div`
   width: 30%;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 1.25rem;
   justify-content: center;
   font-size: 1rem;
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    margin-left: 0px;
+    margin-left: 0rem;
   }
 `;
 
@@ -49,36 +49,41 @@ export const DogCount = styled.div`
     align-items: center;
     margin-bottom: 0.8rem;
     width: 50%;
+
+    @media ${breakPoints.mobile} {
+      width: 100%;
+      font-size: 1rem;
+    }
   }
 `;
 
 export const BigDogCount = styled.input`
   padding-left: 0.5rem;
   border-radius: 0.8rem;
-  margin-left: 10px;
-  margin-right: 50px;
+  margin-left: 0.625rem;
+  margin-right: 3.125rem;
   width: 50%;
   border: 1px solid #808080;
 
   @media ${breakPoints.mobile} {
-    width: 50%;
+    width: 40%;
   }
 `;
 
 export const SmallDogCount = styled.input`
   padding-left: 0.5rem;
   border-radius: 0.8rem;
-  margin-left: 10px;
-  margin-right: 50px;
+  margin-left: 0.625rem;
+  margin-right: 3.125rem;
   width: 50%;
   border: 1px solid #808080;
 
   @media ${breakPoints.mobile} {
-    width: 50%;
+    width: 40%;
   }
 `;
 export const DogName = styled.textarea`
-  padding-left: 15px;
+  padding-left: 0.938rem;
   background: #ebebeb;
   border: none;
   border-radius: 0.8rem;
@@ -95,7 +100,7 @@ export const DogName = styled.textarea`
 export const DogAge = styled.textarea`
   height: 20%;
   margin-top: 0.8rem;
-  padding-left: 15px;
+  padding-left: 0.938rem;
   background: #ebebeb;
   border: none;
   border-radius: 0.8rem;
@@ -111,7 +116,7 @@ export const DogAge = styled.textarea`
 export const DogBreed = styled.textarea`
   margin-top: 0.8rem;
   height: 20%;
-  padding-left: 15px;
+  padding-left: 0.938rem;
   background: #ebebeb;
   border: none;
   border-radius: 0.8rem;
@@ -126,7 +131,7 @@ export const DogBreed = styled.textarea`
 
 export const DogDesc = styled.textarea`
   margin-top: 0.8rem;
-  padding-left: 15px;
+  padding-left: 0.938rem;
   height: 40%;
   background: #ebebeb;
   border: none;
@@ -151,10 +156,10 @@ export const AddDogBtn = styled.button`
   border: none;
   border-radius: 1em;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 1.063rem;
 
   :hover {
-    background: #f5cf1f;
+    background: orange;
     color: #ffffff;
     img {
       filter: brightness(0) invert(1);
@@ -184,15 +189,16 @@ export const DogListColumn = styled.div`
   width: 35%;
   & > div {
     height: 20%;
-    margin-left: 35px;
-    font-size: 20px;
+    margin-left: 2.188rem;
+    font-size: 1.25rem;
   }
   @media ${breakPoints.mobile} {
     width: 100%;
     & > div {
       height: 20%;
-      margin-left: 5px;
-      font-size: 20px;
+      margin-left: 0.313rem;
+      font-size: 1.25rem;
+      padding-top: 0.5rem;
     }
   }
 `;
@@ -203,7 +209,7 @@ export const DogListImg = styled.img`
   justify-content: center;
   align-items: center;
   width: 80%;
-  height: 259px;
+  height: 16.25rem;
   background: #ebebeb;
   border-radius: 2rem;
   transition: all 0.5s ease;
@@ -237,7 +243,7 @@ export const DeleteBtn = styled.button`
 
 export const MobileDeleteBtn = styled.button`
   display: none;
-  font-size: 25px;
+  font-size: 1.563rem;
   cursor: pointer;
 
   @media ${breakPoints.mobile} {
