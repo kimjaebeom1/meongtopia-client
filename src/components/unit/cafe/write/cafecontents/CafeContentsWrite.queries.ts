@@ -10,12 +10,17 @@ export const CREATE_STORE = gql`
 `;
 
 export const UPDATE_STORE = gql`
-  mutation updateStore($updateStoreInput: UpdateStoreInput!) {
-    updateStore(updateStoreInput: $updateStoreInput) {
+  mutation updateStore(
+    $storeID: String!
+    $updateStoreInput: UpdateStoreInput!
+  ) {
+    updateStore(
+      storeID: $storeID
+
+      updateStoreInput: $updateStoreInput
+    ) {
       name
       storeID
     }
   }
 `;
-
-

@@ -14,6 +14,7 @@ import {
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { schema } from "../../../../../commons/libraries/validation";
+import { IUpdateStoreInput } from "../../../../../commons/types/generated/types";
 
 const initialInputs = {
   name: "",
@@ -109,28 +110,37 @@ export default function CafeContentsWrite(props) {
   };
 
   const onClickUpdateStore = async (data: any) => {
-    if (!petArr.join()) return alert("강아지 정보를 추가해주세요!");
-    if (!bigDog || !smallDog) return alert("강아지 수를 입력해주세요!");
+    const currentFiles = JSON.stringify(fileUrls);
+    const defaultFiles = JSON.stringify(props.data?.fetchStore.storeImg);
+    const isChangedFiles = currentFiles !== defaultFiles;
+
+    const updateStoreInput: IUpdateStoreInput = {};
+    if (inputs.name) updateStoreInput.name = inputs.name;
+    if (inputs.phone) updateStoreInput.phone = inputs.phone;
+    if (inputs.open) updateStoreInput.open = inputs.open;
+    if (inputs.close) updateStoreInput.close = inputs.close;
+    if (address) updateStoreInput.address = address;
+    if (inputs.addressDetail)
+      updateStoreInput.addressDetail = inputs.addressDetail;
+    if (description) updateStoreInput.description = description;
+    if (entranceFee) updateStoreInput.entranceFee = Number(entranceFee);
+    if (bigDog) updateStoreInput.bigDog = Number(bigDog);
+    if (smallDog) updateStoreInput.smallDog = Number(smallDog);
+    if (locationActive) updateStoreInput.locationTag = locationActive;
+    if (conditionActive) updateStoreInput.storeTag = conditionActive;
+    if (petArr) updateStoreInput.pet = [...petArr];
+    if (isChangedFiles) updateStoreInput.storeImg = fileUrls.join().split(",");
 
     try {
       const result = await updateStore({
         variables: {
-          updateStoreInput: {
-            ...inputs,
-            address,
-            description: description,
-            entranceFee: Number(entranceFee),
-            storeImg: fileUrls.join().split(","),
-            bigDog: Number(bigDog),
-            smallDog: Number(smallDog),
-            locationTag: locationActive,
-            storeTag: conditionActive,
-            pet: [...petArr],
-          },
+          storeID: router.query.cafeid,
+          updateStoreInput,
         },
       });
+      console.log(result);
       alert("게시글 수정이 완료되었습니다.");
-      router.push(`/cafe/${result.data.createStore.storeID}`);
+      router.push(`/cafe/${result.data.updateStore.storeID}`);
     } catch (error) {
       if (error instanceof Error) alert("수정 실패");
     }

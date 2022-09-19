@@ -64,3 +64,9 @@ export const FETCH_RESERVATION = gql`
     }
   }
 `;
+
+export const REVIEW_COUNT = gql`
+  query ReviewCount($storeID: String!) {
+    ReviewCount(storeID: $storeID)
+  }
+`;

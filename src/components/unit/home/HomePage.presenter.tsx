@@ -4,6 +4,7 @@ import { Rate } from "antd";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import "antd/dist/antd.css";
+import Slider from "react-slick";
 
 export default function HomeUI(props: any) {
   const [ref, inView] = useInView({
@@ -11,6 +12,13 @@ export default function HomeUI(props: any) {
     rootMargin: "100px",
     threshold: 0.4, // 0 - 1
   });
+
+  const mobileSettings = {
+    infinite: true,
+    speed: 200,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <HomePage.Container>
@@ -66,6 +74,7 @@ export default function HomeUI(props: any) {
             </Link>
           </HomePage.PickTag>
 
+          {/* pc형 */}
           <HomePage.PickListWrapper>
             {props.data?.fetchPickRank.map((el: any) => (
               <HomePage.PickList
@@ -94,33 +103,36 @@ export default function HomeUI(props: any) {
             ))}
           </HomePage.PickListWrapper>
 
-          <HomePage.PickListWrapper>
-            {props.data?.fetchPickRank.map((el) => (
-              <HomePage.PickList
-                onClick={props.onClickMoveToPick(el)}
-                key={el.storeID}
-              >
-                {el.storeImg[0].url ? (
-                  <HomePage.PickImage
-                    src={`https://storage.googleapis.com/${el.storeImg[0].url}`}
-                  />
-                ) : (
-                  <HomePage.PickImage src="/images/instacafe.jpeg" />
-                )}
+          {/* 모바일형 */}
 
-                <HomePage.PickName>{el.name}</HomePage.PickName>
-                <Rate disabled value={el.avgRating} />
+          <HomePage.MobilePickListWrapper>
+            <Slider {...mobileSettings}>
+              {props.data?.fetchPickRank.map((el) => (
+                <HomePage.PickList
+                  onClick={props.onClickMoveToPick(el)}
+                  key={el.storeID}
+                >
+                  {el.storeImg[0].url ? (
+                    <HomePage.PickImage
+                      src={`https://storage.googleapis.com/${el.storeImg[0].url}`}
+                    />
+                  ) : (
+                    <HomePage.PickImage src="/images/instacafe.jpeg" />
+                  )}
 
-                <HomePage.PickDescription>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(el.description),
-                    }}
-                  ></div>
-                </HomePage.PickDescription>
-              </HomePage.PickList>
-            ))}
-          </HomePage.PickListWrapper>
+                  <HomePage.PickName>{el.name}</HomePage.PickName>
+                  <Rate disabled value={el.avgRating} />
+                  <HomePage.PickDescription>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(el.description),
+                      }}
+                    ></div>
+                  </HomePage.PickDescription>
+                </HomePage.PickList>
+              ))}
+            </Slider>
+          </HomePage.MobilePickListWrapper>
         </HomePage.RecommendWrapper>
 
         <HomePage.RecommendWrapper

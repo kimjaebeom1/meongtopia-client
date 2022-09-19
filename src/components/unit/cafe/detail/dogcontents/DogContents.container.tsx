@@ -8,6 +8,7 @@ import {
   CREATE_RESERVATION,
   FETCH_RESERVATION,
   FETCH_STORE,
+  REVIEW_COUNT,
   Toggle_Pick,
 } from "./DogContents.queries";
 
@@ -18,8 +19,12 @@ export default function DetailDogContents() {
     variables: { storeID: String(router.query.cafeid) },
   });
   const { data: reservationData } = useQuery(FETCH_RESERVATION);
-  console.log(reservationData);
+  const { data: reviewCount } = useQuery(REVIEW_COUNT, {
+    variables: { storeID: router.query.cafeid },
+  });
 
+  console.log(reservationData);
+  console.log(reviewCount);
   const [createReservation] = useMutation(CREATE_RESERVATION);
   const [count, setCount] = useState(1);
   const [petCount, setPetCount] = useState(0);
@@ -115,6 +120,7 @@ export default function DetailDogContents() {
       onClickToggle={onClickToggle}
       data={data}
       picked={picked}
+      reviewCount={reviewCount}
     />
   );
 }

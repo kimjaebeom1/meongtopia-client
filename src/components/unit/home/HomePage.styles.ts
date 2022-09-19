@@ -131,6 +131,28 @@ export const PickListWrapper = styled.div`
   justify-content: space-between;
   padding-top: 1rem;
   height: 25rem;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`;
+
+export const MobilePickListWrapper = styled.div`
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: block;
+    padding-top: 1rem;
+    .slick-prev::before,
+    .slick-next::before {
+      display: none;
+    }
+
+    .slick-next,
+    .slick-prev {
+      left: 0;
+      right: 0;
+    }
+  }
 `;
 
 export const PickList = styled.div`

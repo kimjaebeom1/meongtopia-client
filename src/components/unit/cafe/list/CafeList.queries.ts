@@ -11,7 +11,7 @@ export const FETCH_STORES = gql`
       smallDog
       open
       close
-      address
+      # address
       addressDetail
       avgRating
       pickCount

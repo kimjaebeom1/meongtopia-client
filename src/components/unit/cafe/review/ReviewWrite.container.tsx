@@ -40,6 +40,10 @@ export default function ReviewWrite() {
             query: FETCH_STORE_REVIEWS,
             variables: { storeID: router.query.cafeid },
           },
+          {
+            query: FETCH_STORE,
+            variables: { storeID: router.query.cafeid },
+          },
         ],
       });
       setContents("");
