@@ -15,15 +15,15 @@ export default function LoginContainerPage() {
   const router = useRouter();
 
   const onClickGoogle = () => {
-    router.push("https://meongtopiaserver.shop/login/google");
+    router.push("https://meongtopiaserver.shop/login/google%22");
   };
 
   const onClickNaver = () => {
-    router.push("https://meongtopiaserver.shop/login/naver");
+    router.push("https://meongtopiaserver.shop/login/naver%22");
   };
 
   const onClickKakao = () => {
-    router.push("https://meongtopiaserver.shop/login/kakao");
+    router.push("https://meongtopiaserver.shop/login/kakao%22");
   };
 
   const client = useApolloClient();
@@ -63,7 +63,6 @@ export default function LoginContainerPage() {
       setIsActive(false);
     }
   };
-
   const onClickLogin = async () => {
     if (!email) {
       setEmailError("이메일을 입력해주세요");
@@ -89,6 +88,7 @@ export default function LoginContainerPage() {
         alert("로그인 실패. 다시 시도해주세요!");
         return;
       }
+      router.push("/");
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({
