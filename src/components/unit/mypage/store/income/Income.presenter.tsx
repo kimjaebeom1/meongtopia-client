@@ -39,7 +39,7 @@ export default function MyPageStoreInComeUI(props: IMyPageStoreInComeUIProps) {
                 </Income.DateName>
                 <Income.Date>{el.paymentNum}</Income.Date>
                 <Income.Date>{el.cancelNum}</Income.Date>
-                <Income.Date>{`${el.totalCash.toLocaleString()}원`}</Income.Date>
+                <Income.DatePrice>{`${el.totalCash.toLocaleString()}원`}</Income.DatePrice>
               </Income.TableRow>
             ))}
         </Income.ListTable>

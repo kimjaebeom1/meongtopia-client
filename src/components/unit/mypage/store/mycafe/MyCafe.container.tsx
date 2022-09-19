@@ -23,10 +23,15 @@ export default function MyPageStoreMyCafe() {
   };
 
   const onClickDelete = async (e: MouseEvent<HTMLDivElement>) => {
-    const deleteConfirm = confirm("정말 취소하시겠습니까?");
+    const deleteConfirm = confirm("정말 삭제하시겠습니까?");
     if (!deleteConfirm) return;
     try {
-      await deleteStore({ refetchQueries: [{ query: FETCH_INCOMES }] });
+      await deleteStore({
+        variables: {
+          storeID: String((e.currentTarget as HTMLDivElement).id),
+        },
+        refetchQueries: [{ query: FETCH_INCOMES }],
+      });
     } catch (error) {
       getErrorMessage(error);
     }

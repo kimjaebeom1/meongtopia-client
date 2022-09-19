@@ -126,12 +126,16 @@ export default function CafeListUI(props: ICafeListUIProps) {
         <CafeList.SortWrapper>
           <div style={{ marginRight: "1rem" }}>
             <Select
+              id="long-value-select"
+              instanceId="long-value-select"
               options={ORDER_OPTIONS}
               defaultValue={ORDER_OPTIONS[0]}
               onChange={props.onChangeOrder}
             />
           </div>
           <Select
+            id="long-value-select"
+            instanceId="long-value-select"
             options={PRICE_OPTIONS}
             defaultValue={PRICE_OPTIONS[0]}
             onChange={props.onChangePrice}

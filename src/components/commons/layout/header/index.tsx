@@ -7,6 +7,7 @@ import MenuButton from "../../buttons/menu";
 import { FETCH_USER, LOGOUT } from "./Header.queries";
 import * as Header from "./Header.styles";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 
 const MENUS = [
   { page: "/home", title: "홈으로" },
@@ -27,6 +28,7 @@ export default function LayoutHeader() {
     await router.push("/home/");
     location.reload();
   };
+
   return (
     <Header.Container>
       <Header.Wrapper>

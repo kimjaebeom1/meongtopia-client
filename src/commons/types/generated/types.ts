@@ -234,6 +234,11 @@ export type IMutationDeleteLocationTagArgs = {
 };
 
 
+export type IMutationDeleteStoreArgs = {
+  storeID: Scalars['String'];
+};
+
+
 export type IMutationDeleteTagArgs = {
   name: Scalars['String'];
 };
@@ -266,6 +271,7 @@ export type IMutationTogglePickArgs = {
 
 
 export type IMutationUpdateBoardArgs = {
+  boardID: Scalars['String'];
   updateBoardInput: IUpdateBoardInput;
 };
 
@@ -288,6 +294,7 @@ export type IMutationUpdateReviewArgs = {
 
 
 export type IMutationUpdateStoreArgs = {
+  storeID: Scalars['String'];
   updateStoreInput: IUpdateStoreInput;
 };
 
@@ -396,6 +403,11 @@ export type IQueryFetchIncomesArgs = {
 
 
 export type IQueryFetchPickRankArgs = {
+  order?: InputMaybe<Scalars['String']>;
+};
+
+
+export type IQueryFetchReservationArgs = {
   order?: InputMaybe<Scalars['String']>;
 };
 
@@ -521,7 +533,6 @@ export enum IUser_Role_Enum {
 }
 
 export type IUpdateBoardInput = {
-  boardID: Scalars['String'];
   boardImg?: InputMaybe<Array<Scalars['String']>>;
   contents?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -545,7 +556,6 @@ export type IUpdateStoreInput = {
   pet?: InputMaybe<Array<IUpdatePetInput>>;
   phone?: InputMaybe<Scalars['String']>;
   smallDog?: InputMaybe<Scalars['Int']>;
-  storeID: Scalars['String'];
   storeImg?: InputMaybe<Array<Scalars['String']>>;
   storeTag?: InputMaybe<Array<Scalars['String']>>;
 };

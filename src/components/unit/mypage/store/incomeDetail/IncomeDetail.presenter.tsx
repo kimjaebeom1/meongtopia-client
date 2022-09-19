@@ -29,19 +29,14 @@ export default function MyPageStoreInComeDetailUI(
   const mm = String(today.getMonth() + 1).padStart(2, "0");
   const dd = String(today.getDate()).padStart(2, "0");
   const labels = [];
-  for (let i = -6; i <= 0; i++) {
+
+  for (let i = -7; i < 0; i++) {
     labels.push(`${mm} / ${Number(dd) + i}`);
   }
 
-  const totalCashes = [
-    ...(props.data?.fetchStoreIncome.map((el: any) => el.totalCash) || ""),
+  let totalCashes = [
+    ...(props.data?.fetchStoreIncome.map((el: any) => el.totalCash) || []),
   ];
-
-  if (totalCashes.length < 7) {
-    for (let i = totalCashes.length; i < 7; i++) {
-      totalCashes.unshift(0);
-    }
-  }
 
   if (totalCashes.length > 7) {
     for (let i = 7; i < totalCashes.length; i++) {
@@ -63,23 +58,16 @@ export default function MyPageStoreInComeDetailUI(
   };
 
   const lineChartData = {
-    labels,
+    labels: props.data?.fetchStoreIncome.map((el) => el.date),
     datasets: [
       {
         data: totalCashes,
         label: "총수입",
         borderColor: "orange",
+        backgroundColor: "orange",
         fill: true,
         lineTension: 0,
       },
-      // {
-      //   data: [1, 2, 3],
-      //   label: "Deaths",
-      //   borderColor: "#ff3333",
-      //   backgroundColor: "rgba(255, 0, 0, 0.5)",
-      //   fill: true,
-      //   lineTension: 0.5,
-      // },
     ],
   };
 
@@ -88,9 +76,9 @@ export default function MyPageStoreInComeDetailUI(
       <IncomeDetail.Title>
         {props.data?.fetchStoreIncome[0].store.name}
       </IncomeDetail.Title>
-      <div style={{ width: 770 }}>
+      <IncomeDetail.Chart>
         <Line options={options} data={lineChartData} />
-      </div>
+      </IncomeDetail.Chart>
     </IncomeDetail.Wrapper>
   );
 }

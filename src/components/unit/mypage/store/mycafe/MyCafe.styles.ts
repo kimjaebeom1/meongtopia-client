@@ -19,17 +19,16 @@ export const Header = styled.div`
 `;
 
 export const Link = styled.a`
-  height: 100%;
   background-color: orange;
   color: #fff;
   font-size: 1.2rem;
-  line-height: normal;
   border: none;
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
 
-  padding: 0.7rem;
-  padding-bottom: 0.5rem;
+  padding: 0 0.8rem;
+  line-height: 3rem;
+  height: 3rem;
 
   cursor: pointer;
 
@@ -53,8 +52,6 @@ export const ListWrapper = styled.div`
   border: 1px solid rgb(235, 235, 235);
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
-
-  cursor: pointer;
 `;
 
 export const Img = styled.img`
@@ -75,6 +72,8 @@ export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -195,7 +194,9 @@ export const AddBtn = styled.button`
   font-size: 1.2rem;
   border: none;
   border-radius: 10px;
-  padding: 0.5rem 1rem 0.3rem 1rem;
+  padding: 0 1rem;
+  line-height: 3rem;
+  height: 3rem;
 
   cursor: pointer;
 

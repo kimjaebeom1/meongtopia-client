@@ -54,6 +54,11 @@ export const UpdateBtn = styled.button`
   border: 1px solid rgba(212, 216, 229, 0.5);
   border-radius: 4px;
   cursor: pointer;
+
+  :hover {
+    background-color: #999;
+    color: #fff;
+  }
 `;
 
 export const Footer = styled.div`

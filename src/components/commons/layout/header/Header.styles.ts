@@ -7,6 +7,8 @@ export const Container = styled.header`
   box-shadow: 0px 10px 10px -15px black;
   display: flex;
   justify-content: center;
+
+  font-family: "myFont";
 `;
 
 export const Wrapper = styled.div`

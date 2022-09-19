@@ -51,6 +51,7 @@ export const ListTable = styled.div`
 
 export const TableRow = styled.div`
   display: flex;
+  font-size: 1.1rem;
   padding: 0.5rem 1rem;
 `;
 
@@ -77,12 +78,6 @@ export const HeadName = styled.div`
   }
 `;
 
-export const Date = styled.div`
-  width: 25%;
-  display: flex;
-  justify-content: flex-end;
-`;
-
 export const DateName = styled.div`
   width: 25%;
   display: flex;
@@ -92,7 +87,34 @@ export const DateName = styled.div`
   }
 
   @media ${breakPoints.mobile} {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding-right: 1rem;
+  }
+`;
+
+export const Date = styled.div`
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.1rem;
+    padding-right: 1rem;
+  }
+`;
+
+export const DatePrice = styled.div`
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+
+  cursor: pointer;
+  :hover {
+    color: orange;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.1rem;
+    justify-content: flex-end;
   }
 `;
