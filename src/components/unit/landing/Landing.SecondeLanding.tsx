@@ -30,7 +30,13 @@ export default function SecondLandingPage() {
               확인 할 수 있는{" "}
             </span>
             <br />
-            수익 시스템
+            <span
+              style={{
+                borderBottom: "5px double lightsalmon",
+              }}
+            >
+              수익 시스템
+            </span>
           </Landing.OwnerContent>
           <Landing.OwnerContent className={inView ? "isActive" : ""} ref={ref}>
             /
@@ -47,7 +53,13 @@ export default function SecondLandingPage() {
               간편한 결제 방식
             </span>
             으로 <br /> 바로 예약가능한 <br />
-            결제 시스템
+            <span
+              style={{
+                borderBottom: "5px double lightsalmon",
+              }}
+            >
+              결제 시스템
+            </span>
           </Landing.OwnerContent>
         </Landing.TitleWrap>
         <div>

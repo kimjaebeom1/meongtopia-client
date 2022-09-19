@@ -4,15 +4,17 @@ import Checkbox from "@mui/material/Checkbox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useEffect, useState } from "react";
+import { Modal } from "antd";
+import "antd/dist/antd.css";
 
 export default function SignUpOwnerPresenterPage(props: any) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#F5CF1F",
+        main: "#ffa500",
       },
       secondary: {
-        main: "#C4C4C4",
+        main: "#b1b0b0",
       },
     },
   });
@@ -30,18 +32,11 @@ export default function SignUpOwnerPresenterPage(props: any) {
     setChecked([false, false, false]);
   }, []);
 
-  // const isActive = !checked.includes(true);
-  // const [checked, setChecked] = useState([true, true, true]);
-  // const handleCheck = (i: any) => (event: any) => {
-  //   const newChecked = [...checked];
-  //   newChecked[i] = event.target.checked;
-  //   setChecked(newChecked);
-  //   console.log(checked[i]);
-  // };
-
-  // useEffect(() => {
-  //   setChecked([false, false, false]);
-  // }, []);
+  const onClickContents = () => {
+    Modal.info({
+      content: "부장님 체고십니다^^!",
+    });
+  };
 
   return (
     <SignUp.Wrapper>
@@ -79,13 +74,9 @@ export default function SignUpOwnerPresenterPage(props: any) {
                 placeholder="이메일을 입력해주세요"
                 type="text"
                 onChange={props.onChangeEmail}
-                // register=props.register("email")}
               />
             </SignUp.InputElWrap>
-            <SignUp.Error>
-              {props.emailError}
-              {/* {props.formState.errors.email?.message} */}
-            </SignUp.Error>
+            <SignUp.Error>{props.emailError}</SignUp.Error>
           </SignUp.IdPwWrap>
 
           <SignUp.IdPwWrap>
@@ -181,7 +172,9 @@ export default function SignUpOwnerPresenterPage(props: any) {
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                <SignUp.AgreeContents3 onClick={onClickContents}>
+                  상세보기
+                </SignUp.AgreeContents3>
                 {/* <CheckCircleIcon /> */}
                 <ThemeProvider theme={theme}>
                   <Checkbox
@@ -191,6 +184,10 @@ export default function SignUpOwnerPresenterPage(props: any) {
                     checkedIcon={<CheckCircleIcon />}
                     onClick={props.onClick}
                     id={props.id}
+                    style={{
+                      width: "10px",
+                      height: "10px",
+                    }}
                   />
                 </ThemeProvider>
               </SignUp.AgreeChkWrap>
@@ -200,7 +197,9 @@ export default function SignUpOwnerPresenterPage(props: any) {
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                <SignUp.AgreeContents3 onClick={onClickContents}>
+                  상세보기
+                </SignUp.AgreeContents3>
                 <ThemeProvider theme={theme}>
                   <Checkbox
                     checked={checked[1]}
@@ -209,29 +208,13 @@ export default function SignUpOwnerPresenterPage(props: any) {
                     checkedIcon={<CheckCircleIcon />}
                     onClick={props.onClick}
                     id={props.id}
+                    style={{
+                      width: "10px",
+                      height: "10px",
+                    }}
                   />
                 </ThemeProvider>
               </SignUp.AgreeChkWrap>{" "}
-              <SignUp.Line />
-              <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1 style={{ color: "gray" }}>
-                  (선택)
-                </SignUp.AgreeContents1>
-                <SignUp.AgreeContents2>
-                  개인회원 약관에 동의
-                </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <ThemeProvider theme={theme}>
-                  <Checkbox
-                    icon={<CheckCircleOutlineIcon color="secondary" />}
-                    checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
-                    checked={checked[2]}
-                    onChange={handleCheck(2)}
-                  />
-                </ThemeProvider>
-              </SignUp.AgreeChkWrap>
             </SignUp.AgreeWrap2>
           </SignUp.AgreeWrap>
 

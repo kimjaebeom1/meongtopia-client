@@ -159,7 +159,7 @@ export default function SignUpContainerPage() {
           content: "닉네임 등록되었습니다",
         });
         setNicknameChk(true);
-        setIsActive(false);
+        // setIsActive(false);
       }
     } catch (error) {
       console.log(error);

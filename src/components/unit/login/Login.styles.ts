@@ -2,13 +2,8 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
-  /* height: 968px; */
   width: 100%;
-  /* margin: auto; */
   padding: 8rem 0;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* overflow-y: hidden; */
   display: flex;
   justify-content: center;
 
@@ -41,12 +36,10 @@ export const LoginPartWrap = styled.div`
   padding: 0rem 2rem;
 
   @media ${breakPoints.tablet} {
-    /* z-index: 999; */
     width: 100%;
   }
 
   @media ${breakPoints.mobile} {
-    /* z-index: 999; */
     width: 100%;
   }
 `;
@@ -56,7 +49,6 @@ export const ElWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* height: 45%; */
   width: 40%;
 
   @media ${breakPoints.tablet} {
@@ -86,8 +78,6 @@ export const InputWrap = styled.div`
   align-items: flex-start;
   width: 100%;
   margin-bottom: 20px;
-
-  /* border: 1px solid black; */
 `;
 
 export const Input = styled.input`
@@ -97,9 +87,6 @@ export const Input = styled.input`
   outline: none;
   border: 1px solid #cacaca;
   border-radius: 10px;
-  /* border: none; */
-  /* border: none; */
-  /* border-bottom: 1px solid gray; */
 `;
 
 export const InputBorder = styled.div`

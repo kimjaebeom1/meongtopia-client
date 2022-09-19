@@ -373,6 +373,7 @@ export const MainLogo = styled.img`
   height: 17vh;
   margin-bottom: 40px;
   opacity: 1;
+  cursor: pointer;
 
   .isActive {
     opacity: 1;

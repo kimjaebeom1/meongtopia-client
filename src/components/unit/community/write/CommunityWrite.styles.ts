@@ -29,7 +29,7 @@ export const SubTitle = styled.div`
 `;
 
 export const TitleInput = styled.input`
-  width: 4rem;
+  width: 20vw;
   height: 2rem;
 `;
 

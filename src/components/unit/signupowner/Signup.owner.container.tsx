@@ -12,10 +12,6 @@ import { Modal, message } from "antd";
 import "antd/dist/antd.css";
 import { checkEmail } from "../../../commons/libraries/utils";
 
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as yup from "yup";
-
 export default function SignUpOwnerContainerPage() {
   const router = useRouter();
   const [isActivePhone, setIsActivePhone] = useState(false);
