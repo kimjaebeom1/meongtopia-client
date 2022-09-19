@@ -1,19 +1,21 @@
 import * as Detail from "./Community.Detail.styles";
 
 export default function CommunityDetailPresenterPage(props) {
-  console.log(props.data?.fetchBoard.boardImg[0].url);
+  // console.log(props.data?.fetchBoard.boardImg[0].url);
+
   return (
     <Detail.Wrapper>
-      <Detail.RowWrap>
+      <Detail.ColumnWrap>
         <Detail.Img
           src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg[0].url}`}
         />
-        <Detail.ContentsWrap>
-          <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
-          <Detail.Line />
-          <Detail.Contents>{props.data?.fetchBoard?.contents}</Detail.Contents>
-        </Detail.ContentsWrap>
-      </Detail.RowWrap>
+        {/* <Detail.ContentsWrap> */}
+        <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
+        <Detail.Line />
+        <Detail.Contents
+          dangerouslySetInnerHTML={{ __html: props.data?.fetchBoard.contents }}
+        />
+      </Detail.ColumnWrap>
       <Detail.ButtonWrap>
         <Detail.Button onClick={props.onClickMoveToList}>
           목록으로

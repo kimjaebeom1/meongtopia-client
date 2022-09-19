@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  margin: 50px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -12,7 +12,9 @@ export const Wrapper = styled.div`
 
 export const ColumnWrap = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
 
 export const RowWrap = styled.div`
@@ -23,30 +25,33 @@ export const RowWrap = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 50%;
-  height: 60vh;
+  width: 75%;
+  height: 50vh;
   /* object-fit: cover; */
-  box-shadow: 2.5px 3px 9px 1px lightgray;
+  /* box-shadow: 2.5px 0px 5px 1px lightgray; */
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 2px;
 `;
 
 export const ContentsWrap = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 45%;
+  width: 75%;
+  height: 50vh;
   box-shadow: 2.5px 3px 9px 1px lightgray;
   border: 1px solid lightgray;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 10px 20px; */
+  /* border: 1px solid black; */
 `;
 
 export const Title = styled.div`
   font-size: 1.6rem;
   font-weight: 800;
   width: 100%;
+  height: 20vh;
   margin-top: 20px;
   padding-left: 20px;
   overflow: hidden;
@@ -54,6 +59,7 @@ export const Title = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  text-align: center;
 `;
 export const Line = styled.div`
   border-bottom: 1px solid lightgray;
@@ -65,6 +71,7 @@ export const Contents = styled.div`
   font-size: 1.2rem;
   height: 70%;
   padding: 20px;
+  /* margin-bottom: 60px; */
 `;
 
 export const ButtonWrap = styled.div`
@@ -72,7 +79,7 @@ export const ButtonWrap = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 60%;
-  margin-top: 60px;
+  /* margin: 100px 0px; */
 `;
 
 export const Button = styled.div`

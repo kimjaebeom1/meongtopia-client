@@ -12,7 +12,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { Modal } from "antd";
-import { ConsoleSqlOutlined } from "@ant-design/icons";
 
 export default function CommunityContainerPage(props) {
   const router = useRouter();

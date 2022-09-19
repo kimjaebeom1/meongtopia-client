@@ -4,15 +4,17 @@ import { useState, useEffect } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { Modal } from "antd";
+import "antd/dist/antd.css";
 
 export default function SignUpPresenterPage(props: any) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#F5CF1F",
+        main: "#ffa500",
       },
       secondary: {
-        main: "#C4C4C4",
+        main: "#b1b0b0",
       },
     },
   });
@@ -29,6 +31,13 @@ export default function SignUpPresenterPage(props: any) {
   useEffect(() => {
     setChecked([false, false, false]);
   }, []);
+
+  const onClickContents = () => {
+    Modal.info({
+      content: "부장님 체고십니다^^!",
+    });
+  };
+
   return (
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
@@ -54,12 +63,14 @@ export default function SignUpPresenterPage(props: any) {
               />
             </SignUp.InputElWrap>
             <SignUp.Error>{props.emailError}</SignUp.Error>
+
             <SignUp.Title>Password</SignUp.Title>
             <SignUp.InputElWrap>
               <SignUp.Input
                 placeholder="비밀번호 8자리 이상 입력해주세요"
                 type="password"
                 onChange={props.onChangePassword}
+                minLength={8}
               />
             </SignUp.InputElWrap>
             <SignUp.Error>{props.passwordError}</SignUp.Error>
@@ -82,7 +93,7 @@ export default function SignUpPresenterPage(props: any) {
               />
             </SignUp.InputElWrap>
             <SignUp.Error>{props.nameError}</SignUp.Error>
-            <SignUp.NickNameWrap>
+            <SignUp.NumWrap>
               <SignUp.NickNameInput
                 onChange={props.onChangeNickname}
                 placeholder="닉네임을 입력해주세요"
@@ -93,17 +104,19 @@ export default function SignUpPresenterPage(props: any) {
               >
                 중복확인
               </SignUp.CheckBtn>
-            </SignUp.NickNameWrap>
+            </SignUp.NumWrap>
             <SignUp.Error>{props.nicknameError}</SignUp.Error>
           </SignUp.InputWrap>
 
           <SignUp.PhoneWrap>
             <SignUp.Title>휴대전화 인증</SignUp.Title>
             <SignUp.PhoneNumWrap>
-              <SignUp.PhoneNum
-                onChange={props.onChangePhone}
-                placeholder="휴대전화 번호를 입력해주세요"
-              />
+              <SignUp.PhoneInputWrap>
+                <SignUp.PhoneNumInput
+                  onChange={props.onChangePhone}
+                  placeholder="휴대전화 번호를 입력해주세요"
+                />
+              </SignUp.PhoneInputWrap>
               <SignUp.NumBtn
                 onClick={props.onClickGetToken}
                 isActivePhone={
@@ -115,17 +128,19 @@ export default function SignUpPresenterPage(props: any) {
             </SignUp.PhoneNumWrap>
 
             <SignUp.PhoneNumWrap>
-              <SignUp.NickNameWrap>
-                <SignUp.NickNameInput
+              <SignUp.NumWrap>
+                <SignUp.NumInput
                   onChange={props.onChangeCheckNum}
                   placeholder="인증번호를 입력해주세요"
                 />
+
                 <SignUp.Timer>
                   {`${String(props.minutes).padStart(2, "0")} : ${String(
                     props.seconds
                   ).padStart(2, "0")}`}
                 </SignUp.Timer>
-              </SignUp.NickNameWrap>
+              </SignUp.NumWrap>
+
               <SignUp.NumBtn2
                 onClick={props.onClickCheckValidToken}
                 isActiveNum={props.isActiveNum ? true : props.isActiveNum}
@@ -144,7 +159,9 @@ export default function SignUpPresenterPage(props: any) {
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                <SignUp.AgreeContents3 onClick={onClickContents}>
+                  상세보기
+                </SignUp.AgreeContents3>
                 <ThemeProvider theme={theme}>
                   <Checkbox
                     checked={checked[0]}
@@ -153,6 +170,10 @@ export default function SignUpPresenterPage(props: any) {
                     checkedIcon={<CheckCircleIcon />}
                     onClick={props.onClick}
                     id={props.id}
+                    style={{
+                      width: "10px",
+                      height: "10px",
+                    }}
                   />
                 </ThemeProvider>
               </SignUp.AgreeChkWrap>
@@ -162,7 +183,9 @@ export default function SignUpPresenterPage(props: any) {
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
+                <SignUp.AgreeContents3 onClick={onClickContents}>
+                  상세보기
+                </SignUp.AgreeContents3>
                 <ThemeProvider theme={theme}>
                   <Checkbox
                     checked={checked[1]}
@@ -171,26 +194,10 @@ export default function SignUpPresenterPage(props: any) {
                     checkedIcon={<CheckCircleIcon />}
                     onClick={props.onClick}
                     id={props.id}
-                  />
-                </ThemeProvider>
-              </SignUp.AgreeChkWrap>{" "}
-              <SignUp.Line />
-              <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1 style={{ color: "gray" }}>
-                  (선택)
-                </SignUp.AgreeContents1>
-                <SignUp.AgreeContents2>
-                  개인회원 약관에 동의
-                </SignUp.AgreeContents2>
-                <SignUp.AgreeContents3>상세보기</SignUp.AgreeContents3>
-                <ThemeProvider theme={theme}>
-                  <Checkbox
-                    checked={checked[2]}
-                    onChange={handleCheck(2)}
-                    icon={<CheckCircleOutlineIcon color="secondary" />}
-                    checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
+                    style={{
+                      width: "10px",
+                      height: "10px",
+                    }}
                   />
                 </ThemeProvider>
               </SignUp.AgreeChkWrap>

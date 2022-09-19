@@ -2,12 +2,9 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
-  /* width: 90%; */
-  /* height: 968px; */
   display: flex;
   flex-direction: row;
   margin: 0px auto;
-  /* overflow-y: hidden; */
 `;
 
 export const SignUpWrap = styled.div`
@@ -15,21 +12,24 @@ export const SignUpWrap = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
-  /* justify-content: center; */
-  /* width: 35%; */
   width: 768px;
+  height: 160vh;
   margin: 0px auto;
+
   @media ${breakPoints.mobile} {
-    z-index: 999;
     width: 100%;
+    height: 170vh;
   }
 `;
 
 export const BtnWrap = styled.div`
   display: flex;
   flex-direction: row;
-  width: 66%;
+  width: 75%;
   margin-bottom: 20px;
+  @media ${breakPoints.mobile} {
+    width: 90%;
+  }
 `;
 
 export const UserWrap = styled.div`
@@ -54,16 +54,19 @@ export const OwnerWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: burlywood; // 나중에 삼항연산자로 색 입히기
+  background-color: #ffa500; // 나중에 삼항연산자로 색 입히기
   margin: 0px 5px;
   margin-bottom: 20px;
   border-radius: 30px;
 `;
 
 export const Ment1 = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #ffffff;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Ment2 = styled.div`
@@ -71,17 +74,20 @@ export const Ment2 = styled.div`
   color: #ffffff;
 `;
 
+export const OwnerNumWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    width: 90%;
+  }
+`;
+
 export const Title = styled.div`
   font-size: 20px;
   font-weight: 650;
   margin-bottom: 7px;
-`;
-
-export const OwnerNumWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 65%;
-  margin-bottom: 30px;
 `;
 
 export const OwnerImg = styled.input``;
@@ -91,14 +97,19 @@ export const ElWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 65%;
+  width: 70%;
+
+  @media ${breakPoints.mobile} {
+    width: 90%;
+    font-size: 0.9rem;
+  }
 `;
 
 export const IdPwWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   /* background-color: blue; */
 `;
 
@@ -108,16 +119,16 @@ export const InputElWrap = styled.div`
   align-items: center;
   border: 1px solid rgb(118, 118, 118);
   width: 100%;
-  border-radius: 2px;
+  border-radius: 10px;
   margin-right: 10px;
+  padding-left: 7px;
 `;
 export const Input = styled.input`
-  width: 100%;
+  width: 90%;
   height: 2.5rem;
-  padding: 0px 10px;
-  border: none;
   outline: none;
-  color: black;
+  border: none;
+  margin-top: 3px;
 `;
 export const InputWrap = styled.div`
   width: 100%;
@@ -153,14 +164,13 @@ export const AgreeWrap = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 20px;
-  /* border: 1px solid black; */
 `;
 
 export const AgreeWrap2 = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   border: 1px solid #c8c8c8;
 `;
 
@@ -169,38 +179,58 @@ export const AgreeChkWrap = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 10px 40px;
+  height: 8vh;
+  padding: 10px 50px;
+
+  @media ${breakPoints.mobile} {
+    padding: 10px;
+    width: 100%;
+    height: 6vh;
+  }
 `;
 
 export const AgreeContents1 = styled.div`
-  font-size: 12px;
+  font-size: 0.8rem;
   color: red;
   width: 20%;
 `;
 export const AgreeContents2 = styled.div`
-  font-size: 12px;
+  font-size: 0.8rem;
   color: gray;
   width: 60%;
+
+  @media ${breakPoints.mobile} {
+    font-size: 0.8rem;
+    width: 50%;
+  }
 `;
 export const AgreeContents3 = styled.div`
-  font-size: 12px;
+  font-size: 0.7rem;
   color: gray;
-  width: 12%;
+  width: 9%;
+  margin-right: 20px;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    font-size: 0.5rem;
+    width: 12%;
+  }
 `;
 
 export const PhoneWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
 `;
 
 export const PhoneNumWrap = styled.div`
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+  align-items: center;
   width: 100%;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 `;
 
 export const PhoneNum = styled.input`
@@ -216,9 +246,13 @@ export const NumBtn = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props) => (props.isActivePhone ? "burlywood" : "gray")};
+  background-color: ${(props) => (props.isActivePhone ? "#ffa500" : "gray")};
   color: white;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 7rem;
+    height: 40px;
+  }
 `;
 
 export const NumBtn2 = styled.div`
@@ -227,18 +261,21 @@ export const NumBtn2 = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props) => (props.isActive ? "burlywood" : "gray")};
+  background-color: ${(props) => (props.isActiveNum ? "#ffa500" : "gray")};
   color: white;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 7rem;
+    height: 40px;
+  }
 `;
 
 export const NumberWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
   width: 100%;
-  color: white;
+  color: black;
 `;
 
 export const Number = styled.input`
@@ -254,10 +291,11 @@ export const SignUpBtn = styled.button`
   height: 3rem;
   line-height: 3rem;
   border-radius: 50px;
-  background-color: #f5cf1f;
+  background-color: orange;
   color: white;
   text-align: center;
   margin: 40px 0px;
+  font-size: 1.3rem;
   border: none;
   cursor: pointer;
 `;

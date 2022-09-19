@@ -2,6 +2,7 @@ import * as Landing from "./Landing.styles";
 import { useInView } from "react-intersection-observer";
 import { useSpring, animated } from "react-spring";
 import CountUp from "../../commons/count/Countup";
+import { useRouter } from "next/router";
 
 export default function LandingWebInfo() {
   const [ref, inView] = useInView({
@@ -10,12 +11,18 @@ export default function LandingWebInfo() {
     threshold: 0, // 0 - 1
   });
 
+  const router = useRouter();
+
+  const onClickLogo = () => {
+    router.push("/home");
+  };
+
   const props = useSpring({ number: Math.floor(231), from: { number: 1 } });
   return (
     <Landing.ThirdWrapper>
       <Landing.Wrapper1>
         <Landing.RightWrapper>
-          <Landing.MainLogo src="/images/newlogo.png" />
+          <Landing.MainLogo src="/images/newlogo.png" onClick={onClickLogo} />
           <Landing.LogoInfo style={{ fontWeight: "550" }}>
             <span style={{ backgroundColor: "#FFD5B4" }}>
               사용자 데이터 기반의 애견카페 추천 서비스
