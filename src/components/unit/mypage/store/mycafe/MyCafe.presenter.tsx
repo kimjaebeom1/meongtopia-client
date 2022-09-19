@@ -14,43 +14,34 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
           <MyCafe.Link>카페 등록</MyCafe.Link>
         </Link>
       </MyCafe.Header>
-      {props.data?.fetchIncomes
-        .filter((el: []) => el.length)
-        .map((el: any) => el[0])
+      {props.data?.fetchOwnerStores
         .filter((_: any, i: number) => i < Number(props.add) * 2)
         .map((el: any) => (
           <MyCafe.ListWrapper key={uuidv4()}>
-            {el.store?.storeImg?.[0].url ? (
+            {el.storeImg?.[0].url ? (
               <MyCafe.Img
-                src={`https://storage.googleapis.com/${el.store?.storeImg?.[0].url}`}
+                src={`https://storage.googleapis.com/${el.storeImg?.[0].url}`}
               />
             ) : (
               <MyCafe.Img src="/images/dogcharacter.jpg" />
             )}
-            <MyCafe.UserList
-              id={el.store?.storeID}
-              onClick={props.onClickToDetail}
-            >
+            <MyCafe.UserList id={el.storeID} onClick={props.onClickToDetail}>
               <MyCafe.ContentsText>
-                <MyCafe.Title>{el.store?.name}</MyCafe.Title>
+                <MyCafe.Title>{el.name}</MyCafe.Title>
                 <MyCafe.RatingWrapperMobile>
                   <MyCafe.Star />
-                  <span style={{ marginLeft: "0.5rem" }}>
-                    {el.store?.avgRating}
-                  </span>
+                  <span style={{ marginLeft: "0.5rem" }}>{el.avgRating}</span>
                 </MyCafe.RatingWrapperMobile>
                 <MyCafe.RatingWrapper>
-                  <Rate value={el.store?.avgRating} disabled />
-                  <span style={{ marginLeft: "0.5rem" }}>
-                    {el.store?.avgRating}
-                  </span>
+                  <Rate value={el.avgRating} disabled />
+                  <span style={{ marginLeft: "0.5rem" }}>{el.avgRating}</span>
                 </MyCafe.RatingWrapper>
               </MyCafe.ContentsText>
 
               <MyCafe.Horizon />
               <MyCafe.ContentsText>
                 <MyCafe.SelectTag>
-                  {el.store?.storeTag.map((el: any) => (
+                  {el.storeTag.map((el: any) => (
                     <span
                       key={el.tagID}
                       style={{ marginRight: "0.5rem", fontSize: "0.9rem" }}
@@ -59,45 +50,37 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
                 </MyCafe.SelectTag>
                 <MyCafe.PickWrapper>
                   <MyCafe.Heart />
-                  {el.store?.pickCount}
+                  {el.pickCount}
                 </MyCafe.PickWrapper>
               </MyCafe.ContentsText>
               <MyCafe.ContentsText>
-                <span>{el.store?.address}</span>
+                <span>{el.address}</span>
                 <MyCafe.PickWrapperMobile>
                   <MyCafe.Heart />
-                  {el.store?.pickCount}
+                  {el.pickCount}
                 </MyCafe.PickWrapperMobile>
               </MyCafe.ContentsText>
               <MyCafe.ContentsText>
-                <span>{`${el.store?.open} ~ ${el.store?.close}`}</span>
+                <span>{`${el.open} ~ ${el.close}`}</span>
                 <span
                   style={{ fontSize: "1.2rem" }}
-                >{`입장료 ${el.store?.entranceFee.toLocaleString()}원`}</span>
+                >{`입장료 ${el.entranceFee.toLocaleString()}원`}</span>
               </MyCafe.ContentsText>
             </MyCafe.UserList>
             <MyCafe.BtnWrapper>
-              <MyCafe.BtnDetail
-                id={el.store?.storeID}
-                onClick={props.onClickToEdit}
-              >
+              <MyCafe.BtnDetail id={el.storeID} onClick={props.onClickToEdit}>
                 수정하기
               </MyCafe.BtnDetail>
-              <MyCafe.BtnDelete
-                id={el.store?.storeID}
-                onClick={props.onClickDelete}
-              >
+              <MyCafe.BtnDelete id={el.storeID} onClick={props.onClickDelete}>
                 삭제하기
               </MyCafe.BtnDelete>
             </MyCafe.BtnWrapper>
           </MyCafe.ListWrapper>
         ))}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {props.data?.fetchIncomes ? (
+        {props.data?.fetchOwnerStores ? (
           Number(props.add) * 2 <
-            props.data?.fetchIncomes
-              .filter((el: []) => el.length)
-              .map((el: any) => el[0]).length && (
+            props.data?.fetchOwnerStores.map((el: any) => el[0]).length && (
             <MyCafe.AddBtn onClick={props.onClickAdd}>더보기</MyCafe.AddBtn>
           )
         ) : (

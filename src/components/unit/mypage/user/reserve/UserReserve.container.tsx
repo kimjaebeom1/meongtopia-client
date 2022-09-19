@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import { getErrorMessage } from "../../../../../commons/libraries/utils";
 import {
   IMutation,
@@ -11,14 +11,13 @@ import MyPageUserReserveUI from "./UserReserve.presenter";
 import {
   CANCEL_RESERVATION,
   FETCH_CANCEL_RESERVATION,
-  FETCH_RESERVATION,
+  FETCH_USER_RESERVATION,
 } from "./UserReserve.queries";
 
 export default function MyPageUserReserve() {
   const [add, setAdd] = useState(1);
 
-  const { data: reserveData } =
-    useQuery<Pick<IQuery, "fetchReservation">>(FETCH_RESERVATION);
+  const { data: reserveData } = useQuery(FETCH_USER_RESERVATION);
 
   const { data: cancelData } = useQuery<Pick<IQuery, "fetchCancelReservation">>(
     FETCH_CANCEL_RESERVATION
@@ -40,7 +39,7 @@ export default function MyPageUserReserve() {
           },
           refetchQueries: [
             {
-              query: FETCH_RESERVATION,
+              query: FETCH_USER_RESERVATION,
             },
             {
               query: FETCH_USER,

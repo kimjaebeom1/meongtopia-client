@@ -100,14 +100,20 @@ export type IIncome = {
 export type IMutation = {
   __typename?: 'Mutation';
   cancelPayment: IPayment;
+  /** 사용자가 예약취소하는 기능 */
   cancelReservation: Scalars['Boolean'];
+  /** 만료 확인하는 기능 */
+  checkExpired: Scalars['String'];
   checkNickname: Scalars['Boolean'];
+  /** 예약 확인으로 바꾸는 기능 */
+  checkReservation: Scalars['Boolean'];
   checkValidToken: Scalars['String'];
   createAdim: IUser;
   createBoard: IBoard;
   createLocationTag: IStrLocationTag;
   createOwner: IUser;
   createPayment: IPayment;
+  /** 사용자가 예약하는 기능 */
   createReservation: IReservation;
   createResponse: IReviewResponse;
   createReview: IReview;
@@ -156,6 +162,11 @@ export type IMutationCancelReservationArgs = {
 
 export type IMutationCheckNicknameArgs = {
   nickname: Scalars['String'];
+};
+
+
+export type IMutationCheckReservationArgs = {
+  resID: Scalars['String'];
 };
 
 
@@ -368,9 +379,9 @@ export type IQuery = {
   fetchCancelReservation: Array<IReservation>;
   fetchIncomes: Array<Array<IIncome>>;
   fetchLocationTags: Array<IStrLocationTag>;
+  fetchOwnerStores: Array<IStore>;
   fetchPickRank: Array<IStore>;
   fetchPicks: Array<IStore>;
-  fetchReservation: Array<IReservation>;
   fetchReview: Array<IReviewResponse>;
   fetchStore: IStore;
   fetchStoreIncome: Array<IIncome>;
@@ -381,6 +392,7 @@ export type IQuery = {
   fetchTags: Array<IStoreTag>;
   fetchUser: IUser;
   fetchUserBoards: Array<IBoard>;
+  fetchUserReservation: Array<IReservation>;
   fetchUsers: Array<IUser>;
   /** Return : 검색한 가게들의 정보 */
   searchStores: Array<IStore>;
@@ -407,11 +419,6 @@ export type IQueryFetchPickRankArgs = {
 };
 
 
-export type IQueryFetchReservationArgs = {
-  order?: InputMaybe<Scalars['String']>;
-};
-
-
 export type IQueryFetchStoreArgs = {
   storeID: Scalars['String'];
 };
@@ -424,6 +431,7 @@ export type IQueryFetchStoreIncomeArgs = {
 
 
 export type IQueryFetchStoreReviewesArgs = {
+  order?: InputMaybe<Scalars['String']>;
   storeID: Scalars['String'];
 };
 
@@ -444,6 +452,11 @@ export type IQueryFetchStoresTagArgs = {
 };
 
 
+export type IQueryFetchUserReservationArgs = {
+  order?: InputMaybe<Scalars['String']>;
+};
+
+
 export type IQueryFetchUsersArgs = {
   name: Scalars['String'];
 };
@@ -453,6 +466,13 @@ export type IQuerySearchStoresArgs = {
   search?: InputMaybe<Scalars['String']>;
 };
 
+export enum IReservation_State {
+  Cancel = 'CANCEL',
+  Expired = 'EXPIRED',
+  Pending = 'PENDING',
+  Used = 'USED'
+}
+
 export type IReservation = {
   __typename?: 'Reservation';
   amount: Scalars['Int'];
@@ -461,6 +481,7 @@ export type IReservation = {
   members: Scalars['Int'];
   pets: Scalars['Int'];
   resID: Scalars['String'];
+  state: IReservation_State;
   store: IStore;
   user: IUser;
 };
@@ -494,11 +515,12 @@ export type IStore = {
   description: Scalars['String'];
   entranceFee: Scalars['Int'];
   locationTag: IStrLocationTag;
-  name: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
   open: Scalars['String'];
   pet: Array<IPet>;
   phone: Scalars['String'];
   pickCount: Scalars['Int'];
+  reservation: Array<IReservation>;
   smallDog: Scalars['Int'];
   storeID: Scalars['String'];
   storeImg: Array<IStoreImg>;

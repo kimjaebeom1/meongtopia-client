@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { MouseEvent } from "react";
-import { FETCH_INCOMES } from "../mycafe/MyCafe.queries";
+import { FETCH_INCOMES } from "./Income.queries";
 import MyPageStoreInComeUI from "./Income.presenter";
 
 export default function MyPageStoreInCome() {

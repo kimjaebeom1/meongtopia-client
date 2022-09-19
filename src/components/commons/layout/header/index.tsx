@@ -12,7 +12,7 @@ import { useEffect } from "react";
 const MENUS = [
   { page: "/home", title: "홈으로" },
   { page: "/cafe", title: "카페 검색" },
-  { page: "/community", title: "커뮤니티" },
+  { page: "/community", title: "추천 게시판" },
 ];
 
 export default function LayoutHeader() {

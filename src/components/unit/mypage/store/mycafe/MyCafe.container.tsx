@@ -4,13 +4,14 @@ import { MouseEvent, useState } from "react";
 import { getErrorMessage } from "../../../../../commons/libraries/utils";
 import { IMutation } from "../../../../../commons/types/generated/types";
 import MyPageStoreMyCafeUI from "./MyCafe.presenter";
-import { DELETE_STORE, FETCH_INCOMES } from "./MyCafe.queries";
+import { DELETE_STORE, FETCH_OWNER_STORES } from "./MyCafe.queries";
 
 export default function MyPageStoreMyCafe() {
   const router = useRouter();
   const [add, setAdd] = useState(1);
 
-  const { data } = useQuery(FETCH_INCOMES);
+  const { data } = useQuery(FETCH_OWNER_STORES);
+
   const [deleteStore] =
     useMutation<Pick<IMutation, "deleteStore">>(DELETE_STORE);
 
@@ -30,7 +31,7 @@ export default function MyPageStoreMyCafe() {
         variables: {
           storeID: String((e.currentTarget as HTMLDivElement).id),
         },
-        refetchQueries: [{ query: FETCH_INCOMES }],
+        refetchQueries: [{ query: FETCH_OWNER_STORES }],
       });
     } catch (error) {
       getErrorMessage(error);
