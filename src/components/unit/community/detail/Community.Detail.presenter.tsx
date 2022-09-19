@@ -7,7 +7,7 @@ export default function CommunityDetailPresenterPage(props) {
     <Detail.Wrapper>
       <Detail.ColumnWrap>
         <Detail.Img
-          src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg[0].url}`}
+          src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`}
         />
         {/* <Detail.ContentsWrap> */}
         <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
