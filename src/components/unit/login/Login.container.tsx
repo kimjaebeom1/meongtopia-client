@@ -81,7 +81,7 @@ export default function LoginContainerPage() {
         },
       });
       const accessToken = result.data?.login;
-      router.push("/home");
+      alert("로그인 되었습니다");
       setAccessToken(accessToken);
       setIsActive(true);
 
