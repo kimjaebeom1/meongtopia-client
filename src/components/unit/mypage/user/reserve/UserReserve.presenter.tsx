@@ -2,30 +2,39 @@ import * as UserReserve from "./UserReserve.styles";
 import "antd/dist/antd.css";
 import { IMyPageUserReserveUIProps } from "./UserReserve.types";
 
+const STATE = ["예약중", "예약취소", "사용완료", "기간만료"];
 export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
-  const data = props.cancelData?.fetchCancelReservation;
-  const temp: string[] = [];
-  for (let i = 0; i < data?.length; i++) {
-    temp.push(data[i].resID);
-  }
+  const stateFunc = (data: string) => {
+    const temp = data;
+    if (temp === "PENDING") {
+      return STATE[0];
+    }
+    if (temp === "CANCEL") {
+      return STATE[1];
+    }
+    if (temp === "USED") {
+      return STATE[2];
+    }
+    if (temp === "EXPIRED") {
+      return STATE[3];
+    }
+  };
 
   return (
     <UserReserve.Wrapper>
       <UserReserve.PageTitle>예약 내역</UserReserve.PageTitle>
-      {props.reserveData?.fetchReservation
-        .filter((_, i) => i < Number(props.add) * 2)
-        .map((el) => (
+      {props.reserveData?.fetchUserReservation
+        .filter((_: any, i: number) => i < Number(props.add) * 2)
+        .map((el: any) => (
           <UserReserve.ListWrapper key={el.resID}>
-            <UserReserve.State>
-              {temp.includes(el.resID) ? "예약취소" : "예약중"}
-            </UserReserve.State>
-            {el.store?.storeImg?.[0].url ? (
+            <UserReserve.State>{stateFunc(el.state)}</UserReserve.State>
+            {/* {el.store.storeImg?.url ? (
               <UserReserve.Img
                 src={`https://storage.googleapis.com/${el.store?.storeImg?.[0].url}`}
               />
-            ) : (
-              <UserReserve.Img src="/images/dogcharacter.jpg" />
-            )}
+            ) : ( */}
+            <UserReserve.Img src="/images/dogcharacter.jpg" />
+            {/* )} */}
             <UserReserve.UserList>
               <UserReserve.ContentsText>
                 <UserReserve.Title>{el.store.name}</UserReserve.Title>
@@ -45,7 +54,7 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
                 <span>{`${el.amount}원`}</span>
               </UserReserve.ContentsText>
             </UserReserve.UserList>
-            {temp.includes(el.resID) ? (
+            {stateFunc(el.state) === "예약취소" ? (
               <div></div>
             ) : (
               <UserReserve.Cancel
@@ -57,9 +66,9 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
           </UserReserve.ListWrapper>
         ))}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {props.reserveData?.fetchReservation[0] ? (
+        {props.reserveData?.fetchUserReservation[0] ? (
           Number(props.add) * 2 <
-            props.reserveData?.fetchReservation.length && (
+            props.reserveData?.fetchUserReservation.length && (
             <UserReserve.AddBtn onClick={props.onClickAdd}>
               더보기
             </UserReserve.AddBtn>

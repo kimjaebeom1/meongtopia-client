@@ -11,9 +11,3 @@ export const UPLOAD_FILE = gql`
     uploadFile(files: $files)
   }
 `;
-
-export const DELETE_PROFILE = gql`
-  mutation deleteProfile {
-    deleteProfile
-  }
-`;

@@ -5,13 +5,13 @@ import { IMyPageSidebarUIProps } from "./Sidebar.types";
 const USER_MENUS = [
   { page: "/mypage/user/reserve", title: "예약 내역" },
   { page: "/mypage/user/pick", title: "내가 찜한 목록" },
-  { page: "/mypage/user/review", title: "내가 쓴 댓글" },
+  { page: "/mypage/user/review", title: "내가 쓴 추천글" },
 ];
 
 const STORE_MENUS = [
   { page: "/mypage/store/mycafe", title: "내 카페" },
   { page: "/mypage/store/income", title: "수입 내역" },
-  { page: "/mypage/store/response", title: "내가 쓴 답글" },
+  { page: "/mypage/store/reservelist", title: "예약 확인" },
 ];
 
 export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {

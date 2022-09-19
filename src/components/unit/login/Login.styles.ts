@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
+interface isActiveProps {
+  isActive: boolean;
+}
+
 export const Wrapper = styled.div`
   width: 100%;
   padding: 8rem 0;
@@ -123,7 +127,8 @@ export const LoginBtn = styled.button`
     background-color: #f4840b;
   }
 
-  background-color: ${(props) => (props.isActive ? "orange" : "none")};
+  background-color: ${(props: isActiveProps) =>
+    props.isActive ? "orange" : "none"};
 `;
 
 export const SignUp = styled.div`

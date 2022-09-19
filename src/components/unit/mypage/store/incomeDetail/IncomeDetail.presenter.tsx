@@ -25,17 +25,16 @@ ChartJS.register(
 export default function MyPageStoreInComeDetailUI(
   props: IMyPageStoreInComeDetailUIProps
 ) {
-  const today = new Date();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
-  const labels = [];
+  let date = [...(props.data?.fetchStoreIncome.map((el) => el.date) || [])];
 
-  for (let i = -7; i < 0; i++) {
-    labels.push(`${mm} / ${Number(dd) + i}`);
+  if (date.length > 7) {
+    for (let i = 7; i < date.length; i++) {
+      date.shift();
+    }
   }
 
   let totalCashes = [
-    ...(props.data?.fetchStoreIncome.map((el: any) => el.totalCash) || []),
+    ...(props.data?.fetchStoreIncome.map((el) => el.totalCash) || []),
   ];
 
   if (totalCashes.length > 7) {
@@ -58,7 +57,7 @@ export default function MyPageStoreInComeDetailUI(
   };
 
   const lineChartData = {
-    labels: props.data?.fetchStoreIncome.map((el) => el.date),
+    labels: date,
     datasets: [
       {
         data: totalCashes,

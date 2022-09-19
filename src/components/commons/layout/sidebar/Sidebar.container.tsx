@@ -12,13 +12,13 @@ import {
 import { UPDATE_USER } from "../../../unit/mypage/user/myinfo/MyInfo.queries";
 import { FETCH_USER } from "../header/Header.queries";
 import MyPageSidebarUI from "./Sidebar.presenter";
-import { DELETE_PROFILE, LOGOUT, UPLOAD_FILE } from "./Sidebar.queries";
+import { LOGOUT, UPLOAD_FILE } from "./Sidebar.queries";
 
 export default function MyPageSidebar() {
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const [imgUrl, setImgUrl] = useState("");
+  // const [imgUrl, setImgUrl] = useState("");
 
   const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
 
@@ -31,8 +31,6 @@ export default function MyPageSidebar() {
     Pick<IMutation, "updateUser">,
     IMutationUpdateUserArgs
   >(UPDATE_USER);
-  const [deleteProfile] =
-    useMutation<Pick<IMutation, "deleteProfile">>(DELETE_PROFILE);
 
   const onClickUpload = () => {
     fileRef.current?.click();

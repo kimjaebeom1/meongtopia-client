@@ -42,18 +42,13 @@ export default function SignUpOwnerPresenterPage(props: any) {
     <SignUp.Wrapper>
       <SignUp.SignUpWrap>
         <SignUp.BtnWrap>
-          <SignUp.UserWrap>
-            <SignUp.Ment1 onClick={props.onClickMoveToUser}>
-              개 인 회 원 가 입
-            </SignUp.Ment1>
+          <SignUp.UserWrap onClick={props.onClickMoveToUser}>
+            개 인 회 원 가 입
             {/* <SignUp.Ment2>만 15세 이상 가능</SignUp.Ment2> */}
           </SignUp.UserWrap>
 
-          <SignUp.OwnerWrap>
-            <SignUp.Ment1 onClick={props.onClickMoveToOwner}>
-              사 장 님 회 원 가 입
-            </SignUp.Ment1>
-            {/* <SignUp.Ment2></SignUp.Ment2> */}
+          <SignUp.OwnerWrap onClick={props.onClickMoveToOwner}>
+            사 장 님 회 원 가 입{/* <SignUp.Ment2></SignUp.Ment2> */}
           </SignUp.OwnerWrap>
         </SignUp.BtnWrap>
         {/* <form onSubmit={props.handleSubmit(props.onClickSubmit)}> */}

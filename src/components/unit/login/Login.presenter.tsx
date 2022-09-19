@@ -1,6 +1,7 @@
 import * as Login from "./Login.styles";
+import { ILoginPresenterPageProps } from "./Login.types";
 
-export default function LoginPresenterPage(props) {
+export default function LoginPresenterPage(props: ILoginPresenterPageProps) {
   return (
     <Login.Wrapper>
       <Login.LoginPartWrap>
@@ -62,7 +63,7 @@ export default function LoginPresenterPage(props) {
 
         <Login.Line />
 
-        <Login.Ad src="/images/landingad.png" />
+        <Login.Ad src="/images/ad.svg" />
       </Login.LoginPartWrap>
     </Login.Wrapper>
   );

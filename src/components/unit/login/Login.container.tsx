@@ -4,8 +4,8 @@ import { ChangeEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import LoginPresenterPage from "./Login.presenter";
-import { LOGIN, FETCH_USER } from "./Login.queries";
-import { useQuery } from "@apollo/client";
+import { LOGIN } from "./Login.queries";
+
 import { Modal } from "antd";
 import "antd/dist/antd.css";
 
@@ -26,7 +26,6 @@ export default function LoginContainerPage() {
     router.push("https://meongtopiaserver.shop/login/kakao%22");
   };
 
-  const client = useApolloClient();
   const [isActive, setIsActive] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -35,8 +34,6 @@ export default function LoginContainerPage() {
   const [passwordError, setPasswordError] = useState("");
 
   const [, setAccessToken] = useRecoilState(accessTokenState);
-
-  const { data } = useQuery(FETCH_USER);
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -103,13 +100,13 @@ export default function LoginContainerPage() {
 
   return (
     <LoginPresenterPage
+      emailError={emailError}
+      passwordError={passwordError}
+      isActive={isActive}
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
       onClickLogin={onClickLogin}
       onClickMoveToSignup={onClickMoveToSignup}
-      emailError={emailError}
-      passwordError={passwordError}
-      isActive={isActive}
       onClickNaver={onClickNaver}
       onClickGoogle={onClickGoogle}
       onClickKakao={onClickKakao}

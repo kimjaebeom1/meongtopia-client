@@ -1,13 +1,14 @@
 import { gql } from "@apollo/client";
 
-export const FETCH_RESERVATION = gql`
-  query fetchReservation {
-    fetchReservation {
+export const FETCH_USER_RESERVATION = gql`
+  query fetchUserReservation {
+    fetchUserReservation {
       resID
       members
       pets
       amount
       date
+      state
       store {
         storeID
         avgRating
