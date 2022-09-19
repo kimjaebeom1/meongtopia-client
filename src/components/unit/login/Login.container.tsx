@@ -1,6 +1,6 @@
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
 import LoginPresenterPage from "./Login.presenter";
@@ -13,17 +13,22 @@ export default function LoginContainerPage() {
   const [login] = useMutation(LOGIN);
 
   const router = useRouter();
+  const loginRef = useRef();
+
+  useEffect(() => {
+    loginRef.current?.focus();
+  }, []);
 
   const onClickGoogle = () => {
-    router.push("https://meongtopiaserver.shop/login/google%22");
+    router.push("https://meongtopiaserver.shop/login/google");
   };
 
   const onClickNaver = () => {
-    router.push("https://meongtopiaserver.shop/login/naver%22");
+    router.push("https://meongtopiaserver.shop/login/naver");
   };
 
   const onClickKakao = () => {
-    router.push("https://meongtopiaserver.shop/login/kakao%22");
+    router.push("https://meongtopiaserver.shop/login/kakao");
   };
 
   const [isActive, setIsActive] = useState(false);
@@ -110,6 +115,7 @@ export default function LoginContainerPage() {
       onClickNaver={onClickNaver}
       onClickGoogle={onClickGoogle}
       onClickKakao={onClickKakao}
+      loginRef={loginRef}
     />
   );
 }

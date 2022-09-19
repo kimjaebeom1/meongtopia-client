@@ -15,6 +15,7 @@ export default function LoginPresenterPage(props: ILoginPresenterPageProps) {
             <Login.Input
               placeholder="이메일을 입력해주세요."
               onChange={props.onChangeEmail}
+              ref={props.loginRef}
             />
             {/* </Login.InputBorder> */}
             <Login.Error>{props.emailError}</Login.Error>

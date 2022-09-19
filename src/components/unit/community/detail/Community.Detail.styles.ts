@@ -27,7 +27,7 @@ export const RowWrap = styled.div`
 export const Img = styled.img`
   width: 75%;
   height: 50vh;
-  /* object-fit: cover; */
+  object-fit: cover;
   /* box-shadow: 2.5px 0px 5px 1px lightgray; */
   border: 1px solid lightgray;
   border-radius: 10px;

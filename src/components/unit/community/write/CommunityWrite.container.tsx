@@ -10,40 +10,12 @@ import {
 import { IUpdateBoardInput } from "./CommunityWrite.types";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Modal } from "antd";
+import "antd/dist/antd.css";
 
-export default function CommunityContainerPage(props) {
-  const router = useRouter();
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
-  const [uploadFile] = useMutation(UPLOAD_FILE);
-
-  const [file, setFile] = useState("");
-  const [isActive, setIsActive] = useState(false);
-
-  const fileRef = useRef<HTMLInputElement>(null);
-
-  const onClickUpload = () => {
-    fileRef.current?.click();
-  };
-
-  // img url를 만들어주는 api
-  const onChangeImg = async (event: any) => {
-    const ImageFile = event.target.files?.[0];
-
-    try {
-      const result = await uploadFile({ variables: { files: ImageFile } });
-      setFile(result.data?.uploadFile);
-      console.log(result.data?.uploadFile);
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(getErrorMessage(error));
-      }
-    }
-  };
-
-  const { register, handleSubmit, setValue, trigger } = useForm({
+export default function CommunityContainerPage(props: any) {
+  const { register, handleSubmit, setValue, trigger, reset } = useForm({
     mode: "onChange",
   });
 
@@ -53,13 +25,63 @@ export default function CommunityContainerPage(props) {
     trigger("contents");
   };
 
+  const router = useRouter();
+
+  const [createBoard] = useMutation(CREATE_BOARD);
+  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+
+  const [file, setFile] = useState(""); // uploadFile api로 만든 url이 담긴 state
+  const [imageUrl, setImageUrl] = useState(""); // 사진미리보기 url
+
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const onClickUpload = () => {
+    fileRef.current?.click();
+  };
+
+  useEffect(() => {
+    if (props.data !== undefined) {
+      reset({
+        title: props.data.fetchBoard.title,
+        contents: props.data.fetchBoard.contents,
+        boardImg: {
+          url: props.data.fetchBoard.boardImg?.url,
+        },
+      });
+      setImageUrl(props.data.fetchBoard.boardImg[0]?.url);
+    }
+  }, [props.data]);
+
+  console.log(props.data?.fetchBoard.boardImg[0]?.url);
+  console.log([props.data?.fetchBoard.boardImg[0]?.url]);
+
+  // 이미지 url api
+  const onChangeImg = async (event: any) => {
+    const ImageFile = event.target.files[0];
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(ImageFile);
+    fileReader.onload = (data) => {
+      if (typeof data.target?.result === "string") {
+        setImageUrl(data.target?.result);
+        setFile(data.target?.result);
+        console.log(data.target?.result);
+      }
+    };
+
+    try {
+      const result = await uploadFile({ variables: { files: ImageFile } });
+      setFile(result.data?.uploadFile);
+    } catch (error) {
+      if (error instanceof Error) {
+        getErrorMessage(error);
+      }
+    }
+  };
+
   // 등록하기
   const onClickSubmit = async (data: any) => {
-    if (!(data.title && data.contents && file)) {
-      Modal.info({});
-      return;
-    }
-
     try {
       const result = await createBoard({
         variables: {
@@ -74,38 +96,37 @@ export default function CommunityContainerPage(props) {
       router.push(`/community/${result.data?.createBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
-        alert(getErrorMessage(error));
+        getErrorMessage(error);
       }
     }
   };
 
   // 수정하기
   const onClickUpdate = async (data: any) => {
-    const updateBoardInputs: IUpdateBoardInput = {};
-    if (data.title) updateBoardInputs.title = data.title;
-    if (data.contents) updateBoardInputs.contents = data.contents;
-    if (file) updateBoardInputs.file = file;
+    if (typeof router.query.boardID !== "string") return;
 
-    console.log(updateBoardInputs.title);
+    const updateBoardInputs: IUpdateBoardInput = {};
+    if (data.title !== "") updateBoardInputs.title = data.title;
+    if (data.contents !== "") updateBoardInputs.contents = data.contents;
+    if (file !== "") updateBoardInputs.file = file;
 
     try {
       const result = await updateBoard({
         variables: {
           updateBoardInput: {
-            updateBoardInputs,
-            // title: updateBoardInputs.title,
-            // contents: updateBoardInputs.contents,
-            // file: updateBoardInputs.file,
-            boardId: String(router.query.boardID),
+            // updateBoardInputs,
+            title: updateBoardInputs.title,
+            contents: updateBoardInputs.contents,
+            boardImg: updateBoardInputs.file,
           },
+          boardID: String(router.query.boardID),
         },
       });
-
-      console.log(result.data?.updateBoard);
-      router.push(`/community/${result.data?.updateBoard.boardId}`);
+      console.log(updateBoardInputs.title);
+      router.push(`/community/${result.data?.updateBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
-        alert(getErrorMessage(error));
+        getErrorMessage(error);
       }
     }
   };
@@ -121,7 +142,9 @@ export default function CommunityContainerPage(props) {
       handleSubmit={handleSubmit}
       onClickUpdate={onClickUpdate}
       isEdit={props.isEdit}
-      isActive={isActive}
+      imageUrl={imageUrl}
+      data={props.data}
+      file={file}
     />
   );
 }
