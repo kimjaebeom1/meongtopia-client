@@ -102,6 +102,7 @@ export default function CafeContentsWrite(props) {
       });
       alert("게시글 생성이 완료되었습니다.");
       router.push(`/cafe/${result.data.createStore.storeID}`);
+      console.log(result);
     } catch (error) {
       if (error instanceof Error) alert("등록 실패");
     }

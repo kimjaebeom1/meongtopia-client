@@ -78,7 +78,7 @@ export const CafeNameInput = styled.input`
 
 export const ErrorTag = styled.div`
   color: red;
-  font-size: 16px;
+  font-size: 1rem;
 `;
 
 export const Tag = styled.div`
@@ -94,19 +94,12 @@ export const ImageUploadWrapper = styled.div`
   margin-top: 1rem;
 
   @media ${breakPoints.mobile} {
-    display: none;
-    height: 80px;
-    justify-content: space-evenly;
-    text-align: center;
-  }
-`;
-
-export const MobileUploadWrapper = styled.div`
-  display: none;
-
-  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 0;
     margin-top: 1rem;
-    display: flex;
   }
 `;
 
@@ -137,11 +130,11 @@ export const TimeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
-  margin-right: 30px;
+  margin-right: 1.875rem;
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    margin-right: 0px;
+    margin-right: 0rem;
   }
 `;
 
@@ -156,8 +149,8 @@ export const TimeInputWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    margin: 0px 30px;
+    font-size: 1.25rem;
+    margin: 0rem 1.875rem;
   }
 `;
 
@@ -203,11 +196,11 @@ export const ToastWrapper = styled.div`
 
 export const FeeWrapper = styled.div`
   width: 40%;
-  margin-left: 50px;
+  margin-left: 3.125rem;
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    margin-left: 0px;
+    margin-left: 0rem;
   }
 `;
 
@@ -215,7 +208,7 @@ export const TimeAndFeeErrorWrapper = styled.div`
   display: flex;
 
   & > div {
-    margin-right: 18px;
+    margin-right: 1.125rem;
     width: 30%;
   }
 `;
@@ -260,7 +253,7 @@ export const AddressModal = styled(Modal)`
 
 export const MapWrapper = styled.div`
   width: 100%;
-  height: 300px;
+  height: 18.75rem;
   margin-top: 1.7em;
 `;
 
@@ -291,7 +284,7 @@ export const PrevButton = styled.button`
   border: none;
   background-color: #808080;
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
   cursor: pointer;
 `;
@@ -311,9 +304,9 @@ export const NextButton = styled.button`
       ? "#d9d9d9"
       : "orange"};
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
-  margin-left: 10px;
+  margin-left: 0.625rem;
   cursor: pointer;
 `;
 
@@ -327,9 +320,9 @@ export const SubmitButton = styled.button`
       ? "#d9d9d9"
       : "orange"};
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
-  margin-left: 10px;
+  margin-left: 0.625rem;
   cursor: pointer;
   color: white;
 `;
@@ -339,8 +332,8 @@ export const StoreTag = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 1rem;
-  width: 8em;
-  height: 2em;
+  width: 8rem;
+  height: 2rem;
   background-color: ${(props) => (props.isActive ? "orange" : "#fff")};
   border-radius: 30px;
   border: 1px solid
@@ -348,4 +341,10 @@ export const StoreTag = styled.div`
   /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
   color: ${(props) => (props.isActive ? "white" : "#999")};
   cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    margin-right: 0.5rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
 `;

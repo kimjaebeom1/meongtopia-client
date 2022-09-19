@@ -1,5 +1,5 @@
 import { ChangeEvent, MouseEvent } from "react";
-import { IQuery } from "../../../../commons/types/generated/types";
+import { IQuery } from "../../../commons/types/generated/types";
 
 export interface ICafeListUIProps {
   data?: Pick<IQuery, "fetchStores">;

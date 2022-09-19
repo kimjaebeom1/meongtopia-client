@@ -57,6 +57,7 @@ export default function CafeContentsWriteUI(props: any) {
               <CafeContentsWrite.ErrorTag></CafeContentsWrite.ErrorTag>
 
               <CafeContentsWrite.Tag>
+                카페 사진을 추가해주세요
                 <CafeContentsWrite.ImageUploadWrapper>
                   {props.fileUrls.map((el, index) => (
                     <CafeImgUpload

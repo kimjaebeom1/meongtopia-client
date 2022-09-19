@@ -2,24 +2,33 @@ import styled from "@emotion/styled";
 import { Rate } from "antd";
 import "antd/dist/antd.css";
 import { BsPersonCircle } from "react-icons/bs";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Body = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   padding-top: 1rem;
+
+  @media ${breakPoints.mobile} {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Review = styled.div`
   display: flex;
   flex-direction: column;
   width: 65%;
-  font-size: 16px;
+  font-size: 1rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const ListContainer = styled.div`
   padding-top: 1rem;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 `;
 
 export const ProfileContainer = styled.div`
@@ -33,8 +42,8 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
 `;
 
@@ -58,7 +67,7 @@ export const Date = styled.h4`
 export const Contents = styled.p`
   display: block;
   width: 60%;
-  height: 40px;
+  height: 2.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -70,7 +79,7 @@ export const Contents = styled.p`
 `;
 
 export const More = styled.div`
-  font-size: 16px;
+  font-size: 1rem;
   text-decoration: underline;
   text-underline-position: under;
 
@@ -83,6 +92,10 @@ export const More = styled.div`
 // 작성페이지
 export const WriteWrapper = styled.div`
   width: 35%;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 export const CommentsTag = styled.div`
   font-size: 1.5rem;
@@ -91,21 +104,20 @@ export const CommentsTag = styled.div`
 export const CommentsBox = styled.textarea`
   padding-top: 0.7rem;
   padding-left: 0.7rem;
-  background: #e9e9e9;
   width: 100%;
-  height: 147px;
-  border: none;
+  height: 9.188rem;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 0.938rem;
+  border: 2px solid #e9e9e9;
 `;
 
 export const CommentsBtn = styled.button`
-  margin-top: 11px;
+  margin-top: 0.688rem;
   border: none;
-  width: 116px;
+  width: 7.25rem;
   font-weight: 500;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 1.25rem;
   background: orange;
   color: white;
 `;

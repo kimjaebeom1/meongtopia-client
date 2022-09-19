@@ -1,14 +1,14 @@
-import "antd/dist/antd.css";
 import * as HomePage from "./HomePage.styles";
 import { useInView } from "react-intersection-observer";
 import { Rate } from "antd";
 import DOMPurify from "dompurify";
 import Link from "next/link";
+import "antd/dist/antd.css";
 
 export default function HomeUI(props: any) {
   const [ref, inView] = useInView({
-    root: null, // root : 대상에 대한 경계를 지정합니다. 지정하지 않는다면 뷰포트를 경계로 지정합니다.
-    rootMargin: "100px", //rootMargin : root에 대한 margin을 설정합니다. 이는 CSS의 margin과 비슷합니다.
+    root: null,
+    rootMargin: "100px",
     threshold: 0.4, // 0 - 1
   });
 
@@ -19,7 +19,7 @@ export default function HomeUI(props: any) {
           <HomePage.BannerTextRow
             data-aos="fade-up"
             data-aos-anchor-placement="bottom-bottom
-                "
+            "
             data-aos-offset="100"
             data-aos-easing="ease-out-cubic"
             data-aos-duration="1000"
@@ -57,9 +57,43 @@ export default function HomeUI(props: any) {
       <HomePage.Wrapper>
         <HomePage.RecommendWrapper>
           <HomePage.PickTag>
-            <div>추천</div> <img src="/images/logoHead.svg" />
-            카페
+            <div>
+              <div>추천</div>
+              <img src="/images/logoHead.svg" /> 카페
+            </div>
+            <Link href="/cafe">
+              <HomePage.MorePage>+ 더 보기</HomePage.MorePage>
+            </Link>
           </HomePage.PickTag>
+
+          <HomePage.PickListWrapper>
+            {props.data?.fetchPickRank.map((el: any) => (
+              <HomePage.PickList
+                onClick={props.onClickMoveToPick(el)}
+                key={el.storeID}
+              >
+                {el.storeImg[0].url ? (
+                  <HomePage.PickImage
+                    src={`https://storage.googleapis.com/${el.storeImg[0].url}`}
+                  />
+                ) : (
+                  <HomePage.PickImage src="/images/instacafe.jpeg" />
+                )}
+
+                <HomePage.PickName>{el.name}</HomePage.PickName>
+                <Rate disabled value={el.avgRating} />
+
+                <HomePage.PickDescription>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(el.description),
+                    }}
+                  ></div>
+                </HomePage.PickDescription>
+              </HomePage.PickList>
+            ))}
+          </HomePage.PickListWrapper>
+
           <HomePage.PickListWrapper>
             {props.data?.fetchPickRank.map((el) => (
               <HomePage.PickList
@@ -98,8 +132,13 @@ export default function HomeUI(props: any) {
           data-aos-duration="1000"
         >
           <HomePage.PickTag>
-            <div>신규</div> <img src="/images/logoHead.svg" />
-            카페{" "}
+            <div>
+              <div>신규</div>
+              <img src="/images/logoHead.svg" /> 카페
+            </div>
+            <Link href="/cafe">
+              <HomePage.MorePage>+ 더 보기</HomePage.MorePage>
+            </Link>
           </HomePage.PickTag>
           <div className={inView ? "isActive" : ""} ref={ref}>
             <HomePage.PickListWrapper
@@ -107,7 +146,10 @@ export default function HomeUI(props: any) {
               ref={ref}
             >
               {props.recentData?.fetchStores.slice(0, 3).map((el) => (
-                <HomePage.PickList key={el.storeID}>
+                <HomePage.PickList
+                  onClick={props.onClickMoveToPick(el)}
+                  key={el.storeID}
+                >
                   {el.storeImg[0].url ? (
                     <HomePage.PickImage
                       src={`https://storage.googleapis.com/${el.storeImg[0].url}`}

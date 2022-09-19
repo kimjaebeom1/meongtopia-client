@@ -1,8 +1,7 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Container = styled.div`
-  /* padding-top: 2rem; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,7 +10,7 @@ export const Container = styled.div`
 
 export const Banner = styled.div`
   width: 100%;
-  height: 600px;
+  height: 37.5rem;
   font-family: "myfont";
   background-image: url("/images/Rectangle123.png");
   background-size: cover;
@@ -24,16 +23,31 @@ export const Banner = styled.div`
   opacity: 1;
   justify-content: center;
   display: flex;
+
+  @media ${breakPoints.mobile} {
+    height: 20rem;
+    padding-top: 3rem;
+    font-size: 2rem;
+  }
 `;
 
 export const BannerText = styled.div`
-  width: 1200px;
+  width: 75rem;
+
+  @media ${breakPoints.mobile} {
+    padding-left: 2rem;
+  }
 `;
 
 export const BannerInfoText = styled.div`
   padding-top: 1.5rem;
   font-size: 1.4rem;
   width: 21rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: none;
+  }
 `;
 
 export const BannerTextRow = styled.div`
@@ -47,6 +61,10 @@ export const BannerTextRow = styled.div`
   & > span {
     display: flex;
     flex-direction: row;
+
+    @media ${breakPoints.mobile} {
+      margin-right: 1rem;
+    }
   }
 
   & > span > div {
@@ -55,8 +73,8 @@ export const BannerTextRow = styled.div`
 `;
 
 export const BannerBtn = styled.button`
-  width: 150px;
-  height: 60px;
+  width: 9.375rem;
+  height: 3.75rem;
   margin-top: 1.5rem;
   border-radius: 0.5rem;
   font-size: 1.5rem;
@@ -70,30 +88,49 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 1.7rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
-export const RecommendWrapper = styled.div``;
+export const RecommendWrapper = styled.div`
+  width: 100%;
+`;
 
 export const PickTag = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 1.875rem;
+  justify-content: space-between;
 
   & > div {
-    color: orange;
+    display: flex;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 2rem;
+    align-items: flex-end;
   }
+
+  & > div > div {
+    color: orange;
+  }
+`;
+
+export const MorePage = styled.span`
+  font-size: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 `;
 
 export const PickListWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 1.5rem;
-  height: 400px;
+  padding-top: 1rem;
+  height: 25rem;
 `;
 
 export const PickList = styled.div`
@@ -106,10 +143,6 @@ export const PickList = styled.div`
   display: inline-block;
   transition-duration: $defaultDuration;
   transition-property: transform;
-
-  @include hideTapHighlightColor();
-  @include hardwareAccel();
-  @include improveAntiAlias();
 
   &:hover {
     transform: scale(1.05);
@@ -126,10 +159,10 @@ export const PickImage = styled.img`
 export const PickName = styled.li`
   text-align: left;
   width: 100%;
-  font-size: 23px;
+  font-size: 1.438rem;
   color: #484848;
   padding: 5px 0;
-  height: 35px;
+  height: 2.188rem;
 `;
 
 export const PickDescription = styled.li`
@@ -138,8 +171,8 @@ export const PickDescription = styled.li`
   overflow: hidden;
   text-align: left;
   width: 100%;
-  font-size: 16px;
-  height: 50px;
+  font-size: 1.1rem;
+  height: 3.125rem;
   font-weight: 300;
   color: #949494;
   text-overflow: ellipsis;
@@ -149,7 +182,7 @@ export const PickDescription = styled.li`
 export const Bottom = styled.div`
   margin-top: 2rem;
   width: 100%;
-  height: 300px;
+  height: 18.75rem;
   font-family: "myfont";
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/images/homebottom1.jpg");

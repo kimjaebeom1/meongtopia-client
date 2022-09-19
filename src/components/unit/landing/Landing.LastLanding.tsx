@@ -11,7 +11,7 @@ export default function LastLandingPage() {
   return (
     <Landing.LastWrapper>
       <Landing.Wrapper>
-        <Landing.Logo src="/images/newLogo.png" />
+        <Landing.Logo src="/images/newlogo.png" />
         <div>
           <Landing.Text onClick={onClickMoveToHome}>들어가기</Landing.Text>
         </div>

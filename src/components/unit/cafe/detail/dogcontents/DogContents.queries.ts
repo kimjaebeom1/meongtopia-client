@@ -60,6 +60,7 @@ export const FETCH_RESERVATION = gql`
   query fetchReservation {
     fetchReservation {
       resID
+      date
     }
   }
 `;
