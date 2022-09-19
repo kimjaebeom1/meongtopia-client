@@ -51,7 +51,7 @@ export default function DetailDogContentsUI(props) {
                   textDecoration: "underline",
                 }}
               >
-                후기
+                후기 {props.reviewCount?.ReviewCount}개
               </div>
             </div>
           </div>
