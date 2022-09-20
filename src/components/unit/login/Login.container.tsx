@@ -15,9 +15,9 @@ export default function LoginContainerPage() {
   const router = useRouter();
   const loginRef = useRef();
 
-  useEffect(() => {
-    loginRef.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   loginRef.current?.focus();
+  // }, []);
 
   const onClickGoogle = () => {
     router.push("https://meongtopiaserver.shop/login/google");
@@ -115,7 +115,7 @@ export default function LoginContainerPage() {
       onClickNaver={onClickNaver}
       onClickGoogle={onClickGoogle}
       onClickKakao={onClickKakao}
-      loginRef={loginRef}
+      // loginRef={loginRef}
     />
   );
 }

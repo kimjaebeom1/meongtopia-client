@@ -23,7 +23,7 @@ export default function LandingWebInfo() {
       <Landing.Wrapper1>
         <Landing.RightWrapper>
           <Landing.MainLogo src="/images/newlogo.png" onClick={onClickLogo} />
-          <Landing.LogoInfo style={{ fontWeight: "550" }}>
+          <Landing.LogoInfo>
             <span style={{ backgroundColor: "#FFD5B4" }}>
               사용자 데이터 기반의 애견카페 추천 서비스
             </span>
@@ -43,7 +43,7 @@ export default function LandingWebInfo() {
 
         <Landing.LeftWrapper>
           <Landing.LeftItem1 className={inView ? "isActive" : ""} ref={ref}>
-            <div className={inView ? "isActive" : ""} ref={ref}>
+            <Landing.Pick className={inView ? "isActive" : ""} ref={ref}>
               <div style={{ fontSize: "23px" }}>
                 전국
                 <br />
@@ -59,20 +59,20 @@ export default function LandingWebInfo() {
                 매장 등록
               </div>
               <br />
-              <Landing.Content3>
-                오랜 시간동안 멍토피아를
-                <br />
-                찾아주시고 함께 동행하는
-                <br />
-                카페들이 계속해서
-                <br />
-                늘어나고 있습니다.
-              </Landing.Content3>
-            </div>
+            </Landing.Pick>
+            <Landing.Content3 className={inView ? "isActive" : ""} ref={ref}>
+              오랜 시간동안 멍토피아를
+              <br />
+              찾아주시고 함께 동행하는
+              <br />
+              카페들이 계속해서
+              <br />
+              늘어나고 있습니다.
+            </Landing.Content3>
           </Landing.LeftItem1>
 
           <Landing.LeftItem2 className={inView ? "isActive" : ""} ref={ref}>
-            <div className={inView ? "isActive" : ""} ref={ref}>
+            <Landing.Pick className={inView ? "isActive" : ""} ref={ref}>
               <div style={{ fontSize: "23px" }}>
                 월간 사용자 수
                 <br />
@@ -88,18 +88,17 @@ export default function LandingWebInfo() {
                 만명 +
               </div>
               <br />
-
-              <Landing.Content3>
-                월간 130만명 이상의
-                <br />
-                유저들이 <br />
-                멍토피아를 <br /> 사용중입니다.
-              </Landing.Content3>
-            </div>
+            </Landing.Pick>
+            <Landing.Content3 className={inView ? "isActive" : ""} ref={ref}>
+              월간 130만명 이상의
+              <br />
+              유저들이 <br />
+              멍토피아를 <br /> 사용중입니다.
+            </Landing.Content3>
           </Landing.LeftItem2>
 
           <Landing.LeftItem3 className={inView ? "isActive" : ""} ref={ref}>
-            <div className={inView ? "isActive" : ""} ref={ref}>
+            <Landing.Pick className={inView ? "isActive" : ""} ref={ref}>
               <div style={{ fontSize: "23px" }}>
                 패이지뷰
                 <br />
@@ -114,16 +113,16 @@ export default function LandingWebInfo() {
                 <br />건 +
               </div>
               <br />
-              <Landing.Content3>
-                멍토피아는
-                <br />
-                앱/웹/SNS채널의
-                <br />
-                페이지뷰는 월 85만건
-                <br />
-                이상입니다.
-              </Landing.Content3>
-            </div>
+            </Landing.Pick>
+            <Landing.Content3 className={inView ? "isActive" : ""} ref={ref}>
+              멍토피아는
+              <br />
+              앱/웹/SNS채널의
+              <br />
+              페이지뷰는 월 85만건
+              <br />
+              이상입니다.
+            </Landing.Content3>
           </Landing.LeftItem3>
         </Landing.LeftWrapper>
       </Landing.Wrapper1>

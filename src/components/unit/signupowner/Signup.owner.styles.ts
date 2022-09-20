@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
+interface ISignUpStyleProps {
+  isActive?: boolean;
+  isActivePhone?: boolean;
+  isActiveNum?: boolean;
+}
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -249,7 +255,7 @@ export const AgreeContents3 = styled.div`
   font-size: 0.9rem;
 
   color: #999;
-  width: 12%;
+  width: 8%;
   margin-right: 20px;
   border-bottom: 1px solid lightgray;
   cursor: pointer;
@@ -288,7 +294,8 @@ export const NumBtn = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props) => (props.isActivePhone ? "#ffa500" : "gray")};
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActivePhone ? "#ffa500" : "gray"};
   color: white;
   cursor: pointer;
   @media ${breakPoints.mobile} {
@@ -304,7 +311,8 @@ export const NumBtn2 = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props) => (props.isActiveNum ? "#ffa500" : "gray")};
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActiveNum ? "#ffa500" : "gray"};
   color: white;
   cursor: pointer;
   @media ${breakPoints.mobile} {

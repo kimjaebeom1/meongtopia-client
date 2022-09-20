@@ -6,8 +6,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Modal } from "antd";
 import "antd/dist/antd.css";
+import { ISignUpPresenterPageProps } from "./Signup.user.types";
 
-export default function SignUpPresenterPage(props: any) {
+export default function SignUpPresenterPage(props: ISignUpPresenterPageProps) {
   const theme = createTheme({
     palette: {
       primary: {
@@ -44,11 +45,10 @@ export default function SignUpPresenterPage(props: any) {
         <SignUp.BtnWrap>
           <SignUp.UserWrap onClick={props.onClickMoveToUser}>
             개 인 회 원 가 입
-            {/* <SignUp.Ment2>만 15세 이상 가능</SignUp.Ment2> */}
           </SignUp.UserWrap>
 
           <SignUp.OwnerWrap onClick={props.onClickMoveToOwner}>
-            사 장 님 회 원 가 입{/* <SignUp.Ment2></SignUp.Ment2> */}
+            사 장 님 회 원 가 입
           </SignUp.OwnerWrap>
         </SignUp.BtnWrap>
 
@@ -118,9 +118,7 @@ export default function SignUpPresenterPage(props: any) {
               </SignUp.PhoneInputWrap>
               <SignUp.NumBtn
                 onClick={props.onClickGetToken}
-                isActivePhone={
-                  props.isActivePhone ? true : props.setIsActivePhone
-                }
+                isActivePhone={props.isActivePhone ? true : props.isActivePhone}
               >
                 인증
               </SignUp.NumBtn>
@@ -167,8 +165,6 @@ export default function SignUpPresenterPage(props: any) {
                     onChange={handleCheck(0)}
                     icon={<CheckCircleOutlineIcon color="secondary" />}
                     checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
                     style={{
                       width: "10px",
                       height: "10px",
@@ -191,8 +187,6 @@ export default function SignUpPresenterPage(props: any) {
                     onChange={handleCheck(1)}
                     icon={<CheckCircleOutlineIcon color="secondary" />}
                     checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
                     style={{
                       width: "10px",
                       height: "10px",

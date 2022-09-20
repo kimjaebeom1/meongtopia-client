@@ -5,8 +5,6 @@ import LastLandingPage from "./Landing.LastLanding";
 
 import styled from "@emotion/styled";
 
-// import { css } from "@emotion/react";
-
 const Wrap = styled.div`
   * {
     font-family: "EarlyFontDiary";

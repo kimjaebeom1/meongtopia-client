@@ -1,13 +1,16 @@
 import * as Detail from "./Community.Detail.styles";
 
-export default function CommunityDetailPresenterPage(props) {
-  // console.log(props.data?.fetchBoard.boardImg[0].url);
+export default function CommunityDetailPresenterPage(props: any) {
+  const onError = (event: any) => {
+    event.target.src = "/images/listlogo.png";
+  };
 
   return (
     <Detail.Wrapper>
       <Detail.ColumnWrap>
         <Detail.Img
           src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`}
+          onError={onError}
         />
         {/* <Detail.ContentsWrap> */}
         <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
@@ -16,6 +19,7 @@ export default function CommunityDetailPresenterPage(props) {
           dangerouslySetInnerHTML={{ __html: props.data?.fetchBoard.contents }}
         />
       </Detail.ColumnWrap>
+      <Detail.Line />
       <Detail.ButtonWrap>
         <Detail.Button onClick={props.onClickMoveToList}>
           목록으로

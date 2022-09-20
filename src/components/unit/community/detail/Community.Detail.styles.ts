@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   margin: 0px auto;
@@ -7,7 +8,14 @@ export const Wrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 900px;
-  height: 100vh;
+  height: 130vh;
+  padding: 20px;
+
+  @media ${breakPoints.mobile} {
+    border: 1px solid black;
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 
 export const ColumnWrap = styled.div`
@@ -26,32 +34,21 @@ export const RowWrap = styled.div`
 
 export const Img = styled.img`
   width: 75%;
-  height: 50vh;
+  height: 45vh;
   object-fit: cover;
-  /* box-shadow: 2.5px 0px 5px 1px lightgray; */
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 2px;
 `;
 
-export const ContentsWrap = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 75%;
-  height: 50vh;
-  box-shadow: 2.5px 3px 9px 1px lightgray;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding: 10px 20px; */
-  /* border: 1px solid black; */
-`;
+export const ContentsWrap = styled.div``;
 
 export const Title = styled.div`
   font-size: 1.6rem;
   font-weight: 800;
-  width: 100%;
-  height: 20vh;
+  width: 75%;
+  height: 8vh;
+  line-height: 8vh;
   margin-top: 20px;
   padding-left: 20px;
   overflow: hidden;
@@ -69,9 +66,10 @@ export const Line = styled.div`
 `;
 export const Contents = styled.div`
   font-size: 1.2rem;
-  height: 70%;
+  width: 75%;
+  height: 30vh;
   padding: 20px;
-  /* margin-bottom: 60px; */
+  text-align: center;
 `;
 
 export const ButtonWrap = styled.div`
@@ -79,7 +77,7 @@ export const ButtonWrap = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 60%;
-  /* margin: 100px 0px; */
+  /* margin-bottom: 150px; */
 `;
 
 export const Button = styled.div`

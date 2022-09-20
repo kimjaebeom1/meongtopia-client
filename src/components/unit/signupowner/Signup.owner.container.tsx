@@ -7,7 +7,7 @@ import {
   CREATE_OWNER,
   UPLOAD_FILE,
 } from "./Signup.owner.queries";
-import { ChangeEvent, useState, useEffect } from "react";
+import { ChangeEvent, useState, useEffect, SetStateAction } from "react";
 import { Modal, message } from "antd";
 import "antd/dist/antd.css";
 import { checkEmail } from "../../../commons/libraries/utils";
@@ -236,31 +236,8 @@ export default function SignUpOwnerContainerPage() {
     router.push("/signup");
   };
 
-  // const schema = yup.object({
-  //   email: yup
-  //     .string()
-  //     .required("이메일을 입력해주세요")
-  //     .matches(
-  //       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
-  //       "이메일 형식에 맞지 않습니다"
-  //     ),
-  //   password: yup
-  //     .string()
-  //     .required("비밀번호를 입력해주세요")
-  //     .min(8, "비밀번호는 최소 8자리 이상 입력해주세요"),
-  //   storeName: yup.string().required("상호명을 입력해주세요"),
-  // });
-
-  // const { register, handleSubmit, formState } = useForm({
-  //   resolver: yupResolver(schema),
-  //   mode: "onChange",
-  // });
-
   return (
     <SignUpOwnerPresenterPage
-      // handleSubmit={handleSubmit}
-      // register={register}
-      // formState={formState} // 에러메세지담긴곳
       onClickMoveToUser={onClickMoveToUser}
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}

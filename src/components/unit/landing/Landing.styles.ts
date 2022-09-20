@@ -68,14 +68,39 @@ export const PhoneWrap = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-end;
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Span = styled.div`
-  font-weight: 100;
+  font-family: "Y_Spotlight";
+  font-size: 30px;
+
   .isActive {
     animation: backInDown;
     animation-duration: 2s;
   }
+
+  @media ${breakPoints.mobile} {
+    font-size: 20px;
+  }
+`;
+
+export const Span1 = styled.div`
+  font-family: "YUniverse-B";
+  font-size: 1.7rem;
+
+  .isActive {
+    animation: backInDown;
+    animation-duration: 2s;
+  }
+`;
+
+export const Span2 = styled.div`
+  font-size: 30px;
 `;
 
 export const PhoneCon = styled.div`
@@ -93,12 +118,21 @@ export const PhonePic1Wrap = styled.div`
     animation: backInDown;
     animation-duration: 1.5s;
   }
+
+  @media ${breakPoints.mobile} {
+    height: 13vh;
+    width: 100vw;
+  }
 `;
 
 export const PhonePic1 = styled.img`
   width: 15vw;
   height: 50%;
   margin-top: 30px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const PhonePic2Wrap = styled.div`
@@ -114,12 +148,21 @@ export const PhonePic2Wrap = styled.div`
     animation: backInDown;
     animation-duration: 2s;
   }
+
+  @media ${breakPoints.mobile} {
+    height: 13vh;
+    width: 100vw;
+  }
 `;
 
 export const PhonePic2 = styled.img`
   width: 15vw;
   height: 50%;
   margin-top: 30px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const PhonePic3Wrap = styled.div`
@@ -133,12 +176,21 @@ export const PhonePic3Wrap = styled.div`
     animation: backInDown;
     animation-duration: 2.5s;
   }
+
+  @media ${breakPoints.mobile} {
+    height: 13vh;
+    width: 100vw;
+  }
 `;
 
 export const PhonePic3 = styled.img`
   width: 15vw;
   height: 50%;
   margin-top: 30px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const PhonePic4Wrap = styled.div`
@@ -152,17 +204,30 @@ export const PhonePic4Wrap = styled.div`
     animation: backInDown;
     animation-duration: 3s;
   }
+
+  @media ${breakPoints.mobile} {
+    height: 13vh;
+    width: 100vw;
+
+    /* .isActive {
+      animation: FadeInUp;
+      animation-duration: 3s;
+    } */
+  }
 `;
 
 export const PhonePic4 = styled.img`
   width: 15vw;
   height: 50%;
   margin-top: 30px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const Part2 = styled.div`
   width: 50%;
-  /* border: 1px solid blue; */
 `;
 
 // ============================================================//
@@ -175,7 +240,7 @@ export const SecondeWrapper = styled.div`
   background-size: cover;
 
   @media ${breakPoints.mobile} {
-    background-position-y: 90px;
+    background-position-y: 170px;
     background-position-x: 83%;
     justify-content: center;
     align-items: flex-start;
@@ -187,7 +252,9 @@ export const Wrap2 = styled.div`
   display: flex;
   flex-direction: column;
 
-  /* padding-top: 70px; */
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const TitleWrap = styled.div`
@@ -204,6 +271,15 @@ export const TitleWrap = styled.div`
   .isActive {
     animation: backInLeft;
     animation-duration: 2s;
+  }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 30px;
   }
 `;
 
@@ -233,6 +309,10 @@ export const Img = styled.img`
   background-color: #fff;
   width: 45vw;
   box-shadow: 5px 6px 12px 3px lightgray;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 // =============================================================//
@@ -252,7 +332,7 @@ export const ThirdWrapper = styled.div`
   @media ${breakPoints.mobile} {
     height: 100%;
     width: 100vw;
-    background-position-x: -120px;
+    background-position-x: -100px;
   }
 `;
 
@@ -269,7 +349,7 @@ export const Wrapper1 = styled.div`
     width: 100%;
     height: 100%;
     left: 0%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
   }
 `;
 
@@ -285,11 +365,12 @@ export const LeftWrapper = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 70%;
-    border: 3px solid black;
     flex-direction: column;
     align-items: center;
   }
 `;
+
+export const Pick = styled.div``;
 
 export const LeftItem1 = styled.div`
   display: flex;
@@ -307,9 +388,9 @@ export const LeftItem1 = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     height: 70%;
-    border: 3px solid blue;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
   }
 `;
 
@@ -325,7 +406,16 @@ export const LeftItem2 = styled.div`
     animation: fadeInDown;
     animation-duration: 3s;
   }
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 `;
+
 export const LeftItem3 = styled.div`
   display: flex;
   flex-direction: column;
@@ -338,14 +428,20 @@ export const LeftItem3 = styled.div`
     animation: fadeInDown;
     animation-duration: 4s;
   }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 `;
 
 export const Content3 = styled.div`
   font-size: 1.1rem;
 
   @media ${breakPoints.mobile} {
-    font-size: 1.1rem;
-    border: 1px solid black;
+    font-size: 1.3rem;
   }
 `;
 
@@ -364,7 +460,6 @@ export const RightWrapper = styled.div`
     height: 30vh;
     width: 100%;
     margin: 0px auto;
-    border: 1px solid black;
   }
 `;
 
@@ -392,9 +487,9 @@ export const LogoInfo = styled.div`
   letter-spacing: 3px;
 
   @media ${breakPoints.mobile} {
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    line-height: 2;
+    font-size: 1.2rem;
+    letter-spacing: 2.2px;
+    line-height: 1.7;
   }
 `;
 
@@ -413,6 +508,11 @@ export const LastWrapper = styled.div`
   background-size: cover;
   display: flex;
   align-items: center;
+  background-color: #fef5ed;
+  @media ${breakPoints.mobile} {
+    background-position-x: -170px;
+    background-position-y: -20px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -424,6 +524,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  @media ${breakPoints.mobile} {
+    left: 25%;
+    top: -30%;
+  }
+
+  .isActive {
+    animation: jello;
+    animation-duration: 3s;
+  }
 `;
 
 export const Text = styled.button`
@@ -441,10 +551,18 @@ export const Text = styled.button`
     background-color: #ffa500;
     color: white;
   }
+
+  @media ${breakPoints.mobile} {
+    position: relative;
+    top: 960%;
+  }
 `;
 
 export const Logo = styled.img`
   width: 30vw;
   height: 23vh;
   margin-bottom: 30px;
+  @media ${breakPoints.mobile} {
+    width: 60vw;
+  }
 `;
