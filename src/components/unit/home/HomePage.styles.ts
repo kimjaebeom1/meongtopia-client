@@ -219,4 +219,172 @@ export const Bottom = styled.div`
   justify-content: center;
   display: flex;
   /* filter: brightness(35%); */
+  @media ${breakPoints.mobile} {
+    height: 8rem;
+    font-size: 1.5rem;
+  }
+`;
+
+// 커뮤니티 리스트
+
+export const ListWrapper = styled.section`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 0 1rem;
+  }
+`;
+
+export const CafeListWrapper = styled.div`
+  margin-top: 1rem;
+  width: 50%;
+  height: 19rem;
+  margin-bottom: 2rem;
+  display: flex;
+  border: 1px solid rgb(235, 235, 235);
+  border-radius: 8px;
+  box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const SliderWrapper = styled.div`
+  width: 100%;
+  padding: 0.2rem;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 1rem;
+  }
+`;
+
+export const CafeList = styled.ul`
+  width: 50rem;
+  padding: 1rem 3rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`;
+
+export const ContentsText = styled.li`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  line-height: normal;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  & span {
+    font-size: 1rem;
+    line-height: normal;
+
+    @media ${breakPoints.mobile} {
+      font-size: 1.2rem;
+      margin: 0.2rem 0;
+    }
+
+    & p {
+      margin: 0;
+      margin-top: 0.5rem;
+    }
+  }
+
+  @media ${breakPoints.mobile} {
+    margin: 0.2rem 0;
+    padding: 0rem;
+  }
+`;
+
+export const BottomWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
+`;
+
+export const MonthPick = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  align-items: center;
+  width: 50%;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    align-items: baseline;
+  }
+`;
+
+export const MonthPickImg = styled.img`
+  margin-top: 1rem;
+  height: 18.75rem;
+  position: relative;
+  z-index: 3;
+
+  @media ${breakPoints.mobile} {
+    margin-left: 6rem;
+  }
+`;
+
+export const MonthPickImg2 = styled.img`
+  margin-top: 7rem;
+  margin-left: 4rem;
+  height: 18.75rem;
+  position: absolute;
+  z-index: 1;
+
+  :hover {
+    z-index: 5;
+    transition: all 2 ease;
+  }
+  @media ${breakPoints.mobile} {
+    margin-left: 9rem;
+  }
+`;
+
+export const BottomAdWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 31.25rem;
+  background-color: rgba(241, 241, 241, 0.6);
+
+  @media ${breakPoints.mobile} {
+    height: 25rem;
+  }
+
+  & > div {
+    padding-top: 2rem;
+    font-size: 1.6rem;
+    font-family: "myFont";
+  }
+  @media ${breakPoints.mobile} {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  & > img {
+    width: 18.75rem;
+    @media ${breakPoints.mobile} {
+      width: 12.5rem;
+    }
+  }
 `;
