@@ -2,7 +2,7 @@ import DogImgUpload from "../../../../commons/upload/dogimg/DogImgUpload.contain
 import { v4 as uuidv4 } from "uuid";
 
 import * as DogContentsWrite from "./DogContentsWrite.styles";
-export default function DogContentsWriteUI(props) {
+export default function DogContentsWriteUI(props: any) {
   return (
     <DogContentsWrite.Wrapper>
       <DogContentsWrite.Tag>우라카페 강아지 몇마리?</DogContentsWrite.Tag>
@@ -63,7 +63,7 @@ export default function DogContentsWriteUI(props) {
           강아지 추가하기
         </DogContentsWrite.AddDogBtn>
       </div>
-      {props.petArr.map((el) => (
+      {props.petArr.map((el: any) => (
         <>
           <DogContentsWrite.MobileDeleteBtn
             key={uuidv4()}

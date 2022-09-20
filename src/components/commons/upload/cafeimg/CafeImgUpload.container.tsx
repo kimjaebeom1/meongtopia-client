@@ -5,14 +5,14 @@ import { UPLOAD_FILE } from "./CafeImgUpload.queries";
 import { CafeImgcheckValidationImage } from "./CafeImgUpload.validation";
 
 export default function CafeImgUpload(props: any) {
-  const fileRef = useRef(null);
+  const fileRef = useRef<HTMLInputElement>(null);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const onClickUpload = () => {
     fileRef.current?.click();
   };
 
-  const onChangeFile = async (event) => {
+  const onChangeFile = async (event: any) => {
     const file = CafeImgcheckValidationImage(event.target.files?.[0]);
     console.log(file);
     // if (!file) return;

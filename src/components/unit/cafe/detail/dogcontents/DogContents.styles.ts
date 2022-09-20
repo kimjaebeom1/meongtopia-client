@@ -195,6 +195,10 @@ export const Body = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: 2rem;
+
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export const BodyLine = styled.div`
@@ -346,7 +350,18 @@ export const ReservationWrapper = styled.div`
   font-weight: 500;
 
   @media ${breakPoints.mobile} {
+    margin-top: 2rem;
+    width: 100%;
+    height: 36rem;
+  }
+
+  & > span {
     display: none;
+
+    @media ${breakPoints.mobile} {
+      display: block;
+      text-align: center;
+    }
   }
 `;
 
@@ -378,6 +393,17 @@ export const ReservationBtn = styled.button`
   :hover {
     background-color: #f4840b;
   }
+`;
+
+export const UnReservationBtn = styled.button`
+  margin-top: 2rem;
+  background-color: #999;
+  width: 100%;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
 `;
 
 export const EntranceFee = styled.div`
@@ -445,6 +471,10 @@ export const Map = styled.div`
   width: 95%;
   height: 25rem;
   font-size: 0.875rem;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const MapTag = styled.div`

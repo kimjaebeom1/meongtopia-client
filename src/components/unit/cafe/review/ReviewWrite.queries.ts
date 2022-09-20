@@ -23,6 +23,12 @@ export const UPDATE_REVIEW = gql`
   }
 `;
 
+export const DELETE_REVIEW = gql`
+  mutation deleteReview {
+    deleteReview
+  }
+`;
+
 export const FETCH_STORE_REVIEWS = gql`
   query fetchStoreReviewes($storeID: String!) {
     fetchStoreReviewes(storeID: $storeID) {

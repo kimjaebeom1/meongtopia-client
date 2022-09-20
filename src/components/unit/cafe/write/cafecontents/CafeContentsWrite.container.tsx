@@ -1,10 +1,8 @@
 import { useState, createRef, useEffect, MouseEvent } from "react";
 import CafeContentsWriteUI from "./CafeContentsWrite.presenter";
-import { useForm } from "react-hook-form";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CREATE_STORE, UPDATE_STORE } from "./CafeContentsWrite.queries";
-import Editor from "@toast-ui/editor";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Editor } from "@toast-ui/react-editor";
 
 import {
   bigDogState,
@@ -13,8 +11,7 @@ import {
 } from "../../../../../commons/store";
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
-import { schema } from "../../../../../commons/libraries/validation";
-import { IUpdateStoreInput } from "../../../../../commons/types/generated/types";
+import { ICafeContentsWriteProps } from "./CafeContentsWrite.types";
 
 const initialInputs = {
   name: "",
@@ -25,7 +22,7 @@ const initialInputs = {
   address: "",
 };
 
-export default function CafeContentsWrite(props) {
+export default function CafeContentsWrite(props: ICafeContentsWriteProps) {
   const [locationActive, setLocationActive] = useState("");
   const [conditionActive, setConditionActive] = useState([""]);
   const router = useRouter();
@@ -51,7 +48,7 @@ export default function CafeContentsWrite(props) {
     setInputs(_inputs);
   };
 
-  const onChangeEntranceFee = (event) => {
+  const onChangeEntranceFee = (event: any) => {
     setEntranceFee(event.target.value);
   };
 
@@ -76,8 +73,8 @@ export default function CafeContentsWrite(props) {
   const editorRef = createRef<Editor>();
 
   const onChangeDescription = () => {
-    const inputs = editorRef.current?.getInstance().getHTML();
-    setDescription(inputs);
+    const input = editorRef.current?.getInstance().getHTML();
+    setDescription(String(input));
   };
 
   const onClickCreateStore = async () => {
@@ -109,42 +106,42 @@ export default function CafeContentsWrite(props) {
     }
   };
 
-  const onClickUpdateStore = async (data: any) => {
-    const currentFiles = JSON.stringify(fileUrls);
-    const defaultFiles = JSON.stringify(props.data?.fetchStore.storeImg);
-    const isChangedFiles = currentFiles !== defaultFiles;
+  // const onClickUpdateStore = async () => {
+  //   const currentFiles = JSON.stringify(fileUrls);
+  //   const defaultFiles = JSON.stringify(props.data?.fetchStore.storeImg);
+  //   const isChangedFiles = currentFiles !== defaultFiles;
 
-    const updateStoreInput: IUpdateStoreInput = {};
-    if (inputs.name) updateStoreInput.name = inputs.name;
-    if (inputs.phone) updateStoreInput.phone = inputs.phone;
-    if (inputs.open) updateStoreInput.open = inputs.open;
-    if (inputs.close) updateStoreInput.close = inputs.close;
-    if (address) updateStoreInput.address = address;
-    if (inputs.addressDetail)
-      updateStoreInput.addressDetail = inputs.addressDetail;
-    if (description) updateStoreInput.description = description;
-    if (entranceFee) updateStoreInput.entranceFee = Number(entranceFee);
-    if (bigDog) updateStoreInput.bigDog = Number(bigDog);
-    if (smallDog) updateStoreInput.smallDog = Number(smallDog);
-    if (locationActive) updateStoreInput.locationTag = locationActive;
-    if (conditionActive) updateStoreInput.storeTag = conditionActive;
-    if (petArr) updateStoreInput.pet = [...petArr];
-    if (isChangedFiles) updateStoreInput.storeImg = fileUrls.join().split(",");
+  //   const updateStoreInput: IUpdateStoreInput = {};
+  //   if (inputs.name) updateStoreInput.name = inputs.name;
+  //   if (inputs.phone) updateStoreInput.phone = inputs.phone;
+  //   if (inputs.open) updateStoreInput.open = inputs.open;
+  //   if (inputs.close) updateStoreInput.close = inputs.close;
+  //   if (address) updateStoreInput.address = address;
+  //   if (inputs.addressDetail)
+  //     updateStoreInput.addressDetail = inputs.addressDetail;
+  //   if (description) updateStoreInput.description = description;
+  //   if (entranceFee) updateStoreInput.entranceFee = Number(entranceFee);
+  //   if (bigDog) updateStoreInput.bigDog = Number(bigDog);
+  //   if (smallDog) updateStoreInput.smallDog = Number(smallDog);
+  //   if (locationActive) updateStoreInput.locationTag = locationActive;
+  //   if (conditionActive) updateStoreInput.storeTag = conditionActive;
+  //   if (petArr) updateStoreInput.pet = [...petArr];
+  //   if (isChangedFiles) updateStoreInput.storeImg = fileUrls.join().split(",");
 
-    try {
-      const result = await updateStore({
-        variables: {
-          storeID: router.query.cafeid,
-          updateStoreInput,
-        },
-      });
-      console.log(result);
-      alert("게시글 수정이 완료되었습니다.");
-      router.push(`/cafe/${result.data.updateStore.storeID}`);
-    } catch (error) {
-      if (error instanceof Error) alert("수정 실패");
-    }
-  };
+  //   try {
+  //     const result = await updateStore({
+  //       variables: {
+  //         storeID: router.query.cafeid,
+  //         updateStoreInput,
+  //       },
+  //     });
+  //     console.log(result);
+  //     alert("게시글 수정이 완료되었습니다.");
+  //     router.push(`/cafe/${result.data.updateStore.storeID}`);
+  //   } catch (error) {
+  //     if (error instanceof Error) alert("수정 실패");
+  //   }
+  // };
 
   const onClickLocationTag = (e: MouseEvent<HTMLDivElement>) => {
     setLocationActive((e.target as HTMLDivElement).id);
@@ -185,14 +182,18 @@ export default function CafeContentsWrite(props) {
 
   useEffect(() => {
     if (props.data?.fetchStore.storeImg.length) {
-      setFileUrls([...props.data?.fetchStore.storeImg.map((el) => el.url)]);
+      setFileUrls([
+        ...props.data?.fetchStore.storeImg.map((el: any) => el.url),
+      ]);
     }
 
-    const html = props.data?.fetchStore.description;
+    const html: any = props.data?.fetchStore.description;
     editorRef.current?.getInstance().setHTML(html);
 
     if (props.data?.fetchStore.storeTag.length)
-      setConditionActive(props.data?.fetchStore.storeTag.map((el) => el.name));
+      setConditionActive(
+        props.data?.fetchStore.storeTag.map((el: any) => el.name)
+      );
 
     if (props.data?.fetchStore.locationTag.name)
       setLocationActive(props.data?.fetchStore.locationTag.name);
@@ -226,11 +227,14 @@ export default function CafeContentsWrite(props) {
       data={props.data}
       files={files}
       setFiles={setFiles}
-      onClickUpdateStore={onClickUpdateStore}
+      // onClickUpdateStore={onClickUpdateStore}
       petArr={petArr}
       onChangeInputs={onChangeInputs}
       onChangeEntranceFee={onChangeEntranceFee}
       address={address}
+      onClickUpdateStore={function (data: any): Promise<void> {
+        throw new Error("Function not implemented.");
+      }}
     />
   );
 }

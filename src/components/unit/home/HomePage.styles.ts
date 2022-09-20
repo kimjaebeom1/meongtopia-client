@@ -6,6 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${breakPoints.mobile} {
+    padding: 0rem 1rem;
+  }
 `;
 
 export const Banner = styled.div`
@@ -223,6 +227,12 @@ export const Bottom = styled.div`
     height: 8rem;
     font-size: 1.5rem;
   }
+
+  & > div {
+    @media ${breakPoints.mobile} {
+      padding: 0rem -1rem;
+    }
+  }
 `;
 
 // 커뮤니티 리스트
@@ -232,10 +242,34 @@ export const ListWrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  .slick-slider {
+    width: 100%;
+    margin: 0;
+  }
+  .slick-list {
+    width: 100%;
+    height: 100%;
+  }
+  .slick-dots {
+    margin-bottom: 35px;
 
+    & > li {
+      color: white;
+    }
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+
+  .slick-next,
+  .slick-prev {
+    left: 0;
+    right: 0;
+  }
   @media ${breakPoints.mobile} {
     width: 100%;
-    padding: 0 1rem;
   }
 `;
 
@@ -315,6 +349,7 @@ export const BottomWrapper = styled.div`
 
   @media ${breakPoints.mobile} {
     flex-direction: column;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -347,7 +382,7 @@ export const MonthPickImg2 = styled.img`
   margin-left: 4rem;
   height: 18.75rem;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 
   :hover {
     z-index: 5;
@@ -365,10 +400,12 @@ export const BottomAdWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 31.25rem;
-  background-color: rgba(241, 241, 241, 0.6);
+  background-color: rgba(255, 215, 180, 0.8);
+  margin-top: 5rem;
 
   @media ${breakPoints.mobile} {
     height: 25rem;
+    display: none;
   }
 
   & > div {

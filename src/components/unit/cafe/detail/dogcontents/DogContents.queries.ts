@@ -14,6 +14,9 @@ export const FETCH_STORE = gql`
       bigDog
       smallDog
       avgRating
+      reservation {
+        resID
+      }
       storeTag {
         name
       }
@@ -68,5 +71,13 @@ export const FETCH_RESERVATION = gql`
 export const REVIEW_COUNT = gql`
   query ReviewCount($storeID: String!) {
     ReviewCount(storeID: $storeID)
+  }
+`;
+
+export const FETCH_USER_RESERVATION = gql`
+  query fetchUserReservation($order: String) {
+    fetchUserReservation(order: $order) {
+      resID
+    }
   }
 `;

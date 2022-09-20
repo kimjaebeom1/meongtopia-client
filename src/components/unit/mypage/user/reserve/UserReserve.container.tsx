@@ -23,6 +23,8 @@ export default function MyPageUserReserve() {
     FETCH_CANCEL_RESERVATION
   );
 
+  console.log(reserveData);
+
   const [cancelReservation] = useMutation<
     Pick<IMutation, "cancelReservation">,
     IMutationCancelReservationArgs

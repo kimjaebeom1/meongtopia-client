@@ -1,6 +1,6 @@
 import * as Detail from "./Community.Detail.styles";
 
-export default function CommunityDetailPresenterPage(props) {
+export default function CommunityDetailPresenterPage(props: any) {
   // console.log(props.data?.fetchBoard.boardImg[0].url);
 
   return (
