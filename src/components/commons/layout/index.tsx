@@ -22,14 +22,17 @@ export default function Layout(props: ILayoutProps) {
   const router = useRouter();
   const HIDDEN_HEADER = ["/"];
   const HIDDEN_FOOTER = ["/", "/login/", "/signup/", "/signup/owner/"];
+  const HIDDEN_NAVIGATOR = ["/"];
+
   const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath);
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath);
+  const isHiddenNavigator = HIDDEN_NAVIGATOR.includes(router.asPath);
   return (
     <LayoutWrapper>
       {!isHiddenHeader && <LayoutHeader />}
       <LayoutBody>{props.children}</LayoutBody>
       {!isHiddenFooter && <LayoutFooter />}
-      <LayoutNavigator />
+      {!isHiddenNavigator && <LayoutNavigator />}
     </LayoutWrapper>
   );
 }

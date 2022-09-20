@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { breakPoints } from "../../../../src/commons/styles/media";
-import MyPageSidebar from "../../../../src/components/commons/layout/sidebar/Sidebar.container";
-import MyPageStoreResponse from "../../../../src/components/unit/mypage/store/response/Response.container";
+import { breakPoints } from "../../../../../src/commons/styles/media";
+import MyPageSidebar from "../../../../../src/components/commons/layout/sidebar/Sidebar.container";
+import MyPageStoreCheckDetail from "../../../../../src/components/unit/mypage/store/checkDetail/CheckDetail.component";
 
 const Container = styled.div`
   width: 100%;
@@ -19,12 +19,12 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function MyPageStoreResponsePage() {
+export default function MyPageStoreCheckDetailPage() {
   return (
     <Container>
       <Wrapper>
         <MyPageSidebar />
-        <MyPageStoreResponse />
+        <MyPageStoreCheckDetail />
       </Wrapper>
     </Container>
   );

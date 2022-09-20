@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import { IMyPageUserReserveUIProps } from "./UserReserve.types";
 
 const STATE = ["예약중", "예약취소", "사용완료", "기간만료"];
+
 export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
   const stateFunc = (data: string) => {
     const temp = data;
@@ -28,13 +29,13 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
         .map((el: any) => (
           <UserReserve.ListWrapper key={el.resID}>
             <UserReserve.State>{stateFunc(el.state)}</UserReserve.State>
-            {/* {el.store.storeImg?.url ? (
+            {el.store.storeImg[0] ? (
               <UserReserve.Img
                 src={`https://storage.googleapis.com/${el.store?.storeImg?.[0].url}`}
               />
-            ) : ( */}
-            <UserReserve.Img src="/images/dogcharacter.jpg" />
-            {/* )} */}
+            ) : (
+              <UserReserve.Img src="/images/dogcharacter.jpg" />
+            )}
             <UserReserve.UserList>
               <UserReserve.ContentsText>
                 <UserReserve.Title>{el.store.name}</UserReserve.Title>

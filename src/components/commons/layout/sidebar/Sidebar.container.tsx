@@ -18,8 +18,6 @@ export default function MyPageSidebar() {
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
 
-  // const [imgUrl, setImgUrl] = useState("");
-
   const { data } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
 
   const [uploadFile] = useMutation<

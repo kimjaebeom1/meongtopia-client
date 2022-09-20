@@ -11,7 +11,7 @@ const USER_MENUS = [
 const STORE_MENUS = [
   { page: "/mypage/store/mycafe", title: "내 카페" },
   { page: "/mypage/store/income", title: "수입 내역" },
-  { page: "/mypage/store/reservelist", title: "예약 확인" },
+  { page: "/mypage/store/checkReserve", title: "예약 확인" },
 ];
 
 export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {

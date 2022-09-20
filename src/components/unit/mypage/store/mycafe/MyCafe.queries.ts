@@ -22,6 +22,17 @@ export const FETCH_OWNER_STORES = gql`
       storeImg {
         url
       }
+      reservation {
+        resID
+        members
+        pets
+        amount
+        date
+        state
+        user {
+          nickname
+        }
+      }
     }
   }
 `;
