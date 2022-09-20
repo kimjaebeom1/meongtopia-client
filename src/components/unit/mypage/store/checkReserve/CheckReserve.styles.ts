@@ -78,8 +78,32 @@ export const HeadName = styled.div`
   }
 `;
 
-export const DateName = styled.div`
-  width: 25%;
+export const DataRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+`;
+
+export const CafeRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  padding-left: 1rem;
+`;
+
+export const MembersRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+`;
+
+export const DataName = styled.div`
+  width: 100%;
   display: flex;
   cursor: pointer;
   :hover {
@@ -92,18 +116,30 @@ export const DateName = styled.div`
   }
 `;
 
-export const Date = styled.div`
+export const DataColumn = styled.div`
+  width: 50%;
+`;
+
+export const SumColumn = styled.div`
   width: 25%;
+  padding-right: 0.5rem;
+
+  @media ${breakPoints.mobile} {
+    padding: 0;
+  }
+`;
+
+export const Data = styled.div`
   display: flex;
   justify-content: flex-end;
 
   @media ${breakPoints.mobile} {
-    font-size: 1.1rem;
-    padding-right: 1rem;
+    font-size: 1.2rem;
+    padding-right: 0.5rem;
   }
 `;
 
-export const DatePrice = styled.div`
+export const DateBtn = styled.div`
   width: 25%;
   display: flex;
   justify-content: flex-end;

@@ -80,8 +80,8 @@ export type ICreateStoreInput = {
 export type ICreateUserInput = {
   businessLicenseImg?: InputMaybe<Scalars['String']>;
   email: Scalars['String'];
-  name: Scalars['String'];
-  nickname: Scalars['String'];
+  name?: InputMaybe<Scalars['String']>;
+  nickname?: InputMaybe<Scalars['String']>;
   password: Scalars['String'];
   phone: Scalars['String'];
   storeName?: InputMaybe<Scalars['String']>;
@@ -102,8 +102,6 @@ export type IMutation = {
   cancelPayment: IPayment;
   /** 사용자가 예약취소하는 기능 */
   cancelReservation: Scalars['Boolean'];
-  /** 만료 확인하는 기능 */
-  checkExpired: Scalars['String'];
   checkNickname: Scalars['Boolean'];
   /** 예약 확인으로 바꾸는 기능 */
   checkReservation: Scalars['Boolean'];
@@ -143,6 +141,7 @@ export type IMutation = {
   updateUser: IUser;
   updateUserPwd: Scalars['String'];
   uploadFile: Array<Scalars['String']>;
+  uploadOneFile: Scalars['String'];
   usePoint: Scalars['Boolean'];
 };
 
@@ -299,7 +298,7 @@ export type IMutationUpdateResponseArgs = {
 
 
 export type IMutationUpdateReviewArgs = {
-  storeID: Scalars['String'];
+  reviewID: Scalars['String'];
   updateReviewInput: IUpdateReviewInput;
 };
 
@@ -331,6 +330,11 @@ export type IMutationUpdateUserPwdArgs = {
 
 export type IMutationUploadFileArgs = {
   files: Array<Scalars['Upload']>;
+};
+
+
+export type IMutationUploadOneFileArgs = {
+  file: Scalars['Upload'];
 };
 
 
@@ -406,6 +410,12 @@ export type IQueryReviewCountArgs = {
 
 export type IQueryFetchBoardArgs = {
   boardID: Scalars['String'];
+};
+
+
+export type IQueryFetchBoardsArgs = {
+  order?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['Float']>;
 };
 
 

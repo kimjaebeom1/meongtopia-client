@@ -55,7 +55,7 @@ export const UserWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: gray; // 나중에 삼항연산자로 색 입히기
+  background-color: #999; // 나중에 삼항연산자로 색 입히기
   /* margin: 0px 5px; */
   border-radius: 50px;
   font-size: 1.1rem;

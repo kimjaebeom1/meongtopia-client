@@ -58,7 +58,7 @@ export default function CafeListUI(props: ICafeListUIProps) {
 
   // 검색 필터링
   if (props.search) {
-    const dataSearch = data?.filter((el) => el.name.includes(props.search));
+    const dataSearch = data?.filter((el) => el.name?.includes(props.search));
     data = dataSearch;
   }
 

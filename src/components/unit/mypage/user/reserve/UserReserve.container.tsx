@@ -17,7 +17,9 @@ import {
 export default function MyPageUserReserve() {
   const [add, setAdd] = useState(1);
 
-  const { data: reserveData } = useQuery(FETCH_USER_RESERVATION);
+  const { data: reserveData } = useQuery<Pick<IQuery, "fetchUserReservation">>(
+    FETCH_USER_RESERVATION
+  );
 
   const { data: cancelData } = useQuery<Pick<IQuery, "fetchCancelReservation">>(
     FETCH_CANCEL_RESERVATION
