@@ -7,7 +7,7 @@ export default function ChatBot() {
     script.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
     document.head.appendChild(script);
 
-    script.onload = (): any => {
+    script.onload = () => {
       const w = window;
       if (w.ChannelIO) {
         return (window.console.error || window.console.log || function () {})(
@@ -41,6 +41,7 @@ export default function ChatBot() {
         window.addEventListener("DOMContentLoaded", l, false);
         window.addEventListener("load", l, false);
       }
+      // eslint-disable-next-line no-undef
       ChannelIO("boot", {
         pluginKey: "31b638f3-c4d1-4f94-841c-f499736d02f5",
       });

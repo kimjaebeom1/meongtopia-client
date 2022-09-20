@@ -64,7 +64,13 @@ export default function EditCafePage() {
   return (
     <Container>
       <Wrapper>
-        <CafeContentsWrite isEdit={true} data={data} />
+        <CafeContentsWrite
+          isEdit={true}
+          data={data}
+          inputs={undefined}
+          next={false}
+          editorRef={null}
+        />
       </Wrapper>
     </Container>
   );

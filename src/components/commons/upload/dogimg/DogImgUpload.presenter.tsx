@@ -1,6 +1,6 @@
 import * as DogImgUpload from "./DogImgUpload.styles";
 
-export default function DogImgUploadUI(props) {
+export default function DogImgUploadUI(props: any) {
   return (
     <>
       {props.dogImage ? (

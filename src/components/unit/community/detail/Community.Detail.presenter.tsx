@@ -1,8 +1,9 @@
 import * as Detail from "./Community.Detail.styles";
 
 export default function CommunityDetailPresenterPage(props: any) {
-  // console.log(props.data?.fetchBoard.boardImg[0].url);
-
+  const onError = (event: any) => {
+    // event.target.src = "/images/listlogo.png";
+  };
   return (
     <Detail.Wrapper>
       <Detail.ColumnWrap>

@@ -9,7 +9,6 @@ import { v4 as uuidv4 } from "uuid";
 import Slider from "react-slick";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
-import Homepage from "../../../../pages/home";
 
 const NextArrow = styled.div`
   width: 5.125rem;
