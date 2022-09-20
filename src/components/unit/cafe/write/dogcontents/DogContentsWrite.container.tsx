@@ -78,6 +78,7 @@ export default function DogContentsWrite(props: any) {
   const onChangeDogImage = (fileUrl: string) => {
     setDogImage(fileUrl);
   };
+
   console.log(petArr);
 
   const onClickDelete = (index: any) => () => {

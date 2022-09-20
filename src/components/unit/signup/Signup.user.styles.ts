@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
+interface ISignUpStyleProps {
+  isActive?: boolean;
+  isActivePhone?: boolean;
+  isActiveNum?: boolean;
+}
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -178,7 +184,8 @@ export const CheckBtn = styled.div`
   line-height: 1.5rem;
   text-align: center;
   border-radius: 50px;
-  background-color: ${(props: any) => (props.isActive ? "#ffa500" : "#999")};
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActive ? "#ffa500" : "#999"};
   /* margin: 0px 10px; */
   line-height: 2rem;
   cursor: pointer;
@@ -242,7 +249,7 @@ export const NumBtn = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props: any) =>
+  background-color: ${(props: ISignUpStyleProps) =>
     props.isActivePhone ? "#ffa500" : "#999"};
   color: white;
   cursor: pointer;
@@ -297,7 +304,8 @@ export const NumBtn2 = styled.div`
   line-height: 40px;
   text-align: center;
   border-radius: 20px;
-  background-color: ${(props: any) => (props.isActiveNum ? "#ffa500" : "#999")};
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActiveNum ? "#ffa500" : "#999"};
   color: white;
   cursor: pointer;
 
@@ -362,7 +370,7 @@ export const AgreeContents3 = styled.div`
   font-size: 0.9rem;
 
   color: #999;
-  width: 12%;
+  width: 8%;
   margin-right: 20px;
   border-bottom: 1px solid lightgray;
   cursor: pointer;

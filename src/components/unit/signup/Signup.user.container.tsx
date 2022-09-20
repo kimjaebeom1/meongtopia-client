@@ -5,7 +5,7 @@ import {
   CHECK_VALID_TOKEN,
   CHECK_NICKNAME,
 } from "./Signup.user.queries";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Modal, message } from "antd";
@@ -214,9 +214,6 @@ export default function SignUpContainerPage() {
     }
   };
 
-  // 원희님 조용히 해주세요
-  // 다 지워버릴꺼야
-
   const onClickCreateUser = async () => {
     if (!checkEmail(email)) {
       setEmailError("이메일 @까지 입력해주세요");
@@ -252,10 +249,6 @@ export default function SignUpContainerPage() {
       });
       return;
     }
-
-    // if (!phone) {
-    //   setPhoneError("핸드폰번호를 입력해주세요");
-    // }
 
     if (email && password && name && nickname) {
       try {
@@ -294,6 +287,7 @@ export default function SignUpContainerPage() {
       onClickGetToken={onClickGetToken}
       onClickCheckValidToken={onClickCheckValidToken}
       onClickNicknameChk={onClickNicknameChk}
+      setIsCountdown={setIsCountdown}
       emailError={emailError}
       passwordError={passwordError}
       nameError={nameError}
@@ -301,7 +295,6 @@ export default function SignUpContainerPage() {
       passwordChkError={passwordChkError}
       minutes={minutes}
       seconds={seconds}
-      setIsCountdown={setIsCountdown}
       isActivePhone={isActivePhone}
       isActiveNum={isActiveNum}
       isActive={isActive}

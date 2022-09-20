@@ -1,8 +1,4 @@
 import * as Write from "./CommunityWrite.styles";
-import "react-quill/dist/quill.snow.css";
-import dynamic from "next/dynamic";
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function CommunityPresenterPage(props: any) {
   return (
@@ -15,39 +11,48 @@ export default function CommunityPresenterPage(props: any) {
         <Write.Title>
           {props.isEdit ? "게시물 수정하기" : "게시물 등록하기"}
         </Write.Title>
+
+        <Write.TitleWrap>
+          <Write.SubTitle>제목</Write.SubTitle>
+          <Write.TitleInput
+            placeholder="게시물 제목을 입력해주세요"
+            type="text"
+            {...props.register("title")}
+            defaultValue={props.data?.fetchBoard.title || ""}
+          />
+        </Write.TitleWrap>
+        <Write.Line />
+
         <Write.ContentsWrap>
-          <Write.ColumnWrap>
+          <Write.ImgWrap>
             <Write.SubTitle>이미지</Write.SubTitle>
-            <div onClick={props.onClickUpload}>이미지선택</div>
-            <Write.PrevImg src={props.imageUrl} />
-            {/* // imageUrl */}
-            <Write.Img
-              type="file"
-              ref={props.fileRef}
-              onChange={props.onChangeImg}
-            />
-          </Write.ColumnWrap>
+            {/* <Write.ImageWrap> */}
+            {props.file ? (
+              <Write.ImgBtn
+                onClick={props.onClickUpload}
+                src={props.imageUrl}
+              />
+            ) : (
+              <Write.UnImgWrap>
+                <Write.ImgBtn onClick={props.onClickUpload} />
+                <Write.Error>사진 추가</Write.Error>
+              </Write.UnImgWrap>
+            )}
+          </Write.ImgWrap>
+          {/* </Write.ImageWrap> */}
 
-          <Write.ColumnWrap>
-            <Write.SubTitle>제목</Write.SubTitle>
-            <Write.TitleInput
-              placeholder="게시물 제목을 입력해주세요"
-              type="text"
-              {...props.register("title")}
-              defaultValue={props.data?.fetchBoard.title || ""}
-            />
-          </Write.ColumnWrap>
-
-          <Write.ColumnWrap>
+          <Write.ImgWrap>
             <Write.SubTitle>내용</Write.SubTitle>
-            <ReactQuill
+            <Write.Contents
               onChange={props.handleChange}
               defaultValue={props.data?.fetchBoard.contents || ""}
             />
-          </Write.ColumnWrap>
-          <Write.Button>{props.isEdit ? "수정하기" : "등록하기"}</Write.Button>
+          </Write.ImgWrap>
         </Write.ContentsWrap>
+        <Write.Button>{props.isEdit ? "수정하기" : "등록하기"}</Write.Button>
       </Write.Wrapper>
+
+      <Write.Img type="file" ref={props.fileRef} onChange={props.onChangeImg} />
     </form>
   );
 }

@@ -6,8 +6,11 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useEffect, useState } from "react";
 import { Modal } from "antd";
 import "antd/dist/antd.css";
+import { ISignUpPresenterPageProps } from "./Signup.owner.types";
 
-export default function SignUpOwnerPresenterPage(props: any) {
+export default function SignUpOwnerPresenterPage(
+  props: ISignUpPresenterPageProps
+) {
   const theme = createTheme({
     palette: {
       primary: {
@@ -177,8 +180,6 @@ export default function SignUpOwnerPresenterPage(props: any) {
                     onChange={handleCheck(0)}
                     icon={<CheckCircleOutlineIcon color="secondary" />}
                     checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
                     style={{
                       width: "10px",
                       height: "10px",
@@ -201,8 +202,6 @@ export default function SignUpOwnerPresenterPage(props: any) {
                     onChange={handleCheck(1)}
                     icon={<CheckCircleOutlineIcon color="secondary" />}
                     checkedIcon={<CheckCircleIcon />}
-                    onClick={props.onClick}
-                    id={props.id}
                     style={{
                       width: "10px",
                       height: "10px",

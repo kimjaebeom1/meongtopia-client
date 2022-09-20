@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { MdOutlineCancel } from "react-icons/md";
 import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div``;

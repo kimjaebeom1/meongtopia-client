@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useRef, useEffect } from "react";
 import { Modal } from "antd";
 import "antd/dist/antd.css";
+import { FETCH_BOARD } from "../../../../../pages/community/[boardID]/edit";
 
 export default function CommunityContainerPage(props: any) {
   const { register, handleSubmit, setValue, trigger, reset } = useForm({
@@ -31,8 +32,8 @@ export default function CommunityContainerPage(props: any) {
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
-  const [file, setFile] = useState(""); // uploadFile api로 만든 url이 담긴 state
-  const [imageUrl, setImageUrl] = useState(""); // 사진미리보기 url
+  const [file, setFile] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -40,18 +41,24 @@ export default function CommunityContainerPage(props: any) {
     fileRef.current?.click();
   };
 
-  useEffect(() => {
-    if (props.data !== undefined) {
-      reset({
-        title: props.data.fetchBoard.title,
-        contents: props.data.fetchBoard.contents,
-        boardImg: {
-          url: props.data.fetchBoard.boardImg?.url,
-        },
-      });
-      setImageUrl(props.data.fetchBoard.boardImg[0]?.url);
-    }
-  }, [props.data]);
+  // useEffect(() => {
+  //   if (props.data !== undefined) {
+  //     reset({
+  //       title: props.data.fetchBoard.title,
+  //       contents: props.data.fetchBoard.contents,
+  //       boardImg: {
+  //         url: props.data.fetchBoard.boardImg?.url,
+  //       },
+  //     });
+  //     setImageUrl(props.data.fetchBoard.boardImg[0]?.url);
+  //   }
+  // }, [props.data]);
+
+  // useEffect(() => {
+  //   if (props.data?.fetchBoard.boardImg[0].url) {
+  //     setFile(file);
+  //   }
+  // }, [props.data]);
 
   console.log(props.data?.fetchBoard.boardImg[0]?.url);
   console.log([props.data?.fetchBoard.boardImg[0]?.url]);
@@ -70,6 +77,8 @@ export default function CommunityContainerPage(props: any) {
       }
     };
 
+    console.log(file);
+
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
       setFile(result.data?.uploadFile);
@@ -82,6 +91,27 @@ export default function CommunityContainerPage(props: any) {
 
   // 등록하기
   const onClickSubmit = async (data: any) => {
+    if (!data.title) {
+      Modal.error({
+        content: "제목을 입력해주세요",
+      });
+      return;
+    }
+
+    if (!file) {
+      Modal.error({
+        content: "이미지를 넣어주세요",
+      });
+      return;
+    }
+
+    if (!data.contents) {
+      Modal.error({
+        content: "내용을 입력해주세요",
+      });
+      return;
+    }
+
     try {
       const result = await createBoard({
         variables: {
@@ -121,7 +151,14 @@ export default function CommunityContainerPage(props: any) {
           },
           boardID: String(router.query.boardID),
         },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD,
+            variables: { boardID: router.query.boardID },
+          },
+        ],
       });
+      // props.setIsEdit(false);
       console.log(updateBoardInputs.title);
       router.push(`/community/${result.data?.updateBoard.boardID}`);
     } catch (error) {

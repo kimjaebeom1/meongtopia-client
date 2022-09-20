@@ -8,6 +8,7 @@ export default function CommunityDetailPresenterPage(props: any) {
       <Detail.ColumnWrap>
         <Detail.Img
           src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`}
+          onError={onError}
         />
         {/* <Detail.ContentsWrap> */}
         <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
@@ -16,6 +17,7 @@ export default function CommunityDetailPresenterPage(props: any) {
           dangerouslySetInnerHTML={{ __html: props.data?.fetchBoard.contents }}
         />
       </Detail.ColumnWrap>
+      <Detail.Line />
       <Detail.ButtonWrap>
         <Detail.Button onClick={props.onClickMoveToList}>
           목록으로
