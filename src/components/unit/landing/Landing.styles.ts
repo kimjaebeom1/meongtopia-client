@@ -546,6 +546,7 @@ export const Text = styled.button`
   letter-spacing: 10px;
   border: 3px solid #ffa500;
   padding-left: 13px;
+  cursor: pointer;
 
   :hover {
     background-color: #ffa500;

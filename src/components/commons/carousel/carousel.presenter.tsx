@@ -1,7 +1,7 @@
 import * as Carousel from "./Carousel.styles";
 import Slider from "react-slick";
 
-export default function CarouselPresenter(props) {
+export default function CarouselPresenter(props: any) {
   return (
     <Carousel.Wrapper>
       <Slider {...props.settings}>
