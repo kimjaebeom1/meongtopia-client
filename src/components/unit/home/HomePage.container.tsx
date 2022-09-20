@@ -22,8 +22,6 @@ export default function HomeContainer() {
     router.push(`/cafe/${el.storeID}`);
   };
 
-  console.log(boardsData);
-
   return (
     <HomeUI
       onClickMoveToPick={onClickMoveToPick}
