@@ -14,7 +14,7 @@ import { checkEmail } from "../../../commons/libraries/utils";
 
 export default function SignUpOwnerContainerPage() {
   const router = useRouter();
-  const [isActivePhone, setIsActivePhone] = useState(false);
+  const [isActivePhone, setIsActivePhone] = useState<any>(false);
   const [isActiveNum, setIsActiveNum] = useState(false);
 
   const [getToken] = useMutation(GET_TOKEN);
@@ -66,7 +66,7 @@ export default function SignUpOwnerContainerPage() {
 
   //====================================================================================//
 
-  const onChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangePhone = (event: any) => {
     setPhone(event.target.value);
     if (event.target.value) {
       setIsActivePhone(true);
@@ -74,7 +74,7 @@ export default function SignUpOwnerContainerPage() {
       setIsActivePhone(false);
     }
   };
-  const onChangeCheckNum = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeCheckNum = (event: any) => {
     setCheckNum(event.target.value);
     if (event.target.value) {
       setIsActiveNum(true);

@@ -8,7 +8,7 @@ import {
 } from "../../../../../commons/store";
 import DogContentsWriteUI from "./DogContentsWrite.presenter";
 
-export default function DogContentsWrite(props) {
+export default function DogContentsWrite(props: any) {
   const { register } = useForm({
     mode: "onChange",
   });
@@ -17,15 +17,7 @@ export default function DogContentsWrite(props) {
   const [dogBreed, setDogBreed] = useState("");
   const [dogDescription, setDogDescription] = useState("");
   const [dogImage, setDogImage] = useState("");
-  const [petArr, setPetArr] = useRecoilState<
-    {
-      petImgUrl: string;
-      name: string;
-      age: number;
-      breed: string;
-      description: string;
-    }[]
-  >(petArrState);
+  const [petArr, setPetArr] = useRecoilState<any>(petArrState);
   const [bigDog, setBigDog] = useRecoilState(bigDogState);
   const [smallDog, setSmallDog] = useRecoilState(smallDogState);
 
@@ -35,19 +27,19 @@ export default function DogContentsWrite(props) {
     }
   }, [props.data]);
 
-  const onChangeBigDog = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeBigDog = (event: any) => {
     setBigDog(event.target.value);
   };
 
-  const onChangeSmallDog = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeSmallDog = (event: any) => {
     setSmallDog(event.target.value);
   };
 
-  const onChangeDogName = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onChangeDogName = (event: any) => {
     setDogName(event.target.value);
   };
 
-  const onChangeDogAge = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onChangeDogAge = (event: any) => {
     setDogAge(event.target.value);
   };
 
@@ -61,7 +53,7 @@ export default function DogContentsWrite(props) {
 
   const onClickAddDog = () => {
     if (!petArr) return;
-    setPetArr((prev) => [
+    setPetArr((prev: any) => [
       ...petArr,
       {
         petImgUrl: dogImage,
@@ -89,7 +81,7 @@ export default function DogContentsWrite(props) {
   console.log(petArr);
 
   const onClickDelete = (index: any) => () => {
-    setPetArr(petArr.filter((el) => el !== index));
+    setPetArr(petArr.filter((el: any) => el !== index));
   };
 
   return (

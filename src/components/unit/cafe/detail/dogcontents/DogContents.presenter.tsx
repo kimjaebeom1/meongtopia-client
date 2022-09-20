@@ -9,7 +9,7 @@ import Dompurify from "dompurify";
 import { v4 as uuidv4 } from "uuid";
 import ReviewWrite from "../../review/ReviewWrite.container";
 
-export default function DetailDogContentsUI(props) {
+export default function DetailDogContentsUI(props: any) {
   const { Option } = Select;
 
   const settings = {
@@ -72,7 +72,7 @@ export default function DetailDogContentsUI(props) {
 
       <DogContents.MobileCafeListWrapper>
         <Slider {...mobileSettings}>
-          {props.data?.fetchStore.storeImg.map((el) => (
+          {props.data?.fetchStore.storeImg.map((el: any) => (
             <DogContents.MobileSliderItem key={uuidv4()}>
               <img src={`https://storage.googleapis.com/${el.url}`} />
             </DogContents.MobileSliderItem>
@@ -149,13 +149,14 @@ export default function DetailDogContentsUI(props) {
       </DogContents.CafeImageWrapper>
       <DogContents.Line />
 
+      {/* 카페소개 */}
       <DogContents.Body>
         <DogContents.CafeInfoWrapper>
           <DogContents.BodyInfoTag>카페 소개</DogContents.BodyInfoTag>
 
           <DogContents.TagWrapper>
             <div>
-              {props.data?.fetchStore.storeTag.map((el) => (
+              {props.data?.fetchStore.storeTag.map((el: any) => (
                 <DogContents.StoreTag
                   key={uuidv4()}
                 >{`# ${el.name}`}</DogContents.StoreTag>
@@ -230,7 +231,7 @@ export default function DetailDogContentsUI(props) {
               소형견 : {props.data?.fetchStore.smallDog}마리
             </div>
           </DogContents.DogCount>
-
+          {/* PC용 강아지 소개 */}
           <DogContents.PcDogWrapper>
             {props.data?.fetchStore.pet.length === 1 ? (
               <DogContents.DogListWrapper>
@@ -245,7 +246,7 @@ export default function DetailDogContentsUI(props) {
             ) : (
               <DogContents.DogListWrapper>
                 <Slider {...settings}>
-                  {props.data?.fetchStore.pet.map((el) => (
+                  {props.data?.fetchStore.pet.map((el: any) => (
                     <DogContents.SliderItem key={uuidv4()}>
                       <img
                         src={`https://storage.googleapis.com/${el.petImgUrl}`}
@@ -260,6 +261,8 @@ export default function DetailDogContentsUI(props) {
               </DogContents.DogListWrapper>
             )}
           </DogContents.PcDogWrapper>
+
+          {/* 모바일용 강아지 소개 */}
           <DogContents.MobileDogListWrapper>
             {props.data?.fetchStore.pet.length === 1 ? (
               <DogContents.DogListWrapper>
@@ -274,7 +277,7 @@ export default function DetailDogContentsUI(props) {
             ) : (
               <DogContents.DogListWrapper>
                 <Slider {...mobileSettings}>
-                  {props.data?.fetchStore.pet.map((el) => (
+                  {props.data?.fetchStore.pet.map((el: any) => (
                     <DogContents.SliderItem key={uuidv4()}>
                       <img
                         src={`https://storage.googleapis.com/${el.petImgUrl}`}
@@ -289,7 +292,6 @@ export default function DetailDogContentsUI(props) {
               </DogContents.DogListWrapper>
             )}
           </DogContents.MobileDogListWrapper>
-
           <DogContents.BodyLine />
 
           <DogContents.Map>
@@ -297,7 +299,10 @@ export default function DetailDogContentsUI(props) {
             <KakaoMap data={props.data} />
           </DogContents.Map>
         </DogContents.CafeInfoWrapper>
+
+        {/* 예약하기 */}
         <DogContents.ReservationWrapper>
+          <span>예약하기</span>
           {props.data?.fetchStore.name}
           <DogContents.NumberTag>이용인원</DogContents.NumberTag>
           <DogContents.SelectWrapper
@@ -322,9 +327,17 @@ export default function DetailDogContentsUI(props) {
             <Option value="3">3마리</Option>
             <Option value="4">4마리</Option>
           </DogContents.SelectWrapper>
-          <DogContents.ReservationBtn onClick={props.onClickReservation}>
-            예약하기
-          </DogContents.ReservationBtn>
+          {props.userData?.role !== "OWNER" ||
+          props.checkReservation?.length !== 1 ? (
+            <DogContents.ReservationBtn onClick={props.onClickReservation}>
+              예약하기
+            </DogContents.ReservationBtn>
+          ) : (
+            <DogContents.UnReservationBtn>
+              예약불가
+            </DogContents.UnReservationBtn>
+          )}
+
           <DogContents.EntranceFee>
             <div>1인 입장료</div>
             <div>{`${props.data?.fetchStore.entranceFee.toLocaleString()}원`}</div>

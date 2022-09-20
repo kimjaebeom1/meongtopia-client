@@ -8,6 +8,7 @@ import {
   CREATE_RESERVATION,
   FETCH_RESERVATION,
   FETCH_STORE,
+  FETCH_USER_RESERVATION,
   REVIEW_COUNT,
   Toggle_Pick,
 } from "./DogContents.queries";
@@ -15,16 +16,14 @@ import {
 export default function DetailDogContents() {
   const router = useRouter();
   const { data: userData } = useQuery(FETCH_USER);
-  const { data, refetch } = useQuery(FETCH_STORE, {
+  const { data } = useQuery(FETCH_STORE, {
     variables: { storeID: String(router.query.cafeid) },
   });
   const { data: reservationData } = useQuery(FETCH_RESERVATION);
   const { data: reviewCount } = useQuery(REVIEW_COUNT, {
     variables: { storeID: router.query.cafeid },
   });
-
-  console.log(reservationData);
-  console.log(reviewCount);
+  const { data: userReservationData } = useQuery(FETCH_USER_RESERVATION);
   const [createReservation] = useMutation(CREATE_RESERVATION);
   const [count, setCount] = useState(1);
   const [petCount, setPetCount] = useState(0);
@@ -34,26 +33,21 @@ export default function DetailDogContents() {
   };
   const [picked, setPicked] = useState(false);
 
-  console.log(reservationData);
-
   const handleChange = (value: number) => {
     setCount(value);
   };
 
-  console.log(data);
   const pick = userData?.fetchUser.pick.filter(
     (el: any) => el.store?.storeID === router.query.cafeid
   );
 
   useEffect(() => {
     userData?.fetchUser.pick.filter(
-      (el) => el.store?.storeID === router.query.cafeid
+      (el: any) => el.store?.storeID === router.query.cafeid
     ).length === 1
       ? setPicked(true)
       : setPicked(false);
   }, [userData?.fetchUser.pick]);
-
-  console.log();
 
   const onClickToggle = async () => {
     try {
@@ -97,6 +91,11 @@ export default function DetailDogContents() {
             pets: Number(petCount),
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_USER_RESERVATION,
+          },
+        ],
       });
       if (window.confirm("예약하시겠습니까?")) {
         alert("예약 되었습니다.");
@@ -111,6 +110,15 @@ export default function DetailDogContents() {
     }
   };
 
+  const userResID = userReservationData?.fetchUserReservation.map(
+    (el: any) => el.resID
+  );
+  const storeResID = data?.fetchStore.reservation.map((el: any) => el.resID);
+
+  const checkReservation = userResID?.filter((el: any) =>
+    storeResID?.includes(el)
+  );
+
   return (
     <DetailDogContentsUI
       count={count}
@@ -121,6 +129,8 @@ export default function DetailDogContents() {
       data={data}
       picked={picked}
       reviewCount={reviewCount}
+      userData={userData}
+      checkReservation={checkReservation}
     />
   );
 }

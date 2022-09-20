@@ -3,6 +3,18 @@ import { Modal } from "antd";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { breakPoints } from "../../../../../commons/styles/media";
 
+interface ICafeContentsStyleProps {
+  smallDog?: number;
+  bigDog?: number;
+  next?: boolean;
+  fileUrls?: string[] | undefined;
+  description?: string;
+  locationActive?: string;
+  conditionActive?: string[] | undefined;
+  isActive?: boolean;
+  petArr?: never[] | undefined;
+}
+
 export const Wrapper = styled.div`
   width: 100%;
   padding: 2rem;
@@ -27,7 +39,8 @@ export const Procedure01 = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    display: ${(props) => (!props.next ? "flex" : "none")};
+    display: ${(props: ICafeContentsStyleProps) =>
+      !props.next ? "flex" : "none"};
   }
 `;
 export const Procedure02 = styled.div`
@@ -37,7 +50,8 @@ export const Procedure02 = styled.div`
   justify-content: center;
 
   @media ${breakPoints.mobile} {
-    display: ${(props) => (props.next ? "flex" : "none")};
+    display: ${(props: ICafeContentsStyleProps) =>
+      props.next ? "flex" : "none"};
     width: 100%;
   }
 `;
@@ -45,17 +59,20 @@ export const Procedure02 = styled.div`
 export const ProcedureUnderBar01 = styled.div`
   border-bottom: 4px solid #c4c4c4;
   width: 50%;
-  border-color: ${(props) => (!props.next ? "orange" : "none")};
+  border-color: ${(props: ICafeContentsStyleProps) =>
+    !props.next ? "orange" : "none"};
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    border-color: ${(props) => (!props.next ? "orange" : "orange")};
+    border-color: ${(props: ICafeContentsStyleProps) =>
+      !props.next ? "orange" : "orange"};
   }
 `;
 export const ProcedureUnderBar02 = styled.div`
   width: 50%;
   border-bottom: 4px solid #c4c4c4;
-  border-color: ${(props) => (props.next ? "#f4840b" : "none")};
+  border-color: ${(props: ICafeContentsStyleProps) =>
+    props.next ? "#f4840b" : "none"};
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -294,13 +311,13 @@ export const NextButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: ${(props: any) =>
+  background-color: ${(props: ICafeContentsStyleProps) =>
     // !props.formState.isValid ||
-    !props.fileUrls.join("") ||
+    !props.fileUrls?.join("") ||
     !props.description ||
     props.description === "<p><br></p>" ||
     !props.locationActive ||
-    !props.conditionActive.join()
+    !props.conditionActive?.join()
       ? "#d9d9d9"
       : "orange"};
   color: white;
@@ -315,8 +332,8 @@ export const SubmitButton = styled.button`
   height: 2.3em;
   border-radius: 10px;
   border: none;
-  background-color: ${(props: any) =>
-    !props.petArr.join() || !props.bigDog || !props.smallDog
+  background-color: ${(props: ICafeContentsStyleProps) =>
+    !props.petArr?.join() || !props.bigDog || !props.smallDog
       ? "#d9d9d9"
       : "orange"};
   color: white;
@@ -334,12 +351,15 @@ export const StoreTag = styled.div`
   margin-right: 1rem;
   width: 8rem;
   height: 2rem;
-  background-color: ${(props) => (props.isActive ? "orange" : "#fff")};
+  background-color: ${(props: ICafeContentsStyleProps) =>
+    props.isActive ? "orange" : "#fff"};
   border-radius: 30px;
   border: 1px solid
-    ${(props) => (props.isActive ? "#f4840b" : "rgb(223, 227, 234)")};
+    ${(props: ICafeContentsStyleProps) =>
+      props.isActive ? "#f4840b" : "rgb(223, 227, 234)"};
   /* box-shadow: rgb(0 0 0 / 3%) 0px 2px 3px 0px; */
-  color: ${(props) => (props.isActive ? "white" : "#999")};
+  color: ${(props: ICafeContentsStyleProps) =>
+    props.isActive ? "white" : "#999"};
   cursor: pointer;
 
   @media ${breakPoints.mobile} {

@@ -39,7 +39,7 @@ export default function KakaoMap(props: any) {
         // 주소로 좌표를 검색합니다
         geocoder.addressSearch(
           props.address || props.data?.fetchStore.address,
-          function (result, status) {
+          function (result: any, status: any) {
             // 정상적으로 검색이 완료됐으면
             if (status === window.kakao.maps.services.Status.OK) {
               const coords = new window.kakao.maps.LatLng(

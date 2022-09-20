@@ -6,6 +6,7 @@ import DogContentsWrite from "../dogcontents/DogContentsWrite.container";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { v4 as uuidv4 } from "uuid";
+import { ICafeContentsWriteUIProps } from "./CafeContentsWrite.types";
 
 const ToastEditor = dynamic(() => import("../../../../commons/toast/Toast"), {
   ssr: false,
@@ -19,9 +20,7 @@ const CONDITION_TAGS = [
   "아이동반 가능",
 ];
 
-// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
-
-export default function CafeContentsWriteUI(props: any) {
+export default function CafeContentsWriteUI(props: ICafeContentsWriteUIProps) {
   return (
     <>
       <CafeContentsWrite.Wrapper>
@@ -59,7 +58,7 @@ export default function CafeContentsWriteUI(props: any) {
               <CafeContentsWrite.Tag>
                 카페 사진을 추가해주세요
                 <CafeContentsWrite.ImageUploadWrapper>
-                  {props.fileUrls.map((el, index) => (
+                  {props.fileUrls.map((el: any, index: any) => (
                     <CafeImgUpload
                       key={uuidv4()}
                       index={index}

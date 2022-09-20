@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Rate } from "antd";
 import "antd/dist/antd.css";
-import { BsPersonCircle } from "react-icons/bs";
+import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import { breakPoints } from "../../../../commons/styles/media";
 
 export const Body = styled.div`
@@ -67,7 +67,7 @@ export const Date = styled.h4`
 export const Contents = styled.p`
   display: block;
   width: 60%;
-  height: 2.5rem;
+  height: 3.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -130,4 +130,34 @@ export const ButtonWrapper = styled.div`
 
 export const Star = styled(Rate)`
   margin-right: 1rem;
+`;
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const EditIcon = styled(MdModeEditOutline)`
+  margin-right: 0.5rem;
+  cursor: pointer;
+`;
+export const DeleteIcon = styled(MdDelete)`
+  margin-right: 1rem;
+  cursor: pointer;
+`;
+
+export const AddBtn = styled.button`
+  background-color: orange;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0 1rem;
+  line-height: 3rem;
+  height: 3rem;
+
+  cursor: pointer;
+
+  :hover {
+    background-color: #f4840b;
+  }
 `;

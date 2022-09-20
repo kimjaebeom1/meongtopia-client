@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import Slider from "react-slick";
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
+import Homepage from "../../../../pages/home";
 
 const NextArrow = styled.div`
   width: 5.125rem;
@@ -172,7 +173,7 @@ export default function HomeUI(props: any) {
             </Link>
           </HomePage.PickTag>
           <HomePage.PickListWrapper>
-            {props.recentData?.fetchStores.slice(0, 3).map((el) => (
+            {props.recentData?.fetchStores.slice(0, 3).map((el: any) => (
               <HomePage.PickList
                 onClick={props.onClickMoveToPick(el)}
                 key={el.storeID}
@@ -202,7 +203,7 @@ export default function HomeUI(props: any) {
 
           <HomePage.MobilePickListWrapper>
             <Slider {...Settings}>
-              {props.recentData?.fetchStores.slice(0, 3).map((el) => (
+              {props.recentData?.fetchStores.slice(0, 3).map((el: any) => (
                 <HomePage.PickList
                   onClick={props.onClickMoveToPick(el)}
                   key={el.storeID}
@@ -264,7 +265,7 @@ export default function HomeUI(props: any) {
 
             {/* 슬라이더 */}
             <Slider {...Settings}>
-              {props.boardsData?.fetchBoards.slice(0, 3).map((el) => (
+              {props.boardsData?.fetchBoards.slice(0, 3).map((el: any) => (
                 <HomePage.CafeListWrapper key={uuidv4()}>
                   {/* 슬라이더 컴포넌트 */}
                   <HomePage.SliderWrapper>
