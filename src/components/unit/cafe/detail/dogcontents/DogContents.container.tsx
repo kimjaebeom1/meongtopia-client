@@ -47,7 +47,7 @@ export default function DetailDogContents() {
     ).length === 1
       ? setPicked(true)
       : setPicked(false);
-  }, [userData?.fetchUser.pick]);
+  }, []);
 
   const onClickToggle = async () => {
     try {
