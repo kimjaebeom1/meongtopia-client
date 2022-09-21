@@ -210,8 +210,6 @@ export default function SignUpOwnerContainerPage() {
       const result = await createOwner({
         variables: {
           createUserInput: {
-            name: "이름",
-            nickname: "닉네임",
             email,
             password,
             storeName,

@@ -62,7 +62,6 @@ export const Line = styled.div`
   border-bottom: 1px solid lightgray;
   width: 90%;
   height: 2px;
-  margin: 0px auto;
 `;
 export const Contents = styled.div`
   font-size: 1.2rem;
@@ -78,6 +77,10 @@ export const ButtonWrap = styled.div`
   justify-content: space-between;
   width: 60%;
   /* margin-bottom: 150px; */
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Button = styled.div`
@@ -93,4 +96,9 @@ export const Button = styled.div`
   letter-spacing: 5px;
   padding-left: 1.3%;
   cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
+    /* margin: 30px auto; */
+  }
 `;
