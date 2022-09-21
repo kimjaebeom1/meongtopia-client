@@ -36,9 +36,9 @@ export default function DetailDogContents() {
     setCount(value);
   };
 
-  const pick = userData?.fetchUser.pick.filter(
-    (el: any) => el.store?.storeID === router.query.cafeid
-  );
+  // const pick = userData?.fetchUser.pick.filter(
+  //   (el: any) => el.store?.storeID === router.query.cafeid
+  // );
 
   // 토글
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function DetailDogContents() {
         refetchQueries: [
           {
             query: FETCH_STORE,
-            variables: { StoreID: router.query.cafeid },
+            variables: { storeID: router.query.cafeid },
           },
           {
             query: FETCH_USER_RESERVATION,
@@ -130,15 +130,15 @@ export default function DetailDogContents() {
 
   // 예약하기
   useEffect(() => {
-    console.log(checkReservation);
-    console.log(userData?.fetchUser.role);
-
-    if (checkReservation?.length === 1) {
+    if (
+      checkReservation?.length === 1 ||
+      userData?.fetchUser.role === "OWNER"
+    ) {
       setReservation(true);
     } else {
       setReservation(false);
     }
-  }, []);
+  });
 
   return (
     <DetailDogContentsUI
