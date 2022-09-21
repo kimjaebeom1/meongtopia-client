@@ -1,11 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { FETCH_BOARDS } from "../community/list/Community.List.queries";
 import HomeUI from "./HomePage.presenter";
-import {
-  FETCH_BOARDS,
-  FETCH_PICK_RANK,
-  FETCH_STORES,
-} from "./HomePage.queries";
+import { FETCH_PICK_RANK, FETCH_STORES } from "./HomePage.queries";
 
 export default function HomeContainer() {
   const { data } = useQuery(FETCH_PICK_RANK);
@@ -14,10 +11,14 @@ export default function HomeContainer() {
       order: "DESC",
     },
   });
-  const { data: boardsData } = useQuery(FETCH_BOARDS);
+  const { data: boardsData } = useQuery(FETCH_BOARDS, {
+    variables: {
+      order: "DESC",
+    },
+  });
 
   const router = useRouter();
-
+  console.log(boardsData);
   const onClickMoveToPick = (el: any) => () => {
     router.push(`/cafe/${el.storeID}`);
   };
