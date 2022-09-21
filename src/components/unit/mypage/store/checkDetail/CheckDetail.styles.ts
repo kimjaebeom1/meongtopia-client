@@ -61,3 +61,17 @@ export const ListContainer = styled.div`
     color: #777;
   }
 `;
+
+export const Btn = styled.button`
+  padding: 0 1rem;
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  line-height: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  :active {
+    background-color: #f4840b;
+  }
+`;

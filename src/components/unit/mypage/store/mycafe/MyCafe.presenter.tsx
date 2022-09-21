@@ -78,7 +78,7 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
           </MyCafe.ListWrapper>
         ))}
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {props.data?.fetchOwnerStores ? (
+        {props.data?.fetchOwnerStores.length > 0 ? (
           Number(props.add) * 2 <
             props.data?.fetchOwnerStores.map((el: any) => el[0]).length && (
             <MyCafe.AddBtn onClick={props.onClickAdd}>더보기</MyCafe.AddBtn>
