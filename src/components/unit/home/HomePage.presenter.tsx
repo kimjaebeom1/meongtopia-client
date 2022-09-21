@@ -34,7 +34,7 @@ export default function HomeUI(props: any) {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 4000,
     nextArrow: <NextArrow />,
   };
 
@@ -275,6 +275,8 @@ export default function HomeUI(props: any) {
               ))}
             </Slider>
           </HomePage.ListWrapper>
+
+          {/* 이 달의 게시글 */}
           <HomePage.MonthPick>
             <HomePage.PickTag>
               <div>

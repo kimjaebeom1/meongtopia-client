@@ -14,6 +14,7 @@ export const DogImage = styled.div`
   border-radius: 1rem;
   transition: all 0.5s ease;
   cursor: pointer;
+  object-fit: cover;
 
   span {
     padding-top: 1.25rem;
@@ -48,6 +49,7 @@ export const DogUploadImage = styled.img`
   background: #ebebeb;
   border-radius: 1rem;
   transition: all 0.5s ease;
+  object-fit: cover;
 
   @media ${breakPoints.mobile} {
     width: 100%;

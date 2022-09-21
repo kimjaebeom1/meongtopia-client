@@ -2,13 +2,12 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
+import { FETCH_USER_RESERVATION } from "../../../mypage/user/reserve/UserReserve.queries";
 import { FETCH_STORES } from "../../list/CafeList.queries";
 import DetailDogContentsUI from "./DogContents.presenter";
 import {
   CREATE_RESERVATION,
-  FETCH_RESERVATION,
   FETCH_STORE,
-  FETCH_USER_RESERVATION,
   REVIEW_COUNT,
   Toggle_Pick,
 } from "./DogContents.queries";
@@ -19,7 +18,6 @@ export default function DetailDogContents() {
   const { data } = useQuery(FETCH_STORE, {
     variables: { storeID: String(router.query.cafeid) },
   });
-  const { data: reservationData } = useQuery(FETCH_RESERVATION);
   const { data: reviewCount } = useQuery(REVIEW_COUNT, {
     variables: { storeID: router.query.cafeid },
   });
@@ -32,6 +30,7 @@ export default function DetailDogContents() {
     setPetCount(value);
   };
   const [picked, setPicked] = useState(false);
+  const [reservation, setReservation] = useState(false);
 
   const handleChange = (value: number) => {
     setCount(value);
@@ -41,14 +40,26 @@ export default function DetailDogContents() {
     (el: any) => el.store?.storeID === router.query.cafeid
   );
 
+  // 토글
   useEffect(() => {
     userData?.fetchUser.pick.filter(
       (el: any) => el.store?.storeID === router.query.cafeid
     ).length === 1
       ? setPicked(true)
       : setPicked(false);
-  }, [userData?.fetchUser.pick]);
+  }, []);
 
+  // 예약 내역
+  const userResID = userReservationData?.fetchUserReservation.map(
+    (el: any) => el.resID
+  );
+  const storeResID = data?.fetchStore.reservation.map((el: any) => el.resID);
+
+  const checkReservation = userResID?.filter((el: any) =>
+    storeResID?.includes(el)
+  );
+
+  // 토글
   const onClickToggle = async () => {
     try {
       await togglePick({
@@ -81,6 +92,8 @@ export default function DetailDogContents() {
   };
 
   const onClickReservation = async () => {
+    const reserve = confirm("예약하시겠습니까?");
+    if (!reserve) return alert("취소 되었습니다.");
     try {
       const result = await createReservation({
         variables: {
@@ -93,16 +106,21 @@ export default function DetailDogContents() {
         },
         refetchQueries: [
           {
+            query: FETCH_STORE,
+            variables: { StoreID: router.query.cafeid },
+          },
+          {
             query: FETCH_USER_RESERVATION,
+          },
+          {
+            query: FETCH_USER,
           },
         ],
       });
-      if (window.confirm("예약하시겠습니까?")) {
-        alert("예약 되었습니다.");
-        router.push("/mypage/user/reserve/");
-      } else {
-        alert("취소 되었습니다.");
-      }
+      await router.push("/mypage/user/reserve/");
+      checkReservation?.length === 1 || userData?.fetchUser.role === "OWNER"
+        ? setReservation(true)
+        : setReservation(false);
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -110,14 +128,17 @@ export default function DetailDogContents() {
     }
   };
 
-  const userResID = userReservationData?.fetchUserReservation.map(
-    (el: any) => el.resID
-  );
-  const storeResID = data?.fetchStore.reservation.map((el: any) => el.resID);
+  // 예약하기
+  useEffect(() => {
+    console.log(checkReservation);
+    console.log(userData?.fetchUser.role);
 
-  const checkReservation = userResID?.filter((el: any) =>
-    storeResID?.includes(el)
-  );
+    if (checkReservation?.length === 1) {
+      setReservation(true);
+    } else {
+      setReservation(false);
+    }
+  }, []);
 
   return (
     <DetailDogContentsUI
@@ -131,6 +152,7 @@ export default function DetailDogContents() {
       reviewCount={reviewCount}
       userData={userData}
       checkReservation={checkReservation}
+      reservation={reservation}
     />
   );
 }
