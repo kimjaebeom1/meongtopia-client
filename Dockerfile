@@ -6,8 +6,8 @@ FROM node:14
 
 
 # 오른쪽이 docker 안
-COPY . /class_build/
-WORKDIR /class_build/
+WORKDIR /meongtopia/
+COPY . /meongtopia/
 
 
 
