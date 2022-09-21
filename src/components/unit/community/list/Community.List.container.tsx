@@ -1,34 +1,48 @@
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 import { useQuery } from "@apollo/client";
+import { Router, useRouter } from "next/router";
+import { useState } from "react";
 import CommunityListPresenterPage from "./Community.List.presenter";
 import { FETCH_BOARDS } from "./Community.List.queries";
-import { useRouter } from "next/router";
-import { MouseEvent } from "react";
 
 export default function CommunityListContainerPage() {
-  const { data, refetch } = useQuery(FETCH_BOARDS);
+  const [page, setPage] = useState(1);
 
   const router = useRouter();
 
-  const onClickPage = (event: any) => {
-    refetch({ page: Number(event.target.id) });
+  const { data, refetch } = useQuery(FETCH_BOARDS, {
+    variables: { page: page, order: "DESC" },
+  });
+
+  // const lastPage = data?.fetchBoards?.length;
+
+  const onClickPrev = () => {
+    if (page === 1) return;
+    setPage((prev) => prev - 1);
+    refetch({ page: page });
   };
 
-  const onClickMoveToDetail = (event: MouseEvent<HTMLDivElement>) => {
+  const onClickNext = () => {
+    if (data?.fetchBoards.length < 10) return;
+    setPage((prev) => prev + 1);
+    refetch({ page: page });
+  };
+
+  const onClickMoveToWrite = () => {
+    router.push("/community/write");
+  };
+
+  const onClickMoveToDetail = (event: any) => {
     if (!(event.target instanceof HTMLDivElement)) return;
     router.push(`/community/${event.target.id}`);
   };
 
-  // const onFetchMore = () => {
-  //   if(!data) return;
-
-  //   fetchMore({
-  //     variables : {  }
-  //   })
-  // }
-
   return (
     <CommunityListPresenterPage
       data={data}
+      onClickMoveToWrite={onClickMoveToWrite}
+      onClickNext={onClickNext}
+      onClickPrev={onClickPrev}
       onClickMoveToDetail={onClickMoveToDetail}
     />
   );

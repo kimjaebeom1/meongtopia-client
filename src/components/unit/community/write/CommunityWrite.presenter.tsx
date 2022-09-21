@@ -26,7 +26,7 @@ export default function CommunityPresenterPage(props: any) {
         <Write.ContentsWrap>
           <Write.ImgWrap>
             <Write.SubTitle>이미지</Write.SubTitle>
-            {/* <Write.ImageWrap> */}
+
             {props.file ? (
               <Write.ImgBtn
                 onClick={props.onClickUpload}
@@ -39,7 +39,6 @@ export default function CommunityPresenterPage(props: any) {
               </Write.UnImgWrap>
             )}
           </Write.ImgWrap>
-          {/* </Write.ImageWrap> */}
 
           <Write.ImgWrap>
             <Write.SubTitle>내용</Write.SubTitle>
