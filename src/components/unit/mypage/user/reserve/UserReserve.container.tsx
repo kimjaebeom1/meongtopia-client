@@ -7,6 +7,7 @@ import {
   IQuery,
 } from "../../../../../commons/types/generated/types";
 import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
+import { FETCH_STORE } from "../../../cafe/detail/dogcontents/DogContents.queries";
 import MyPageUserReserveUI from "./UserReserve.presenter";
 import {
   CANCEL_RESERVATION,
@@ -45,6 +46,10 @@ export default function MyPageUserReserve() {
             },
             {
               query: FETCH_USER,
+            },
+            {
+              query: FETCH_STORE,
+              variables: { storeID },
             },
           ],
         });
