@@ -5,10 +5,10 @@ export function DogImgcheckValidationImage(file: File | undefined) {
     Modal.error({ content: "파일이 없습니다." });
     return false;
   }
-  if (file?.size > 5 * 1024 * 1024) {
-    Modal.error({ content: "파일이 너무 큽니다.(제한: 5MB)" });
-    return false;
-  }
+  // if (file?.size > 5 * 1024 * 1024) {
+  //   Modal.error({ content: "파일이 너무 큽니다.(제한: 5MB)" });
+  //   return false;
+  // }
   if (
     !file?.type.includes("gif") &&
     !file?.type.includes("png") &&

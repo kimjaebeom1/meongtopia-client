@@ -15,7 +15,7 @@ export default function KakaoMap(props: any) {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=aac701dce91a417545271c6abdaf13df&autoload=false&libraries=services";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=7e617a52e5f2e06cfc537804b89f7dbd&autoload=false&libraries=services";
     document.head.appendChild(script);
 
     script.onload = () => {

@@ -173,6 +173,11 @@ export const PickList = styled.div`
   &:hover {
     transform: scale(1.05);
     transition: 0.5s;
+
+    @media ${breakPoints.mobile} {
+      transform: none;
+      transition: none;
+    }
   }
 `;
 
@@ -362,7 +367,7 @@ export const MonthPick = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    align-items: baseline;
+    align-items: center;
   }
 `;
 
@@ -371,10 +376,6 @@ export const MonthPickImg = styled.img`
   height: 18.75rem;
   position: relative;
   z-index: 3;
-
-  @media ${breakPoints.mobile} {
-    margin-left: 6rem;
-  }
 `;
 
 export const MonthPickImg2 = styled.img`
@@ -389,7 +390,7 @@ export const MonthPickImg2 = styled.img`
     transition: all 2 ease;
   }
   @media ${breakPoints.mobile} {
-    margin-left: 9rem;
+    margin-left: 2rem;
   }
 `;
 

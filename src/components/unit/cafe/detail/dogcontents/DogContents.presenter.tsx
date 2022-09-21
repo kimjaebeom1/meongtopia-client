@@ -327,15 +327,14 @@ export default function DetailDogContentsUI(props: any) {
             <Option value="3">3마리</Option>
             <Option value="4">4마리</Option>
           </DogContents.SelectWrapper>
-          {props.userData?.role !== "OWNER" ||
-          props.checkReservation?.length !== 1 ? (
-            <DogContents.ReservationBtn onClick={props.onClickReservation}>
-              예약하기
-            </DogContents.ReservationBtn>
-          ) : (
+          {props.reservation === true ? (
             <DogContents.UnReservationBtn>
               예약불가
             </DogContents.UnReservationBtn>
+          ) : (
+            <DogContents.ReservationBtn onClick={props.onClickReservation}>
+              예약하기
+            </DogContents.ReservationBtn>
           )}
 
           <DogContents.EntranceFee>
