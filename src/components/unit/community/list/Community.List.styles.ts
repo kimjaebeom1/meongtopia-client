@@ -3,7 +3,7 @@ import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { breakPoints } from "../../../../commons/styles/media";
 
-interface ISignUpStyleProps {
+interface ICommunityStyleProps {
   isActive?: boolean;
 }
 
@@ -147,8 +147,10 @@ export const PageNum = styled.div`
   line-height: 5vh;
   margin: 0px 20px;
   border-radius: 50px;
-  color: ${(props: any) => (props.isActive ? "white" : "none")};
-  background-color: ${(props: any) => (props.isActive ? "#ffa500" : "none")};
+  color: ${(props: ICommunityStyleProps) =>
+    props.isActive ? "white" : "none"};
+  background-color: ${(props: ICommunityStyleProps) =>
+    props.isActive ? "#ffa500" : "none"};
   cursor: pointer;
   @media ${breakPoints.mobile} {
     margin: 0px;
