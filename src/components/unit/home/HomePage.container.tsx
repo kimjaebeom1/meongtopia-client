@@ -6,7 +6,7 @@ import { FETCH_PICK_RANK, FETCH_STORES } from "./HomePage.queries";
 
 export default function HomeContainer() {
   const { data } = useQuery(FETCH_PICK_RANK);
-  console.log(data);
+  // console.log(data);
   const { data: recentData } = useQuery(FETCH_STORES, {
     variables: {
       order: "DESC",

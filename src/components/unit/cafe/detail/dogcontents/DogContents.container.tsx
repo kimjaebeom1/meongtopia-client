@@ -122,8 +122,8 @@ export default function DetailDogContents() {
       }
     }
   };
-  console.log(userData);
-  console.log(data);
+  // console.log(userData);
+  // console.log(data);
 
   // 예약하기
   useEffect(() => {

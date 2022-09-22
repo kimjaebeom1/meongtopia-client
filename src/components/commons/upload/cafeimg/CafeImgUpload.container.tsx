@@ -14,7 +14,7 @@ export default function CafeImgUpload(props: any) {
 
   const onChangeFile = async (event: any) => {
     const file = CafeImgcheckValidationImage(event.target.files?.[0]);
-    console.log(file);
+    // console.log(file);
     // if (!file) return;
 
     // try {
