@@ -11,7 +11,6 @@ export default function CommunityDetailPresenterPage(props: any) {
           src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`}
           onError={onError}
         />
-        {/* <Detail.ContentsWrap> */}
         <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
         <Detail.Line />
         <Detail.Contents

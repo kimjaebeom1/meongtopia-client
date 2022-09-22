@@ -12,9 +12,8 @@ export const Wrapper = styled.div`
   padding: 20px;
 
   @media ${breakPoints.mobile} {
-    border: 1px solid black;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
   }
 `;
 

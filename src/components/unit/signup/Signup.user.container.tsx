@@ -214,12 +214,13 @@ export default function SignUpContainerPage() {
     }
   };
 
+  // 계정 만들기
   const onClickCreateUser = async () => {
     if (!checkEmail(email)) {
       setEmailError("이메일 @까지 입력해주세요");
     }
 
-    if (!checkPassword(password)) {
+    if (!checkPassword(password) && password.length < 8) {
       setPasswordError("비밀번호를 8자리 이상 입력해주세요");
     }
 

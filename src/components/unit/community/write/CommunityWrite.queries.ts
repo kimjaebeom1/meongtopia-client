@@ -9,6 +9,9 @@ export const CREATE_BOARD = gql`
       # boardImg {
       #   url
       # }
+      user {
+        userID
+      }
     }
   }
 `;
@@ -22,6 +25,9 @@ export const UPDATE_BOARD = gql`
       boardID
       title
       contents
+      user {
+        userID
+      }
     }
   }
 `;
