@@ -13,6 +13,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media ${breakPoints.mobile} {
+    padding: 0px 20px;
+  }
+`;
+
+export const ContainerTitle = styled.div`
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 80px;
 `;
 
 export const Wrapper = styled.div`
@@ -47,7 +56,7 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 650;
   margin-bottom: 15px;
   overflow: hidden;
@@ -87,7 +96,6 @@ export const Wrap = styled.div`
   margin-bottom: 2rem;
 
   @media ${breakPoints.mobile} {
-    padding: 0px 20px;
     width: 100%;
     height: 10vh;
   }
@@ -105,8 +113,10 @@ export const MoveToWrite = styled.div`
   cursor: pointer;
 
   @media ${breakPoints.mobile} {
-    width: 18vw;
-    height: 8vh;
+    width: 100%;
+    height: 6vh;
+    line-height: 6vh;
+    font-size: 1rem;
     word-wrap: break-word;
   }
 `;

@@ -4,6 +4,7 @@ import { ICommunityListProps } from "./Community.List.types";
 export default function CommunityListPresenterPage(props: ICommunityListProps) {
   return (
     <List.Container>
+      <List.ContainerTitle>추천 게시판</List.ContainerTitle>
       <List.Wrapper>
         {props.data?.fetchBoards.map((el: any) => (
           <List.Box key={el.boardID}>
