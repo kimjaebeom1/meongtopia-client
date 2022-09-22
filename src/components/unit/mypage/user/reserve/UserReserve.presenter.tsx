@@ -25,8 +25,8 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
     <UserReserve.Wrapper>
       <UserReserve.PageTitle>예약 내역</UserReserve.PageTitle>
       {props.reserveData?.fetchUserReservation
-        .filter((_: any, i: number) => i < Number(props.add) * 2)
-        .map((el: any) => (
+        .filter((_, i) => i < Number(props.add) * 2)
+        .map((el) => (
           <UserReserve.ListWrapper key={el.resID}>
             <UserReserve.State>{stateFunc(el.state)}</UserReserve.State>
             {el.store.storeImg[0] ? (
@@ -36,7 +36,10 @@ export default function MyPageUserReserveUI(props: IMyPageUserReserveUIProps) {
             ) : (
               <UserReserve.Img src="/images/dogcharacter.jpg" />
             )}
-            <UserReserve.UserList>
+            <UserReserve.UserList
+              id={el.store.storeID}
+              onClick={props.onClickToDetail}
+            >
               <UserReserve.ContentsText>
                 <UserReserve.Title>{el.store.name}</UserReserve.Title>
               </UserReserve.ContentsText>

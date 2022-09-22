@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { BsPersonCircle } from "react-icons/bs";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { BiLogOut, BiWon } from "react-icons/bi";
+import { AiFillEdit } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
 import { breakPoints } from "../../../../commons/styles/media";
 
@@ -52,6 +53,24 @@ export const List = styled.li`
       height: 40px;
       margin-right: -1rem;
     }
+  }
+`;
+
+export const Edit = styled(AiFillEdit)`
+  font-size: 1.4rem;
+  color: #999;
+  position: absolute;
+  margin-top: -4.2rem;
+  margin-left: 8rem;
+  cursor: pointer;
+  :hover {
+    color: orange;
+  }
+
+  @media ${breakPoints.mobile} {
+    margin-top: -2rem;
+    margin-left: 2.5rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -138,15 +157,16 @@ export const Delete = styled(TiDelete)`
   font-size: 2rem;
   color: #cacaca;
   position: absolute;
-  margin-top: -4.2rem;
-  margin-left: -0.6rem;
+  margin-top: -4.8rem;
+  margin-left: 8.5rem;
   cursor: pointer;
   :hover {
     color: orange;
   }
 
   @media ${breakPoints.mobile} {
-    margin-top: -1.6rem;
+    margin-top: -1.8rem;
+    margin-left: 2.6rem;
     font-size: 1.5rem;
   }
 `;

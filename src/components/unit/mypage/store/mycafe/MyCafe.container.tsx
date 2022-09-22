@@ -12,6 +12,8 @@ export default function MyPageStoreMyCafe() {
 
   const { data } = useQuery(FETCH_OWNER_STORES);
 
+  console.log(data);
+
   const [deleteStore] =
     useMutation<Pick<IMutation, "deleteStore">>(DELETE_STORE);
 
