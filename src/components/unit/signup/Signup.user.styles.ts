@@ -82,20 +82,6 @@ export const OwnerWrap = styled.div`
   cursor: pointer;
 `;
 
-// export const Ment1 = styled.div`
-//   font-size: 1.3rem;
-//   color: #ffffff;
-
-//   @media ${breakPoints.mobile} {
-//     font-size: 1.2rem;
-//   }
-// `;
-
-// export const Ment2 = styled.div`
-//   font-size: 9px;
-//   color: #ffffff;
-// `;
-
 export const Title = styled.div`
   font-size: 1.6rem;
   font-weight: 650;
@@ -119,8 +105,6 @@ export const IdPwWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* margin-bottom: 1rem; */
-  /* border: 1px solid black; */
 `;
 
 export const InputWrap = styled.div`
@@ -398,6 +382,6 @@ export const SignUpBtn = styled.button`
 
 export const Line = styled.div`
   width: 100%;
-  height: 2px;
+  height: 2.1px;
   border-bottom: 1px solid lightgray;
 `;
