@@ -22,7 +22,7 @@ export default function HomeContainer() {
   const onClickMoveToPick = (el: any) => () => {
     router.push(`/cafe/${el.storeID}`);
   };
-
+  //
   return (
     <HomeUI
       onClickMoveToPick={onClickMoveToPick}
