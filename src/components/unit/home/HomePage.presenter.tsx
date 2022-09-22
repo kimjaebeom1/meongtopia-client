@@ -218,13 +218,7 @@ export default function HomeUI(props: any) {
                   <HomePage.PickName>{el.name}</HomePage.PickName>
                   <Rate disabled value={el.avgRating} />
 
-                  <HomePage.PickDescription>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(el.description),
-                      }}
-                    ></div>
-                  </HomePage.PickDescription>
+                  <HomePage.PickDescription></HomePage.PickDescription>
                 </HomePage.PickList>
               ))}
             </Slider>
@@ -270,7 +264,10 @@ export default function HomeUI(props: any) {
                   <HomePage.SliderWrapper>
                     <CommunitySlider url={el} />
                   </HomePage.SliderWrapper>
-                  {el.title}
+                  <HomePage.Contents>
+                    {" "}
+                    <div>{el.title}</div>
+                  </HomePage.Contents>
                 </HomePage.CafeListWrapper>
               ))}
             </Slider>
