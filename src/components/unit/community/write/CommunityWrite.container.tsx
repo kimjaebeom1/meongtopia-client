@@ -1,5 +1,5 @@
-import { useMutation } from "@apollo/client";
-import { ChangeEvent, useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
 import { getErrorMessage } from "../../../../commons/libraries/utils";
 import CommunityPresenterPage from "./CommunityWrite.presenter";
 import {
@@ -10,11 +10,11 @@ import {
 import { IUpdateBoardInput } from "./CommunityWrite.types";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Modal } from "antd";
 import "antd/dist/antd.css";
 import { FETCH_BOARD } from "../../../../../pages/community/[boardID]/edit";
-
+import { useEffect } from "react";
 export default function CommunityContainerPage(props: any) {
   const { register, handleSubmit, setValue, trigger, reset } = useForm({
     mode: "onChange",
@@ -36,10 +36,6 @@ export default function CommunityContainerPage(props: any) {
   const [imageUrl, setImageUrl] = useState("");
 
   const fileRef = useRef<HTMLInputElement>(null);
-
-  // useEffect(() => {
-  //   if (props.data?.fetchBoard?.boardImg[0]) ;
-  // }, [props.data]);
 
   const onClickUpload = () => {
     fileRef.current?.click();
@@ -110,8 +106,6 @@ export default function CommunityContainerPage(props: any) {
     }
   };
 
-  console.log(file);
-
   // 수정하기
   const onClickUpdate = async (data: any) => {
     if (typeof router.query.boardID !== "string") return;
@@ -148,6 +142,12 @@ export default function CommunityContainerPage(props: any) {
       }
     }
   };
+
+  useEffect(() => {
+    if (props.data?.fetchBoard.boardImg[0].url) {
+      setImageUrl(props.data?.fetchBoard.boardImg[0].url);
+    }
+  }, [props.data]);
 
   return (
     <CommunityPresenterPage

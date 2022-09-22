@@ -64,7 +64,7 @@ export default function SecondLandingPage() {
         <div>
           <Landing.WrapBottom className={inView ? "isActive" : ""} ref={ref}>
             <Landing.Img
-              src="/images/landingLastImg3.svg"
+              src="/images/landingcart.png"
               className={inView ? "isActive" : ""}
               ref={ref}
             />

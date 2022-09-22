@@ -306,10 +306,11 @@ export const WrapBottom = styled.div`
 `;
 
 export const Img = styled.img`
-  /* height: 80%; */
+  height: 30vw;
   z-index: 0;
   background-color: #fff;
   width: 45vw;
+  border-radius: 10px;
   box-shadow: 5px 6px 12px 3px lightgray;
 
   @media ${breakPoints.mobile} {
@@ -343,6 +344,7 @@ export const LogoWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   /* background-color: red; */
 `;
 
@@ -350,7 +352,12 @@ export const LogoIcon = styled(DoubleRightOutlined)`
   font-size: 1.3rem;
   color: #ffa500;
   margin-left: 10px;
+  margin-top: 4rem;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
 `;
 
 export const Wrapper1 = styled.div`
@@ -492,8 +499,8 @@ export const MainLogo = styled.img`
   }
 
   @media ${breakPoints.mobile} {
-    width: 30vw;
-    height: 7vh;
+    width: 35vw;
+    height: 9vh;
     margin-bottom: 15px;
   }
 `;

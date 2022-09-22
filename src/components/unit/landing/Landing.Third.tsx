@@ -86,7 +86,7 @@ export default function LandingWebInfo() {
                     color: "#8B4513",
                   }}
                 >
-                  {CountUp(1342812)}
+                  {CountUp(1358594)}
                 </span>
                 <br />
                 만명 +
@@ -104,7 +104,7 @@ export default function LandingWebInfo() {
           <Landing.LeftItem3 className={inView ? "isActive" : ""} ref={ref}>
             <Landing.Pick className={inView ? "isActive" : ""} ref={ref}>
               <div style={{ fontSize: "23px" }}>
-                패이지뷰
+                페이지뷰
                 <br />
                 <span
                   style={{
@@ -112,7 +112,7 @@ export default function LandingWebInfo() {
                     color: "#8B4513",
                   }}
                 >
-                  {CountUp(8483532)}
+                  {CountUp(851231)}
                 </span>
                 <br />건 +
               </div>

@@ -21,5 +21,5 @@ export default function CountUp(end: number, start = 0, duration = 3000) {
     }, frameRate);
   }, [end, frameRate, start, totalFrame]);
 
-  return count;
+  return count.toLocaleString();
 }

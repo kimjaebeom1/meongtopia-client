@@ -34,7 +34,7 @@ export default function CommunityListContainerPage() {
 
   const onClickMoveToDetail = (event: any) => {
     if (!(event.target instanceof HTMLDivElement)) return;
-    router.push(`/community/${event.target.id}`);
+    router.push(/community/${event.target.id});
   };
 
   return (

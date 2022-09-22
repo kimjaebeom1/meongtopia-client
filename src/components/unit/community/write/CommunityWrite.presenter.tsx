@@ -1,6 +1,7 @@
 import * as Write from "./CommunityWrite.styles";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import { useEffect } from "react";
 
 export default function CommunityPresenterPage(props: any) {
   return (
@@ -30,7 +31,24 @@ export default function CommunityPresenterPage(props: any) {
           <Write.ContentsWrap>
             <Write.ImgWrap>
               <Write.SubTitle>이미지</Write.SubTitle>
-              {props.file ? (
+              {props.isEdit ? (
+                props.data ? (
+                  <Write.ImgBtn
+                    src={
+                      props.file
+                        ? props.imageUrl
+                        : `https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`
+                    }
+                    onClick={props.onClickUpload}
+                  />
+                ) : (
+                  <Write.UnImgWrap>
+                    <Write.ImgDiv onClick={props.onClickUpload}>
+                      <PlusCircleOutlined style={{ fontSize: "2rem" }} />
+                    </Write.ImgDiv>
+                  </Write.UnImgWrap>
+                )
+              ) : props.file ? (
                 <Write.ImgBtn
                   onClick={props.onClickUpload}
                   src={props.imageUrl}

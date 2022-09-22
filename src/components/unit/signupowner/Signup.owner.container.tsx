@@ -220,7 +220,7 @@ export default function SignUpOwnerContainerPage() {
       });
       console.log(result);
       Modal.success({
-        content: `${storeName}사장님 회원가입 되셨습니다. 관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
+        content: `${storeName}사장님 회원가입 되셨습니다.관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
       });
       router.push("/login");
     } catch (error) {
