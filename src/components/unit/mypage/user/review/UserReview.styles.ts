@@ -83,6 +83,10 @@ export const Contents = styled.div`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `;
 
 export const Horizon = styled.div`

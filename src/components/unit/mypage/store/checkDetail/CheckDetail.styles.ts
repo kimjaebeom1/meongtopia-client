@@ -46,6 +46,12 @@ export const ListWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+
+  @media ${breakPoints.mobile} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 `;
 
 export const ListContainer = styled.div`
@@ -73,5 +79,9 @@ export const Btn = styled.button`
   cursor: pointer;
   :active {
     background-color: #f4840b;
+  }
+
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
   }
 `;
