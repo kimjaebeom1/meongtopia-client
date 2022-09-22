@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { FETCH_USER } from "../../login/Login.queries";
 import { FETCH_STORE } from "../detail/dogcontents/DogContents.queries";
 import ReviewWriteUI from "./ReviewWrite.presenter";
 import {
@@ -17,6 +18,9 @@ export default function ReviewWrite() {
   const [deleteReview, refetch] = useMutation(DELETE_REVIEW);
   const [contents, setContents] = useState("");
   const [rating, setRating] = useState(5);
+  const [isEdit, setIsEdit] = useState(false);
+  const { data: userData } = useQuery(FETCH_USER);
+  const [editReview, setEditReview] = useState("");
 
   const { data } = useQuery(FETCH_STORE_REVIEWS, {
     variables: {
@@ -30,8 +34,18 @@ export default function ReviewWrite() {
     setAdd((prev) => prev + 1);
   };
 
+  const onClickEditIcon = () => {
+    setIsEdit(true);
+  };
+
   const onChangeContents = (event: any) => {
     setContents(event.target.value);
+  };
+
+  const onChangeReview = (event: any) => {
+    console.log(123);
+
+    setEditReview(event.target.value);
   };
 
   const onClickWriteReview = async () => {
@@ -65,40 +79,48 @@ export default function ReviewWrite() {
   };
 
   const onClickDeleteReview = async () => {
-    await deleteReview({
-      refetchQueries: [
-        {
-          query: FETCH_STORE_REVIEWS,
-          variables: { storeID: router.query.cafeid },
-        },
-      ],
-    });
+    try {
+      await deleteReview({
+        refetchQueries: [
+          {
+            query: FETCH_STORE_REVIEWS,
+            variables: { storeID: router.query.cafeid },
+          },
+        ],
+      });
 
-    alert("삭제되었습니다");
+      alert("삭제되었습니다");
+    } catch (error) {
+      alert((error as Error).message);
+    }
   };
-  // const onClickUpdateReview = async () => {
-  //   const updateReviewInput:any= {};
-  //   if (contents) updateReviewInput.contents = contents
-  //   if (rating) updateReviewInput.rating = rating
 
-  //   try {
-  //     await updateReview({
-  //       variables: {
-  //         updateReviewInput,
-  //         storeID: props.el?.id,
-  //       },
-  //       refetchQueries: [
-  //         {
-  //           query: FETCH_STORE_REVIEWS,
-  //           variables: { storeID: router.query.id },
-  //         },
-  //       ],
-  //     });
-  //     props?.setIsEdit(false);
-  //   } catch (error) {
-  //     alert((error as Error).message);
-  //   }
-  // };
+  // 업데이트 리뷰
+  const onClickUpdateReview = async () => {
+    const updateReviewInput: any = {};
+    if (contents) updateReviewInput.contents = editReview;
+    if (rating) updateReviewInput.rating = rating;
+
+    try {
+      await updateReview({
+        variables: {
+          updateReviewInput,
+          reviewID: String(
+            data?.fetchStoreReviewes.map((el: any) => el.reviewID)
+          ),
+        },
+        refetchQueries: [
+          {
+            query: FETCH_STORE_REVIEWS,
+            variables: { storeID: String(router.query.id) },
+          },
+        ],
+      });
+      setIsEdit(false);
+    } catch (error) {
+      alert((error as Error).message);
+    }
+  };
 
   return (
     <ReviewWriteUI
@@ -108,8 +130,12 @@ export default function ReviewWrite() {
       data={data}
       add={add}
       onClickAdd={onClickAdd}
+      isEdit={isEdit}
+      onClickEditIcon={onClickEditIcon}
       contents={contents}
       onClickDeleteReview={onClickDeleteReview}
+      onChangeReview={onChangeReview}
+      onClickUpdateReview={onClickUpdateReview}
     />
   );
 }
