@@ -52,15 +52,3 @@ export const FETCH_PICK_RANK = gql`
     }
   }
 `;
-
-export const FETCH_BOARDS = gql`
-  query fetchBoards {
-    fetchBoards {
-      title
-      contents
-      boardImg {
-        url
-      }
-    }
-  }
-`;
