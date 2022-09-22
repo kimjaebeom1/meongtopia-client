@@ -1,15 +1,11 @@
 import * as Detail from "./Community.Detail.styles";
 
 export default function CommunityDetailPresenterPage(props: any) {
-  const onError = (event: any) => {
-    // event.target.src = "/images/listlogo.png";
-  };
   return (
     <Detail.Wrapper>
       <Detail.ColumnWrap>
         <Detail.Img
-          src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`}
-          onError={onError}
+          src={`https://storage.googleapis.com/${props.data?.fetchBoard.boardImg[0]?.url}`}
         />
         <Detail.Title>{props.data?.fetchBoard?.title}</Detail.Title>
         <Detail.Line />

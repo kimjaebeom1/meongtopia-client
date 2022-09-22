@@ -15,6 +15,7 @@ import { Modal } from "antd";
 import "antd/dist/antd.css";
 import { FETCH_BOARD } from "../../../../../pages/community/[boardID]/edit";
 import { useEffect } from "react";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 export default function CommunityContainerPage(props: any) {
   const { register, handleSubmit, setValue, trigger, reset } = useForm({
     mode: "onChange",
@@ -110,6 +111,13 @@ export default function CommunityContainerPage(props: any) {
   const onClickUpdate = async (data: any) => {
     if (typeof router.query.boardID !== "string") return;
 
+    if (!data.title && !data.contents && !data.file) {
+      Modal.error({
+        content: " 수정한 내용이 없습니다",
+      });
+      return;
+    }
+
     const updateBoardInputs: IUpdateBoardInput = {};
     if (data.title !== "") updateBoardInputs.title = data.title;
     if (data.contents !== "") updateBoardInputs.contents = data.contents;
@@ -119,7 +127,6 @@ export default function CommunityContainerPage(props: any) {
       const result = await updateBoard({
         variables: {
           updateBoardInput: {
-            // updateBoardInputs,
             title: updateBoardInputs.title,
             contents: updateBoardInputs.contents,
             boardImg: updateBoardInputs.file,
@@ -133,8 +140,7 @@ export default function CommunityContainerPage(props: any) {
           },
         ],
       });
-      // props.setIsEdit(false);
-      // console.log(updateBoardInputs.title);
+
       router.push(`/community/${result.data?.updateBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
@@ -144,7 +150,7 @@ export default function CommunityContainerPage(props: any) {
   };
 
   useEffect(() => {
-    if (props.data?.fetchBoard.boardImg[0].url) {
+    if (props.data?.fetchBoard.boardImg[0]?.length) {
       setImageUrl(props.data?.fetchBoard.boardImg[0].url);
     }
   }, [props.data]);

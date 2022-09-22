@@ -2,10 +2,10 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { FETCH_BOARD, DELETE_BOARD } from "./Community.Detail.queries";
 import CommunityDetailPresenterPage from "./Community.Detail.presenter";
-import { getErrorMessage } from "../../../../commons/libraries/utils";
 import "antd/dist/antd.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
+import { FETCH_BOARDS } from "../list/Community.List.queries";
 
 export default function CommunityDetailContainerPage() {
   const router = useRouter();
@@ -38,11 +38,18 @@ export default function CommunityDetailContainerPage() {
             variables: {
               boardID: String(router.query.boardID),
             },
+            refetchQueries: [
+              {
+                query: FETCH_BOARDS,
+                variables: { page: 1, order: "DESC" },
+              },
+            ],
           });
           // console.log(result);
           Modal.success({
             content: "삭제되었습니다",
           });
+
           router.push("/community");
         } catch (error) {
           if (error instanceof Error) {
