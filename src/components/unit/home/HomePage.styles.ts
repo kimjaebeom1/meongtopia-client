@@ -283,6 +283,7 @@ export const CafeListWrapper = styled.div`
   width: 50%;
   height: 19rem;
   margin-bottom: 2rem;
+
   display: flex;
   border: 1px solid rgb(235, 235, 235);
   border-radius: 8px;
@@ -319,9 +320,24 @@ export const CafeList = styled.ul`
   }
 `;
 
+export const Contents = styled.div`
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+  font-size: 1.3rem;
+  height: 3.125rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  padding-left: 0.4rem;
+  color: #949494;
+`;
+
 export const ContentsText = styled.li`
   display: flex;
   align-items: flex-end;
+
   justify-content: space-between;
   line-height: normal;
   font-weight: 600;
@@ -368,6 +384,7 @@ export const MonthPick = styled.div`
   @media ${breakPoints.mobile} {
     width: 100%;
     align-items: center;
+    padding-bottom: rem;
   }
 `;
 
