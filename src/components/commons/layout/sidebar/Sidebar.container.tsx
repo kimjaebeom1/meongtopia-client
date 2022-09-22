@@ -72,7 +72,7 @@ export default function MyPageSidebar() {
 
   const onClickLogout = async () => {
     logout();
-    await router.push("/");
+    await router.push("/login/");
     location.reload();
   };
 
