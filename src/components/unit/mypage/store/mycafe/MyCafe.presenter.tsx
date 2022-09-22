@@ -18,7 +18,7 @@ export default function MyPageStoreMyCafeUI(props: IMyPageStoreMyCafeUIProps) {
         .filter((_: any, i: number) => i < Number(props.add) * 2)
         .map((el: any) => (
           <MyCafe.ListWrapper key={uuidv4()}>
-            {el.storeImg?.[0].url ? (
+            {el.storeImg.length ? (
               <MyCafe.Img
                 src={`https://storage.googleapis.com/${el.storeImg?.[0].url}`}
               />

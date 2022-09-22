@@ -1,4 +1,7 @@
 import * as Write from "./CommunityWrite.styles";
+import { PlusCircleOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
+import { useEffect } from "react";
 
 export default function CommunityPresenterPage(props: any) {
   return (
@@ -21,37 +24,61 @@ export default function CommunityPresenterPage(props: any) {
             defaultValue={props.data?.fetchBoard.title || ""}
           />
         </Write.TitleWrap>
+
         <Write.Line />
 
-        <Write.ContentsWrap>
-          <Write.ImgWrap>
-            <Write.SubTitle>이미지</Write.SubTitle>
+        <Write.SubWrap>
+          <Write.ContentsWrap>
+            <Write.ImgWrap>
+              <Write.SubTitle>이미지</Write.SubTitle>
+              {props.isEdit ? (
+                props.data ? (
+                  <Write.ImgBtn
+                    src={
+                      props.file
+                        ? props.imageUrl
+                        : `https://storage.googleapis.com/${props.data?.fetchBoard.boardImg?.[0]?.url}`
+                    }
+                    onClick={props.onClickUpload}
+                  />
+                ) : (
+                  <Write.UnImgWrap>
+                    <Write.ImgDiv onClick={props.onClickUpload}>
+                      <PlusCircleOutlined style={{ fontSize: "2rem" }} />
+                    </Write.ImgDiv>
+                  </Write.UnImgWrap>
+                )
+              ) : props.file ? (
+                <Write.ImgBtn
+                  onClick={props.onClickUpload}
+                  src={props.imageUrl}
+                />
+              ) : (
+                <Write.UnImgWrap>
+                  <Write.ImgDiv onClick={props.onClickUpload}>
+                    <PlusCircleOutlined style={{ fontSize: "2rem" }} />
+                  </Write.ImgDiv>
+                </Write.UnImgWrap>
+              )}
+            </Write.ImgWrap>
 
-            {props.file ? (
-              <Write.ImgBtn
-                onClick={props.onClickUpload}
-                src={props.imageUrl}
+            <Write.ImgWrap>
+              <Write.SubTitle>내용</Write.SubTitle>
+              <Write.Contents
+                onChange={props.handleChange}
+                defaultValue={props.data?.fetchBoard.contents || ""}
               />
-            ) : (
-              <Write.UnImgWrap>
-                <Write.ImgBtn onClick={props.onClickUpload} />
-                <Write.Error>사진 추가</Write.Error>
-              </Write.UnImgWrap>
-            )}
-          </Write.ImgWrap>
+            </Write.ImgWrap>
+          </Write.ContentsWrap>
 
-          <Write.ImgWrap>
-            <Write.SubTitle>내용</Write.SubTitle>
-            <Write.Contents
-              onChange={props.handleChange}
-              defaultValue={props.data?.fetchBoard.contents || ""}
-            />
-          </Write.ImgWrap>
-        </Write.ContentsWrap>
-        <Write.Button>{props.isEdit ? "수정하기" : "등록하기"}</Write.Button>
+          <Write.Button>{props.isEdit ? "수정하기" : "등록하기"}</Write.Button>
+        </Write.SubWrap>
+        <Write.Img
+          type="file"
+          ref={props.fileRef}
+          onChange={props.onChangeImg}
+        />
       </Write.Wrapper>
-
-      <Write.Img type="file" ref={props.fileRef} onChange={props.onChangeImg} />
     </form>
   );
 }

@@ -148,7 +148,7 @@ export default function SignUpContainerPage() {
           nickname,
         },
       });
-      console.log(result.data?.checkNickname);
+      // console.log(result.data?.checkNickname);
       if (result.data?.checkNickname) {
         Modal.error({
           content: "중복된 닉네임이 있습니다. 다시 입력해주세요",
@@ -162,7 +162,7 @@ export default function SignUpContainerPage() {
         // setIsActive(false);
       }
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -179,7 +179,7 @@ export default function SignUpContainerPage() {
           phone: String(phone),
         },
       });
-      console.log(result);
+      // console.log(result);
       Modal.success({
         content: "인증번호가 발송되었습니다.",
       });
@@ -202,7 +202,7 @@ export default function SignUpContainerPage() {
         },
       });
       setPhoneCheck(true);
-      console.log(result.data?.checkValidToken); // output : true
+      // console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
       setIsCountdown((prev) => !prev);
       setIsActivePhone(false);
@@ -214,12 +214,13 @@ export default function SignUpContainerPage() {
     }
   };
 
+  // 계정 만들기
   const onClickCreateUser = async () => {
     if (!checkEmail(email)) {
       setEmailError("이메일 @까지 입력해주세요");
     }
 
-    if (!checkPassword(password)) {
+    if (!checkPassword(password) && password.length < 8) {
       setPasswordError("비밀번호를 8자리 이상 입력해주세요");
     }
 
@@ -263,11 +264,11 @@ export default function SignUpContainerPage() {
             },
           },
         });
-        console.log(result.data?.createUser.usedID);
+        // console.log(result.data?.createUser.usedID);
         alert("회원가입 완성");
         router.push("/login");
       } catch (error) {
-        if (error instanceof Error) console.log(error.message);
+        if (error instanceof Error) alert(error.message);
       }
     }
   };

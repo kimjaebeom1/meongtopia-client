@@ -28,7 +28,7 @@ export default function SignUpOwnerPresenterPage(
     const newChecked = [...checked];
     newChecked[i] = event.target.checked;
     setChecked(newChecked);
-    console.log(checked);
+    // console.log(checked);
   };
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function SignUpOwnerPresenterPage(
 
   const onClickContents = () => {
     Modal.info({
-      content: "부장님 체고십니다^^!",
+      content: "",
     });
   };
 

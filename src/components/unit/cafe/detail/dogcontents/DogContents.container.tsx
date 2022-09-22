@@ -36,11 +36,6 @@ export default function DetailDogContents() {
     setCount(value);
   };
 
-  // const pick = userData?.fetchUser.pick.filter(
-  //   (el: any) => el.store?.storeID === router.query.cafeid
-  // );
-
-  // 토글
   useEffect(() => {
     userData?.fetchUser.pick.filter(
       (el: any) => el.store?.storeID === router.query.cafeid
@@ -127,6 +122,8 @@ export default function DetailDogContents() {
       }
     }
   };
+  // console.log(userData);
+  // console.log(data);
 
   // 예약하기
   useEffect(() => {

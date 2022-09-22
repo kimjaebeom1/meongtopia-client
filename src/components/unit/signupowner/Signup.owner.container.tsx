@@ -10,7 +10,7 @@ import {
 import { ChangeEvent, useState, useEffect, SetStateAction } from "react";
 import { Modal, message } from "antd";
 import "antd/dist/antd.css";
-import { checkEmail } from "../../../commons/libraries/utils";
+import { checkEmail, checkPassword } from "../../../commons/libraries/utils";
 
 export default function SignUpOwnerContainerPage() {
   const router = useRouter();
@@ -122,10 +122,10 @@ export default function SignUpOwnerContainerPage() {
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
       setFile(result.data?.uploadFile); // aks
-      console.log(result.data?.uploadFile);
+      // console.log(result.data?.uploadFile);
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error.message);
+        // console.log(error.message);
       }
     }
   };
@@ -143,7 +143,7 @@ export default function SignUpOwnerContainerPage() {
           phone: String(phone),
         },
       });
-      console.log(result);
+      // console.log(result);
       Modal.success({
         content: "인증번호가 발송되었습니다.",
       });
@@ -166,7 +166,7 @@ export default function SignUpOwnerContainerPage() {
         },
       });
       setPhoneCheck(true);
-      console.log(result.data?.checkValidToken); // output : true
+      // console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
       setIsCountdown((prev) => !prev);
       setIsActivePhone(false);
@@ -183,8 +183,8 @@ export default function SignUpOwnerContainerPage() {
       setEmailError("이메일 @까지 입력해주세요");
     }
 
-    if (!password) {
-      setPasswordError("비밀번호를 입력해주세요");
+    if (!checkPassword(password) && password.length < 8) {
+      setPasswordError("비밀번호를 8자리 이상 입력해주세요");
     }
 
     if (!passwordChk) {
@@ -218,14 +218,14 @@ export default function SignUpOwnerContainerPage() {
           },
         },
       });
-      console.log(result);
+      // console.log(result);
       Modal.success({
-        content: `${storeName}사장님 회원가입 되셨습니다. 관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
+        content: `${storeName}사장님 회원가입 되셨습니다.관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
       });
       router.push("/login");
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error);
+        alert(error);
       }
     }
   };

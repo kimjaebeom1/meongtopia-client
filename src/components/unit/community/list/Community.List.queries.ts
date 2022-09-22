@@ -9,9 +9,17 @@ export const FETCH_BOARDS = gql`
       boardImg {
         url
       }
-      user {
-        nickname
-      }
+      # user {
+      #   nickname
+      # }
+    }
+  }
+`;
+
+export const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      role
     }
   }
 `;

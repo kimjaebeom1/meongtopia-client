@@ -1,5 +1,5 @@
-import { useMutation } from "@apollo/client";
-import { ChangeEvent, useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { useState } from "react";
 import { getErrorMessage } from "../../../../commons/libraries/utils";
 import CommunityPresenterPage from "./CommunityWrite.presenter";
 import {
@@ -10,18 +10,18 @@ import {
 import { IUpdateBoardInput } from "./CommunityWrite.types";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Modal } from "antd";
 import "antd/dist/antd.css";
 import { FETCH_BOARD } from "../../../../../pages/community/[boardID]/edit";
-
+import { useEffect } from "react";
 export default function CommunityContainerPage(props: any) {
   const { register, handleSubmit, setValue, trigger, reset } = useForm({
     mode: "onChange",
   });
 
   const handleChange = (value: string) => {
-    console.log(value);
+    // console.log(value);
     setValue("contents", value === "<p><br></p>" ? "" : value);
     trigger("contents");
   };
@@ -41,29 +41,7 @@ export default function CommunityContainerPage(props: any) {
     fileRef.current?.click();
   };
 
-  // useEffect(() => {
-  //   if (props.data !== undefined) {
-  //     reset({
-  //       title: props.data.fetchBoard.title,
-  //       contents: props.data.fetchBoard.contents,
-  //       boardImg: {
-  //         url: props.data.fetchBoard.boardImg?.url,
-  //       },
-  //     });
-  //     setImageUrl(props.data.fetchBoard.boardImg[0]?.url);
-  //   }
-  // }, [props.data]);
-
-  // useEffect(() => {
-  //   if (props.data?.fetchBoard.boardImg[0].url) {
-  //     setFile(file);
-  //   }
-  // }, [props.data]);
-
-  console.log(props.data?.fetchBoard.boardImg[0]?.url);
-  console.log([props.data?.fetchBoard.boardImg[0]?.url]);
-
-  // 이미지 url api
+  //이미지 URL api
   const onChangeImg = async (event: any) => {
     const ImageFile = event.target.files[0];
 
@@ -73,11 +51,8 @@ export default function CommunityContainerPage(props: any) {
       if (typeof data.target?.result === "string") {
         setImageUrl(data.target?.result);
         setFile(data.target?.result);
-        console.log(data.target?.result);
       }
     };
-
-    console.log(file);
 
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
@@ -122,7 +97,7 @@ export default function CommunityContainerPage(props: any) {
           },
         },
       });
-      console.log(result.data?.createBoard);
+      // console.log(result.data?.createBoard);
       router.push(`/community/${result.data?.createBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
@@ -159,7 +134,7 @@ export default function CommunityContainerPage(props: any) {
         ],
       });
       // props.setIsEdit(false);
-      console.log(updateBoardInputs.title);
+      // console.log(updateBoardInputs.title);
       router.push(`/community/${result.data?.updateBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
@@ -167,6 +142,12 @@ export default function CommunityContainerPage(props: any) {
       }
     }
   };
+
+  useEffect(() => {
+    if (props.data?.fetchBoard.boardImg[0].url) {
+      setImageUrl(props.data?.fetchBoard.boardImg[0].url);
+    }
+  }, [props.data]);
 
   return (
     <CommunityPresenterPage

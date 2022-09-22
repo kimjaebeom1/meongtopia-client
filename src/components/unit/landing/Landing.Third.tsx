@@ -17,12 +17,16 @@ export default function LandingWebInfo() {
     router.push("/home");
   };
 
-  const props = useSpring({ number: Math.floor(231), from: { number: 1 } });
+  const props = useSpring({ number: Math.floor(211), from: { number: 1 } });
+
   return (
     <Landing.ThirdWrapper>
       <Landing.Wrapper1>
         <Landing.RightWrapper>
-          <Landing.MainLogo src="/images/newlogo.png" onClick={onClickLogo} />
+          <Landing.LogoWrap onClick={onClickLogo}>
+            <Landing.MainLogo src="/images/newlogo.png" />
+            <Landing.LogoIcon>sdasd</Landing.LogoIcon>
+          </Landing.LogoWrap>
           <Landing.LogoInfo>
             <span style={{ backgroundColor: "#FFD5B4" }}>
               사용자 데이터 기반의 애견카페 추천 서비스
@@ -82,7 +86,7 @@ export default function LandingWebInfo() {
                     color: "#8B4513",
                   }}
                 >
-                  {CountUp(1342812)}
+                  {CountUp(1358594)}
                 </span>
                 <br />
                 만명 +
@@ -100,7 +104,7 @@ export default function LandingWebInfo() {
           <Landing.LeftItem3 className={inView ? "isActive" : ""} ref={ref}>
             <Landing.Pick className={inView ? "isActive" : ""} ref={ref}>
               <div style={{ fontSize: "23px" }}>
-                패이지뷰
+                페이지뷰
                 <br />
                 <span
                   style={{
@@ -108,7 +112,7 @@ export default function LandingWebInfo() {
                     color: "#8B4513",
                   }}
                 >
-                  {CountUp(8483532)}
+                  {CountUp(851231)}
                 </span>
                 <br />건 +
               </div>

@@ -9,10 +9,12 @@ export const FETCH_BOARD = gql`
       boardImg {
         url
       }
-      user {
-        name
-        nickname
-      }
+
+      # user {
+      #   name
+      #   nickname
+      #   userID
+      # }
     }
   }
 `;

@@ -6,6 +6,7 @@ import { FETCH_PICK_RANK, FETCH_STORES } from "./HomePage.queries";
 
 export default function HomeContainer() {
   const { data } = useQuery(FETCH_PICK_RANK);
+  // console.log(data);
   const { data: recentData } = useQuery(FETCH_STORES, {
     variables: {
       order: "DESC",
@@ -18,11 +19,11 @@ export default function HomeContainer() {
   });
 
   const router = useRouter();
-  console.log(boardsData);
+
   const onClickMoveToPick = (el: any) => () => {
     router.push(`/cafe/${el.storeID}`);
   };
-
+  //
   return (
     <HomeUI
       onClickMoveToPick={onClickMoveToPick}

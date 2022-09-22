@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { AiFillHeart } from "react-icons/ai";
 import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
@@ -28,28 +27,11 @@ export const ListWrapper = styled.div`
   box-shadow: rgb(0 0 0 / 7%) 0px 0px 12px 0px;
 `;
 
-export const State = styled.div`
-  width: 5rem;
-  height: 100%;
-  background-color: #f1f1f1;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 10px 0 0 10px;
-  padding: 0 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media ${breakPoints.mobile} {
-    width: 12%;
-    padding-left: 1rem;
-  }
-`;
-
 export const Img = styled.img`
   width: 200px;
   height: 100%;
   object-fit: cover;
+  border-radius: 10px 0 0 10px;
 
   @media ${breakPoints.mobile} {
     display: none;
@@ -57,13 +39,12 @@ export const Img = styled.img`
 `;
 
 export const UserList = styled.ul`
-  width: 60%;
+  width: 65%;
   padding: 1rem 2rem;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -72,7 +53,6 @@ export const UserList = styled.ul`
 
 export const Title = styled.h2`
   font-size: 1.6rem;
-  font-weight: 600;
   margin: 0;
 `;
 
@@ -81,10 +61,10 @@ export const ContentsText = styled.li`
   align-items: flex-end;
   justify-content: space-between;
   line-height: normal;
-  font-weight: 600;
-  margin: 0.25rem 0;
+  font-weight: 700;
+  margin: 0.5rem 0;
   & span {
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: normal;
 
     & p {
@@ -94,46 +74,29 @@ export const ContentsText = styled.li`
   }
 `;
 
-export const Date = styled.span`
-  font-size: 1rem;
-  margin: 0.5rem 0;
-`;
-
-export const RatingWrapper = styled.span`
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-`;
-
-export const SelectTag = styled.div`
-  font-size: 1rem;
-  font-weight: 700;
-  color: orange;
+export const Contents = styled.div`
+  line-height: 1.8rem;
+  width: 28rem;
+  font-size: 1.1rem;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const Horizon = styled.div`
   border-bottom: 1px solid #cacaca;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 `;
 
-export const DogWrapper = styled.span`
-  display: flex;
-  align-items: flex-end;
-`;
-
-export const Heart = styled(AiFillHeart)`
-  font-size: 1.2rem;
-  color: orangered;
-  margin-right: 0.5rem;
-`;
-
-export const Cancel = styled.div`
+export const Detail = styled.div`
   width: 6rem;
   background-color: orange;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   border-radius: 0 10px 10px 0;
-  padding: 0 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,8 +108,8 @@ export const Cancel = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 12%;
-    font-size: 1.4rem;
     padding-left: 1rem;
+    font-size: 1.5rem;
   }
 `;
 

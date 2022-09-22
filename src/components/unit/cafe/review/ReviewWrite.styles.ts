@@ -66,8 +66,8 @@ export const Date = styled.h4`
 
 export const Contents = styled.p`
   display: block;
-  width: 60%;
-  height: 3.5rem;
+  width: 80%;
+  height: 4.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -160,4 +160,23 @@ export const AddBtn = styled.button`
   :hover {
     background-color: #f4840b;
   }
+`;
+
+export const ReviewBox = styled.input`
+  padding-left: 0.7rem;
+  width: 80%;
+  height: 2.188rem;
+  border-radius: 5px;
+  font-size: 0.938rem;
+  border: 2px solid #e9e9e9;
+`;
+
+export const ReviewEditBtn = styled.button`
+  justify-content: center;
+  align-items: center;
+  height: 2.188rem;
+  border: 5px solid #e9e9e9;
+  border-radius: 5px;
+  margin-left: 1rem;
+  cursor: pointer;
 `;
