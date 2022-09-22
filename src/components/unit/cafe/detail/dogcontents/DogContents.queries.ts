@@ -12,6 +12,10 @@ export const FETCH_STORE = gql`
       address
       addressDetail
       bigDog
+      user {
+        name
+        nickname
+      }
       smallDog
       avgRating
       reservation {

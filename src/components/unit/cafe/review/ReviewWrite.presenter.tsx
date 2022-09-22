@@ -6,6 +6,7 @@ export default function ReviewWriteUI(props: any) {
   return (
     <>
       <ReviewWrite.Body>
+        {/* 리뷰 리스트 */}
         <ReviewWrite.Review>
           <ReviewWrite.CommentsTag>리뷰</ReviewWrite.CommentsTag>{" "}
           <ReviewWrite.ListContainer>
@@ -27,15 +28,37 @@ export default function ReviewWriteUI(props: any) {
                     </ReviewWrite.ProfileWrapper>
                   </ReviewWrite.ProfileContainer>
                   <ReviewWrite.IconWrapper>
-                    <ReviewWrite.Star value={el.rating} />
+                    {props.isEdit ? (
+                      <ReviewWrite.Star
+                        onChange={props.setRating}
+                        defaultValue={el.rating}
+                      />
+                    ) : (
+                      <ReviewWrite.Star disabled value={el.rating} />
+                    )}
+
                     <div>
-                      <ReviewWrite.EditIcon onClick={props.onClickEditReview} />
+                      <ReviewWrite.EditIcon onClick={props.onClickEditIcon} />
                       <ReviewWrite.DeleteIcon
                         onClick={props.onClickDeleteReview}
                       />
                     </div>
                   </ReviewWrite.IconWrapper>
-                  <ReviewWrite.Contents>{el.contents}</ReviewWrite.Contents>
+                  {props.isEdit ? (
+                    <ReviewWrite.Contents>
+                      <ReviewWrite.ReviewBox
+                        onChange={props.onChangeReview}
+                        defaultValue={props.contents}
+                      ></ReviewWrite.ReviewBox>
+                      <ReviewWrite.ReviewEditBtn
+                        onClick={props.onClickUpdateReview}
+                      >
+                        수정하기
+                      </ReviewWrite.ReviewEditBtn>
+                    </ReviewWrite.Contents>
+                  ) : (
+                    <ReviewWrite.Contents>{el.contents}</ReviewWrite.Contents>
+                  )}
                 </div>
               ))}
           </ReviewWrite.ListContainer>
@@ -53,27 +76,17 @@ export default function ReviewWriteUI(props: any) {
             )}
           </div>
         </ReviewWrite.Review>
+
+        {/* 리뷰작성 */}
         <ReviewWrite.WriteWrapper>
           <ReviewWrite.CommentsTag>리뷰 남기기</ReviewWrite.CommentsTag>
           <ReviewWrite.Star defaultValue={0} onChange={props.setRating} />
           <ReviewWrite.CommentsBox
             placeholder="리뷰를 작성해주세요"
             defaultValue={props.contents}
-            // value={
-            //   props.isEdit
-            //     ? props.contents || props.el?.contents
-            //     : props.contents
-            // }
             onChange={props.onChangeContents}
           ></ReviewWrite.CommentsBox>
-
           <ReviewWrite.ButtonWrapper>
-            {/* {props.isEdit && (
-          <ReviewWrite.CancelBtn type="button" onClick={props.onClickCancel}>
-            {" "}
-            취소하기
-          </ReviewWrite.CancelBtn>
-        )} */}
             <ReviewWrite.CommentsBtn
               //   isEdit={props.isEdit}
               //   type="button"

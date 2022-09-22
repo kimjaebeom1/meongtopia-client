@@ -15,9 +15,9 @@ export const CREATE_REVIEW = gql`
 export const UPDATE_REVIEW = gql`
   mutation updateReview(
     $updateReviewInput: UpdateReviewInput!
-    $storeID: String!
+    $reviewID: String!
   ) {
-    updateReview(updateReviewInput: $updateReviewInput, storeID: $storeID) {
+    updateReview(updateReviewInput: $updateReviewInput, reviewID: $reviewID) {
       contents
     }
   }
@@ -35,6 +35,7 @@ export const FETCH_STORE_REVIEWS = gql`
       rating
       contents
       createdAt
+      reviewID
       user {
         nickname
         profileImgUrl

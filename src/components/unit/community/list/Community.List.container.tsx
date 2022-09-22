@@ -37,9 +37,6 @@ export default function CommunityListContainerPage() {
     router.push(`/community/${event.target.id}`);
   };
 
-  const onClickHome = () => {
-    router.push("/home");
-  };
   return (
     <CommunityListPresenterPage
       data={data}
@@ -47,7 +44,6 @@ export default function CommunityListContainerPage() {
       onClickNext={onClickNext}
       onClickPrev={onClickPrev}
       onClickMoveToDetail={onClickMoveToDetail}
-      onClickHome={onClickHome}
     />
   );
 }
