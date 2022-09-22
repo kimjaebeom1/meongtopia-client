@@ -284,8 +284,8 @@ export default function HomeUI(props: any) {
                 <div> &nbsp;이 달의 게시글</div>
               </div>{" "}
             </HomePage.PickTag>
-            <HomePage.MonthPickImg src="/images/monthPick1.svg/" />
-            <HomePage.MonthPickImg2 src="/images/monthPick2.svg/" />
+            <HomePage.MonthPickImg src="/images/monthPick1.svg" />
+            <HomePage.MonthPickImg2 src="/images/monthPick2.svg" />
           </HomePage.MonthPick>
         </HomePage.BottomWrapper>
       </HomePage.Wrapper>
