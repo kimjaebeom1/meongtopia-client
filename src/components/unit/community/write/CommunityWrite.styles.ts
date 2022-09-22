@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const Wrapper = styled.div`
-  /* margin: 0px auto; */
+  margin: 0px auto;
   width: 60%;
   padding-top: 100px;
   display: flex;

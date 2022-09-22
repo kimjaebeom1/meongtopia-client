@@ -28,8 +28,6 @@ export default function CommunityDetailContainerPage() {
   };
 
   const onClickDeleteBoard = async () => {
-    // if()
-
     confirm({
       title: "게시글 삭제",
       icon: <ExclamationCircleOutlined />,

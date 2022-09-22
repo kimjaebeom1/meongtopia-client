@@ -35,7 +35,7 @@ export default function SignUpPresenterPage(props: ISignUpPresenterPageProps) {
 
   const onClickContents = () => {
     Modal.info({
-      content: "부장님 체고십니다^^!",
+      content: "",
     });
   };
 
