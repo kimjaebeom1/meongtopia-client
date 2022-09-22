@@ -1,8 +1,9 @@
 import { getDate } from "../../../../commons/libraries/utils";
 import * as ReviewWrite from "./ReviewWrite.styles";
 import { v4 as uuidv4 } from "uuid";
+import { IReviewWriteUIProps } from "./ReviewWrite.types";
 
-export default function ReviewWriteUI(props: any) {
+export default function ReviewWriteUI(props: IReviewWriteUIProps) {
   return (
     <>
       <ReviewWrite.Body>
@@ -16,9 +17,9 @@ export default function ReviewWriteUI(props: any) {
                 <div key={uuidv4()}>
                   <ReviewWrite.ProfileContainer>
                     <ReviewWrite.ProfileWrapper>
-                      <ReviewWrite.ProfileImg
+                      {/* <ReviewWrite.ProfileImg
                         src={`https://storage.googleapis.com/${el.user.profileImgUrl}`}
-                      />
+                      /> */}
                       <ReviewWrite.Profile>
                         <ReviewWrite.Name>{el.user.nickname}</ReviewWrite.Name>
                         <ReviewWrite.Date>
@@ -44,21 +45,7 @@ export default function ReviewWriteUI(props: any) {
                       />
                     </div>
                   </ReviewWrite.IconWrapper>
-                  {props.isEdit ? (
-                    <ReviewWrite.Contents>
-                      <ReviewWrite.ReviewBox
-                        onChange={props.onChangeReview}
-                        defaultValue={props.contents}
-                      ></ReviewWrite.ReviewBox>
-                      <ReviewWrite.ReviewEditBtn
-                        onClick={props.onClickUpdateReview}
-                      >
-                        수정하기
-                      </ReviewWrite.ReviewEditBtn>
-                    </ReviewWrite.Contents>
-                  ) : (
-                    <ReviewWrite.Contents>{el.contents}</ReviewWrite.Contents>
-                  )}
+                  <ReviewWrite.Contents>{el.contents}</ReviewWrite.Contents>
                 </div>
               ))}
           </ReviewWrite.ListContainer>
@@ -83,7 +70,7 @@ export default function ReviewWriteUI(props: any) {
           <ReviewWrite.Star defaultValue={0} onChange={props.setRating} />
           <ReviewWrite.CommentsBox
             placeholder="리뷰를 작성해주세요"
-            defaultValue={props.contents}
+            value={props.contents}
             onChange={props.onChangeContents}
           ></ReviewWrite.CommentsBox>
           <ReviewWrite.ButtonWrapper>
@@ -101,3 +88,16 @@ export default function ReviewWriteUI(props: any) {
     </>
   );
 }
+
+// <ReviewWrite.Contents>
+//   <ReviewWrite.ReviewBox
+//     type="text"
+//     onChange={props.onChangeReview}
+//     defaultValue={props.contents}
+//   />
+//   <ReviewWrite.ReviewEditBtn
+//     onClick={props.onClickUpdateReview}
+//   >
+//     수정하기
+//   </ReviewWrite.ReviewEditBtn>
+// </ReviewWrite.Contents>

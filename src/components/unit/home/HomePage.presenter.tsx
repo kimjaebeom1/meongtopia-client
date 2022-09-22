@@ -264,7 +264,7 @@ export default function HomeUI(props: any) {
 
             {/* 슬라이더 */}
             <Slider {...Settings}>
-              {props.boardsData?.fetchBoards.map((el: any) => (
+              {props.boardsData?.fetchBoards.slice(0, 3).map((el: any) => (
                 <HomePage.CafeListWrapper key={uuidv4()}>
                   {/* 슬라이더 컴포넌트 */}
                   <HomePage.SliderWrapper>

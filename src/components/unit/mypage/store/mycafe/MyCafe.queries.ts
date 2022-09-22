@@ -29,9 +29,9 @@ export const FETCH_OWNER_STORES = gql`
         amount
         date
         state
-        # user {
-        #   nickname
-        # }
+        user {
+          nickname
+        }
       }
     }
   }

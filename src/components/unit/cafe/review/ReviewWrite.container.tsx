@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FETCH_USER } from "../../login/Login.queries";
 import { FETCH_STORE } from "../detail/dogcontents/DogContents.queries";
 import ReviewWriteUI from "./ReviewWrite.presenter";
@@ -38,14 +38,12 @@ export default function ReviewWrite() {
     setIsEdit(true);
   };
 
-  const onChangeContents = (event: any) => {
-    setContents(event.target.value);
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContents(event.currentTarget.value);
   };
 
-  const onChangeReview = (event: any) => {
-    console.log(123);
-
-    setEditReview(event.target.value);
+  const onChangeReview = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditReview(e.target.value);
   };
 
   const onClickWriteReview = async () => {
@@ -124,15 +122,16 @@ export default function ReviewWrite() {
 
   return (
     <ReviewWriteUI
+      data={data}
+      add={add}
+      isEdit={isEdit}
+      contents={contents}
+      editReview={editReview}
       onClickWriteReview={onClickWriteReview}
       onChangeContents={onChangeContents}
       setRating={setRating}
-      data={data}
-      add={add}
       onClickAdd={onClickAdd}
-      isEdit={isEdit}
       onClickEditIcon={onClickEditIcon}
-      contents={contents}
       onClickDeleteReview={onClickDeleteReview}
       onChangeReview={onChangeReview}
       onClickUpdateReview={onClickUpdateReview}
