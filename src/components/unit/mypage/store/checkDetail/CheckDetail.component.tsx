@@ -101,6 +101,8 @@ export default function MyPageStoreCheckDetail() {
                   <span>예약상태: </span>
                   {stateFunc(el.state)}
                 </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
                 <CheckDetail.Btn
                   onClick={() => onClickState(el.resID, el.state)}
                 >
