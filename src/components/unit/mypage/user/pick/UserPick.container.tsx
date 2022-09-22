@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 import { IQuery } from "../../../../../commons/types/generated/types";
 import { FETCH_USER } from "../../../../commons/layout/header/Header.queries";
-
 import MyPageUserPickUI from "./UserPick.presenter";
 
 export default function MyPageUserPick() {
