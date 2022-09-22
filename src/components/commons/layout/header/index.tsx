@@ -25,7 +25,7 @@ export default function LayoutHeader() {
 
   const onCLickLogout = async () => {
     await logout();
-    await router.push("/home/");
+    await router.push("/login/");
     location.reload();
   };
 
@@ -51,7 +51,7 @@ export default function LayoutHeader() {
                 <div>
                   <Header.MypageContainer>
                     <LoginButton
-                      href="/mypage/user/reserve"
+                      href="/mypage/user/reserve/"
                       title="마이페이지"
                     />
                     <Header.Logout onClick={onCLickLogout}>
@@ -71,7 +71,7 @@ export default function LayoutHeader() {
                 <div>
                   <Header.MypageContainer>
                     <LoginButton
-                      href="/mypage/store/mycafe"
+                      href="/mypage/store/mycafe/"
                       title="마이페이지"
                     />
                     <Header.Logout onClick={onCLickLogout}>
@@ -90,8 +90,8 @@ export default function LayoutHeader() {
               )
             ) : (
               <>
-                <LoginButton href="/login" title="로그인" />
-                <LoginButton href="/signup" title="회원가입" />
+                <LoginButton href="/login/" title="로그인" />
+                <LoginButton href="/signup/" title="회원가입" />
               </>
             )}
           </Header.LoginContainer>
