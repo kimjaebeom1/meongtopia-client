@@ -10,7 +10,7 @@ import {
 import { ChangeEvent, useState, useEffect, SetStateAction } from "react";
 import { Modal, message } from "antd";
 import "antd/dist/antd.css";
-import { checkEmail } from "../../../commons/libraries/utils";
+import { checkEmail, checkPassword } from "../../../commons/libraries/utils";
 
 export default function SignUpOwnerContainerPage() {
   const router = useRouter();
@@ -183,8 +183,8 @@ export default function SignUpOwnerContainerPage() {
       setEmailError("이메일 @까지 입력해주세요");
     }
 
-    if (!password) {
-      setPasswordError("비밀번호를 입력해주세요");
+    if (!checkPassword(password) && password.length < 8) {
+      setPasswordError("비밀번호를 8자리 이상 입력해주세요");
     }
 
     if (!passwordChk) {

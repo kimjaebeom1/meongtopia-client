@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 import "animate.css";
 import { keyframes } from "@emotion/react";
+import { DoubleRightOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
 
 const Fade = keyframes`
   from {
@@ -36,7 +38,7 @@ export const FirstLanding = styled.div`
   animation-duration: 2s; */
 
   @media ${breakPoints.mobile} {
-    background-position-x: 83%;
+    background-position-x: 62%;
   }
 `;
 
@@ -336,6 +338,21 @@ export const ThirdWrapper = styled.div`
   }
 `;
 
+export const LogoWrap = styled.div`
+  /* width: 290px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: red; */
+`;
+
+export const LogoIcon = styled(DoubleRightOutlined)`
+  font-size: 1.3rem;
+  color: #ffa500;
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
 export const Wrapper1 = styled.div`
   position: relative;
   left: 47%;
@@ -464,8 +481,8 @@ export const RightWrapper = styled.div`
 `;
 
 export const MainLogo = styled.img`
-  width: 20vw;
-  height: 17vh;
+  width: 16vw;
+  height: 14vh;
   margin-bottom: 40px;
   opacity: 1;
   cursor: pointer;
@@ -483,8 +500,9 @@ export const MainLogo = styled.img`
 
 export const LogoInfo = styled.div`
   text-align: center;
-  font-size: 1.2rem;
-  letter-spacing: 3px;
+  font-size: 1.3rem;
+  letter-spacing: 3.3px;
+  line-height: 2;
 
   @media ${breakPoints.mobile} {
     font-size: 1.2rem;
@@ -560,8 +578,8 @@ export const Text = styled.button`
 `;
 
 export const Logo = styled.img`
-  width: 30vw;
-  height: 23vh;
+  width: 22vw;
+  height: 17vh;
   margin-bottom: 30px;
   @media ${breakPoints.mobile} {
     width: 60vw;

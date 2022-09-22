@@ -8,21 +8,22 @@ export const Wrapper = styled.div`
   margin: 50px auto;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow-x: auto;
   white-space: nowrap;
   ::-webkit-scrollbar {
-    display: none;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #ffa500;
+    border-radius: 10px;
+    background-clip: padding-box;
   }
 `;
 
 export const Boxes = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(5, 356px);
-  grid-template-rows: repeat(1,300px); */
-  /* justify-content: space-between; */
-  /* padding: 30px; */
   width: 100%;
-  /* padding: 20px; */
+  height: 50vh;
   display: flex;
   flex-direction: row;
 `;
@@ -34,7 +35,6 @@ export const Box = styled.div`
   width: 950px;
   height: 40vh;
   margin: 0px 20px;
-
   transition: all 0.2s ease-in;
 
   :hover {
@@ -64,7 +64,7 @@ export const Img = styled.img`
   border-radius: 10px;
   margin-bottom: 13px;
   box-shadow: 2px 2px 5px lightgray;
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 export const Wrap = styled.div`
@@ -89,6 +89,7 @@ export const MoveToWrite = styled.div`
   background-color: #ffa500;
   border-radius: 50px;
   color: white;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 15vw;
@@ -100,6 +101,11 @@ export const ButtonWrap = styled.div`
   width: 10vw;
   display: flex;
   justify-content: space-between;
+
+  @media ${breakPoints.mobile} {
+    padding: 0px 20px;
+    justify-content: center;
+  }
 `;
 
 export const Prev = styled(LeftCircleOutlined)`

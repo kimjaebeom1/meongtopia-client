@@ -37,33 +37,15 @@ export default function CommunityContainerPage(props: any) {
 
   const fileRef = useRef<HTMLInputElement>(null);
 
+  // useEffect(() => {
+  //   if (props.data?.fetchBoard?.boardImg[0]) ;
+  // }, [props.data]);
+
   const onClickUpload = () => {
     fileRef.current?.click();
   };
 
-  // useEffect(() => {
-  //   if (props.data !== undefined) {
-  //     reset({
-  //       title: props.data.fetchBoard.title,
-  //       contents: props.data.fetchBoard.contents,
-  //       boardImg: {
-  //         url: props.data.fetchBoard.boardImg?.url,
-  //       },
-  //     });
-  //     setImageUrl(props.data.fetchBoard.boardImg[0]?.url);
-  //   }
-  // }, [props.data]);
-
-  // useEffect(() => {
-  //   if (props.data?.fetchBoard.boardImg[0].url) {
-  //     setFile(file);
-  //   }
-  // }, [props.data]);
-
-  console.log(props.data?.fetchBoard.boardImg[0]?.url);
-  console.log([props.data?.fetchBoard.boardImg[0]?.url]);
-
-  // 이미지 url api
+  //이미지 URL api
   const onChangeImg = async (event: any) => {
     const ImageFile = event.target.files[0];
 
@@ -73,11 +55,8 @@ export default function CommunityContainerPage(props: any) {
       if (typeof data.target?.result === "string") {
         setImageUrl(data.target?.result);
         setFile(data.target?.result);
-        console.log(data.target?.result);
       }
     };
-
-    console.log(file);
 
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
@@ -130,6 +109,8 @@ export default function CommunityContainerPage(props: any) {
       }
     }
   };
+
+  console.log(file);
 
   // 수정하기
   const onClickUpdate = async (data: any) => {

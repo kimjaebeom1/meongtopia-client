@@ -28,6 +28,8 @@ export default function CommunityDetailContainerPage() {
   };
 
   const onClickDeleteBoard = async () => {
+    // if()
+
     confirm({
       title: "게시글 삭제",
       icon: <ExclamationCircleOutlined />,
@@ -39,13 +41,14 @@ export default function CommunityDetailContainerPage() {
               boardID: String(router.query.boardID),
             },
           });
+          console.log(result);
           Modal.success({
             content: "삭제되었습니다",
           });
           router.push("/community");
         } catch (error) {
           if (error instanceof Error) {
-            alert(getErrorMessage(error));
+            console.log(error);
           }
         }
       },

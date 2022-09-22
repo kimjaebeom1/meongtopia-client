@@ -12,6 +12,7 @@ export const FETCH_BOARD = gql`
       user {
         name
         nickname
+        userID
       }
     }
   }
