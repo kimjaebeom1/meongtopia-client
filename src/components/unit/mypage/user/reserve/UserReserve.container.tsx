@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { MouseEvent, useState } from "react";
 import { getErrorMessage } from "../../../../../commons/libraries/utils";
 import {
   IMutation,
@@ -16,6 +17,7 @@ import {
 } from "./UserReserve.queries";
 
 export default function MyPageUserReserve() {
+  const router = useRouter();
   const [add, setAdd] = useState(1);
 
   const { data: reserveData } = useQuery<Pick<IQuery, "fetchUserReservation">>(
@@ -63,6 +65,10 @@ export default function MyPageUserReserve() {
     setAdd((prev) => prev + 1);
   };
 
+  const onClickToDetail = (e: MouseEvent<HTMLUListElement>) => {
+    router.push(`/cafe/${(e.currentTarget as HTMLUListElement).id}/`);
+  };
+
   return (
     <MyPageUserReserveUI
       reserveData={reserveData}
@@ -70,6 +76,7 @@ export default function MyPageUserReserve() {
       add={add}
       onClickCancel={onClickCancel}
       onClickAdd={onClickAdd}
+      onClickToDetail={onClickToDetail}
     />
   );
 }

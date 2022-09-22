@@ -63,6 +63,7 @@ export const UserList = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 100%;

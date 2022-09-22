@@ -35,7 +35,10 @@ export default function MyPageSidebarUI(props: IMyPageSidebarUIProps) {
                 />
               </>
             ) : (
-              <Sidebar.profileImg onClick={props.onClickUpload} />
+              <>
+                <Sidebar.Edit onClick={props.onClickUpload} />
+                <Sidebar.profileImg onClick={props.onClickUpload} />
+              </>
             )}
           </Sidebar.List>
 
