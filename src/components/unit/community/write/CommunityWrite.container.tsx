@@ -21,7 +21,7 @@ export default function CommunityContainerPage(props: any) {
   });
 
   const handleChange = (value: string) => {
-    console.log(value);
+    // console.log(value);
     setValue("contents", value === "<p><br></p>" ? "" : value);
     trigger("contents");
   };
@@ -97,7 +97,7 @@ export default function CommunityContainerPage(props: any) {
           },
         },
       });
-      console.log(result.data?.createBoard);
+      // console.log(result.data?.createBoard);
       router.push(`/community/${result.data?.createBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {
@@ -134,7 +134,7 @@ export default function CommunityContainerPage(props: any) {
         ],
       });
       // props.setIsEdit(false);
-      console.log(updateBoardInputs.title);
+      // console.log(updateBoardInputs.title);
       router.push(`/community/${result.data?.updateBoard.boardID}`);
     } catch (error) {
       if (error instanceof Error) {

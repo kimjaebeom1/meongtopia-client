@@ -28,7 +28,7 @@ export default function SignUpOwnerPresenterPage(
     const newChecked = [...checked];
     newChecked[i] = event.target.checked;
     setChecked(newChecked);
-    console.log(checked);
+    // console.log(checked);
   };
 
   useEffect(() => {

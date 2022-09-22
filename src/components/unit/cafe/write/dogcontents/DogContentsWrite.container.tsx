@@ -73,13 +73,13 @@ export default function DogContentsWrite(props: any) {
     setDogName("");
     setDogDescription("");
   };
-  console.log(petArr);
+  // console.log(petArr);
 
   const onChangeDogImage = (fileUrl: string) => {
     setDogImage(fileUrl);
   };
 
-  console.log(petArr);
+  // console.log(petArr);
 
   const onClickDelete = (index: any) => () => {
     setPetArr(petArr.filter((el: any) => el !== index));

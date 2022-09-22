@@ -26,7 +26,7 @@ export default function SignUpPresenterPage(props: ISignUpPresenterPageProps) {
     const newChecked = [...checked];
     newChecked[i] = event.target.checked;
     setChecked(newChecked);
-    console.log(checked);
+    // console.log(checked);
   };
 
   useEffect(() => {
