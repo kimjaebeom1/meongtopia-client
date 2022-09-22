@@ -76,10 +76,10 @@ export default function MyPageStoreCheckDetail() {
           {storeData?.reservation.map((el, i) => (
             <CheckDetail.ListContainer key={uuidv4()}>
               <div>no. {i + 1}</div>
-              {/* <div>
+              <div>
                 <span>예약자: </span>
                 {el.user.nickname}
-              </div> */}
+              </div>
               <div>
                 <span>예약날짜: </span>
                 {el.date}

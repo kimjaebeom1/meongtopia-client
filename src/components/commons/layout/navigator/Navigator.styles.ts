@@ -5,7 +5,7 @@ import { AiFillHome } from "react-icons/ai";
 import { MdEditNote } from "react-icons/md";
 import { FaSearch, FaStore } from "react-icons/fa";
 
-interface IsActiveProps {
+interface IisActiveProps {
   isActive: boolean;
 }
 
@@ -35,32 +35,32 @@ export const Menu = styled.div`
 export const Icon1 = styled(AiFillHome)`
   font-size: 25px;
   margin-bottom: 2px;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
 
 export const Icon2 = styled(FaSearch)`
   font-size: 23px;
   margin-bottom: 3px;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
 
 export const Icon3 = styled(MdEditNote)`
   font-size: 32px;
   margin-left: 5px;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
 
 export const Icon4 = styled(BsFillPersonFill)`
   font-size: 28px;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
 
 export const Icon5 = styled(FaStore)`
   font-size: 28px;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
 
 export const Text = styled.span`
   font-size: 1rem;
-  color: ${(props: IsActiveProps) => (props.isActive ? "orange" : "#aaa")};
+  color: ${(props: IisActiveProps) => (props.isActive ? "orange" : "#aaa")};
 `;
