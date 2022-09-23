@@ -42,7 +42,7 @@ export default function CommunityContainerPage(props: any) {
     fileRef.current?.click();
   };
 
-  //이미지 URL api
+  //이미지 URL api // 긴 이미지
   const onChangeImg = async (event: any) => {
     const ImageFile = event.target.files[0];
 
@@ -111,17 +111,21 @@ export default function CommunityContainerPage(props: any) {
   const onClickUpdate = async (data: any) => {
     if (typeof router.query.boardID !== "string") return;
 
-    if (!data.title && !data.contents && !data.file) {
+    const updateBoardInputs: IUpdateBoardInput = {};
+    if (data.title !== "") updateBoardInputs.title = data.title;
+    if (data.contents !== "") updateBoardInputs.contents = data.contents;
+    if (file !== "") updateBoardInputs.file = file;
+
+    if (
+      !updateBoardInputs.title &&
+      !updateBoardInputs.contents &&
+      !updateBoardInputs.file
+    ) {
       Modal.error({
         content: " 수정한 내용이 없습니다",
       });
       return;
     }
-
-    const updateBoardInputs: IUpdateBoardInput = {};
-    if (data.title !== "") updateBoardInputs.title = data.title;
-    if (data.contents !== "") updateBoardInputs.contents = data.contents;
-    if (file !== "") updateBoardInputs.file = file;
 
     try {
       const result = await updateBoard({
@@ -150,8 +154,8 @@ export default function CommunityContainerPage(props: any) {
   };
 
   useEffect(() => {
-    if (props.data?.fetchBoard.boardImg[0]?.length) {
-      setImageUrl(props.data?.fetchBoard.boardImg[0].url);
+    if (!props.data?.fetchBoard.boardImg.length) {
+      setImageUrl(file);
     }
   }, [props.data]);
 

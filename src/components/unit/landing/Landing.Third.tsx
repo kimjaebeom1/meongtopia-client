@@ -37,11 +37,6 @@ export default function LandingWebInfo() {
             <span style={{ borderBottom: "4px double lightsalmon" }}>
               최적의 사용자 경험을 기반으로 검색서비스를 제공하고 있습니다.
             </span>
-            {/* 웹,앱 서비스 운영 중으로 어떠한 환경에서도
-            <br />
-            <span style={{ borderBottom: "4px double lightsalmon" }}>
-              최적의 사용자 경험을 기반으로 검색서비스를 제공하고 있습니다.
-            </span> */}
           </Landing.LogoInfo>
         </Landing.RightWrapper>
 
