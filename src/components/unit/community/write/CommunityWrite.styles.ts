@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const Wrapper = styled.div`
-  margin: 0px auto;
+  margin: 5rem auto;
   width: 60%;
   padding-top: 100px;
   display: flex;
@@ -15,9 +15,10 @@ export const Wrapper = styled.div`
   box-shadow: 2px 2px 7px lightgray;
 
   @media ${breakPoints.mobile} {
-    padding-top: 10px;
+    padding-top: 1rem;
+    margin: 2rem auto;
     box-shadow: none;
-    width: 100%;
+    width: 94vw;
     border-radius: 20px;
     box-shadow: 2px 2px 7px lightgray;
   }
