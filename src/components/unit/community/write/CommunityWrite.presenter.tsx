@@ -2,6 +2,7 @@ import * as Write from "./CommunityWrite.styles";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import { useEffect } from "react";
+import { useReactiveVar } from "@apollo/client";
 
 export default function CommunityPresenterPage(props: any) {
   return (

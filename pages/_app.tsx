@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
+import Head from "next/head";
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     AOS.init({
@@ -33,6 +34,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <>
+      <Head>
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="https://cdn-icons-png.flaticon.com/512/194/194279.png"
+        />
+        <title>멍토피아 - 애견카페 추천 사이트</title>
+      </Head>
       <RecoilRoot>
         <ApolloSetting>
           <Global styles={globalStyles} />

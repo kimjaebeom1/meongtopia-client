@@ -14,7 +14,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   @media ${breakPoints.mobile} {
-    padding: 0px 20px;
+    padding: 0px 13px;
   }
 `;
 

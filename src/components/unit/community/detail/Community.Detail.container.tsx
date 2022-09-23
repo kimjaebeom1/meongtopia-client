@@ -19,6 +19,8 @@ export default function CommunityDetailContainerPage() {
     },
   });
 
+  console.log(data?.fetchBoard.boardImg);
+
   const onClickMoveToList = () => {
     router.push("/community");
   };
