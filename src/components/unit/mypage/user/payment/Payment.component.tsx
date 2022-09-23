@@ -83,9 +83,9 @@ export default function PaymentComponent() {
       <Payment.Wrapper>
         <Payment.Container>
           <Payment.Title>충전하실 금액을 선택해주세요!</Payment.Title>
-          <Payment.List id="100" onClick={onClickAmount}>
+          {/* <Payment.List id="100" onClick={onClickAmount}>
             100원(테스트)
-          </Payment.List>
+          </Payment.List> */}
           <Payment.List id="5000" onClick={onClickAmount}>
             5,000원
           </Payment.List>
