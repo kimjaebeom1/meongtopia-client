@@ -23,5 +23,8 @@ export default function CommunityEditPage() {
     variables: { boardID: String(router.query.boardID) },
   });
 
+  // console.log(data?.fetchBoard.boardImg[0]?.url);
+  // 짧은 url
+
   return <CommunityContainerPage isEdit={true} data={data} />;
 }
