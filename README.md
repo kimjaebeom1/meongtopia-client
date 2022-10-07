@@ -30,7 +30,7 @@
 
 |[랜딩 페이지]|[모바일 랜딩 페이지]|
 |--------|--------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194456381-d629d88f-4c51-4381-b4a0-bd8dfa33e34d.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194465152-e2d726e2-1446-48d2-9752-1d809bab2855.gif">|
+|<img width="100%" height="400" src="https://user-images.githubusercontent.com/107945737/194456381-d629d88f-4c51-4381-b4a0-bd8dfa33e34d.gif">|<img width="100%" height="500" src="https://user-images.githubusercontent.com/107945737/194465152-e2d726e2-1446-48d2-9752-1d809bab2855.gif">|
 
 **<p>2. 메인 페이지</p>**
 
