@@ -42,56 +42,56 @@
 
 |회원가입 페이지]|[모바일 회원가입 페이지]|
 |-----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194457288-b8ea4352-ff99-427f-a096-4b71bc32c91d.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467401-5e8d50d4-8d6b-471b-bc87-4f51e1d78c60.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194457288-b8ea4352-ff99-427f-a096-4b71bc32c91d.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467401-5e8d50d4-8d6b-471b-bc87-4f51e1d78c60.gif">|
 
 **<p>4. 로그인 페이지</p>**
 
 |[로그인 페이지]|[모바일 로그인 페이지]|
 |-----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194457090-0d5cf2cf-4eeb-42ed-8fa3-141ad575b276.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467511-07f9feda-a831-4f51-a5c1-f3b2024dee2d.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194457090-0d5cf2cf-4eeb-42ed-8fa3-141ad575b276.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467511-07f9feda-a831-4f51-a5c1-f3b2024dee2d.gif">|
 
 **<p>5. 가게 등록 페이지</p>**
 
 |[가게 등록 페이지]|[모바일 가게 등록 페이지]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194457663-b00a073d-f0ae-448f-ad66-b0b9841cd587.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467572-b9c9b04c-121c-46a2-b7b5-90576a30568e.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194457663-b00a073d-f0ae-448f-ad66-b0b9841cd587.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467572-b9c9b04c-121c-46a2-b7b5-90576a30568e.gif">|
 
 **<p>6. 가게 상세 페이지</p>**
 
 |[가게 상세 페이지]|[모바일 가게 상세 페이지]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194457744-91412092-e4f8-476f-84e7-f99f2ed43b0a.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467636-531031cf-b377-4ff3-8df0-bec7de61fb4c.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194457744-91412092-e4f8-476f-84e7-f99f2ed43b0a.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467636-531031cf-b377-4ff3-8df0-bec7de61fb4c.gif">|
 
 **<p>7. 검색 페이지</p>**
 
 |[검색 페이지]|[모바일 검색 페이지]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194459029-1b853f29-7322-466b-b53e-30ff924e0717.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467674-d61d3438-4882-4578-bf3c-981c4df617df.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194459029-1b853f29-7322-466b-b53e-30ff924e0717.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467674-d61d3438-4882-4578-bf3c-981c4df617df.gif">|
 
 **<p>8. 커뮤니티 페이지</p>**
 
 |[커뮤니티 페이지]|[모바일 커뮤니티 페이지]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194459189-ff594bd6-065e-4f23-8cc2-2b386dfab6d1.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467721-0b401cec-1e4b-41eb-8288-233a1d2351d2.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194459189-ff594bd6-065e-4f23-8cc2-2b386dfab6d1.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467721-0b401cec-1e4b-41eb-8288-233a1d2351d2.gif">|
 
 **<p>9. 회원정보 수정 및 포인트 충전</p>**
 
 |[회원정보 수정 및 포인트 충전]|[모바일 회원정보 수정 및 포인트 충전]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194459402-9f4ff964-f789-408c-9a71-787d93d16c31.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467886-3c5afcef-22ac-42a7-bfc7-ddecb17dc9db.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194459402-9f4ff964-f789-408c-9a71-787d93d16c31.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467886-3c5afcef-22ac-42a7-bfc7-ddecb17dc9db.gif">|
 
 **<p>10. 마이 페이지(유저)</p>**
 
 
 |[마이 페이지(유저)]|[모바일 마이 페이지(유저)]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194459560-aa340b0a-af9d-4fbe-a911-7af7615da685.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194467957-6a062d79-27aa-4188-a829-f1d877d13239.gif">|
+|<img height="400" src="https://user-images.githubusercontent.com/107945737/194459560-aa340b0a-af9d-4fbe-a911-7af7615da685.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194467957-6a062d79-27aa-4188-a829-f1d877d13239.gif">|
 
 **<p>11. 마이 페이지(사장)</p>**
 
 |[마이 페이지(사장)]|[마이 페이지(사장)]|
 |----------|-----------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194459709-50a08d99-3580-4504-8029-9b0829eab1af.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194468000-e37dc5e4-cfe3-49c5-bdea-03bf27fac5f5.gif">|
+|<img  height="400" src="https://user-images.githubusercontent.com/107945737/194459709-50a08d99-3580-4504-8029-9b0829eab1af.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194468000-e37dc5e4-cfe3-49c5-bdea-03bf27fac5f5.gif">|
 
 ## 5. 팀원 소개
 
