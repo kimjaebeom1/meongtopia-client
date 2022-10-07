@@ -22,45 +22,9 @@
 
 ![Flow-Chart](https://user-images.githubusercontent.com/103302206/188886448-6bf55adc-ae76-4ab7-b7d6-07bf5099038a.png)
 
+
 ## 4. 서비스 시연
-<p align="center">
-<img src="https://storage.googleapis.com/lookatme-storage/2022/9/21/13dd1314-332c-4482-8d42-65ae7ee88356/origin/title-logo.png">
-</p>
 
-
-<p align="center" display="inline-block">
-    <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
-    <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> 
-     <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <br>
-   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> 
-    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">
- <img src="https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=GraphQL&logoColor=white">
- <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white">
-<img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white">
-<img src="https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=Socket.io&logoColor=white">
-</p><br>
-
-
-🔗 Home Page
--------------
-<p>온라인 상에서 자신의 고민을 털어놓을 수 있는 커뮤니티와 전문가와의 온라인 채팅 상담을 제공하는 2030 심리 플랫폼</p>
-https://www.lookatme.world
-<br>
-
-
-🖥 기술 스택
--------------
-<img width="808" alt="스크린샷 2022-09-26 오후 2 55 04" src="https://user-images.githubusercontent.com/107675322/192203290-e1c2ae4b-f3cf-4e04-96b7-07a3138d858f.png">
-
-
-🏃🏻‍♀ Data flow
----------------
-![Flowchart2 (1)](https://user-images.githubusercontent.com/107675322/192203732-c8a880d8-46e2-41a1-ae32-3208c84d3ded.jpg)
-
-
-
-📝 주요 페이지
 ------------
 
 **<p>1. 랜딩 페이지</p>**
