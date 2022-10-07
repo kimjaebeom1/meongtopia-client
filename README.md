@@ -36,7 +36,7 @@
 
 |[메인 페이지]|[모바일 메인 페이지]|
 |--------|--------|
-|<img width="648" height="400" src="https://user-images.githubusercontent.com/107945737/194470420-c19d1ef7-1879-4be2-93ac-6836b2182b67.gif">|<img width="308" height="500" src="https://user-images.githubusercontent.com/107945737/194469837-6d5d957b-939b-4317-9121-70a708c9ff87.gif">|
+|<img  height="400" src="https://user-images.githubusercontent.com/107945737/194470420-c19d1ef7-1879-4be2-93ac-6836b2182b67.gif">|<img height="500" src="https://user-images.githubusercontent.com/107945737/194469837-6d5d957b-939b-4317-9121-70a708c9ff87.gif">|
 
 **<p>3. 회원가입 페이지</p>**
 
