@@ -44,10 +44,7 @@ export default function CafeListUI(props: ICafeListUIProps) {
     for (let i = 1; i < props.conditionActive.length; i++) {
       dataCondition = dataCondition?.filter((el) => {
         for (let j = 0; j < el.storeTag.length; j++) {
-          if (
-            el.storeTag[j].name === props.conditionActive[i] &&
-            el.storeTag.length === props.conditionActive.length - 1
-          ) {
+          if (el.storeTag[j].name === props.conditionActive[i]) {
             return el;
           }
         }
