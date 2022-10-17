@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import CommunityListPresenterPage from "./Community.List.presenter";
 import { FETCH_BOARDS, FETCH_USER } from "./Community.List.queries";
@@ -9,8 +9,6 @@ import "antd/dist/antd.css";
 export default function CommunityListContainerPage() {
   const [startPage, setStartPage] = useState(1);
   const [isActivePage, setIsActivePage] = useState(1);
-  // ========================================== //
-  const [page, setPage] = useState(1);
 
   const { data: userInfo } = useQuery(FETCH_USER);
 
@@ -20,32 +18,15 @@ export default function CommunityListContainerPage() {
     variables: { page: startPage, order: "DESC" },
   });
 
-  // ========================================== //
-
   const onClickPage = (event: any) => {
     const isActivePage = Number(event.target.id);
     setIsActivePage(isActivePage);
     refetch({ page: Number(event.target.id) });
   };
 
-  const onClickPrevBtn = (event: any) => {
-    if (startPage === 1) return;
-    refetch({ page: Number(event.target.id) });
-    setStartPage((prev) => prev - 1);
-    setIsActivePage((prev) => prev - 1);
-  };
-
-  const onClickNextBtn = (event: any) => {
-    if (Number(data.fetchBoards.length) < 6) return;
-    refetch({ page: Number(event.target.id) });
-    setStartPage((prev) => prev + 1);
-    setIsActivePage((prev) => prev + 1);
-  };
-
   const lastPage = Number(data?.fetchBoards.length < 6);
 
   const onClickMoveToWrite = () => {
-    router.push("/community/write");
     if (!userInfo?.fetchUser.role) {
       Modal.error({
         content: "로그인 후 작성 가능합니다",
@@ -71,8 +52,6 @@ export default function CommunityListContainerPage() {
       onClickMoveToWrite={onClickMoveToWrite}
       onClickMoveToDetail={onClickMoveToDetail}
       onClickHome={onClickHome}
-      onClickPrevBtn={onClickPrevBtn}
-      onClickNextBtn={onClickNextBtn}
       startPage={startPage}
       lastPage={lastPage}
       isActivePage={isActivePage}

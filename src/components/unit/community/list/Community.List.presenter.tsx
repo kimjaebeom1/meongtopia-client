@@ -7,13 +7,15 @@ export default function CommunityListPresenterPage(props: ICommunityListProps) {
       <List.ContainerTitle>추천 게시판</List.ContainerTitle>
       <List.Wrapper>
         {props.data?.fetchBoards.map((el: any) => (
-          <List.Box key={el.boardID}>
+          <List.Box
+            key={el.boardID}
+            id={el.boardID}
+            onClick={props.onClickMoveToDetail}
+          >
             <List.Img
               src={`https://storage.googleapis.com/${el.boardImg[0]?.url}`}
             />
-            <List.Title id={el.boardID} onClick={props.onClickMoveToDetail}>
-              {el.title}
-            </List.Title>
+            <List.Title id={el.boardID}>{el.title}</List.Title>
             <List.Contents dangerouslySetInnerHTML={{ __html: el.contents }} />
           </List.Box>
         ))}
@@ -22,7 +24,6 @@ export default function CommunityListPresenterPage(props: ICommunityListProps) {
       <List.Wrap>
         <List.MoveToWrite onClick={props.onClickHome}>홈으로</List.MoveToWrite>
         <List.ButtonWrap>
-          <List.Prev onClick={props.onClickPrevBtn} />
           <List.Boxes>
             {new Array(6).fill(1).map((_, index: number) => (
               <List.PageNum
@@ -35,7 +36,6 @@ export default function CommunityListPresenterPage(props: ICommunityListProps) {
               </List.PageNum>
             ))}
           </List.Boxes>
-          <List.Next onClick={props.onClickNextBtn} />
         </List.ButtonWrap>
         <List.MoveToWrite onClick={props.onClickMoveToWrite}>
           글쓰기

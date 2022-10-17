@@ -98,6 +98,5 @@ export const Button = styled.div`
 
   @media ${breakPoints.mobile} {
     font-size: 1rem;
-    /* margin: 30px auto; */
   }
 `;

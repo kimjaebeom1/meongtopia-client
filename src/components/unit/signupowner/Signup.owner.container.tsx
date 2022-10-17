@@ -6,6 +6,7 @@ import {
   GET_TOKEN,
   CREATE_OWNER,
   UPLOAD_FILE,
+  CHECK_NICKNAME,
 } from "./Signup.owner.queries";
 import { ChangeEvent, useState, useEffect, SetStateAction } from "react";
 import { Modal, message } from "antd";
@@ -16,11 +17,13 @@ export default function SignUpOwnerContainerPage() {
   const router = useRouter();
   const [isActivePhone, setIsActivePhone] = useState<any>(false);
   const [isActiveNum, setIsActiveNum] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const [getToken] = useMutation(GET_TOKEN);
   const [checkValidToken] = useMutation(CHECK_VALID_TOKEN);
   const [createOwner] = useMutation(CREATE_OWNER);
   const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [checkNickname] = useMutation(CHECK_NICKNAME);
 
   const [phone, setPhone] = useState("");
   const [checkNum, setCheckNum] = useState("");
@@ -29,15 +32,19 @@ export default function SignUpOwnerContainerPage() {
   const [password, setPassword] = useState("");
   const [passwordChk, setPasswordChk] = useState("");
   const [storeName, setStoreName] = useState("");
+  const [name, setName] = useState("");
+  const [nickname, setNickName] = useState("");
 
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [passwordChkError, setPasswordChkError] = useState("");
   const [storeNameError, setStoreNameError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [nickNameError, setNickNameError] = useState("");
 
   const [phoneCheck, setPhoneCheck] = useState(false);
+  const [nicknameChk, setNicknameChk] = useState(false);
 
-  //====================================================================================//
   const [minutes, setMinutes] = useState(3);
   const [seconds, setSeconds] = useState(0);
   const [isCountdown, setIsCountdown] = useState(false);
@@ -61,10 +68,6 @@ export default function SignUpOwnerContainerPage() {
     }, 1000);
     return () => clearInterval(timer);
   }, [minutes, seconds, isCountdown]);
-
-  //====================================================================================//
-
-  //====================================================================================//
 
   const onChangePhone = (event: any) => {
     setPhone(event.target.value);
@@ -115,21 +118,71 @@ export default function SignUpOwnerContainerPage() {
     setFile(event.target.value);
   };
 
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+    if (event.target.value !== "") {
+      setNameError("");
+    }
+  };
+
+  const onChangeNickName = (event: ChangeEvent<HTMLInputElement>) => {
+    setNickName(event.target.value);
+    if (event.target.value !== "") {
+      setNickNameError("");
+    }
+
+    if (event.target.value) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  };
+
   // img url 만들어주는 api;
   const onChangeImg = async (event: any) => {
     const ImageFile = event.target.files[0];
 
     try {
       const result = await uploadFile({ variables: { files: ImageFile } });
-      setFile(result.data?.uploadFile); // aks
-      // console.log(result.data?.uploadFile);
+      setFile(result.data?.uploadFile);
     } catch (error) {
       if (error instanceof Error) {
-        // console.log(error.message);
       }
     }
   };
 
+  //닉네임 체크
+  const onClickNicknameChk = async () => {
+    if (nickname === "") {
+      Modal.error({
+        content: "닉네임을 입력해주세요",
+      });
+      return;
+    }
+
+    try {
+      const result = await checkNickname({
+        variables: {
+          nickname,
+        },
+      });
+      if (result.data?.checkNickname) {
+        Modal.error({
+          content: "중복된 닉네임이 있습니다. 다시 입력해주세요",
+        });
+        return;
+      } else if (!result.data?.checkNickname) {
+        Modal.success({
+          content: "닉네임 등록되었습니다",
+        });
+        setNicknameChk(true);
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  //인증번호
   const onClickGetToken = async () => {
     if (phone.length < 11) {
       message.error({
@@ -143,11 +196,10 @@ export default function SignUpOwnerContainerPage() {
           phone: String(phone),
         },
       });
-      // console.log(result);
       Modal.success({
         content: "인증번호가 발송되었습니다.",
       });
-      setIsCountdown((prev) => !prev); // countdown 시작
+      setIsCountdown((prev) => !prev);
     } catch (error) {
       if (error instanceof Error) {
         Modal.error({
@@ -157,6 +209,7 @@ export default function SignUpOwnerContainerPage() {
     }
   };
 
+  //인증여부
   const onClickCheckValidToken = async () => {
     try {
       const result = await checkValidToken({
@@ -166,7 +219,6 @@ export default function SignUpOwnerContainerPage() {
         },
       });
       setPhoneCheck(true);
-      // console.log(result.data?.checkValidToken); // output : true
       message.success("인증 완료되었습니다.");
       setIsCountdown((prev) => !prev);
       setIsActivePhone(false);
@@ -178,25 +230,32 @@ export default function SignUpOwnerContainerPage() {
     }
   };
 
+  //회원가입
   const onClickSubmit = async () => {
     if (!checkEmail(email)) {
       setEmailError("이메일 @까지 입력해주세요");
+      return;
     }
 
     if (!checkPassword(password) && password.length < 8) {
       setPasswordError("비밀번호를 8자리 이상 입력해주세요");
+      return;
     }
 
     if (!passwordChk) {
       setPasswordChkError("비밀번호를 입력해주세요");
+      return;
     }
+
     if (password !== passwordChk) {
       setPasswordError("비밀번호가 일치하지 않습니다");
       setPasswordChkError("비밀번호가 일치하지 않습니다");
+      return;
     }
 
     if (!storeName) {
       setStoreNameError("상호명을 입력해주세요");
+      return;
     }
 
     if (phoneCheck === false) {
@@ -206,26 +265,40 @@ export default function SignUpOwnerContainerPage() {
       return;
     }
 
-    try {
-      const result = await createOwner({
-        variables: {
-          createUserInput: {
-            email,
-            password,
-            storeName,
-            businessLicenseImg: [file].flatMap,
-            phone,
+    if (!name) {
+      setNameError("이름을 입력해주세요");
+      return;
+    }
+
+    if (!nickname) {
+      setNickNameError("닉네임을 입력해주세요");
+      return;
+    }
+
+    if (email && password && name && nickname && storeName) {
+      try {
+        const result = await createOwner({
+          variables: {
+            createUserInput: {
+              email,
+              password,
+              storeName,
+              businessLicenseImg: [file].flatMap,
+              phone,
+              name,
+              nickname,
+            },
           },
-        },
-      });
-      // console.log(result);
-      Modal.success({
-        content: `${storeName}사장님 회원가입 되셨습니다.관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
-      });
-      router.push("/login");
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error);
+        });
+        Modal.success({
+          content: `${storeName}사장님 회원가입 되셨습니다.
+          관리자가 사업등록번호를 확인한 후 가게를 등록할 수 있습니다.`,
+        });
+        router.push("/login");
+      } catch (error) {
+        if (error instanceof Error) {
+          alert(error);
+        }
       }
     }
   };
@@ -244,19 +317,24 @@ export default function SignUpOwnerContainerPage() {
       onChangePhone={onChangePhone}
       onChangeCheckNum={onChangeCheckNum}
       onChangeFile={onChangeFile}
+      onChangeName={onChangeName}
+      onChangeNickName={onChangeNickName}
       emailError={emailError}
       passwordError={passwordError}
       passwordChkError={passwordChkError}
       storeNameError={storeNameError}
+      nameError={nameError}
       minutes={minutes}
       seconds={seconds}
       isCountdown={isCountdown}
       isActivePhone={isActivePhone}
       isActiveNum={isActiveNum}
+      isActive={isActive}
       onClickGetToken={onClickGetToken}
       onClickCheckValidToken={onClickCheckValidToken}
       onClickSubmit={onClickSubmit}
       onChangeImg={onChangeImg}
+      onClickNicknameChk={onClickNicknameChk}
     />
   );
 }
