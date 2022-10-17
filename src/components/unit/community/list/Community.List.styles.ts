@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons";
-import "antd/dist/antd.css";
 import { breakPoints } from "../../../../commons/styles/media";
 
 interface ICommunityStyleProps {
@@ -50,6 +48,7 @@ export const Box = styled.div`
   transition: all 0.2s ease-in;
   box-shadow: 2px 2px 5px lightgray;
   border-radius: 10px;
+  cursor: pointer;
   :hover {
     transform: scale(1.02);
   }
@@ -84,6 +83,7 @@ export const Img = styled.img`
   margin-bottom: 13px;
   box-shadow: 2px 2px 5px lightgray;
   object-fit: cover;
+  cursor: default;
 `;
 
 export const Wrap = styled.div`
@@ -166,23 +166,5 @@ export const PageNum = styled.div`
     margin: 0px;
     width: 7vw;
     height: 5vh;
-  }
-`;
-
-export const Prev = styled(LeftCircleOutlined)`
-  font-size: 2rem;
-  cursor: pointer;
-  @media ${breakPoints.mobile} {
-    font-size: 1.5rem;
-  }
-`;
-
-export const Next = styled(RightCircleOutlined)`
-  font-size: 2rem;
-
-  cursor: pointer;
-  /* margin-left: 20px; */
-  @media ${breakPoints.mobile} {
-    font-size: 1.5rem;
   }
 `;

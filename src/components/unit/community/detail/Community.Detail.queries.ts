@@ -9,12 +9,11 @@ export const FETCH_BOARD = gql`
       boardImg {
         url
       }
-
-      # user {
-      #   name
-      #   nickname
-      #   userID
-      # }
+      user {
+        role
+        userID
+        nickname
+      }
     }
   }
 `;
@@ -22,5 +21,13 @@ export const FETCH_BOARD = gql`
 export const DELETE_BOARD = gql`
   mutation deleteBoard($boardID: String!) {
     deleteBoard(boardID: $boardID)
+  }
+`;
+
+export const FETCH_USER = gql`
+  query fetchUser {
+    fetchUser {
+      userID
+    }
   }
 `;

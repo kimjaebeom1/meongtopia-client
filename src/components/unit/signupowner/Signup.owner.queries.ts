@@ -26,3 +26,9 @@ export const CHECK_VALID_TOKEN = gql`
     checkValidToken(phone: $phone, token: $token)
   }
 `;
+
+export const CHECK_NICKNAME = gql`
+  mutation checkNickname($nickname: String!) {
+    checkNickname(nickname: $nickname)
+  }
+`;

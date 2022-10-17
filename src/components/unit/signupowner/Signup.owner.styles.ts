@@ -21,16 +21,11 @@ export const Wrapper = styled.div`
 export const SignUpWrap = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* padding-top: 60px; */
   width: 768px;
   padding: 0 1rem;
-  /* height: 160vh; */
-  /* margin: 0px auto; */
 
   @media ${breakPoints.mobile} {
     width: 100%;
-    /* height: 170vh; */
   }
 `;
 
@@ -39,7 +34,6 @@ export const BtnWrap = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* width: 75%; */
   margin-bottom: 20px;
 
   @media ${breakPoints.mobile} {
@@ -55,8 +49,7 @@ export const UserWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #999; // 나중에 삼항연산자로 색 입히기
-  /* margin: 0px 5px; */
+  background-color: #999;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 500;
@@ -73,26 +66,11 @@ export const OwnerWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ffa500; // 나중에 삼항연산자로 색 입히기
-  /* margin: 0px 5px; */
+  background-color: #ffa500;
   border-radius: 50px;
   font-size: 1.3rem;
   font-weight: 600;
 `;
-
-// export const Ment1 = styled.div`
-//   font-size: 1.3rem;
-//   color: #ffffff;
-//   /* cursor: pointer; */
-//   @media ${breakPoints.mobile} {
-//     font-size: 1.2rem;
-//   }
-// `;
-
-// export const Ment2 = styled.div`
-//   font-size: 1.3rem;
-//   color: #ffffff;
-// `;
 
 export const OwnerNumWrap = styled.div`
   display: flex;
@@ -118,20 +96,17 @@ export const ElWrap = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* width: 70%; */
 
   @media ${breakPoints.mobile} {
-    /* width: 90%; */
     margin-bottom: 2rem;
   }
 `;
 
-export const IdPwWrap = styled.div`
+export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* margin-bottom: 30px; */
-  /* background-color: blue; */
+  margin-bottom: 20px;
 `;
 
 export const InputWrap = styled.div`
@@ -142,35 +117,44 @@ export const InputWrap = styled.div`
   margin-bottom: 30px;
 `;
 
-export const InputElWrap = styled.div`
-  border: 1px solid rgb(118, 118, 118);
-  display: flex;
-  align-items: center;
+export const Input = styled.input`
   width: 100%;
-  border-radius: 10px;
-  margin-right: 10px;
-  margin-bottom: 0.5rem;
+  height: 3.5rem;
   padding: 0px 10px;
+  outline: none;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 10px;
+  margin-top: 3px;
+  line-height: 3rem;
+
   @media ${breakPoints.mobile} {
     font-size: 1rem;
   }
 `;
 
-export const Input = styled.input`
+export const NamesWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const NicknameWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 10px;
+  border: 1px solid rgb(118, 118, 118);
+  padding: 0px 10px;
+`;
+
+export const NicknameInput = styled.input`
   width: 100%;
   height: 3rem;
   outline: none;
   border: none;
-  margin-top: 3px;
-  line-height: 3rem;
 `;
-// export const InputWrap = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   margin-bottom: 30px;
-// `;
 
 export const Error = styled.div`
   color: red;
@@ -188,8 +172,9 @@ export const CheckBtn = styled.div`
   line-height: 1.5rem;
   text-align: center;
   border-radius: 50px;
-  background-color: ${(props: any) => (props.isActive ? "#ffa500" : "#999")};
-  /* margin: 0px 10px; */
+  margin-left: 10px;
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActive ? "#ffa500" : "#999"};
   line-height: 2rem;
   cursor: pointer;
 
@@ -234,8 +219,7 @@ export const AgreeChkWrap = styled.div`
 
 export const AgreeContents1 = styled.div`
   font-size: 1rem;
-
-  color: red;
+  color: #999;
   width: 20%;
 `;
 
@@ -261,7 +245,6 @@ export const AgreeContents3 = styled.div`
   cursor: pointer;
 
   @media ${breakPoints.mobile} {
-    /* font-size: 0.5rem; */
     width: 12%;
   }
 `;
@@ -276,20 +259,30 @@ export const PhoneWrap = styled.div`
 export const PhoneNumWrap = styled.div`
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   margin-bottom: 5px;
 `;
 
 export const PhoneNum = styled.input`
-  width: 100%;
-  height: 3rem;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  width: 34rem;
+  height: 3.5rem;
   padding: 0px 10px;
+  outline: none;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 10px;
+  margin-top: 3px;
+  line-height: 3rem;
+
+  @media ${breakPoints.mobile} {
+    width: 75%;
+    font-size: 1rem;
+  }
 `;
+
 export const NumBtn = styled.div`
-  width: 10rem;
+  width: 20%;
   height: 40px;
   line-height: 40px;
   text-align: center;
@@ -298,23 +291,7 @@ export const NumBtn = styled.div`
     props.isActivePhone ? "#ffa500" : "gray"};
   color: white;
   cursor: pointer;
-  @media ${breakPoints.mobile} {
-    width: 7rem;
-    height: 35px;
-    line-height: 35px;
-  }
-`;
 
-export const NumBtn2 = styled.div`
-  width: 10rem;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  border-radius: 20px;
-  background-color: ${(props: ISignUpStyleProps) =>
-    props.isActiveNum ? "#ffa500" : "gray"};
-  color: white;
-  cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 7rem;
     height: 35px;
@@ -325,9 +302,56 @@ export const NumBtn2 = styled.div`
 export const NumberWrap = styled.div`
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   color: black;
+`;
+
+export const CerWrap = styled.div`
+  width: 34rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 10px;
+
+  @media ${breakPoints.mobile} {
+    width: 75%;
+  }
+`;
+
+export const CerNum = styled.input`
+  width: 85%;
+  padding: 0px 10px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  margin-top: 3px;
+  line-height: 3rem;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1rem;
+  }
+`;
+
+export const NumBtn2 = styled.div`
+  width: 20%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: ${(props: ISignUpStyleProps) =>
+    props.isActiveNum ? "#ffa500" : "gray"};
+  color: white;
+  cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    width: 7rem;
+    height: 35px;
+    line-height: 35px;
+  }
 `;
 
 export const Number = styled.input`
@@ -360,16 +384,16 @@ export const Line = styled.div`
 `;
 
 export const Timer = styled.div`
-  width: 60px;
+  width: 70px;
   height: 30px;
   line-height: 30px;
-  /* margin: 0px 10px; */
   color: black;
   font-size: 1rem;
 
   @media ${breakPoints.mobile} {
     font-size: 1rem;
+    text-align: center;
+    width: 50px;
+    height: 30px;
   }
-
-  /* visibility: hidden; */
 `;

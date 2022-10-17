@@ -28,7 +28,6 @@ export default function SignUpOwnerPresenterPage(
     const newChecked = [...checked];
     newChecked[i] = event.target.checked;
     setChecked(newChecked);
-    // console.log(checked);
   };
 
   useEffect(() => {
@@ -47,14 +46,13 @@ export default function SignUpOwnerPresenterPage(
         <SignUp.BtnWrap>
           <SignUp.UserWrap onClick={props.onClickMoveToUser}>
             개 인 회 원 가 입
-            {/* <SignUp.Ment2>만 15세 이상 가능</SignUp.Ment2> */}
           </SignUp.UserWrap>
 
           <SignUp.OwnerWrap onClick={props.onClickMoveToOwner}>
-            사 장 님 회 원 가 입{/* <SignUp.Ment2></SignUp.Ment2> */}
+            사 장 님 회 원 가 입
           </SignUp.OwnerWrap>
         </SignUp.BtnWrap>
-        {/* <form onSubmit={props.handleSubmit(props.onClickSubmit)}> */}
+
         <SignUp.OwnerNumWrap>
           <SignUp.Title>사업자 등록번호</SignUp.Title>
           <SignUp.OwnerImg
@@ -65,73 +63,77 @@ export default function SignUpOwnerPresenterPage(
         </SignUp.OwnerNumWrap>
 
         <SignUp.ElWrap>
-          <SignUp.IdPwWrap>
+          <SignUp.Wrap>
             <SignUp.Title>ID</SignUp.Title>
-            <SignUp.InputElWrap>
-              <SignUp.Input
-                placeholder="이메일을 입력해주세요"
-                type="text"
-                onChange={props.onChangeEmail}
-              />
-            </SignUp.InputElWrap>
+            <SignUp.Input
+              placeholder="이메일을 입력해주세요"
+              type="text"
+              onChange={props.onChangeEmail}
+            />
             <SignUp.Error>{props.emailError}</SignUp.Error>
-          </SignUp.IdPwWrap>
+          </SignUp.Wrap>
 
-          <SignUp.IdPwWrap>
+          <SignUp.Wrap>
             <SignUp.Title>Password</SignUp.Title>
-            <SignUp.InputElWrap>
-              <SignUp.Input
-                placeholder="비밀번호 8자리 이상 입력해주세요"
-                type="password"
-                onChange={props.onChangePassword}
-                // register={props.register("password")}
-              />
-            </SignUp.InputElWrap>
+            <SignUp.Input
+              placeholder="비밀번호 8자리 이상 입력해주세요"
+              type="password"
+              onChange={props.onChangePassword}
+            />
+            <SignUp.Error>{props.passwordError}</SignUp.Error>
 
-            <SignUp.Error>
-              {props.passwordError}
-              {/* {props.formState.errors.password?.message} */}
-            </SignUp.Error>
+            <SignUp.Input
+              placeholder="비밀번호를 다시 입력해주세요"
+              type="password"
+              onChange={props.onChangePasswordChk}
+            />
+            <SignUp.Error>{props.passwordChkError}</SignUp.Error>
+          </SignUp.Wrap>
 
-            <SignUp.InputElWrap>
-              <SignUp.Input
-                placeholder="비밀번호를 다시 입력해주세요"
-                type="password"
-                onChange={props.onChangePasswordChk}
-                // register={props.register("password")}
-              />
-            </SignUp.InputElWrap>
-            <SignUp.Error>
-              {props.passwordChkError}
-              {/* {props.formState.errors.password?.message} */}
-            </SignUp.Error>
-          </SignUp.IdPwWrap>
+          <SignUp.Wrap>
+            <SignUp.Title>이름 & 닉네임</SignUp.Title>
 
-          <SignUp.InputWrap>
-            <SignUp.Title>상호명</SignUp.Title>
-            <SignUp.InputElWrap>
+            <SignUp.NamesWrap>
               <SignUp.Input
-                placeholder="상호명을 입력해주세요"
                 type="text"
-                onChange={props.onChangeStoreName}
-                // register={props.register("storeName")}
+                placeholder="이름을 입력해주세요"
+                onChange={props.onChangeName}
               />
-            </SignUp.InputElWrap>
-            <SignUp.Error>
-              {props.storeNameError}
-              {/* {props.formState.errors.storeName?.message} */}
-            </SignUp.Error>
-          </SignUp.InputWrap>
+              <SignUp.Error>{props.nameError}</SignUp.Error>
+              <SignUp.NicknameWrap>
+                <SignUp.NicknameInput
+                  type="text"
+                  placeholder="닉네임을 입력해주세요"
+                  onChange={props.onChangeNickName}
+                />
+                <SignUp.CheckBtn
+                  onClick={props.onClickNicknameChk}
+                  isActive={props.isActive ? true : props.isActive}
+                >
+                  중복확인
+                </SignUp.CheckBtn>
+              </SignUp.NicknameWrap>
+              <SignUp.Error></SignUp.Error>
+            </SignUp.NamesWrap>
+          </SignUp.Wrap>
+
+          <SignUp.Wrap>
+            <SignUp.Title>상호명</SignUp.Title>
+            <SignUp.Input
+              placeholder="상호명을 입력해주세요"
+              type="text"
+              onChange={props.onChangeStoreName}
+            />
+            <SignUp.Error>{props.storeNameError}</SignUp.Error>
+          </SignUp.Wrap>
 
           <SignUp.PhoneWrap>
             <SignUp.Title>휴대전화 인증</SignUp.Title>
             <SignUp.PhoneNumWrap>
-              <SignUp.InputElWrap>
-                <SignUp.Input
-                  onChange={props.onChangePhone}
-                  placeholder="휴대전화 번호를 입력해주세요"
-                />
-              </SignUp.InputElWrap>
+              <SignUp.PhoneNum
+                onChange={props.onChangePhone}
+                placeholder="휴대전화 번호를 입력해주세요"
+              />
               <SignUp.NumBtn
                 onClick={props.onClickGetToken}
                 isActivePhone={props.isActivePhone ? true : props.isActivePhone}
@@ -141,8 +143,8 @@ export default function SignUpOwnerPresenterPage(
             </SignUp.PhoneNumWrap>
 
             <SignUp.NumberWrap>
-              <SignUp.InputElWrap>
-                <SignUp.Input
+              <SignUp.CerWrap>
+                <SignUp.CerNum
                   onChange={props.onChangeCheckNum}
                   placeholder="인증번호를 입력해주세요"
                 />
@@ -151,7 +153,7 @@ export default function SignUpOwnerPresenterPage(
                     props.seconds
                   ).padStart(2, "0")}`}
                 </SignUp.Timer>
-              </SignUp.InputElWrap>
+              </SignUp.CerWrap>
               <SignUp.NumBtn2
                 onClick={props.onClickCheckValidToken}
                 isActiveNum={props.isActiveNum ? true : props.isActiveNum}
@@ -166,7 +168,7 @@ export default function SignUpOwnerPresenterPage(
 
             <SignUp.AgreeWrap2>
               <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
+                <SignUp.AgreeContents1>(선택)</SignUp.AgreeContents1>
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
@@ -189,7 +191,7 @@ export default function SignUpOwnerPresenterPage(
               </SignUp.AgreeChkWrap>
               <SignUp.Line />
               <SignUp.AgreeChkWrap>
-                <SignUp.AgreeContents1>(필수)</SignUp.AgreeContents1>
+                <SignUp.AgreeContents1>(선택)</SignUp.AgreeContents1>
                 <SignUp.AgreeContents2>
                   개인회원 약관에 동의
                 </SignUp.AgreeContents2>
@@ -216,7 +218,6 @@ export default function SignUpOwnerPresenterPage(
             회원가입
           </SignUp.SignUpBtn>
         </SignUp.ElWrap>
-        {/* </form> */}
       </SignUp.SignUpWrap>
     </SignUp.Wrapper>
   );
