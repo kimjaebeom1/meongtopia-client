@@ -25,7 +25,7 @@ export default function CafeList() {
       order: `${order === "최신순" && "DESC"}`,
     },
   });
-
+  console.log(data);
   useEffect(() => {
     refetch();
   }, [data]);

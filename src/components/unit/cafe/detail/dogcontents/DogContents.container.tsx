@@ -53,7 +53,7 @@ export default function DetailDogContents() {
   const checkReservation = userResID?.filter((el: any) =>
     storeResID?.includes(el)
   );
-
+  console.log(data);
   // 토글
   const onClickToggle = async () => {
     try {

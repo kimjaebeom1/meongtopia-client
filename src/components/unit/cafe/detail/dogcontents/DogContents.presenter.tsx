@@ -70,6 +70,7 @@ export default function DetailDogContentsUI(props: any) {
         </DogContents.HeadInfo>
       </DogContents.StoreNameTag>
 
+      {/* 모바일 이미지 슬라이더 */}
       <DogContents.MobileCafeListWrapper>
         <Slider {...mobileSettings}>
           {props.data?.fetchStore.storeImg.map((el: any) => (
@@ -89,7 +90,7 @@ export default function DetailDogContentsUI(props: any) {
                   src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[0].url}`}
                 />
               ) : (
-                <DogContents.mainCafeImg src="/images/instacafe.jpeg" />
+                <DogContents.mainCafeImg src="/images/ready.jpg" />
               )}
             </Row>
           </Col>
@@ -101,7 +102,7 @@ export default function DetailDogContentsUI(props: any) {
                     src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[1].url}`}
                   />
                 ) : (
-                  <DogContents.cafeImg src="/images/instacafe1.jpg" />
+                  <DogContents.cafeImg src="/images/ready.jpg" />
                 )}
               </Col>
               <Col span={12}>
@@ -110,7 +111,7 @@ export default function DetailDogContentsUI(props: any) {
                     src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[2].url}`}
                   />
                 ) : (
-                  <DogContents.cafeImg src="/images/instacafe2.jpg" />
+                  <DogContents.cafeImg src="/images/ready.jpg" />
                 )}
               </Col>
             </Row>
@@ -126,7 +127,7 @@ export default function DetailDogContentsUI(props: any) {
                     src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[3].url}`}
                   />
                 ) : (
-                  <DogContents.cafeImg src="/images/instacafe4.jpg" />
+                  <DogContents.cafeImg src="/images/ready.jpg" />
                 )}
               </Col>
               <Col
@@ -140,7 +141,7 @@ export default function DetailDogContentsUI(props: any) {
                     src={`https://storage.googleapis.com/${props.data?.fetchStore.storeImg[4].url}`}
                   />
                 ) : (
-                  <DogContents.cafeImg src="/images/instacafe3.jpg" />
+                  <DogContents.cafeImg src="/images/ready.jpg" />
                 )}
               </Col>
             </Row>
@@ -279,9 +280,14 @@ export default function DetailDogContentsUI(props: any) {
                 <Slider {...mobileSettings}>
                   {props.data?.fetchStore.pet.map((el: any) => (
                     <DogContents.SliderItem key={uuidv4()}>
-                      <img
-                        src={`https://storage.googleapis.com/${el.petImgUrl}`}
-                      />
+                      {el.petImgUrl === "" ? (
+                        <img src="/images/dogcharacter.jpg" />
+                      ) : (
+                        <img
+                          src={`https://storage.googleapis.com/${el.petImgUrl}`}
+                        />
+                      )}
+
                       <div>이름: {el.name}</div>
                       <div>나이: {el.age}</div>
                       <div>견종: {el.breed}</div>
