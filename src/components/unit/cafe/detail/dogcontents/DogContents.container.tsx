@@ -54,6 +54,7 @@ export default function DetailDogContents() {
     storeResID?.includes(el)
   );
   console.log(data);
+
   // 토글
   const onClickToggle = async () => {
     try {
